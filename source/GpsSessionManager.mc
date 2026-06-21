@@ -5,68 +5,68 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 // ─── GpsSessionManager ────────────────────────────────────────────────────────
-// Encapsula dos responsabilidades del SDK de bajo nivel con vidas útiles distintas:
+// Encapsulates two low-level SDK responsibilities with different lifetimes:
 //
-//   1. Positioning (GPS continuo): activo toda la vida de la app.
-//      start() habilita el GPS en App.onStart(); stop() lo libera en App.onStop().
+//   1. Positioning (continuous GPS): active for the entire app lifetime.
+//      start() enables GPS in App.onStart(); stop() releases it in App.onStop().
 //
-//   2. ActivityRecording (sesión FIT): activa solo entre startRecording() y stopRecording().
-//      startRecording() → llamado desde FSMController al WARMUP→RUN.
-//      stopRecording()  → llamado desde FSMController al alcanzar FINISH.
-//      stop() actúa de red de seguridad ante cierre forzado.
+//   2. ActivityRecording (FIT session): active only between startRecording() and stopRecording().
+//      startRecording() → called from FSMController on WARMUP→RUN.
+//      stopRecording()  → called from FSMController on reaching FINISH.
+//      stop() acts as a safety net on forced app exit.
 //
-// PATRÓN TYPECHECK=3 PARA MIEMBROS NULLABLE:
-//   mSession se declara como 'Session?' (nullable). Para llamar métodos de SDK
-//   sobre él sin errores de tipo, siempre se copia a una variable local antes
-//   del null-check: 'var s = mSession; if (s != null) { ... }'. El compilador
-//   estrecha el tipo de la local (igual que hace con 'pos' en onPosition).
+// TYPECHECK=3 PATTERN FOR NULLABLE MEMBERS:
+//   mSession is declared as 'Session?' (nullable). To call SDK methods on it without
+//   type errors, always copy to a local variable before the null-check:
+//   'var s = mSession; if (s != null) { ... }'. The compiler narrows the local's type
+//   (same pattern used with 'pos' in onPosition).
 //
-// REGLA DE MEMORIA:
-//   - Todos los campos de estado están pre-asignados en initialize().
-//   - onPosition() NO instancia ningún objeto; solo actualiza primitivos y despacha
-//     tickFitMetrics() (que es no-op si mIsInitialized = false).
-//   - Dict literales en startRecording() = excepción justificada (init único, no 1Hz).
+// MEMORY RULE:
+//   - All state fields are pre-assigned in initialize().
+//   - onPosition() instantiates nothing; it only updates primitives and dispatches
+//     tickFitMetrics() (which is a no-op if mIsInitialized = false).
+//   - Dict literals in startRecording() are a justified exception (single init call, not 1 Hz).
 
-// Suavizado exponencial (EMA) de la velocidad GPS. alpha 0.25 ≈ constante de
-// tiempo ~4 s a 1 Hz: amortigua el ruido del ritmo instantáneo (que salta varios
-// s/km entre muestras) sin un retardo perceptible. Solo mult/suma de Float → apto
-// para la ruta caliente onPosition (sin asignaciones dinámicas).
+// Exponential moving average (EMA) of GPS speed. alpha 0.25 ≈ ~4 s time constant
+// at 1 Hz: smooths out instant-pace noise (which can jump several s/km between samples)
+// without introducing a perceptible lag. Only float multiply/add → safe for the
+// onPosition hot path (no dynamic allocations).
 const SPEED_SMOOTHING_ALPHA as Float = 0.25f;
 
 class GpsSessionManager {
 
-    // ── Caché de posición GPS ─────────────────────────────────────────────
-    // Pre-asignados para que onPosition() (callback a ~1Hz) nunca use `new`.
-    var mLat      as Double  = 0.0d;   // Latitud en grados decimales
-    var mLon      as Double  = 0.0d;   // Longitud en grados decimales
-    var mSpeed    as Float   = 0.0f;   // Velocidad instantánea en m/s
-    var mSpeedAvg as Float   = 0.0f;   // Velocidad suavizada (EMA) en m/s → ritmo real mostrado
+    // ── GPS position cache ─────────────────────────────────────────────────
+    // Pre-assigned so that onPosition() (~1 Hz callback) never uses `new`.
+    var mLat      as Double  = 0.0d;   // Latitude in decimal degrees
+    var mLon      as Double  = 0.0d;   // Longitude in decimal degrees
+    var mSpeed    as Float   = 0.0f;   // Instantaneous speed in m/s
+    var mSpeedAvg as Float   = 0.0f;   // EMA-smoothed speed in m/s → used for on-screen pace
     var mAccuracy as Number  = 0;      // Quality enum: Position.QUALITY_*
-    var mHasFix   as Boolean = false;  // true cuando accuracy > NOT_AVAILABLE
+    var mHasFix   as Boolean = false;  // true when accuracy > NOT_AVAILABLE
 
-    // ── Sesión de grabación FIT ───────────────────────────────────────────
-    // null hasta que startRecording() sea invocado (WARMUP → RUN).
+    // ── FIT recording session ──────────────────────────────────────────────
+    // null until startRecording() is called (WARMUP → RUN).
     var mSession as ActivityRecording.Session? = null;
 
     function initialize() {
-        // Todos los miembros ya tienen valor inicial arriba.
-        // El SDK NO se toca aquí: Position y ActivityRecording solo pueden
-        // iniciarse después de que AppBase.onStart() haya sido invocado.
+        // All members already have initial values above.
+        // The SDK is NOT touched here: Position and ActivityRecording can only be
+        // initialized after AppBase.onStart() has been called.
     }
 
     // ── start() ───────────────────────────────────────────────────────────
-    // Llamado desde HyroxPacerApp.onStart(). Solo activa el GPS continuo.
-    // La sesión FIT NO se crea aquí; eso ocurre en startRecording() cuando
-    // el atleta confirma el inicio de la carrera (WARMUP → RUN).
+    // Called from HyroxPacerApp.onStart(). Enables continuous GPS only.
+    // The FIT session is NOT created here; that happens in startRecording() when
+    // the athlete confirms race start (WARMUP → RUN).
     function start() as Void {
-        // method(:onPosition) → referencia de método, no crea objetos.
+        // method(:onPosition) → method reference, does not create objects.
         Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, method(:onPosition));
     }
 
     // ── startRecording() ──────────────────────────────────────────────────
-    // Llamado desde FSMController.attemptTransition() al transicionar WARMUP→RUN.
-    // Crea la sesión FIT, registra los 7 campos Hyrox y arranca la grabación.
-    // Patrón typecheck=3: var s = mSession; if (s != null) para estrechar el tipo.
+    // Called from FSMController.attemptTransition() on WARMUP→RUN.
+    // Creates the FIT session, registers the 7 HYROX fields, and starts recording.
+    // typecheck=3 pattern: var s = mSession; if (s != null) to narrow the type.
     function startRecording() as Void {
         mSession = ActivityRecording.createSession({
             :name     => "Hyrox",
@@ -76,16 +76,16 @@ class GpsSessionManager {
 
         var s = mSession;
         if (s != null) {
-            // Registra los 7 campos FIT developer antes de iniciar el timer.
+            // Register the 7 FIT developer fields before starting the timer.
             getApp().mFit.initializeFitFields(s);
-            // Arranca la grabación (inicia el timer FIT y los registros por segundo).
+            // Start recording (starts the FIT timer and per-second records).
             s.start();
         }
     }
 
     // ── stopRecording() ───────────────────────────────────────────────────
-    // Llamado desde FSMController.attemptTransition() al alcanzar STATE_FINISH.
-    // Detiene el timer FIT, guarda el archivo .fit y deshabilita la escritura.
+    // Called from FSMController.attemptTransition() on reaching STATE_FINISH.
+    // Stops the FIT timer, saves the .fit file, and disables further writes.
     function stopRecording() as Void {
         var s = mSession;
         if (s != null && s.isRecording()) {
@@ -93,14 +93,14 @@ class GpsSessionManager {
             s.save();
         }
         mSession = null;
-        // Desactiva mIsInitialized: tickFitMetrics() queda como no-op.
+        // Disable mIsInitialized: tickFitMetrics() becomes a no-op.
         getApp().mFit.clearFitFields();
     }
 
-    // ── pauseRecording() (Fase 7) ─────────────────────────────────────────
-    // Pausa el timer FIT sin guardar: la sesión sigue viva. SDK 9.2.0:
-    // Session.stop() detiene el timer; un start() posterior lo reanuda.
-    // Patrón nullable: copia local + null-check; guard isRecording().
+    // ── pauseRecording() (Phase 7) ─────────────────────────────────────────
+    // Pauses the FIT timer without saving: the session stays alive. SDK 9.2.0:
+    // Session.stop() halts the timer; a subsequent start() resumes it.
+    // Nullable pattern: local copy + null-check; guard with isRecording().
     function pauseRecording() as Void {
         var s = mSession;
         if (s != null && s.isRecording()) {
@@ -108,8 +108,8 @@ class GpsSessionManager {
         }
     }
 
-    // ── resumeRecording() (Fase 7) ────────────────────────────────────────
-    // Reanuda el timer FIT de la MISMA sesión (save() se difiere a FINISH).
+    // ── resumeRecording() (Phase 7) ───────────────────────────────────────
+    // Resumes the FIT timer on the SAME session (save() deferred to FINISH).
     function resumeRecording() as Void {
         var s = mSession;
         if (s != null && !s.isRecording()) {
@@ -118,10 +118,10 @@ class GpsSessionManager {
     }
 
     // ── addLap() ──────────────────────────────────────────────────────────
-    // Inserta un evento de vuelta (split nativo) en el archivo FIT.
-    // Invocado desde FSMController.markLap() en los límites:
-    //   - RUN(1) → ROXZONE_IN(2): inicio de zona de transición
-    //   - ROXZONE_OUT(4) → RUN(1): vuelta a la carrera
+    // Inserts a native lap event (split) into the FIT file.
+    // Called from FSMController.markLap() at the boundaries:
+    //   - RUN(1) → ROXZONE_IN(2): start of transition corridor
+    //   - ROXZONE_OUT(4) → RUN(1): return to running
     function addLap() as Void {
         var s = mSession;
         if (s != null && s.isRecording()) {
@@ -130,18 +130,18 @@ class GpsSessionManager {
     }
 
     // ── onPosition() ──────────────────────────────────────────────────────
-    // Callback del SDK de Positioning. Invocado a ~1Hz mientras el GPS está activo.
-    // PROHIBIDO: new, Lang.Dictionary, switch/case, accesos a objetos transitorios.
-    // Solo actualiza primitivos pre-asignados y dispara el tick FIT.
+    // SDK Positioning callback. Called at ~1 Hz while GPS is active.
+    // FORBIDDEN: new, Lang.Dictionary, switch/case, access to transient objects.
+    // Only updates pre-assigned primitives and triggers the FIT tick.
     function onPosition(info as Position.Info) as Void {
-        // Cachea la precisión de señal (Position.QUALITY_* enum, es un Number).
+        // Cache signal quality (Position.QUALITY_* enum, a Number).
         mAccuracy = info.accuracy;
 
         if (mAccuracy > Position.QUALITY_NOT_AVAILABLE) {
             mHasFix = true;
 
-            // toDegrees() devuelve Array<Double> de [lat, lon].
-            // Guard null obligatorio: info.position es Position.Location or Null (API 4.x).
+            // toDegrees() returns Array<Double> of [lat, lon].
+            // Null guard required: info.position is Position.Location or Null (API 4.x).
             var pos = info.position;
             if (pos != null) {
                 var deg = pos.toDegrees() as Array<Double>;
@@ -149,7 +149,7 @@ class GpsSessionManager {
                 mLon = deg[1];
             }
 
-            // Velocidad en m/s (puede ser null si el dispositivo no la reporta).
+            // Speed in m/s (may be null if the device does not report it).
             if (info has :speed && info.speed != null) {
                 mSpeed = info.speed as Float;
             }
@@ -157,24 +157,24 @@ class GpsSessionManager {
             mHasFix = false;
         }
 
-        // Suavizado exponencial de la velocidad para el ritmo real mostrado en RUN.
-        // Se actualiza cada callback (~1Hz) con la última velocidad conocida (mSpeed).
+        // Exponential moving average of speed for the on-screen real pace display.
+        // Updated every callback (~1 Hz) using the last known speed (mSpeed).
         mSpeedAvg = mSpeedAvg + SPEED_SMOOTHING_ALPHA * (mSpeed - mSpeedAvg);
 
-        // Escribe las métricas FIT al ritmo del GPS (~1Hz).
-        // No-op si mIsInitialized = false (antes de startRecording o tras stopRecording).
+        // Write FIT metrics at the GPS rate (~1 Hz).
+        // No-op if mIsInitialized = false (before startRecording or after stopRecording).
         getApp().mFit.tickFitMetrics();
-        // Refresca la vista imperativa con los datos GPS más recientes.
+        // Refresh the imperative view with the latest GPS data.
         WatchUi.requestUpdate();
     }
 
     // ── stop() ────────────────────────────────────────────────────────────
-    // Llamado desde HyroxPacerApp.onStop(). Red de seguridad: guarda la sesión
-    // si todavía está activa (ej. cierre forzado antes de FINISH) y libera el GPS.
+    // Called from HyroxPacerApp.onStop(). Safety net: saves the session if it is
+    // still alive (e.g. forced exit before FINISH) and releases GPS.
     function stop() as Void {
         var s = mSession;
-        // Fase 7: guarda también una sesión en PAUSA (isRecording()=false tras
-        // pauseRecording). Si no, salir de la app en pausa perdería el .fit.
+        // Phase 7: also saves a PAUSED session (isRecording()=false after pauseRecording).
+        // Without this, exiting the app while paused would lose the .fit file.
         if (s != null) {
             if (s.isRecording()) {
                 s.stop();
@@ -182,13 +182,13 @@ class GpsSessionManager {
             s.save();
         }
         mSession = null;
-        // Desactiva mIsInitialized (idempotente si ya fue llamado por stopRecording).
+        // Disable mIsInitialized (idempotent if already called by stopRecording).
         getApp().mFit.clearFitFields();
-        // Libera el módulo GPS.
+        // Release the GPS module.
         Position.enableLocationEvents(Position.LOCATION_DISABLE, method(:onPosition));
     }
 
-    // ── Getters de solo lectura para la vista y el pacing engine ─────────
+    // ── Read-only getters for the view and pacing engine ─────────────────
 
     function hasFix() as Boolean {
         return mHasFix;
@@ -206,8 +206,8 @@ class GpsSessionManager {
         return mSpeed;
     }
 
-    // Velocidad suavizada (EMA) en m/s. Úsala para mostrar el ritmo real al atleta
-    // (evita el salto nervioso del ritmo instantáneo).
+    // EMA-smoothed speed in m/s. Use this for displaying real pace (avoids the
+    // nervous jumps of instantaneous pace between GPS samples).
     function getAvgSpeedMs() as Float {
         return mSpeedAvg;
     }

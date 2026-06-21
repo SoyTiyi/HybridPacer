@@ -2,14 +2,14 @@ import Toybox.Application.Storage;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-// ─── Menú de tiempo objetivo (Fase 6) ────────────────────────────────────────
-// Lista Menu2 construida imperativamente (sin layout.xml ni 29 items en XML):
-// presets de TARGET_MIN_MINUTES a TARGET_MAX_MINUTES en pasos de TARGET_STEP_MINUTES.
-// El identificador de cada item es el número de minutos (Number), recuperable con
-// item.getId() en el delegate. Solo se invoca desde onMenu() en WARMUP.
+// ─── Goal time menu (Phase 6) ─────────────────────────────────────────────────
+// Menu2 list built imperatively (no layout.xml, no 29 items in XML):
+// presets from TARGET_MIN_MINUTES to TARGET_MAX_MINUTES in steps of TARGET_STEP_MINUTES.
+// Each item's identifier is the number of minutes (Number), retrievable via
+// item.getId() in the delegate. Only invoked from onMenu() in WARMUP.
 
-// Construye y devuelve el Menu2 con foco en el preset actual.
-// `new` permitido: lo invoca un handler (onMenu), no una ruta caliente.
+// Builds and returns the Menu2 focused on the currently selected preset.
+// `new` is allowed here: called from a handler (onMenu), not a hot path.
 function buildTargetTimeMenu(currentMinutes as Number) as WatchUi.Menu2 {
     var menu = new WatchUi.Menu2({ :title => WatchUi.loadResource(Rez.Strings.target_time_title) as String });
 
@@ -17,7 +17,7 @@ function buildTargetTimeMenu(currentMinutes as Number) as WatchUi.Menu2 {
         menu.addItem(new WatchUi.MenuItem(m.toString() + " min", null, m, null));
     }
 
-    // Foco en el valor actualmente configurado.
+    // Focus on the currently configured value.
     var focusIndex = (currentMinutes - TARGET_MIN_MINUTES) / TARGET_STEP_MINUTES;
     if (focusIndex < 0) {
         focusIndex = 0;
@@ -27,7 +27,7 @@ function buildTargetTimeMenu(currentMinutes as Number) as WatchUi.Menu2 {
     return menu;
 }
 
-// Delegate del Menu2: persiste el preset elegido y refresca la banda WARMUP.
+// Menu2 delegate: persists the selected preset and refreshes the WARMUP center band.
 class TargetTimeMenuDelegate extends WatchUi.Menu2InputDelegate {
 
     function initialize() {
@@ -42,7 +42,7 @@ class TargetTimeMenuDelegate extends WatchUi.Menu2InputDelegate {
             Storage.setValue(STORAGE_KEY_TARGET_MIN, minutes);
         }
         WatchUi.popView(WatchUi.SLIDE_DOWN);
-        WatchUi.requestUpdate(); // la banda central de WARMUP muestra el nuevo objetivo
+        WatchUi.requestUpdate(); // the WARMUP center band shows the new goal time
     }
 
 }

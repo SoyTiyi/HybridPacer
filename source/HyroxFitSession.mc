@@ -3,14 +3,14 @@ import Toybox.FitContributor;
 import Toybox.Lang;
 import Toybox.System;
 
-// ─── Constantes de pacing ─────────────────────────────────────────────────────
-// Pace objetivo para una carrera Hyrox: 5:00 min/km = 300 s/km.
-// pace_delta_deviation > 0 → más lento que objetivo; < 0 → más rápido.
+// ─── Pacing constants ─────────────────────────────────────────────────────────
+// Reference pace for a HYROX race: 5:00 min/km = 300 s/km.
+// pace_delta_deviation > 0 → slower than target; < 0 → faster.
 const TARGET_PACE_SEC_PER_KM as Number = 300;
-const PACE_MIN_SPEED         as Float  = 0.5f;  // Umbral mínimo (m/s) para calcular pace
+const PACE_MIN_SPEED         as Float  = 0.5f;  // Minimum threshold (m/s) to compute pace
 
 // ─── FIT Field IDs ────────────────────────────────────────────────────────────
-// DEBEN coincidir con el atributo id de los <fitField> en fitcontributions.xml.
+// MUST match the id attribute of the <fitField> entries in fitcontributions.xml.
 const FIT_ID_CYCLE_ID        as Number = 0;
 const FIT_ID_FSM_STATE       as Number = 1;
 const FIT_ID_ROXZONE_TOTAL   as Number = 2;
@@ -20,34 +20,34 @@ const FIT_ID_PACE_DELTA      as Number = 5;
 const FIT_ID_WORK_REST       as Number = 6;
 
 // ─── HyroxFitSession ──────────────────────────────────────────────────────────
-// Singleton que posee los 7 handles de FitContributor.Field y expone:
-//   - initializeFitFields(session): registra los 7 campos en la sesión FIT activa.
-//   - tickFitMetrics():             escribe los valores actuales a ~1Hz (sin new).
-//   - clearFitFields():             deshabilita la escritura al cerrar la sesión.
+// Singleton that owns the 7 FitContributor.Field handles and exposes:
+//   - initializeFitFields(session): registers the 7 fields on the active FIT session.
+//   - tickFitMetrics():             writes current values at ~1 Hz (no new).
+//   - clearFitFields():             disables writing when the session closes.
 //
-// PATRÓN TYPECHECK=3 PARA HANDLES NULLABLE:
-//   Los 7 campos se declaran como 'Field? = null'. En initializeFitFields() se usa
-//   una variable local 'var f = session.createField(...)' (tipo inferido Field no-null)
-//   para llamar f.setData() antes de asignar al miembro. En tickFitMetrics() se
-//   usa 'var f = mFieldXxx; if (f != null) { f.setData(...); }' — el compilador
-//   estrecha el tipo de f dentro del guard (mismo patrón que info.position en
-//   GpsSessionManager.onPosition). mIsInitialized actúa de fast-path guard para
-//   que en producción el null-check sea siempre true (cero overhead).
+// TYPECHECK=3 PATTERN FOR NULLABLE HANDLES:
+//   The 7 fields are declared as 'Field? = null'. In initializeFitFields(), a local
+//   variable 'var f = session.createField(...)' (inferred non-nullable Field type) is
+//   used to call f.setData() before assigning to the member. In tickFitMetrics(), the
+//   pattern 'var f = mFieldXxx; if (f != null) { f.setData(...); }' is used — the
+//   compiler narrows f's type inside the guard (same pattern as info.position in
+//   GpsSessionManager.onPosition). mIsInitialized acts as a fast-path guard so that
+//   in production the null-checks are always true (zero overhead).
 //
-// REGLAS DE MEMORIA:
-//   - Sin `new` en tickFitMetrics() ni en ninguna ruta caliente.
-//   - Sin Lang.Dictionary como estructura de dominio.
-//   - Sin switch/case: ramas con if/else if.
+// MEMORY RULES:
+//   - No `new` in tickFitMetrics() or in any hot path.
+//   - No Lang.Dictionary as a domain structure.
+//   - No switch/case: branches use if/else if.
 class HyroxFitSession {
 
-    // ── Flag guardián ────────────────────────────────────────────────────
-    // false hasta que initializeFitFields() termine; vuelve a false en clearFitFields().
-    // tickFitMetrics() comprueba este flag primero: salida inmediata si no grabamos.
+    // ── Guard flag ────────────────────────────────────────────────────────
+    // false until initializeFitFields() completes; returns to false in clearFitFields().
+    // tickFitMetrics() checks this flag first: immediate exit if not recording.
     var mIsInitialized as Boolean = false;
 
-    // ── Handles de campo FIT (nullable) ──────────────────────────────────
-    // null hasta que initializeFitFields() sea invocado; null otra vez tras clearFitFields().
-    // Se acceden vía variable local para satisfacer typecheck=3 (ver tickFitMetrics).
+    // ── FIT field handles (nullable) ──────────────────────────────────────
+    // null until initializeFitFields() is called; null again after clearFitFields().
+    // Accessed via local variable to satisfy typecheck=3 (see tickFitMetrics).
     var mFieldCycleId        as FitContributor.Field? = null;
     var mFieldFsmState       as FitContributor.Field? = null;
     var mFieldRoxzoneTotal   as FitContributor.Field? = null;
@@ -57,17 +57,17 @@ class HyroxFitSession {
     var mFieldWorkRest       as FitContributor.Field? = null;
 
     function initialize() {
-        // mIsInitialized = false y todos los handles = null (declarados arriba).
-        // No se crea nada del SDK aquí; el Session handle no existe aún.
+        // mIsInitialized = false and all handles = null (declared above).
+        // Nothing from the SDK is created here; the Session handle does not exist yet.
     }
 
     // ── initializeFitFields(session) ──────────────────────────────────────
-    // Llamado desde GpsSessionManager.startRecording(), justo antes de session.start().
-    // Patrón typecheck=3:
-    //   1. var f = session.createField(...)  → f tiene tipo Field (no-nullable, inferido)
-    //   2. f.setData(valor_inicial)           → válido porque f no es nullable
-    //   3. mFieldXxx = f                     → asigna Field a Field? (válido)
-    // Dict literales = excepción permitida: llamadas de init único, nunca en 1Hz.
+    // Called from GpsSessionManager.startRecording(), just before session.start().
+    // typecheck=3 pattern:
+    //   1. var f = session.createField(...)  → f has type Field (non-nullable, inferred)
+    //   2. f.setData(initial_value)          → valid because f is non-nullable
+    //   3. mFieldXxx = f                     → assigns Field to Field? (valid)
+    // Dict literals are a permitted exception: single init calls, never at 1 Hz.
     function initializeFitFields(session as ActivityRecording.Session) as Void {
         var f = session.createField(
             "hyrox_cycle_id",
@@ -84,7 +84,7 @@ class HyroxFitSession {
             FitContributor.DATA_TYPE_UINT8,
             {:mesgType => FitContributor.MESG_TYPE_RECORD, :units => "state"}
         );
-        f.setData(1);          // Empieza en STATE_RUN (justo se transicionó desde WARMUP)
+        f.setData(1);          // Starts at STATE_RUN (just transitioned from WARMUP)
         mFieldFsmState = f;
 
         f = session.createField(
@@ -111,7 +111,7 @@ class HyroxFitSession {
             FitContributor.DATA_TYPE_UINT8,
             {:mesgType => FitContributor.MESG_TYPE_RECORD, :units => "bool"}
         );
-        f.setData(1);          // El atleta principal activo al arrancar
+        f.setData(1);          // Primary athlete active at race start
         mFieldActiveAthlete = f;
 
         f = session.createField(
@@ -132,30 +132,30 @@ class HyroxFitSession {
         f.setData(0.0f);
         mFieldWorkRest = f;
 
-        // Activa el guardián: a partir de aquí tickFitMetrics() puede escribir.
+        // Activate the guard: tickFitMetrics() can now write.
         mIsInitialized = true;
     }
 
     // ── clearFitFields() ──────────────────────────────────────────────────
-    // Llamado desde GpsSessionManager.stopRecording() y stop().
-    // Desactiva el guardián; los handles quedan como estaban (nunca se acceden).
+    // Called from GpsSessionManager.stopRecording() and stop().
+    // Deactivates the guard; handles remain as-is (never accessed after this).
     function clearFitFields() as Void {
         mIsInitialized = false;
     }
 
     // ── tickFitMetrics() ──────────────────────────────────────────────────
-    // Escribe los valores actuales de los 7 campos FIT. Invocado desde
-    // GpsSessionManager.onPosition() a ~1Hz.
-    // PROHIBIDO: new, Lang.Dictionary, switch/case.
+    // Writes the current values of all 7 FIT fields. Called from
+    // GpsSessionManager.onPosition() at ~1 Hz.
+    // FORBIDDEN: new, Lang.Dictionary, switch/case.
     //
-    // Patrón typecheck=3 para null-check de miembros:
-    //   var f = mFieldXxx;          → f infiere tipo Field? desde el miembro
-    //   if (f != null) { f.setData(...); }  → compilador estrecha f a Field
-    // Se reutiliza 'f' para los 7 campos (una sola declaración de variable local).
-    // En producción, mIsInitialized = true garantiza que los null-checks son siempre
-    // verdaderos; son no-ops semánticos para satisfacer al type checker.
+    // typecheck=3 null-check pattern for members:
+    //   var f = mFieldXxx;          → f infers type Field? from the member
+    //   if (f != null) { f.setData(...); }  → compiler narrows f to Field
+    // 'f' is reused for all 7 fields (single local variable declaration).
+    // In production, mIsInitialized = true guarantees null-checks are always true;
+    // they are semantic no-ops to satisfy the type checker.
     function tickFitMetrics() as Void {
-        // Fast-path: no grabamos aún (antes de startRecording o tras stopRecording).
+        // Fast path: not recording yet (before startRecording or after stopRecording).
         if (!mIsInitialized) {
             return;
         }
@@ -176,7 +176,7 @@ class HyroxFitSession {
             f.setData(state);
         }
 
-        // ── 3. roxzone_total_time — total comprometido + parcial en curso ─
+        // ── 3. roxzone_total_time — committed total + live partial ─────────
         var roxzoneSec = app.mRoxzoneTotalMs / 1000;
         if (state == STATE_ROXZONE_IN || state == STATE_ROXZONE_OUT) {
             roxzoneSec = roxzoneSec + (now - app.mLastTransitionMs) / 1000;
@@ -186,7 +186,7 @@ class HyroxFitSession {
             f.setData(roxzoneSec);
         }
 
-        // ── 4. station_elapsed — tiempo en la estación de trabajo actual ──
+        // ── 4. station_elapsed — time in the current workout station ──────
         var stationSec = 0;
         if (state == STATE_STATION) {
             stationSec = (now - app.mLastTransitionMs) / 1000;
@@ -196,7 +196,7 @@ class HyroxFitSession {
             f.setData(stationSec);
         }
 
-        // ── 5. active_athlete — 1=activo, 0=esperando relevo (dobles) ────
+        // ── 5. active_athlete — 1=active, 0=waiting for relay (doubles) ──
         f = mFieldActiveAthlete;
         if (f != null) {
             if (app.mActiveAthlete) {
@@ -206,11 +206,11 @@ class HyroxFitSession {
             }
         }
 
-        // ── 6. pace_delta_deviation — delta respecto al objetivo dinámico ───
-        // Delega en PacingEngine.computePaceDeltaDeviation():
+        // ── 6. pace_delta_deviation — δ vs. dynamic target ────────────────
+        // Delegates to PacingEngine.computePaceDeltaDeviation():
         //   speed > PACE_MIN_SPEED → pace = 1000/speed (s/km); δ = pace - target.
-        //   Positivo → más lento que el objetivo; negativo → más rápido.
-        //   mDynamicPaceTargetSec se recalcula solo en transición a STATE_RUN.
+        //   Positive → slower than target; negative → faster.
+        //   mDynamicPaceTargetSec is recalculated only on STATE_RUN entry.
         var paceDelta = app.mPacing.computePaceDeltaDeviation(
             app.mGps.getSpeedMs(),
             app.mDynamicPaceTargetSec);
@@ -219,7 +219,7 @@ class HyroxFitSession {
             f.setData(paceDelta);
         }
 
-        // ── 7. work_rest_ratio — tiempo en RUN / tiempo en pausa ─────────
+        // ── 7. work_rest_ratio — running time / rest time ─────────────────
         var ratio = 0.0f;
         if (app.mRestMs > 0) {
             ratio = app.mWorkMs.toFloat() / app.mRestMs.toFloat();

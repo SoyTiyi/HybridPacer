@@ -5,9 +5,9 @@ import Toybox.System;
 import Toybox.WatchUi;
 
 // ─── FSM State Constants ─────────────────────────────────────────────────────
-// Secuencia inmutable: WARMUP → RUN → ROXZONE_IN → STATION → ROXZONE_OUT → FINISH
-// Se usan como índice entero de Lang.Array en fases posteriores.
-// PROHIBIDO switch/case: transiciones controladas por bloques if/else if.
+// Immutable sequence: WARMUP → RUN → ROXZONE_IN → STATION → ROXZONE_OUT → FINISH
+// Used as integer indices for future Lang.Array lookups.
+// FORBIDDEN: switch/case — all transitions controlled by if/else if blocks.
 const STATE_WARMUP      as Number = 0;
 const STATE_RUN         as Number = 1;
 const STATE_ROXZONE_IN  as Number = 2;
@@ -15,83 +15,83 @@ const STATE_STATION     as Number = 3;
 const STATE_ROXZONE_OUT as Number = 4;
 const STATE_FINISH      as Number = 5;
 
-// Número total de ciclos Hyrox (8 carreras + 8 estaciones de trabajo)
+// Total number of HYROX cycles (8 runs + 8 workout stations)
 const HYROX_TOTAL_CYCLES as Number = 8;
 
-// Debounce inmutable entre transiciones de estado (ms) — aplicado en Fase 2
+// Immutable debounce window between state transitions (ms) — enforced in Phase 2
 const FSM_DEBOUNCE_MS as Number = 5000;
 
-// ─── Tiempo objetivo configurable (Fase 6) ───────────────────────────────────
-// El usuario elige su objetivo global en WARMUP (presets cada 5 min). El valor
-// persiste en Application.Storage como MINUTOS (Number) y se carga en initialize().
-const TARGET_MIN_MINUTES     as Number = 40;          // Límite inferior válido (élite/entreno)
-const TARGET_MAX_MINUTES     as Number = 180;         // Límite superior válido (principiante/scaled)
-const TARGET_STEP_MINUTES    as Number = 5;           // Incremento entre presets
-const TARGET_DEFAULT_MINUTES as Number = 90;          // Fallback si no hay valor guardado
-const STORAGE_KEY_TARGET_MIN as String = "target_min"; // Clave de persistencia (minutos)
+// ─── Configurable target time (Phase 6) ─────────────────────────────────────
+// The athlete sets their overall goal in WARMUP (presets every 5 min). The value
+// is persisted in Application.Storage as MINUTES (Number) and loaded in initialize().
+const TARGET_MIN_MINUTES     as Number = 40;           // Minimum valid target (elite/training)
+const TARGET_MAX_MINUTES     as Number = 180;          // Maximum valid target (beginner/scaled)
+const TARGET_STEP_MINUTES    as Number = 5;            // Step size between presets
+const TARGET_DEFAULT_MINUTES as Number = 90;           // Fallback if no saved value exists
+const STORAGE_KEY_TARGET_MIN as String = "target_min"; // Storage key (minutes)
 
 class HyroxPacerApp extends Application.AppBase {
 
-    // ── Miembros de la FSM ─────────────────────────────────────────────────
-    // Pre-asignados en initialize() para cumplir la regla de memoria:
-    // cero asignaciones dinámicas fuera del arranque.
-    var mFsmState        as Number = STATE_WARMUP;  // Estado inicial: calentamiento
-    var mLastTransitionMs as Number = 0;             // Marca de tiempo de la última transición
-                                                     // (base para debounce de 5000 ms en Fase 2)
-    var mHyroxCycle      as Number = 0;              // Ciclo actual (0..7), usado por la UI en Fase 5
-    var mActiveAthlete   as Boolean = true;          // dobles: atleta activo en el relevo (Fase 2)
+    // ── FSM members ───────────────────────────────────────────────────────
+    // Pre-assigned in initialize() to satisfy the memory rule:
+    // zero dynamic allocations outside of startup.
+    var mFsmState        as Number = STATE_WARMUP;  // Initial state: warm-up
+    var mLastTransitionMs as Number = 0;             // Timestamp of the last transition
+                                                     // (base for the 5000 ms debounce in Phase 2)
+    var mHyroxCycle      as Number = 0;              // Current cycle (0..7), used by the UI in Phase 5
+    var mActiveAthlete   as Boolean = true;          // Doubles: active relay athlete (Phase 2)
 
-    // ── Pausa/Reanudar (Fase 7) ────────────────────────────────────────────
-    // NO es un estado FSM nuevo: la secuencia FSM es inmutable. Es un flag de App
-    // que congela cronómetro, parciales y grabación FIT en estados de carrera.
-    var mIsPaused     as Boolean = false; // true mientras la carrera está en pausa
-    var mPauseStartMs as Number  = 0;     // System.getTimer() del inicio de la pausa actual
-    var mPausedMs     as Number  = 0;     // ms en pausa acumulados DENTRO del estado actual;
-                                          // se resetea a 0 en cada transición exitosa
+    // ── Pause / Resume (Phase 7) ───────────────────────────────────────────
+    // NOT a new FSM state: the FSM sequence is immutable. This is an App-level
+    // flag that freezes the chronometer, partials, and FIT recording in race states.
+    var mIsPaused     as Boolean = false; // true while the race is paused
+    var mPauseStartMs as Number  = 0;     // System.getTimer() value when the current pause began
+    var mPausedMs     as Number  = 0;     // ms paused accumulated WITHIN the current state;
+                                          // reset to 0 on every successful transition
 
-    // ── Acumuladores de duración por estado ───────────────────────────────
-    // Actualizados por FSMController.attemptTransition() en cada transición.
-    // Solo sumas de Number (ms): cero asignaciones dinámicas.
-    var mWorkMs         as Number = 0;   // Tiempo total en STATE_RUN (ms)
-    var mRestMs         as Number = 0;   // Tiempo total en ROXZONE_IN+STATION+ROXZONE_OUT (ms)
-    var mRoxzoneTotalMs as Number = 0;   // Tiempo total en ROXZONE_IN+ROXZONE_OUT (ms)
+    // ── Duration accumulators per state ───────────────────────────────────
+    // Updated by FSMController.attemptTransition() on each transition.
+    // Only Number (ms) additions: zero dynamic allocations.
+    var mWorkMs         as Number = 0;   // Total time in STATE_RUN (ms)
+    var mRestMs         as Number = 0;   // Total time in ROXZONE_IN + STATION + ROXZONE_OUT (ms)
+    var mRoxzoneTotalMs as Number = 0;   // Total time in ROXZONE_IN + ROXZONE_OUT only (ms)
 
-    // ── Objetivo de tiempo y salida del motor de pacing (Fase 4) ─────────
-    var mTargetTimeMs         as Number = 5400000; // Objetivo global (ms). Se sobrescribe en initialize() desde Storage (Fase 6)
-    var mTimeAthleteA         as Number = 0;       // Dobles: ms totales acumulados por el atleta A
-    var mTimeAthleteB         as Number = 0;       // Dobles: ms totales acumulados por el atleta B
-    var mDynamicPaceTargetSec as Float  = 0.0f;   // Ritmo objetivo dinámico (s/km) — leído por UI Fase 5
+    // ── Target time and pacing engine output (Phase 4) ────────────────────
+    var mTargetTimeMs         as Number = 5400000; // Overall goal (ms). Overwritten in initialize() from Storage (Phase 6)
+    var mTimeAthleteA         as Number = 0;       // Doubles: total ms accumulated by Athlete A
+    var mTimeAthleteB         as Number = 0;       // Doubles: total ms accumulated by Athlete B
+    var mDynamicPaceTargetSec as Float  = 0.0f;   // Dynamic target pace (s/km) — read by the UI in Phase 5
 
-    // ── Gestor de GPS + grabación ──────────────────────────────────────────
-    // Instancia única; el objeto se crea aquí y nunca se destruye mientras la app vive.
+    // ── GPS + recording manager ────────────────────────────────────────────
+    // Single instance; created here and never destroyed while the app is alive.
     var mGps as GpsSessionManager;
 
-    // ── Controlador de la FSM ──────────────────────────────────────────────
-    // Instancia única; única fuente de mutación del estado mFsmState.
+    // ── FSM controller ────────────────────────────────────────────────────
+    // Single instance; the only source of mutation for mFsmState.
     var mFsm as FSMController;
 
-    // ── Motor de sesión FIT ────────────────────────────────────────────────
-    // Posee los 7 handles FitContributor.Field; initializeFitFields() se invoca
-    // desde GpsSessionManager.startRecording() al crear la sesión.
+    // ── FIT session engine ────────────────────────────────────────────────
+    // Owns the 7 FitContributor.Field handles; initializeFitFields() is called
+    // from GpsSessionManager.startRecording() when the session is created.
     var mFit as HyroxFitSession;
 
-    // ── Motor de pacing predictivo (Fase 4) ───────────────────────────────
-    // Calcula computeDynamicPaceTarget y computePaceDeltaDeviation.
-    // Instancia única; sin estado propio (lee/escribe via getApp()).
+    // ── Predictive pacing engine (Phase 4) ────────────────────────────────
+    // Computes computeDynamicPaceTarget and computePaceDeltaDeviation.
+    // Single instance; stateless (reads/writes via getApp()).
     var mPacing as PacingEngine;
 
     function initialize() {
         AppBase.initialize();
 
-        // Reserva la instancia del gestor. El SDK (Position + ActivityRecording)
-        // NO se activa aquí; eso ocurre en onStart() cuando el runtime está listo.
+        // Reserve the manager instances. The SDK (Position + ActivityRecording)
+        // is NOT activated here; that happens in onStart() when the runtime is ready.
         mGps    = new GpsSessionManager();
         mFsm    = new FSMController();
         mFit    = new HyroxFitSession();
         mPacing = new PacingEngine();
 
-        // Carga el tiempo objetivo persistido (minutos) con fallback + clamp
-        // defensivo. Patrón nullable del SDK: copia local + comprobación de tipo.
+        // Load the persisted target time (minutes) with fallback + defensive clamp.
+        // SDK nullable pattern: local copy + type check.
         var saved = Storage.getValue(STORAGE_KEY_TARGET_MIN);
         var minutes = TARGET_DEFAULT_MINUTES;
         if (saved instanceof Lang.Number) {
@@ -105,26 +105,26 @@ class HyroxPacerApp extends Application.AppBase {
         mTargetTimeMs = minutes * 60000;
     }
 
-    // onStart() se invoca cuando la app está en primer plano y el sistema está listo.
-    // Es el único lugar correcto para iniciar la grabación de actividad.
+    // onStart() is called when the app is in the foreground and the system is ready.
+    // This is the only correct place to start activity recording.
     function onStart(state as Dictionary?) as Void {
         mGps.start();
     }
 
-    // onStop() se invoca al salir de la app (botón Atrás desde el nivel raíz o apagado).
-    // Guarda la sesión FIT y desactiva el GPS para liberar recursos de radio.
+    // onStop() is called when exiting the app (BACK from root level or power-off).
+    // Saves the FIT session and releases GPS to free radio resources.
     function onStop(state as Dictionary?) as Void {
         mGps.stop();
     }
 
-    // ── togglePause() (Fase 7) ─────────────────────────────────────────────
-    // Alterna pausa/reanudar SOLO en estados de carrera (RUN..ROXZONE_OUT).
-    // Invocado desde HyroxPacerDelegate.onSelect() (botón START/STOP).
-    // Cronometraje: al reanudar se acumula el tiempo en pausa de este estado en
-    // mPausedMs; FSMController y la vista lo restan para que el parcial se congele
-    // y continúe donde estaba (sin inflar acumuladores ni el total). FIT: stop()
-    // pausa el timer, start() lo reanuda (misma sesión, save() diferido a FINISH).
-    // Sin new, if/else (no switch).
+    // ── togglePause() (Phase 7) ────────────────────────────────────────────
+    // Toggles pause/resume ONLY in race states (RUN..ROXZONE_OUT).
+    // Called from HyroxPacerDelegate.onSelect() (START/STOP button).
+    // Timing: on resume, the time spent paused in this state is accumulated into
+    // mPausedMs; FSMController and the view subtract it so the partial freezes and
+    // continues where it left off (without inflating accumulators or the total).
+    // FIT: stop() pauses the timer, start() resumes it (same session, save() deferred to FINISH).
+    // No new, if/else (no switch).
     function togglePause() as Void {
         if (mFsmState < STATE_RUN || mFsmState >= STATE_FINISH) {
             return;
@@ -142,17 +142,17 @@ class HyroxPacerApp extends Application.AppBase {
         WatchUi.requestUpdate();
     }
 
-    // Devuelve la vista inicial de la app.
-    // HyroxPacerDelegate es el InputDelegate con FSM completo desde Fase 2.
-    // HyroxPacerView es la vista imperativa de tres bandas (Fase 5).
+    // Returns the app's initial view.
+    // HyroxPacerDelegate is the InputDelegate with full FSM since Phase 2.
+    // HyroxPacerView is the imperative three-band view (Phase 5).
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return [ new HyroxPacerView(), new HyroxPacerDelegate() ];
     }
 
 }
 
-// Función de acceso global al singleton de la app — necesaria para que vistas y
-// delegados accedan a mFsmState, mGps, etc. sin instanciar nada nuevo.
+// Global accessor for the app singleton — required so views and delegates
+// can access mFsmState, mGps, etc. without instantiating anything new.
 function getApp() as HyroxPacerApp {
     return Application.getApp() as HyroxPacerApp;
 }

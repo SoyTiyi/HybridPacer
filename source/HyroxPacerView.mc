@@ -5,59 +5,59 @@ import Toybox.Timer;
 import Toybox.WatchUi;
 
 // ─── HyroxPacerView ────────────────────────────────────────────────────────────
-// Vista imperativa de alto contraste para Hyrox Pacer.
-// Dibuja EXCLUSIVAMENTE con primitivas del Dc (prohibido layout.xml).
-// Estructura de tres bandas cuyo CONTENIDO depende del estado FSM:
-//   CABECERA   (y < 25%):  estado + ciclo ("RUN  km 4/8", "STATION 4/8", ...)
-//   ECUATORIAL (centro):   dato principal del estado (ritmo objetivo o timer)
-//   INFERIOR   (y > 75%):  dato secundario / hint de botón / atleta activo
+// High-contrast imperative view for HYROX Pacer.
+// Draws EXCLUSIVELY with Dc primitives (layout.xml is forbidden).
+// Three-band structure whose CONTENT depends on the FSM state:
+//   HEADER     (y < 25%):  state + cycle ("RUN  km 4/8", "STATION 4/8", ...)
+//   CENTER     (middle):   primary metric for the state (pace target or timer)
+//   FOOTER     (y > 75%):  secondary data / button hint / active athlete
 //
-// REFRESCO 1 Hz: además de las actualizaciones disparadas por onPosition (~1Hz)
-// y por las transiciones FSM, un Timer propio fuerza requestUpdate() cada 1000 ms
-// para que los parciales de tiempo avancen aunque el GPS no reporte movimiento.
+// 1 HZ REFRESH: in addition to updates triggered by onPosition (~1Hz)
+// and FSM transitions, a dedicated Timer forces requestUpdate() every 1000 ms
+// so that partial timers advance even when the GPS reports no movement.
 //
-// REGLAS DE MEMORIA (críticas):
-//   - Sin new en onUpdate (ruta caliente a ~1Hz). El new del Timer vive en onShow.
-//   - Dimensiones pre-asignadas en onLayout().
-//   - Sin switch/case: despacho de estado con if/else if sobre mFsmState.
+// MEMORY RULES (critical):
+//   - No new in onUpdate (hot path at ~1 Hz). The new for the Timer lives in onShow.
+//   - Dimensions pre-assigned in onLayout().
+//   - No switch/case: state dispatch uses if/else if on mFsmState.
 class HyroxPacerView extends WatchUi.View {
 
-    // Dimensiones pre-asignadas para evitar cálculos repetidos en onUpdate().
+    // Pre-assigned dimensions to avoid repeated calculations in onUpdate().
     var mWidth        as Number = 0;
     var mHeight       as Number = 0;
     var mCenterX      as Number = 0;
     var mCenterY      as Number = 0;
-    var mBandTopY     as Number = 0;   // centro de la banda cabecera (~12.5% de alto)
-    var mBandBottomY  as Number = 0;   // centro de la banda inferior (~87.5% de alto)
-    var mLineH        as Number = 0;   // alto de línea aproximado para apilar texto
+    var mBandTopY     as Number = 0;   // center of the header band (~12.5% from top)
+    var mBandBottomY  as Number = 0;   // center of the footer band (~87.5% from top)
+    var mLineH        as Number = 0;   // approximate line height for stacking text
 
-    // Timer de refresco 1 Hz. Nullable: creado en onShow(), liberado en onHide().
+    // 1 Hz refresh timer. Nullable: created in onShow(), stopped in onHide().
     var mTimer as Timer.Timer? = null;
 
     function initialize() {
         View.initialize();
     }
 
-    // Pre-calcula dimensiones de pantalla una vez: elimina divisiones en la
-    // ruta caliente de render. Sustituye completamente al antiguo setLayout().
+    // Pre-computes screen dimensions once: eliminates divisions in the render
+    // hot path. Fully replaces the old setLayout() approach.
     function onLayout(dc as Dc) as Void {
         mWidth       = dc.getWidth();
         mHeight      = dc.getHeight();
         mCenterX     = mWidth  / 2;
         mCenterY     = mHeight / 2;
-        mBandTopY    = mHeight / 8;        // centro dentro del cuarto superior (<25%)
-        mBandBottomY = mHeight * 7 / 8;    // centro dentro del cuarto inferior (>75%)
-        mLineH       = mHeight / 10;       // separación vertical para texto apilado
+        mBandTopY    = mHeight / 8;        // center within the top quarter (<25%)
+        mBandBottomY = mHeight * 7 / 8;    // center within the bottom quarter (>75%)
+        mLineH       = mHeight / 10;       // vertical spacing for stacked text
     }
 
-    // Arranca el refresco 1 Hz. onShow no es ruta caliente: el `new` está permitido.
+    // Starts the 1 Hz refresh. onShow is not a hot path: `new` is allowed here.
     function onShow() as Void {
         var t = new Timer.Timer();
         t.start(method(:onTimerTick), 1000, true);
         mTimer = t;
     }
 
-    // Detiene el timer al ocultar la vista para no consumir batería en segundo plano.
+    // Stops the timer when the view is hidden to avoid unnecessary battery drain.
     function onHide() as Void {
         var t = mTimer;
         if (t != null) {
@@ -65,26 +65,26 @@ class HyroxPacerView extends WatchUi.View {
         }
     }
 
-    // Callback del Timer: solicita un repintado para avanzar los parciales.
+    // Timer callback: requests a repaint to advance partial timers.
     function onTimerTick() as Void {
         WatchUi.requestUpdate();
     }
 
-    // Render imperativo. Despacha el dibujo según el estado FSM (if/else if).
+    // Imperative render. Dispatches drawing based on the FSM state (if/else if).
     function onUpdate(dc as Dc) as Void {
         var app   = getApp();
         var state = app.mFsmState;
 
-        // ── Pausa (Fase 7) ──────────────────────────────────────────────────────
-        // Corta el render del estado vivo y dibuja la pantalla de pausa atenuada.
-        // Garantiza congelación visual: el parcial se muestra detenido.
+        // ── Paused (Phase 7) ────────────────────────────────────────────────────
+        // Interrupts live-state rendering and draws the dimmed pause screen.
+        // Guarantees visual freeze: the partial timer is shown stopped.
         if (app.mIsPaused) {
             drawPaused(dc, app);
             return;
         }
 
-        // ── Fondo según estado ─────────────────────────────────────────────────
-        // Alto contraste: blanco en carrera (STATE_RUN), negro en todo lo demás.
+        // ── Background by state ────────────────────────────────────────────────
+        // High contrast: white during STATE_RUN, black for all other states.
         var bg = Graphics.COLOR_BLACK;
         var fg = Graphics.COLOR_WHITE;
         if (state == STATE_RUN) {
@@ -107,17 +107,17 @@ class HyroxPacerView extends WatchUi.View {
         }
     }
 
-    // ── Pantalla de pausa (Fase 7) ──────────────────────────────────────────────
-    // Fondo atenuado e inconfundible: "PAUSA" grande, el estado pausado, el parcial
-    // congelado y el hint de reanudación. FONT_LARGE (no FONT_NUMBER_*, que solo
-    // tiene dígitos). El parcial se ve detenido porque stateElapsedMs() congela la
-    // referencia en mPauseStartMs mientras mIsPaused.
+    // ── Pause screen (Phase 7) ──────────────────────────────────────────────────
+    // Unmistakable dimmed background: "PAUSED" in large text, the paused state label,
+    // the frozen partial timer, and the resume hint. FONT_LARGE (not FONT_NUMBER_*,
+    // which only contains digits). The partial is frozen because stateElapsedMs()
+    // locks the reference to mPauseStartMs while mIsPaused is true.
     private function drawPaused(dc as Dc, app as HyroxPacerApp) as Void {
         dc.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_DK_GRAY);
         dc.clear();
 
-        // Estado actual (qué se ha pausado).
-        var label = "ESTACION";
+        // Label showing which state is paused.
+        var label = "STATION";
         var state = app.mFsmState;
         if (state == STATE_RUN) {
             label = "RUN  km " + (app.mHyroxCycle + 1).toString() + "/8";
@@ -128,41 +128,40 @@ class HyroxPacerView extends WatchUi.View {
         dc.drawText(mCenterX, mBandTopY, Graphics.FONT_TINY, label,
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // "PAUSA" grande y destacado.
+        // "PAUSED" in large, prominent text.
         dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(mCenterX, mCenterY, Graphics.FONT_LARGE, "PAUSA",
+        dc.drawText(mCenterX, mCenterY, Graphics.FONT_LARGE, "PAUSED",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Parcial congelado del estado en curso.
+        // Frozen partial timer for the current state.
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mCenterY + mLineH * 2, Graphics.FONT_TINY,
                     formatClock(stateElapsedMs(app)),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Hint de reanudación.
-        dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, "START > reanudar",
+        // Resume hint.
+        dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, "START > resume",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
-    // ── Pantallas por estado ─────────────────────────────────────────────────────
+    // ── Per-state screens ────────────────────────────────────────────────────────
 
-    // WARMUP: pantalla de inicio. Objetivo de tiempo + distancia, estado del GPS y
-    // prompt de qué botón pulsar para comenzar.
+    // WARMUP: start screen. Goal time + distance, GPS status, and the button prompt.
     private function drawWarmup(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mBandTopY, Graphics.FONT_TINY, "HYROX",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Objetivo de tiempo (grande) + distancia fija (pequeño debajo).
+        // Goal time (large) + fixed distance (small, below).
         dc.drawText(mCenterX, mCenterY - mLineH, Graphics.FONT_NUMBER_MEDIUM,
                     formatClock(app.mTargetTimeMs),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(mCenterX, mCenterY + mLineH, Graphics.FONT_TINY, "objetivo - 8 km",
+        dc.drawText(mCenterX, mCenterY + mLineH, Graphics.FONT_TINY, "target · 8 km",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Estado del GPS: verde si hay fix, rojo si aún busca señal.
+        // GPS status: green if fix acquired, red if still searching.
         var gpsColor = Graphics.COLOR_RED;
-        var gpsStr   = "Buscando GPS";
+        var gpsStr   = "Searching GPS";
         if (app.mGps.hasFix()) {
             gpsColor = Graphics.COLOR_GREEN;
             gpsStr   = "GPS OK";
@@ -171,14 +170,14 @@ class HyroxPacerView extends WatchUi.View {
         dc.drawText(mCenterX, mBandBottomY - mLineH, Graphics.FONT_TINY, gpsStr,
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Prompt de inicio.
+        // Start prompt.
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, "START > comenzar",
+        dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, "START > begin",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
-    // RUN: ritmo REAL del atleta (grande, verde/rojo vs objetivo) + objetivo de
-    // referencia (pequeño) + km actual + parcial del km.
+    // RUN: athlete's REAL pace (large, green/red vs. target) + reference target
+    // (small) + current km + partial timer for this km.
     private function drawRun(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
         var cycle = app.mHyroxCycle + 1;
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
@@ -186,14 +185,14 @@ class HyroxPacerView extends WatchUi.View {
                     "RUN  km " + cycle.toString() + "/8",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Ritmo real (suavizado) y objetivo dinámico vigente.
+        // Real (smoothed) pace and the current dynamic target.
         var paceTarget = app.mDynamicPaceTargetSec;
         var avgSpeed   = app.mGps.getAvgSpeedMs();
         var realPace   = app.mPacing.computeCurrentPaceSec(avgSpeed);
         var delta      = app.mPacing.computePaceDeltaDeviation(avgSpeed, paceTarget);
 
-        // Color del ritmo real: verde si igualas/superas el objetivo, rojo si te
-        // retrasas. Neutro (fg) mientras no haya ritmo válido (parado / sin objetivo).
+        // Color of the real pace: green if at or ahead of target, red if falling behind.
+        // Neutral (fg) while no valid pace is available (stopped / no target).
         var eqColor = fg;
         if (realPace > 0.0f && paceTarget > 0.0f) {
             eqColor = Graphics.COLOR_GREEN;
@@ -205,19 +204,19 @@ class HyroxPacerView extends WatchUi.View {
         dc.drawText(mCenterX, mCenterY, Graphics.FONT_NUMBER_HOT, formatPace(realPace),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Objetivo de referencia (pequeño) debajo del ritmo real.
+        // Small reference target pace below the real pace.
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mCenterY + mLineH * 2, Graphics.FONT_TINY,
-                    "obj " + formatPace(paceTarget),
+                    "tgt " + formatPace(paceTarget),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Parcial del km en curso.
+        // Partial timer for the current km segment.
         dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY,
                     formatClock(stateElapsedMs(app)),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
-    // ROXZONE_IN / ROXZONE_OUT: tiempo en la zona de transición + hint de botón.
+    // ROXZONE_IN / ROXZONE_OUT: transition corridor timer + button hint.
     private function drawRoxzone(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
         var cycle = app.mHyroxCycle + 1;
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
@@ -231,11 +230,11 @@ class HyroxPacerView extends WatchUi.View {
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, "BACK > seguir",
+        dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, "BACK > continue",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
-    // STATION: timer de la estación + atleta activo (toggle con UP/DOWN en dobles).
+    // STATION: station timer + active athlete (toggle with UP/DOWN in doubles mode).
     private function drawStation(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
         var cycle = app.mHyroxCycle + 1;
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
@@ -247,19 +246,19 @@ class HyroxPacerView extends WatchUi.View {
                     formatClock(stateElapsedMs(app)),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Atleta activo del relevo, con color para identificación rápida.
+        // Active relay athlete, color-coded for quick identification.
         var athleteColor = Graphics.COLOR_BLUE;
-        var athleteStr   = "Atleta A";
+        var athleteStr   = "Athlete A";
         if (!app.mActiveAthlete) {
             athleteColor = Graphics.COLOR_ORANGE;
-            athleteStr   = "Atleta B";
+            athleteStr   = "Athlete B";
         }
         dc.setColor(athleteColor, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, athleteStr,
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
-    // FINISH: resumen de carrera (tiempo total + work/rest ratio) + salida.
+    // FINISH: race summary (total time + work/rest ratio) + exit hint.
     private function drawFinish(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mBandTopY, Graphics.FONT_TINY, "FINISH",
@@ -272,16 +271,16 @@ class HyroxPacerView extends WatchUi.View {
         dc.drawText(mCenterX, mBandBottomY - mLineH, Graphics.FONT_TINY,
                     "W/R " + formatRatio(app.mWorkMs, app.mRestMs),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, "BACK > salir",
+        dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, "BACK > exit",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
-    // ── Helpers privados ───────────────────────────────────────────────────────
+    // ── Private helpers ────────────────────────────────────────────────────────
 
-    // Tiempo transcurrido (ms) en el estado actual = ref - última transición - pausa.
-    // Fase 7: en pausa la referencia se congela en mPauseStartMs (el parcial se
-    // detiene); mPausedMs solo crece al reanudar, así que tras reanudar el parcial
-    // continúa donde estaba. Solo válido fuera de WARMUP; el clamp evita negativos.
+    // Elapsed time (ms) in the current state = ref - last transition - paused time.
+    // Phase 7: while paused, the reference is frozen at mPauseStartMs (partial stops);
+    // mPausedMs only grows on resume, so after resuming the partial continues from
+    // where it stopped. Valid only outside WARMUP; clamp prevents negative values.
     private function stateElapsedMs(app as HyroxPacerApp) as Number {
         var ref = System.getTimer();
         if (app.mIsPaused) {
@@ -294,8 +293,8 @@ class HyroxPacerView extends WatchUi.View {
         return elapsed;
     }
 
-    // Formatea un ritmo en s/km como "M:SS" (ej. 300 → "5:00").
-    // Retorna "--:--" si el valor es inválido (sin objetivo activo).
+    // Formats a pace in s/km as "M:SS" (e.g. 300 → "5:00").
+    // Returns "--:--" if the value is invalid (no active target).
     private function formatPace(sec as Float) as String {
         if (sec <= 0.0f) {
             return "--:--";
@@ -310,7 +309,7 @@ class HyroxPacerView extends WatchUi.View {
         return mins.toString() + ":" + secsStr;
     }
 
-    // Formatea una duración en ms como "M:SS" (los minutos pueden superar 60).
+    // Formats a duration in ms as "M:SS" (minutes may exceed 60).
     private function formatClock(ms as Number) as String {
         var totalMs = ms;
         if (totalMs < 0) {
@@ -326,13 +325,13 @@ class HyroxPacerView extends WatchUi.View {
         return mins.toString() + ":" + secsStr;
     }
 
-    // Formatea el cociente trabajo/descanso como "X.Y" (un decimal).
-    // Retorna "--" si no hay tiempo de descanso registrado (evita división por cero).
+    // Formats the work/rest ratio as "X.Y" (one decimal place).
+    // Returns "--" if no rest time has been recorded yet (avoids division by zero).
     private function formatRatio(workMs as Number, restMs as Number) as String {
         if (restMs <= 0) {
             return "--";
         }
-        var ratio10 = (workMs * 10) / restMs;  // división entera → décimas
+        var ratio10 = (workMs * 10) / restMs;  // integer division → tenths
         var whole   = ratio10 / 10;
         var frac    = ratio10 % 10;
         return whole.toString() + "." + frac.toString();

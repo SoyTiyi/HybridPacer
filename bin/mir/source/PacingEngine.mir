@@ -195,32 +195,32 @@ _Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_86_8_89_8
         ret %tmp.11;
 _Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_85_103_91_4_stop:
     }
-    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc"; @line = 98; @symbol_functiondef = [computeCurrentPaceSec,98,13,34]; @symbol_param<0> = [currentSpeedMps,98,35,50]; @symbol_param<0>_type<0> = [Float,98,54,59]; @symbol_return<0> = [Float,98,64,69]; ]
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc"; @line = 97; @symbol_functiondef = [computeCurrentPaceSec,97,13,34]; @symbol_param<0> = [currentSpeedMps,97,35,50]; @symbol_param<0>_type<0> = [Float,97,54,59]; @symbol_return<0> = [Float,97,64,69]; ]
     function computeCurrentPaceSec(currentSpeedMps as Float) as Float {
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_98_70_103_4_start:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 99 8 ]
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_99_8_101_8_if_stmt:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_97_70_102_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 98 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_98_8_100_8_if_stmt:
         %tmp.1 = lgetv %currentSpeedMps;
-        symbol [ currentSpeedMps %tmp.1 99 12 27 ];
-        symbol [ PACE_MIN_SPEED %tmp.3 99 30 44 ];
+        symbol [ currentSpeedMps %tmp.1 98 12 27 ];
+        symbol [ PACE_MIN_SPEED %tmp.3 98 30 44 ];
         %tmp.3 = getv ? :PACE_MIN_SPEED;
         %tmp.4 = gt %tmp.1 %tmp.3;
-        bf %tmp.4 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_99_8_101_8_if_end;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_99_8_101_8_if_true:
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_99_46_101_8_start:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 100 12 ]
+        bf %tmp.4 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_98_8_100_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_98_8_100_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_98_46_100_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 99 12 ]
         %tmp.5 = 1000.0f;
         %tmp.6 = lgetv %currentSpeedMps;
-        symbol [ currentSpeedMps %tmp.6 100 29 44 ];
+        symbol [ currentSpeedMps %tmp.6 99 29 44 ];
         %tmp.7 = div %tmp.5 %tmp.6;
         ret %tmp.7;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_99_46_101_8_stop:
-        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_99_8_101_8_if_end;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_99_8_101_8_if_end:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 102 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_98_46_100_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_98_8_100_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_98_8_100_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 101 8 ]
         %tmp.8 = 0.0f;
         ret %tmp.8;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_98_70_103_4_stop:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_97_70_102_4_stop:
     }
 }
 [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc"; @line = 1; ]
