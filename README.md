@@ -2,7 +2,7 @@
 
 # HybridPacer
 
-### Intelligent pacing for HYROX on your Garmin watch
+### Intelligent pacing for hybrid races on your Garmin watch
 
 ![Platform](https://img.shields.io/badge/platform-Garmin%20Connect%20IQ-1B5E99?logo=garmin&logoColor=white)
 ![Language](https://img.shields.io/badge/language-Monkey%20C-6C3483)
@@ -11,7 +11,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
-**HybridPacer** is an open-source Garmin Connect IQ watch app that guides you through a HYROX race
+**HybridPacer** is an open-source Garmin Connect IQ watch app that guides you through a hybrid race
 with real-time adaptive pacing — automatically re-budgeting your target running pace after every station,
 so you finish exactly on time.
 
@@ -21,12 +21,12 @@ so you finish exactly on time.
 
 ---
 
-## What is HYROX?
+## What is a hybrid race?
 
-HYROX is a worldwide hybrid fitness race: **8 km of running** broken into 8 rounds of **1 km run → 1 functional workout station**, with short **RoxZone** transition corridors between each run and station.
+A hybrid race is a functional fitness format: **8 km of running** broken into 8 rounds of **1 km run → 1 functional workout station**, with short **transition** corridors between each run and station.
 
 ```
-Run 1 km → RoxZone → SkiErg → RoxZone → Run 1 km → RoxZone → Sled Push → RoxZone → … × 8
+Run 1 km → Transition → SkiErg → Transition → Run 1 km → Transition → Sled Push → Transition → … × 8
 ```
 
 The challenge for pacing: your **total time** includes both running and station time, but you only control your **running pace**. If you go too slow in stations, you must compensate with faster running — and most athletes have no live feedback on whether they are on track.
@@ -40,7 +40,7 @@ The challenge for pacing: your **total time** includes both running and station 
 - **🎯 Predictive dynamic pacing** — target pace is recalculated on every run entry, projecting future station time based on your actual historical rest averages.
 - **📊 EMA-smoothed real pace** — real running pace is displayed using an exponential moving average (α = 0.25) to eliminate GPS noise while staying responsive.
 - **🟢🔴 At-a-glance pace coloring** — large central display turns **green** when you are at or ahead of target, **red** when you are falling behind.
-- **📂 Full FIT recording with 7 custom developer fields** — syncs to Garmin Connect with charts for cycle, FSM state, RoxZone time, station time, active athlete, pace delta, and work/rest ratio.
+- **📂 Full FIT recording with 7 custom developer fields** — syncs to Garmin Connect with charts for cycle, FSM state, Transition time, station time, active athlete, pace delta, and work/rest ratio.
 - **👯 Doubles / relay mode** — track Athlete A and Athlete B lap times independently during STATION; toggle with UP / DOWN.
 - **⏱ Configurable goal time** — choose your target from 40 to 180 minutes (5-minute steps) via an in-app menu; persisted across sessions.
 - **⏸ Pause / resume** — freeze the timer and FIT recording with START/STOP mid-race; paused time is excluded from all calculations.
@@ -55,20 +55,20 @@ HybridPacer is built around a central **App singleton** that owns all race state
 
 ```mermaid
 graph TD
-    subgraph App["HyroxPacerApp (singleton — owns all state)"]
+    subgraph App["HybridPacerApp (singleton — owns all state)"]
         STATE["FSM state · cycle · accumulators\ntargetTimeMs · dynamicPaceTarget\nisPaused · pausedMs"]
     end
 
     subgraph Engines
         FSM["FSMController\n─────────────\nSole mutator of FSM state\nDebounce · duration accounting\nFIT lifecycle · lap marks"]
         GPS["GpsSessionManager\n─────────────\nGPS positioning (app lifetime)\nFIT session (race lifetime)\nEMA speed smoothing"]
-        FIT["HyroxFitSession\n─────────────\n7 FitContributor fields\n1 Hz metric writer"]
+        FIT["HybridFitSession\n─────────────\n7 FitContributor fields\n1 Hz metric writer"]
         PAC["PacingEngine\n─────────────\ncomputeDynamicPaceTarget\ncomputePaceDeltaDeviation\ncomputeCurrentPaceSec"]
     end
 
     subgraph UI
-        VIEW["HyroxPacerView\n─────────────\nImperative Dc rendering\nPer-state screens\n1 Hz refresh timer"]
-        DEL["HyroxPacerDelegate\n─────────────\nButton routing\nTouch disabled"]
+        VIEW["HybridPacerView\n─────────────\nImperative Dc rendering\nPer-state screens\n1 Hz refresh timer"]
+        DEL["HybridPacerDelegate\n─────────────\nButton routing\nTouch disabled"]
     end
 
     DEL -- "attemptTransition()\ntogglePause()" --> FSM
@@ -94,7 +94,7 @@ graph TD
 | No `switch`/`case` | All state dispatch via `if`/`else if` for Monkey C compatibility |
 | No `Lang.Dictionary` as domain structure | Performance and type-safety |
 | Typecheck = 3 nullable-narrowing pattern | Copy nullable member to local, null-check before SDK call |
-| Single state owner (`HyroxPacerApp`) | One source of truth; engines are stateless mutators |
+| Single state owner (`HybridPacerApp`) | One source of truth; engines are stateless mutators |
 
 ---
 
@@ -109,15 +109,15 @@ stateDiagram-v2
 
     WARMUP --> RUN : START button\n(starts GPS recording)
 
-    RUN --> ROXZONE_IN : BACK/LAP button\n(FIT lap mark)
+    RUN --> TRANSITION_IN : BACK/LAP button\n(FIT lap mark)
 
-    ROXZONE_IN --> STATION : BACK/LAP button
+    TRANSITION_IN --> STATION : BACK/LAP button
 
-    STATION --> ROXZONE_OUT : BACK/LAP button
+    STATION --> TRANSITION_OUT : BACK/LAP button
 
-    ROXZONE_OUT --> RUN : BACK/LAP button\n(cycle < 8)\n(FIT lap mark)\n(recompute pace target)
+    TRANSITION_OUT --> RUN : BACK/LAP button\n(cycle < 8)\n(FIT lap mark)\n(recompute pace target)
 
-    ROXZONE_OUT --> FINISH : BACK/LAP button\n(cycle = 8)\n(saves FIT file)
+    TRANSITION_OUT --> FINISH : BACK/LAP button\n(cycle = 8)\n(saves FIT file)
 
     FINISH --> [*] : BACK button\n(exits app)
 
@@ -178,8 +178,8 @@ For the full derivation and edge cases, see **[docs/PACING-ENGINE.md](docs/PACIN
 | Button | State | Action |
 |---|---|---|
 | **START / STOP** | WARMUP | Begin race (WARMUP → RUN) |
-| **START / STOP** | RUN / ROXZONE / STATION | Toggle pause / resume |
-| **BACK / LAP** | RUN → ROXZONE_IN → STATION → ROXZONE_OUT | Advance FSM (next segment) |
+| **START / STOP** | RUN / TRANSITION / STATION | Toggle pause / resume |
+| **BACK / LAP** | RUN → TRANSITION_IN → STATION → TRANSITION_OUT | Advance FSM (next segment) |
 | **BACK / LAP** | WARMUP or FINISH | Exit app |
 | **UP** | STATION | Toggle active athlete (A ↔ B) |
 | **DOWN** | STATION | Toggle active athlete (A ↔ B) |
@@ -195,10 +195,10 @@ For the full derivation and edge cases, see **[docs/PACING-ENGINE.md](docs/PACIN
 sequenceDiagram
     participant GPS as GPS Hardware
     participant GSM as GpsSessionManager
-    participant APP as HyroxPacerApp
-    participant FIT as HyroxFitSession
+    participant APP as HybridPacerApp
+    participant FIT as HybridFitSession
     participant PAC as PacingEngine
-    participant VIEW as HyroxPacerView
+    participant VIEW as HybridPacerView
 
     loop Every ~1 second
         GPS->>GSM: onPosition(info)
@@ -224,13 +224,13 @@ HybridPacer/
 ├── manifest.xml                  # App UUID, type, target devices, permissions
 ├── monkey.jungle                 # Build config (typecheck=3, optimization=3z)
 ├── source/
-│   ├── HyroxPacerApp.mc          # App singleton — all race state, pause/resume
+│   ├── HybridPacerApp.mc          # App singleton — all race state, pause/resume
 │   ├── FSMController.mc          # State machine mutator, duration accounting
 │   ├── PacingEngine.mc           # Dynamic pace target, pace delta, EMA
 │   ├── GpsSessionManager.mc      # GPS positioning + FIT session lifecycle
-│   ├── HyroxFitSession.mc        # 7 FitContributor developer fields
-│   ├── HyroxPacerView.mc         # Imperative 3-band UI renderer
-│   ├── HyroxPacerDelegate.mc     # Button routing (Garmin-native callbacks)
+│   ├── HybridFitSession.mc        # 7 FitContributor developer fields
+│   ├── HybridPacerView.mc         # Imperative 3-band UI renderer
+│   ├── HybridPacerDelegate.mc     # Button routing (Garmin-native callbacks)
 │   └── TargetTimeMenu.mc         # Goal-time preset menu + Storage persistence
 └── resources/
     ├── strings/strings.xml       # App name, menu titles, FIT field labels
@@ -286,8 +286,6 @@ Copy `bin/HybridPacer.prg` to `GARMIN/APPS/` on your fr965 via USB or use the **
 
 Edit `manifest.xml` and add `<iq:product id="DEVICE_ID"/>` inside `<iq:products>`. The device ID can be found in the [Connect IQ Device List](https://developer.garmin.com/connect-iq/compatible-devices/). Test carefully — screen dimensions and font availability vary by device.
 
-> **Note on naming:** The in-app manifest name is still `HyroxPacer` (the original project name). The GitHub repository and documentation use **HybridPacer** as the canonical brand. A manifest rename is planned for a future release.
-
 ---
 
 ## 📈 Roadmap
@@ -304,7 +302,7 @@ Edit `manifest.xml` and add `<iq:product id="DEVICE_ID"/>` inside `<iq:products>
 
 **Candidate future work** (not yet scheduled):
 - Additional device support (Fenix 7, Epix, Forerunner 255, etc.)
-- Named HYROX stations (SkiErg, Sled Push, Sled Pull, …) with per-station stats
+- Named race stations (SkiErg, Sled Push, Sled Pull, …) with per-station stats
 - Expose goal time via `settings.xml` (Connect IQ settings system)
 - Post-race summary screen with per-km splits
 - Localization (i18n string resources)
@@ -330,5 +328,5 @@ MIT © 2026 [SoyTiyi](https://github.com/SoyTiyi) — see [LICENSE](LICENSE).
 ## 🙏 Acknowledgements
 
 - [Garmin Connect IQ SDK](https://developer.garmin.com/connect-iq/) and the Monkey C language.
-- The HYROX community for pushing the boundaries of hybrid fitness racing.
+- The hybrid fitness community for pushing the boundaries of functional racing.
 - All athletes who provided feedback during testing.

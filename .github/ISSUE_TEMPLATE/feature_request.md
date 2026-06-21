@@ -23,7 +23,7 @@ Describe what you'd like to see implemented.
 
 Any other approaches you've thought about and why you prefer your proposed solution.
 
-## HYROX context (if relevant)
+## Hybrid race context (if relevant)
 
 Does this feature relate to a specific race format, device, or use case?
 

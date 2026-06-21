@@ -8,13 +8,13 @@ This document describes every component in HybridPacer, the data flow between th
 
 1. [Overview](#overview)
 2. [Component Map](#component-map)
-3. [App Singleton — HyroxPacerApp](#app-singleton--hyroxpacerapp)
+3. [App Singleton — HybridPacerApp](#app-singleton--hybridpacerapp)
 4. [State Machine — FSMController](#state-machine--fsmcontroller)
 5. [GPS & FIT Session — GpsSessionManager](#gps--fit-session--gpssessionmanager)
-6. [FIT Fields — HyroxFitSession](#fit-fields--hyroxfitsession)
+6. [FIT Fields — HybridFitSession](#fit-fields--hybridfitsession)
 7. [Pacing Engine — PacingEngine](#pacing-engine--pacingengine)
-8. [UI — HyroxPacerView](#ui--hyroxpacerview)
-9. [Input — HyroxPacerDelegate](#input--hyroxpacerdelegate)
+8. [UI — HybridPacerView](#ui--hybridpacerview)
+9. [Input — HybridPacerDelegate](#input--hybridpacerdelegate)
 10. [Configuration — TargetTimeMenu](#configuration--targettimemenu)
 11. [Design Rules](#design-rules)
 12. [Data Flow Diagram](#data-flow-diagram)
@@ -23,14 +23,14 @@ This document describes every component in HybridPacer, the data flow between th
 
 ## Overview
 
-HybridPacer is a **Garmin Connect IQ watch app** (Monkey C, API Level 4.0.0) targeting the Forerunner 965. It guides an athlete through a HYROX race — 8 × (1 km run + functional workout station) — with:
+HybridPacer is a **Garmin Connect IQ watch app** (Monkey C, API Level 4.0.0) targeting the Forerunner 965. It guides an athlete through a hybrid race — 8 × (1 km run + functional workout station) — with:
 
 - A **predictive pacing engine** that re-budgets target running pace after every station.
 - **FIT recording** with 7 custom developer fields that surface as charts in Garmin Connect.
 - A **doubles/relay mode** that tracks per-athlete time independently.
 - **Pause/resume** that freezes chronometers and FIT recording without losing data.
 
-The architecture follows a strict **single-owner, stateless-engine** pattern: all race state lives in one singleton (`HyroxPacerApp`), accessed globally via `getApp()`. Engine classes are stateless mutators.
+The architecture follows a strict **single-owner, stateless-engine** pattern: all race state lives in one singleton (`HybridPacerApp`), accessed globally via `getApp()`. Engine classes are stateless mutators.
 
 ---
 
@@ -38,16 +38,16 @@ The architecture follows a strict **single-owner, stateless-engine** pattern: al
 
 ```mermaid
 graph TD
-    subgraph singleton["HyroxPacerApp — owns all state"]
-        S1["mFsmState · mHyroxCycle\nmLastTransitionMs · mIsPaused\nmPausedMs · mPauseStartMs\nmWorkMs · mRestMs · mRoxzoneTotalMs\nmTargetTimeMs · mDynamicPaceTargetSec\nmTimeAthleteA · mTimeAthleteB\nmActiveAthlete"]
+    subgraph singleton["HybridPacerApp — owns all state"]
+        S1["mFsmState · mRaceCycle\nmLastTransitionMs · mIsPaused\nmPausedMs · mPauseStartMs\nmWorkMs · mRestMs · mTransitionTotalMs\nmTargetTimeMs · mDynamicPaceTargetSec\nmTimeAthleteA · mTimeAthleteB\nmActiveAthlete"]
     end
 
     FSM["FSMController\n──────────────────\nattemptTransition()\nmarkLap() · accrueAthleteTime()"]
     GPS["GpsSessionManager\n──────────────────\nstart() · stop()\nstartRecording() · stopRecording()\npauseRecording() · resumeRecording()\naddLap() · onPosition()"]
-    FIT["HyroxFitSession\n──────────────────\ninitializeFitFields()\ntickFitMetrics()\nclearFitFields()"]
+    FIT["HybridFitSession\n──────────────────\ninitializeFitFields()\ntickFitMetrics()\nclearFitFields()"]
     PAC["PacingEngine\n──────────────────\ncomputeDynamicPaceTarget()\ncomputePaceDeltaDeviation()\ncomputeCurrentPaceSec()"]
-    VIEW["HyroxPacerView\n──────────────────\nonLayout() · onUpdate()\ndrawWarmup/Run/Roxzone/Station/Finish()\ndrawPaused()"]
-    DEL["HyroxPacerDelegate\n──────────────────\nonSelect() · onBack()\nonPreviousPage() · onNextPage()\nonMenu()"]
+    VIEW["HybridPacerView\n──────────────────\nonLayout() · onUpdate()\ndrawWarmup/Run/Transition/Station/Finish()\ndrawPaused()"]
+    DEL["HybridPacerDelegate\n──────────────────\nonSelect() · onBack()\nonPreviousPage() · onNextPage()\nonMenu()"]
     MENU["TargetTimeMenu\n──────────────────\nbuildTargetTimeMenu()\nTargetTimeMenuDelegate.onSelect()"]
     STORE["Application.Storage\n──────────────────\nkey: 'target_min' (Number, minutes)"]
 
@@ -71,9 +71,9 @@ graph TD
 
 ---
 
-## App Singleton — HyroxPacerApp
+## App Singleton — HybridPacerApp
 
-**File:** `source/HyroxPacerApp.mc`
+**File:** `source/HybridPacerApp.mc`
 
 The application entry point and the **single source of truth** for all race state. Every engine class reaches it through the module-level `getApp()` function.
 
@@ -83,14 +83,14 @@ The application entry point and the **single source of truth** for all race stat
 |---|---|---|
 | `mFsmState` | `Number` | Current FSM state (0–5) |
 | `mLastTransitionMs` | `Number` | `System.getTimer()` at last successful transition — base for 5s debounce |
-| `mHyroxCycle` | `Number` | Completed cycles (0–7); equals km already run |
+| `mRaceCycle` | `Number` | Completed cycles (0–7); equals km already run |
 | `mActiveAthlete` | `Boolean` | `true` = Athlete A active; `false` = Athlete B (doubles mode) |
 | `mIsPaused` | `Boolean` | `true` while race is paused |
 | `mPauseStartMs` | `Number` | Timer value when current pause began |
 | `mPausedMs` | `Number` | Paused ms accumulated **within the current state** (reset to 0 on each transition) |
 | `mWorkMs` | `Number` | Total ms spent in STATE_RUN |
-| `mRestMs` | `Number` | Total ms in ROXZONE_IN + STATION + ROXZONE_OUT |
-| `mRoxzoneTotalMs` | `Number` | Total ms in ROXZONE_IN + ROXZONE_OUT only |
+| `mRestMs` | `Number` | Total ms in TRANSITION_IN + STATION + TRANSITION_OUT |
+| `mTransitionTotalMs` | `Number` | Total ms in TRANSITION_IN + TRANSITION_OUT only |
 | `mTargetTimeMs` | `Number` | Goal race time in ms (loaded from Storage) |
 | `mTimeAthleteA` | `Number` | Cumulative ms for Athlete A (doubles) |
 | `mTimeAthleteB` | `Number` | Cumulative ms for Athlete B (doubles) |
@@ -101,14 +101,14 @@ The application entry point and the **single source of truth** for all race stat
 - **`initialize()`** — Instantiates all four engines (`new` permitted here — startup only). Loads target time from `Storage` with type-check, clamp [40, 180], and fallback to 90 minutes.
 - **`onStart(state)`** — Calls `mGps.start()` to enable continuous GPS positioning.
 - **`onStop(state)`** — Calls `mGps.stop()` (safety-net FIT save + GPS release).
-- **`togglePause()`** — Toggles `mIsPaused` in race states (RUN..ROXZONE_OUT). Accumulates paused time into `mPausedMs` on resume; calls `mGps.pauseRecording()` or `mGps.resumeRecording()`.
-- **`getInitialView()`** — Returns `[HyroxPacerView, HyroxPacerDelegate]`.
+- **`togglePause()`** — Toggles `mIsPaused` in race states (RUN..TRANSITION_OUT). Accumulates paused time into `mPausedMs` on resume; calls `mGps.pauseRecording()` or `mGps.resumeRecording()`.
+- **`getInitialView()`** — Returns `[HybridPacerView, HybridPacerDelegate]`.
 
 ### Global accessor
 
 ```monkey-c
-function getApp() as HyroxPacerApp {
-    return Application.getApp() as HyroxPacerApp;
+function getApp() as HybridPacerApp {
+    return Application.getApp() as HybridPacerApp;
 }
 ```
 
@@ -120,7 +120,7 @@ This is defined at module scope (not inside any class). Every engine and view ca
 
 **File:** `source/FSMController.mc`
 
-The **sole mutator** of `mFsmState`, `mHyroxCycle`, `mLastTransitionMs`, `mWorkMs`, `mRestMs`, and `mRoxzoneTotalMs`. Has no state of its own.
+The **sole mutator** of `mFsmState`, `mRaceCycle`, `mLastTransitionMs`, `mWorkMs`, `mRestMs`, and `mTransitionTotalMs`. Has no state of its own.
 
 ### FSM topology
 
@@ -131,15 +131,15 @@ stateDiagram-v2
 
     WARMUP --> RUN: attemptTransition()\nstartRecording()
 
-    RUN --> ROXZONE_IN: attemptTransition()\nmarkLap()
+    RUN --> TRANSITION_IN: attemptTransition()\nmarkLap()
 
-    ROXZONE_IN --> STATION: attemptTransition()
+    TRANSITION_IN --> STATION: attemptTransition()
 
-    STATION --> ROXZONE_OUT: attemptTransition()
+    STATION --> TRANSITION_OUT: attemptTransition()
 
-    ROXZONE_OUT --> RUN: cycle < 8\nattemptTransition()\nmarkLap()\nrecomputePaceTarget()
+    TRANSITION_OUT --> RUN: cycle < 8\nattemptTransition()\nmarkLap()\nrecomputePaceTarget()
 
-    ROXZONE_OUT --> FINISH: cycle = 8\nattemptTransition()\nstopRecording()
+    TRANSITION_OUT --> FINISH: cycle = 8\nattemptTransition()\nstopRecording()
 
     FINISH --> [*]: onBack() returns false\n(runtime closes app)
 ```
@@ -150,18 +150,18 @@ stateDiagram-v2
 2. **5-second debounce** — if `now - mLastTransitionMs < 5000`, silently discard.
 3. **Duration accounting** (skipped for WARMUP, whose pre-race time is not counted):
    - `elapsed = now - mLastTransitionMs - mPausedMs`
-   - Routes `elapsed` into `mWorkMs` (RUN), `mRestMs + mRoxzoneTotalMs` (ROXZONE_IN/OUT), or `mRestMs` (STATION).
+   - Routes `elapsed` into `mWorkMs` (RUN), `mRestMs + mTransitionTotalMs` (TRANSITION_IN/OUT), or `mRestMs` (STATION).
    - Calls `accrueAthleteTime(app, elapsed)` to credit the active athlete.
 4. **Transition logic**:
-   - `ROXZONE_OUT → RUN` or `FINISH`: increment `mHyroxCycle`. If `>= 8` → stop recording + `FINISH`. Else → `markLap()` + `RUN` + recompute pace target.
-   - All others: linear `state + 1`. On `WARMUP → RUN`: `startRecording()`. On `RUN → ROXZONE_IN`: `markLap()`.
+   - `TRANSITION_OUT → RUN` or `FINISH`: increment `mRaceCycle`. If `>= 8` → stop recording + `FINISH`. Else → `markLap()` + `RUN` + recompute pace target.
+   - All others: linear `state + 1`. On `WARMUP → RUN`: `startRecording()`. On `RUN → TRANSITION_IN`: `markLap()`.
 5. **Seal**: stamp `mLastTransitionMs = now`, reset `mPausedMs = 0`, `WatchUi.requestUpdate()`.
 
 ### FIT split boundaries
 
 Lap marks (`session.addLap()`) are emitted at exactly two boundaries:
-- **RUN → ROXZONE_IN** — the athlete leaves the run and enters the transition corridor.
-- **ROXZONE_OUT → RUN** — the athlete completes the station and returns to running.
+- **RUN → TRANSITION_IN** — the athlete leaves the run and enters the transition corridor.
+- **TRANSITION_OUT → RUN** — the athlete completes the station and returns to running.
 
 ---
 
@@ -201,9 +201,9 @@ if (s != null) {
 
 ---
 
-## FIT Fields — HyroxFitSession
+## FIT Fields — HybridFitSession
 
-**File:** `source/HyroxFitSession.mc`
+**File:** `source/HybridFitSession.mc`
 
 Owns the 7 `FitContributor.Field` handles. Written at ~1 Hz by `tickFitMetrics()`, called from `GpsSessionManager.onPosition()`.
 
@@ -211,9 +211,9 @@ Owns the 7 `FitContributor.Field` handles. Written at ~1 Hz by `tickFitMetrics()
 
 | ID | Constant | Field name | Type | Unit | Chart |
 |---|---|---|---|---|---|
-| 0 | `FIT_ID_CYCLE_ID` | `hyrox_cycle_id` | UINT8 | cycle | Yes |
-| 1 | `FIT_ID_FSM_STATE` | `hyrox_fsm_state` | UINT8 | state | Yes |
-| 2 | `FIT_ID_ROXZONE_TOTAL` | `roxzone_total_time` | UINT32 | s | Yes |
+| 0 | `FIT_ID_CYCLE_ID` | `race_cycle_id` | UINT8 | cycle | Yes |
+| 1 | `FIT_ID_FSM_STATE` | `race_fsm_state` | UINT8 | state | Yes |
+| 2 | `FIT_ID_TRANSITION_TOTAL` | `transition_total_time` | UINT32 | s | Yes |
 | 3 | `FIT_ID_STATION_ELAPSED` | `station_elapsed` | UINT32 | s | Yes |
 | 4 | `FIT_ID_ACTIVE_ATHLETE` | `active_athlete` | UINT8 | bool | No |
 | 5 | `FIT_ID_PACE_DELTA` | `pace_delta_deviation` | FLOAT | s/km | Yes |
@@ -232,7 +232,7 @@ All 7 field handles are declared `FitContributor.Field? = null`. `tickFitMetrics
 ```monkey-c
 var f = mFieldCycleId;
 if (f != null) {
-    f.setData(app.mHyroxCycle);
+    f.setData(app.mRaceCycle);
 }
 ```
 
@@ -247,14 +247,14 @@ A stateless class with three pure functions. No `Toybox.Math` — all arithmetic
 | Method | When called | Returns |
 |---|---|---|
 | `computeDynamicPaceTarget(targetTimeMs, elapsedTotalMs, distanceKm)` | FSMController on every RUN entry | Target pace (s/km), or 0.0f if off-plan |
-| `computePaceDeltaDeviation(speedMps, paceTargetSec)` | HyroxFitSession.tickFitMetrics() at 1 Hz | Deviation (s/km), positive = slower |
-| `computeCurrentPaceSec(speedMps)` | HyroxPacerView.drawRun() at 1 Hz | Current pace (s/km), or 0.0f if stopped |
+| `computePaceDeltaDeviation(speedMps, paceTargetSec)` | HybridFitSession.tickFitMetrics() at 1 Hz | Deviation (s/km), positive = slower |
+| `computeCurrentPaceSec(speedMps)` | HybridPacerView.drawRun() at 1 Hz | Current pace (s/km), or 0.0f if stopped |
 
 ---
 
-## UI — HyroxPacerView
+## UI — HybridPacerView
 
-**File:** `source/HyroxPacerView.mc`
+**File:** `source/HybridPacerView.mc`
 
 Fully imperative rendering — no `layout.xml`. All drawing uses `Dc` primitives.
 
@@ -278,7 +278,7 @@ Dimensions are pre-computed once in `onLayout()` (`mCenterX`, `mCenterY`, `mBand
 |---|---|---|---|
 | WARMUP | Black | Goal time (large) | GPS status · "START > begin" |
 | RUN | **White** | EMA pace (green/red) | km partial |
-| ROXZONE_IN / OUT | Black | Transition timer (yellow) | "BACK > continue" |
+| TRANSITION_IN / OUT | Black | Transition timer (yellow) | "BACK > continue" |
 | STATION | Black | Station timer | Active athlete (blue A / orange B) |
 | FINISH | Black | Total time | W/R ratio · "BACK > exit" |
 | **PAUSED** | Dark gray | "PAUSED" (red) | Frozen partial · "START > resume" |
@@ -289,9 +289,9 @@ A `Timer.Timer` is created in `onShow()` and calls `requestUpdate()` every 1000 
 
 ---
 
-## Input — HyroxPacerDelegate
+## Input — HybridPacerDelegate
 
-**File:** `source/HyroxPacerDelegate.mc`
+**File:** `source/HybridPacerDelegate.mc`
 
 Extends `WatchUi.BehaviorDelegate`. Uses **behavior callbacks only** — does not override `onKey()`.
 
@@ -345,7 +345,7 @@ The menu is only accessible via `onMenu()` (long-press UP) in WARMUP. Changing t
 | No `switch`/`case` | All files | Consistency; avoids edge cases with Monkey C switch semantics |
 | No `Lang.Dictionary` as domain structure | All files | Performance; breaks typecheck=3 narrowing |
 | Typecheck=3 nullable-narrowing | All nullable SDK types | Catches null-dereference at compile time |
-| Single state owner (`HyroxPacerApp`) | All files | One source of truth; engines are stateless |
+| Single state owner (`HybridPacerApp`) | All files | One source of truth; engines are stateless |
 | `FSMController` is sole FSM mutator | All files | Centralizes all state transitions and side effects |
 | English-only comments and UI strings | All files | Global project |
 
@@ -357,10 +357,10 @@ The menu is only accessible via `onMenu()` (long-press UP) in WARMUP. Changing t
 sequenceDiagram
     participant HW as GPS Hardware
     participant GSM as GpsSessionManager
-    participant FIT as HyroxFitSession
+    participant FIT as HybridFitSession
     participant PAC as PacingEngine
-    participant APP as HyroxPacerApp
-    participant VIEW as HyroxPacerView
+    participant APP as HybridPacerApp
+    participant VIEW as HybridPacerView
 
     note over HW,VIEW: Every ~1 second (onPosition callback)
 
@@ -368,7 +368,7 @@ sequenceDiagram
     GSM->>GSM: update mLat, mLon, mSpeed, mAccuracy
     GSM->>GSM: EMA: mSpeedAvg += 0.25*(mSpeed - mSpeedAvg)
     GSM->>FIT: tickFitMetrics()
-    FIT->>APP: read mFsmState, mHyroxCycle, mWorkMs, mRestMs, ...
+    FIT->>APP: read mFsmState, mRaceCycle, mWorkMs, mRestMs, ...
     FIT->>PAC: computePaceDeltaDeviation(mSpeed, mDynamicPaceTargetSec)
     PAC-->>FIT: pace delta (s/km)
     FIT->>FIT: setData() on all 7 FIT fields

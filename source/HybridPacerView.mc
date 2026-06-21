@@ -6,8 +6,8 @@ import Toybox.Timer;
 import Toybox.UserProfile;
 import Toybox.WatchUi;
 
-// ─── HyroxPacerView ────────────────────────────────────────────────────────────
-// High-contrast imperative view for HYROX Pacer.
+// ─── HybridPacerView ────────────────────────────────────────────────────────────
+// High-contrast imperative view for HybridPacer.
 // Draws EXCLUSIVELY with Dc primitives (layout.xml is forbidden).
 // Three-band structure whose CONTENT depends on the FSM state:
 //   HEADER     (y < 25%):  state + cycle ("RUN  km 4/8", "STATION 4/8", ...)
@@ -22,7 +22,7 @@ import Toybox.WatchUi;
 //   - No new in onUpdate (hot path at ~1 Hz). The new for the Timer lives in onShow.
 //   - Dimensions pre-assigned in onLayout().
 //   - No switch/case: state dispatch uses if/else if on mFsmState.
-class HyroxPacerView extends WatchUi.View {
+class HybridPacerView extends WatchUi.View {
 
     // Pre-assigned dimensions to avoid repeated calculations in onUpdate().
     var mWidth        as Number = 0;
@@ -37,7 +37,7 @@ class HyroxPacerView extends WatchUi.View {
     var mTimer as Timer.Timer? = null;
 
     // STATION catalog (Phase 10): name + universal official standard, indexed by
-    // mHyroxCycle (0..7). Loaded once from resources in onLayout (not a hot path)
+    // mRaceCycle (0..7). Loaded once from resources in onLayout (not a hot path)
     // so drawStation() only indexes these arrays. Array-indexed, never a Dictionary.
     var mStationNames as Array<String> = [];
     var mStationStds  as Array<String> = [];
@@ -71,7 +71,7 @@ class HyroxPacerView extends WatchUi.View {
     }
 
     // Builds the STATION name/standard arrays once from string resources, indexed
-    // by mHyroxCycle (official HYROX order). Resource loads are confined to this
+    // by mRaceCycle (fixed race order). Resource loads are confined to this
     // non-hot path; the render only indexes the cached arrays.
     private function loadStationCatalog() as Void {
         mLabelStation = WatchUi.loadResource(Rez.Strings.labelStation) as String;
@@ -146,8 +146,8 @@ class HyroxPacerView extends WatchUi.View {
             drawWarmup(dc, app, fg);
         } else if (state == STATE_RUN) {
             drawRun(dc, app, fg);
-        } else if (state == STATE_ROXZONE_IN || state == STATE_ROXZONE_OUT) {
-            drawRoxzone(dc, app, fg);
+        } else if (state == STATE_TRANSITION_IN || state == STATE_TRANSITION_OUT) {
+            drawTransition(dc, app, fg);
         } else if (state == STATE_STATION) {
             drawStation(dc, app, fg);
         } else {
@@ -160,7 +160,7 @@ class HyroxPacerView extends WatchUi.View {
     // the frozen partial timer, and the resume hint. FONT_LARGE (not FONT_NUMBER_*,
     // which only contains digits). The partial is frozen because stateElapsedMs()
     // locks the reference to mPauseStartMs while mIsPaused is true.
-    private function drawPaused(dc as Dc, app as HyroxPacerApp) as Void {
+    private function drawPaused(dc as Dc, app as HybridPacerApp) as Void {
         dc.setColor(Graphics.COLOR_TRANSPARENT, Graphics.COLOR_DK_GRAY);
         dc.clear();
 
@@ -168,9 +168,9 @@ class HyroxPacerView extends WatchUi.View {
         var label = "STATION";
         var state = app.mFsmState;
         if (state == STATE_RUN) {
-            label = "RUN  km " + (app.mHyroxCycle + 1).toString() + "/8";
-        } else if (state == STATE_ROXZONE_IN || state == STATE_ROXZONE_OUT) {
-            label = "ROXZONE";
+            label = "RUN  km " + (app.mRaceCycle + 1).toString() + "/8";
+        } else if (state == STATE_TRANSITION_IN || state == STATE_TRANSITION_OUT) {
+            label = "TRANSITION";
         }
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mBandTopY, Graphics.FONT_TINY, label,
@@ -197,10 +197,10 @@ class HyroxPacerView extends WatchUi.View {
     // WARMUP: start screen. The goal time is editable in place (UP +5 / DOWN -5),
     // so it is rendered in cyan with bracket framing to read as adjustable. A
     // transient yellow badge shows the last step (e.g. "+15") right after a press.
-    // Header carries HYROX + GPS status; the footer carries the UP/DOWN + START hints.
-    private function drawWarmup(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
+    // Header carries HYBRID + GPS status; the footer carries the UP/DOWN + START hints.
+    private function drawWarmup(dc as Dc, app as HybridPacerApp, fg as Graphics.ColorType) as Void {
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(mCenterX, mBandTopY, Graphics.FONT_TINY, "HYROX",
+        dc.drawText(mCenterX, mBandTopY, Graphics.FONT_TINY, "HYBRID",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // GPS status moved up to the header band: green if fix acquired, red if searching.
@@ -263,9 +263,9 @@ class HyroxPacerView extends WatchUi.View {
     //             promoted here so the screen is never empty (first ~200 m).
     //   FOOTER  — current-km telemetry: heart rate, km split, meters remaining.
     // Every value comes from a real source; missing sources render "--" only.
-    private function drawRun(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
+    private function drawRun(dc as Dc, app as HybridPacerApp, fg as Graphics.ColorType) as Void {
         // ── Gather real data (no placeholders) ──────────────────────────────
-        var cycle      = app.mHyroxCycle + 1;
+        var cycle      = app.mRaceCycle + 1;
         var paceTarget = app.mDynamicPaceTargetSec;
         var avgSpeed   = app.mGps.getAvgSpeedMs();
         var realPace   = app.mPacing.computeCurrentPaceSec(avgSpeed);
@@ -288,7 +288,7 @@ class HyroxPacerView extends WatchUi.View {
                     formatClock(committed + partialMs),
                     Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        var projFinish = app.mPacing.computeProjectedFinishMs(committed, app.mHyroxCycle, realPace);
+        var projFinish = app.mPacing.computeProjectedFinishMs(committed, app.mRaceCycle, realPace);
         if (projFinish >= 0) {
             var projDelta = projFinish - app.mTargetTimeMs;
             var projColor = Graphics.COLOR_GREEN;   // on or ahead of goal
@@ -364,12 +364,12 @@ class HyroxPacerView extends WatchUi.View {
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
-    // ROXZONE_IN / ROXZONE_OUT: transition corridor timer + button hint.
-    private function drawRoxzone(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
-        var cycle = app.mHyroxCycle + 1;
+    // TRANSITION_IN / TRANSITION_OUT: transition corridor timer + button hint.
+    private function drawTransition(dc as Dc, app as HybridPacerApp, fg as Graphics.ColorType) as Void {
+        var cycle = app.mRaceCycle + 1;
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mBandTopY, Graphics.FONT_TINY,
-                    "ROXZONE " + cycle.toString() + "/8",
+                    "TRANSITION " + cycle.toString() + "/8",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
@@ -386,9 +386,9 @@ class HyroxPacerView extends WatchUi.View {
     // the station timer as the primary metric, plus HR/zone (effort & recovery) and
     // the live total race time (continuity with RUN). The active-athlete row only
     // appears in doubles, inferred from the relay toggle (no division/format config).
-    private function drawStation(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
-        // Safe catalog index: mHyroxCycle is 0..7 in STATION, but clamp defensively.
-        var idx = app.mHyroxCycle;
+    private function drawStation(dc as Dc, app as HybridPacerApp, fg as Graphics.ColorType) as Void {
+        // Safe catalog index: mRaceCycle is 0..7 in STATION, but clamp defensively.
+        var idx = app.mRaceCycle;
         if (idx < 0) {
             idx = 0;
         } else if (idx > 7) {
@@ -456,7 +456,7 @@ class HyroxPacerView extends WatchUi.View {
     }
 
     // FINISH: race summary (total time + work/rest ratio) + exit hint.
-    private function drawFinish(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
+    private function drawFinish(dc as Dc, app as HybridPacerApp, fg as Graphics.ColorType) as Void {
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mBandTopY, Graphics.FONT_TINY, "FINISH",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
@@ -478,7 +478,7 @@ class HyroxPacerView extends WatchUi.View {
     // Phase 7: while paused, the reference is frozen at mPauseStartMs (partial stops);
     // mPausedMs only grows on resume, so after resuming the partial continues from
     // where it stopped. Valid only outside WARMUP; clamp prevents negative values.
-    private function stateElapsedMs(app as HyroxPacerApp) as Number {
+    private function stateElapsedMs(app as HybridPacerApp) as Number {
         var ref = System.getTimer();
         if (app.mIsPaused) {
             ref = app.mPauseStartMs;
@@ -543,7 +543,7 @@ class HyroxPacerView extends WatchUi.View {
     // Meters remaining in the current km, from the recorded cumulative distance
     // (Activity.elapsedDistance) minus the per-km baseline captured at RUN entry.
     // Clamped to 0..1000. Returns -1 when distance is not yet available.
-    private function kmMetersLeft(app as HyroxPacerApp) as Number {
+    private function kmMetersLeft(app as HybridPacerApp) as Number {
         var info = Activity.getActivityInfo();
         if (info != null && info has :elapsedDistance) {
             var dist = info.elapsedDistance;

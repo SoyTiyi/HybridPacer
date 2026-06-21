@@ -41,7 +41,7 @@ Closes #
 
 ### FIT fields (if adding/modifying)
 - [ ] New field ID is unique and does not reuse an existing ID
-- [ ] `FIT_ID_*` constant in `HyroxFitSession.mc` matches `id` in `fitcontributions.xml`
+- [ ] `FIT_ID_*` constant in `HybridFitSession.mc` matches `id` in `fitcontributions.xml`
 - [ ] String resources added to `strings.xml` for title/label/unit
 - [ ] `tickFitMetrics()` write uses the null-guard pattern and contains no `new`
 

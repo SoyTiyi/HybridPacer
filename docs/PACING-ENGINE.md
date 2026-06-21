@@ -19,7 +19,7 @@ This document is the definitive reference for `PacingEngine.mc` — how it works
 
 ## The Problem
 
-A HYROX race has **8 km of running** split into 8 rounds, interleaved with **8 functional workout stations**. Your total race time includes both running time and station time, but you can only control your **running pace**.
+A hybrid race has **8 km of running** split into 8 rounds, interleaved with **8 functional workout stations**. Your total race time includes both running time and station time, but you can only control your **running pace**.
 
 If you target a 90-minute finish and your stations take an average of 3 minutes each, those 24 total minutes of station time leave only 66 minutes for running — meaning your effective running pace must be faster than a naïve 90 min / 8 km = 11:15/km.
 
@@ -29,7 +29,7 @@ Furthermore, stations are not equal. If early stations are slow, the pace needed
 
 ## Algorithm: computeDynamicPaceTarget
 
-**Called by:** `FSMController.attemptTransition()` on every entry to `STATE_RUN` (WARMUP→RUN and ROXZONE_OUT→RUN).  
+**Called by:** `FSMController.attemptTransition()` on every entry to `STATE_RUN` (WARMUP→RUN and TRANSITION_OUT→RUN).  
 **Never called at 1 Hz** — recalculation only happens on state transitions.
 
 ### Inputs
@@ -38,7 +38,7 @@ Furthermore, stations are not equal. If early stations are slow, the pace needed
 |---|---|---|
 | `targetTimeMs` | `app.mTargetTimeMs` | Athlete's goal total race time (ms) |
 | `elapsedTotalMs` | `app.mWorkMs + app.mRestMs` | Time committed so far (ms) |
-| `distanceCompletedKm` | `app.mHyroxCycle` | Number of 1 km segments already completed |
+| `distanceCompletedKm` | `app.mRaceCycle` | Number of 1 km segments already completed |
 
 ### Steps
 
@@ -46,7 +46,7 @@ Furthermore, stations are not equal. If early stations are slow, the pace needed
 1. distanceRemainingKm = 8.0 − distanceCompletedKm
    → if ≤ 0.0, return 0.0f  (race over or distance exceeded)
 
-2. cyclesDone = app.mHyroxCycle
+2. cyclesDone = app.mRaceCycle
    avgRestMs  = mRestMs / cyclesDone      (integer division; 0 if cyclesDone == 0)
 
 3. cyclesRemaining  = 8 − cyclesDone
@@ -145,7 +145,7 @@ This is the honest signal: the goal is no longer achievable at any pace. The ath
 
 ## Algorithm: computePaceDeltaDeviation
 
-**Called by:** `HyroxFitSession.tickFitMetrics()` at ~1 Hz.  
+**Called by:** `HybridFitSession.tickFitMetrics()` at ~1 Hz.  
 Written to FIT field `pace_delta_deviation` (ID 5).
 
 ```
@@ -167,7 +167,7 @@ Note: this uses **instantaneous** speed (`getSpeedMs()`), not the EMA-smoothed s
 
 ## Algorithm: computeCurrentPaceSec
 
-**Called by:** `HyroxPacerView.drawRun()` at ~1 Hz (render callback).  
+**Called by:** `HybridPacerView.drawRun()` at ~1 Hz (render callback).  
 Used for the large on-screen pace display.
 
 ```
@@ -206,22 +206,22 @@ Raw GPS speed fluctuates by ±1–2 m/s between samples at running pace, which t
 | Scenario | Behavior |
 |---|---|
 | `cyclesDone == 0` on Run 1 | `avgRestMs = 0`, `projectedRest = 0` — target divides full time over all 8 km. Conservative (assumes fast stations). |
-| `distanceRemainingKm <= 0` | Returns `0.0f`. Should not be reachable (ROXZONE_OUT→FINISH stops after cycle 8), but guarded defensively. |
+| `distanceRemainingKm <= 0` | Returns `0.0f`. Should not be reachable (TRANSITION_OUT→FINISH stops after cycle 8), but guarded defensively. |
 | `runTimeRemainingMs <= 0` | Returns `0.0f`. UI renders `--:--` in red — goal is no longer achievable. |
 | `currentSpeedMps <= PACE_MIN_SPEED` | Both pace functions return `0.0f`. View renders `--:--`; FIT writes `0.0f`. |
 | `mRestMs == 0` and `cyclesDone > 0` | `avgRestMs = 0`. This would mean zero rest time recorded, which cannot happen after a full STATION cycle. Benign: projects no future rest, giving a generous target. |
-| Paused during RUN | Pause does not trigger `computeDynamicPaceTarget`. Target pace is not recalculated until the next RUN entry (ROXZONE_OUT→RUN). Paused time is excluded from `mWorkMs` and `mRestMs` via `mPausedMs`, so the accumulators remain accurate. |
+| Paused during RUN | Pause does not trigger `computeDynamicPaceTarget`. Target pace is not recalculated until the next RUN entry (TRANSITION_OUT→RUN). Paused time is excluded from `mWorkMs` and `mRestMs` via `mPausedMs`, so the accumulators remain accurate. |
 
 ---
 
 ## Constants Reference
 
-Defined in `source/HyroxFitSession.mc` and `source/GpsSessionManager.mc`:
+Defined in `source/HybridFitSession.mc` and `source/GpsSessionManager.mc`:
 
 | Constant | Value | Description |
 |---|---|---|
-| `HYROX_TOTAL_KM` | `8.0f` | Total running distance in a HYROX race |
-| `HYROX_TOTAL_CYCLES` | `8` | Number of run+station cycles |
+| `RACE_TOTAL_KM` | `8.0f` | Total running distance in a hybrid race |
+| `RACE_TOTAL_CYCLES` | `8` | Number of run+station cycles |
 | `TARGET_PACE_SEC_PER_KM` | `300` | Baseline reference pace (5:00/km) — used only as a conceptual reference in comments; the engine uses the dynamic target |
 | `PACE_MIN_SPEED` | `0.5f` | Minimum speed in m/s to compute a valid pace (guards division by zero) |
 | `SPEED_SMOOTHING_ALPHA` | `0.25f` | EMA blending factor for GPS speed smoothing |
