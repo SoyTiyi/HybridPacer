@@ -1,0 +1,10 @@
+# Garmin Connect IQ / Monkey C build output
+bin/
+
+# Developer keys (never commit signing keys)
+*.der
+developer_key
+
+# OS / editor cruft
+.DS_Store
+*.swp

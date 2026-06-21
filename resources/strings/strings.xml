@@ -1,21 +1,21 @@
 <strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
-    <string id="AppName">HyroxPacer</string>
+    <string id="AppName">HybridPacer</string>
 
     <!-- ── FIT Contributor field labels (Phase 3) ────────────────────────── -->
-    <!-- hyrox_cycle_id (FIT id=0) -->
-    <string id="fitCycleTitle">Hyrox Cycle</string>
+    <!-- race_cycle_id (FIT id=0) -->
+    <string id="fitCycleTitle">Hybrid Cycle</string>
     <string id="fitCycleLabel">Cycle #</string>
     <string id="fitCycleUnit">cycle</string>
 
-    <!-- hyrox_fsm_state (FIT id=1) -->
+    <!-- race_fsm_state (FIT id=1) -->
     <string id="fitStateTitle">FSM State</string>
     <string id="fitStateLabel">State</string>
     <string id="fitStateUnit">state</string>
 
-    <!-- roxzone_total_time (FIT id=2) -->
-    <string id="fitRoxzoneTitle">RoxZone Total</string>
-    <string id="fitRoxzoneLabel">RoxZone</string>
-    <string id="fitRoxzoneUnit">s</string>
+    <!-- transition_total_time (FIT id=2) -->
+    <string id="fitTransitionTitle">Transition Total</string>
+    <string id="fitTransitionLabel">Transition</string>
+    <string id="fitTransitionUnit">s</string>
 
     <!-- station_elapsed (FIT id=3) -->
     <string id="fitStationTitle">Station Time</string>
@@ -42,7 +42,7 @@
     <string id="labelStation">STATION</string>
     <string id="labelTotal">TOTAL</string>
 
-    <!-- Station names, indexed by mHyroxCycle 0..7 (official HYROX order) -->
+    <!-- Station names, indexed by mRaceCycle 0..7 (fixed race order) -->
     <string id="stationSkiErg">SkiErg</string>
     <string id="stationSledPush">Sled Push</string>
     <string id="stationSledPull">Sled Pull</string>

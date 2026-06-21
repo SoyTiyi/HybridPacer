@@ -4,17 +4,17 @@ import Toybox.System;
 import Toybox.WatchUi;
 
 // ─── FSMController ────────────────────────────────────────────────────────────
-// FSM mutation engine for the HYROX race. Single instance created in App.initialize().
+// FSM mutation engine for the hybrid race. Single instance created in App.initialize().
 // Sole source of mutation for:
-//   mFsmState, mHyroxCycle, mLastTransitionMs,
-//   mWorkMs, mRestMs, mRoxzoneTotalMs.
+//   mFsmState, mRaceCycle, mLastTransitionMs,
+//   mWorkMs, mRestMs, mTransitionTotalMs.
 //
 // MEMORY RULES (critical):
 //   - No `new` in any method (zero dynamic allocations in hot paths).
 //   - No Lang.Dictionary as a domain structure.
 //   - No switch/case: transitions controlled by if/else if blocks.
 //
-// All race state lives in the HyroxPacerApp singleton (accessible via getApp()).
+// All race state lives in the HybridPacerApp singleton (accessible via getApp()).
 // FSMController contains only mutation logic; it holds no state of its own.
 class FSMController {
 
@@ -54,10 +54,10 @@ class FSMController {
             if (state == STATE_RUN) {
                 // Running time → work accumulator.
                 app.mWorkMs = app.mWorkMs + elapsed;
-            } else if (state == STATE_ROXZONE_IN || state == STATE_ROXZONE_OUT) {
-                // RoxZone time → rest accumulator and RoxZone accumulator.
+            } else if (state == STATE_TRANSITION_IN || state == STATE_TRANSITION_OUT) {
+                // Transition time → rest accumulator and Transition accumulator.
                 app.mRestMs = app.mRestMs + elapsed;
-                app.mRoxzoneTotalMs = app.mRoxzoneTotalMs + elapsed;
+                app.mTransitionTotalMs = app.mTransitionTotalMs + elapsed;
             } else if (state == STATE_STATION) {
                 // Workout station time → rest accumulator.
                 app.mRestMs = app.mRestMs + elapsed;
@@ -67,11 +67,11 @@ class FSMController {
         }
 
         // ── Transition logic (if/else if — switch/case FORBIDDEN) ─────────
-        if (state == STATE_ROXZONE_OUT) {        // 4 → (1 | 5)
+        if (state == STATE_TRANSITION_OUT) {        // 4 → (1 | 5)
             // Increment the master cycle BEFORE evaluating whether the race is over.
-            app.mHyroxCycle = app.mHyroxCycle + 1;
+            app.mRaceCycle = app.mRaceCycle + 1;
 
-            if (app.mHyroxCycle >= HYROX_TOTAL_CYCLES) {
+            if (app.mRaceCycle >= RACE_TOTAL_CYCLES) {
                 // All 8 cycles completed: stop and save the FIT session.
                 app.mGps.stopRecording();
                 app.mFsmState = STATE_FINISH;
@@ -80,12 +80,12 @@ class FSMController {
                 markLap();
                 app.mFsmState = STATE_RUN;
                 // Recompute the target pace for the new run segment.
-                // At this point: mHyroxCycle already incremented, mRestMs updated with
-                // the ROXZONE_OUT elapsed, mWorkMs accumulated through the last RUN.
+                // At this point: mRaceCycle already incremented, mRestMs updated with
+                // the TRANSITION_OUT elapsed, mWorkMs accumulated through the last RUN.
                 app.mDynamicPaceTargetSec = app.mPacing.computeDynamicPaceTarget(
                     app.mTargetTimeMs,
                     app.mWorkMs + app.mRestMs,
-                    app.mHyroxCycle);
+                    app.mRaceCycle);
                 // Anchor the per-km distance baseline for the new running segment.
                 captureRunBaseline(app);
             }
@@ -96,7 +96,7 @@ class FSMController {
                 app.mGps.startRecording();
             }
             if (state == STATE_RUN) {
-                // RUN→ROXZONE_IN: entering transition corridor → FIT split.
+                // RUN→TRANSITION_IN: entering transition corridor → FIT split.
                 markLap();
             }
             app.mFsmState = state + 1;
@@ -107,7 +107,7 @@ class FSMController {
                 app.mDynamicPaceTargetSec = app.mPacing.computeDynamicPaceTarget(
                     app.mTargetTimeMs,
                     app.mWorkMs + app.mRestMs,
-                    app.mHyroxCycle);
+                    app.mRaceCycle);
                 // Anchor the per-km distance baseline for the first running segment.
                 captureRunBaseline(app);
             }
@@ -124,8 +124,8 @@ class FSMController {
     // ── markLap() ─────────────────────────────────────────────────────────────
     // Inserts a native split into the FIT file.
     // Called at the two boundaries that produce a visible split in Garmin Connect:
-    //   - RUN(1) → ROXZONE_IN(2): athlete leaves the run and enters the RoxZone.
-    //   - ROXZONE_OUT(4) → RUN(1): athlete completes the station and returns to running.
+    //   - RUN(1) → TRANSITION_IN(2): athlete leaves the run and enters the Transition.
+    //   - TRANSITION_OUT(4) → RUN(1): athlete completes the station and returns to running.
     private function markLap() as Void {
         getApp().mGps.addLap();
     }
@@ -136,7 +136,7 @@ class FSMController {
     // current km. Called only on RUN entry (a transition, not a hot path).
     // Activity.Info.elapsedDistance is null until the FIT session reports valid
     // distance; the guard leaves the previous baseline untouched in that case.
-    private function captureRunBaseline(app as HyroxPacerApp) as Void {
+    private function captureRunBaseline(app as HybridPacerApp) as Void {
         var info = Activity.getActivityInfo();
         if (info != null && info has :elapsedDistance) {
             var dist = info.elapsedDistance;
@@ -151,7 +151,7 @@ class FSMController {
     // mActiveAthlete = true → Athlete A; false → Athlete B.
     // Allows individual Work/Rest Ratio calculation at the end of the race.
     // Only called from duration accounting (state != STATE_WARMUP).
-    private function accrueAthleteTime(app as HyroxPacerApp, elapsed as Number) as Void {
+    private function accrueAthleteTime(app as HybridPacerApp, elapsed as Number) as Void {
         if (app.mActiveAthlete) {
             app.mTimeAthleteA = app.mTimeAthleteA + elapsed;
         } else {

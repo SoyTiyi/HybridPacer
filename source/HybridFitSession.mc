@@ -4,7 +4,7 @@ import Toybox.Lang;
 import Toybox.System;
 
 // ─── Pacing constants ─────────────────────────────────────────────────────────
-// Reference pace for a HYROX race: 5:00 min/km = 300 s/km.
+// Reference pace for a hybrid race: 5:00 min/km = 300 s/km.
 // pace_delta_deviation > 0 → slower than target; < 0 → faster.
 const TARGET_PACE_SEC_PER_KM as Number = 300;
 const PACE_MIN_SPEED         as Float  = 0.5f;  // Minimum threshold (m/s) to compute pace
@@ -13,13 +13,13 @@ const PACE_MIN_SPEED         as Float  = 0.5f;  // Minimum threshold (m/s) to co
 // MUST match the id attribute of the <fitField> entries in fitcontributions.xml.
 const FIT_ID_CYCLE_ID        as Number = 0;
 const FIT_ID_FSM_STATE       as Number = 1;
-const FIT_ID_ROXZONE_TOTAL   as Number = 2;
+const FIT_ID_TRANSITION_TOTAL   as Number = 2;
 const FIT_ID_STATION_ELAPSED as Number = 3;
 const FIT_ID_ACTIVE_ATHLETE  as Number = 4;
 const FIT_ID_PACE_DELTA      as Number = 5;
 const FIT_ID_WORK_REST       as Number = 6;
 
-// ─── HyroxFitSession ──────────────────────────────────────────────────────────
+// ─── HybridFitSession ──────────────────────────────────────────────────────────
 // Singleton that owns the 7 FitContributor.Field handles and exposes:
 //   - initializeFitFields(session): registers the 7 fields on the active FIT session.
 //   - tickFitMetrics():             writes current values at ~1 Hz (no new).
@@ -38,7 +38,7 @@ const FIT_ID_WORK_REST       as Number = 6;
 //   - No `new` in tickFitMetrics() or in any hot path.
 //   - No Lang.Dictionary as a domain structure.
 //   - No switch/case: branches use if/else if.
-class HyroxFitSession {
+class HybridFitSession {
 
     // ── Guard flag ────────────────────────────────────────────────────────
     // false until initializeFitFields() completes; returns to false in clearFitFields().
@@ -50,7 +50,7 @@ class HyroxFitSession {
     // Accessed via local variable to satisfy typecheck=3 (see tickFitMetrics).
     var mFieldCycleId        as FitContributor.Field? = null;
     var mFieldFsmState       as FitContributor.Field? = null;
-    var mFieldRoxzoneTotal   as FitContributor.Field? = null;
+    var mFieldTransitionTotal   as FitContributor.Field? = null;
     var mFieldStationElapsed as FitContributor.Field? = null;
     var mFieldActiveAthlete  as FitContributor.Field? = null;
     var mFieldPaceDelta      as FitContributor.Field? = null;
@@ -70,7 +70,7 @@ class HyroxFitSession {
     // Dict literals are a permitted exception: single init calls, never at 1 Hz.
     function initializeFitFields(session as ActivityRecording.Session) as Void {
         var f = session.createField(
-            "hyrox_cycle_id",
+            "race_cycle_id",
             FIT_ID_CYCLE_ID,
             FitContributor.DATA_TYPE_UINT8,
             {:mesgType => FitContributor.MESG_TYPE_RECORD, :units => "cycle"}
@@ -79,7 +79,7 @@ class HyroxFitSession {
         mFieldCycleId = f;
 
         f = session.createField(
-            "hyrox_fsm_state",
+            "race_fsm_state",
             FIT_ID_FSM_STATE,
             FitContributor.DATA_TYPE_UINT8,
             {:mesgType => FitContributor.MESG_TYPE_RECORD, :units => "state"}
@@ -88,13 +88,13 @@ class HyroxFitSession {
         mFieldFsmState = f;
 
         f = session.createField(
-            "roxzone_total_time",
-            FIT_ID_ROXZONE_TOTAL,
+            "transition_total_time",
+            FIT_ID_TRANSITION_TOTAL,
             FitContributor.DATA_TYPE_UINT32,
             {:mesgType => FitContributor.MESG_TYPE_RECORD, :units => "s"}
         );
         f.setData(0);
-        mFieldRoxzoneTotal = f;
+        mFieldTransitionTotal = f;
 
         f = session.createField(
             "station_elapsed",
@@ -164,26 +164,26 @@ class HyroxFitSession {
         var state = app.mFsmState;
         var now   = System.getTimer();
 
-        // ── 1. hyrox_cycle_id (0-7) ──────────────────────────────────────
+        // ── 1. race_cycle_id (0-7) ──────────────────────────────────────
         var f = mFieldCycleId;
         if (f != null) {
-            f.setData(app.mHyroxCycle);
+            f.setData(app.mRaceCycle);
         }
 
-        // ── 2. hyrox_fsm_state (0-5) ─────────────────────────────────────
+        // ── 2. race_fsm_state (0-5) ─────────────────────────────────────
         f = mFieldFsmState;
         if (f != null) {
             f.setData(state);
         }
 
-        // ── 3. roxzone_total_time — committed total + live partial ─────────
-        var roxzoneSec = app.mRoxzoneTotalMs / 1000;
-        if (state == STATE_ROXZONE_IN || state == STATE_ROXZONE_OUT) {
-            roxzoneSec = roxzoneSec + (now - app.mLastTransitionMs) / 1000;
+        // ── 3. transition_total_time — committed total + live partial ─────────
+        var transitionSec = app.mTransitionTotalMs / 1000;
+        if (state == STATE_TRANSITION_IN || state == STATE_TRANSITION_OUT) {
+            transitionSec = transitionSec + (now - app.mLastTransitionMs) / 1000;
         }
-        f = mFieldRoxzoneTotal;
+        f = mFieldTransitionTotal;
         if (f != null) {
-            f.setData(roxzoneSec);
+            f.setData(transitionSec);
         }
 
         // ── 4. station_elapsed — time in the current workout station ──────

@@ -2,7 +2,7 @@ import Toybox.Lang;
 import Toybox.System;
 import Toybox.WatchUi;
 
-// ─── HyroxPacerDelegate ───────────────────────────────────────────────────────
+// ─── HybridPacerDelegate ───────────────────────────────────────────────────────
 // Main InputDelegate for HybridPacer.
 //
 // BUTTON ARCHITECTURE (fr965) — Garmin-native model:
@@ -11,7 +11,7 @@ import Toybox.WatchUi;
 //                       Always returns true to block the system's native
 //                       activity pause behavior.
 //   onBack()          → BACK/LAP button (lower right). This is the "lap" button:
-//                       in race states (RUN..ROXZONE_OUT) it triggers an FSM
+//                       in race states (RUN..TRANSITION_OUT) it triggers an FSM
 //                       transition. In WARMUP/FINISH it returns false →
 //                       the runtime closes the app (the only safe exit path).
 //   onPreviousPage()  → UP button (upper left).  In STATION toggles the active athlete.
@@ -26,7 +26,7 @@ import Toybox.WatchUi;
 //   (onStartSelect() does NOT exist in the SDK — that was why START never responded.)
 //
 // RULES: no switch/case, no new in hot paths, no domain Dictionary.
-class HyroxPacerDelegate extends WatchUi.BehaviorDelegate {
+class HybridPacerDelegate extends WatchUi.BehaviorDelegate {
 
     function initialize() {
         BehaviorDelegate.initialize();

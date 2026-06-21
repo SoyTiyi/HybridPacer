@@ -1,26 +1,26 @@
 <fitContributions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
 
-    <!-- id MUST match FIT_ID_* constants in HyroxFitSession.mc -->
+    <!-- id MUST match FIT_ID_* constants in HybridFitSession.mc -->
 
-    <!-- 0: hyrox_cycle_id — Current race cycle (0-7) -->
+    <!-- 0: race_cycle_id — Current race cycle (0-7) -->
     <fitField id="0" displayInChart="true" sortOrder="0" precision="0"
         chartTitle="@Strings.fitCycleTitle"
         dataLabel="@Strings.fitCycleLabel"
         unitLabel="@Strings.fitCycleUnit"
         fillColor="#FF6600" />
 
-    <!-- 1: hyrox_fsm_state — FSM state (0=WARMUP…5=FINISH) -->
+    <!-- 1: race_fsm_state — FSM state (0=WARMUP…5=FINISH) -->
     <fitField id="1" displayInChart="true" sortOrder="1" precision="0"
         chartTitle="@Strings.fitStateTitle"
         dataLabel="@Strings.fitStateLabel"
         unitLabel="@Strings.fitStateUnit"
         fillColor="#0066FF" />
 
-    <!-- 2: roxzone_total_time — Cumulative time in RoxZone (s) -->
+    <!-- 2: transition_total_time — Cumulative time in Transition (s) -->
     <fitField id="2" displayInChart="true" sortOrder="2" precision="0"
-        chartTitle="@Strings.fitRoxzoneTitle"
-        dataLabel="@Strings.fitRoxzoneLabel"
-        unitLabel="@Strings.fitRoxzoneUnit"
+        chartTitle="@Strings.fitTransitionTitle"
+        dataLabel="@Strings.fitTransitionLabel"
+        unitLabel="@Strings.fitTransitionUnit"
         fillColor="#9900CC" />
 
     <!-- 3: station_elapsed — Elapsed time in the current workout station (s) -->

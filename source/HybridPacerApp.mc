@@ -5,18 +5,18 @@ import Toybox.System;
 import Toybox.WatchUi;
 
 // ─── FSM State Constants ─────────────────────────────────────────────────────
-// Immutable sequence: WARMUP → RUN → ROXZONE_IN → STATION → ROXZONE_OUT → FINISH
+// Immutable sequence: WARMUP → RUN → TRANSITION_IN → STATION → TRANSITION_OUT → FINISH
 // Used as integer indices for future Lang.Array lookups.
 // FORBIDDEN: switch/case — all transitions controlled by if/else if blocks.
 const STATE_WARMUP      as Number = 0;
 const STATE_RUN         as Number = 1;
-const STATE_ROXZONE_IN  as Number = 2;
+const STATE_TRANSITION_IN  as Number = 2;
 const STATE_STATION     as Number = 3;
-const STATE_ROXZONE_OUT as Number = 4;
+const STATE_TRANSITION_OUT as Number = 4;
 const STATE_FINISH      as Number = 5;
 
-// Total number of HYROX cycles (8 runs + 8 workout stations)
-const HYROX_TOTAL_CYCLES as Number = 8;
+// Total number of race cycles (8 runs + 8 workout stations)
+const RACE_TOTAL_CYCLES as Number = 8;
 
 // Immutable debounce window between state transitions (ms) — enforced in Phase 2
 const FSM_DEBOUNCE_MS as Number = 5000;
@@ -38,7 +38,7 @@ const TARGET_ACCEL_MAX_STEP  as Number = 30;   // Step cap (minutes) while accel
 const TARGET_QUICK_JUMP_MIN  as Number = 15;   // Long-press UP coarse jump (minutes)
 const TARGET_BADGE_MS        as Number = 900;   // How long the step badge stays visible (ms)
 
-class HyroxPacerApp extends Application.AppBase {
+class HybridPacerApp extends Application.AppBase {
 
     // ── FSM members ───────────────────────────────────────────────────────
     // Pre-assigned in initialize() to satisfy the memory rule:
@@ -46,7 +46,7 @@ class HyroxPacerApp extends Application.AppBase {
     var mFsmState        as Number = STATE_WARMUP;  // Initial state: warm-up
     var mLastTransitionMs as Number = 0;             // Timestamp of the last transition
                                                      // (base for the 5000 ms debounce in Phase 2)
-    var mHyroxCycle      as Number = 0;              // Current cycle (0..7), used by the UI in Phase 5
+    var mRaceCycle      as Number = 0;              // Current cycle (0..7), used by the UI in Phase 5
     var mActiveAthlete   as Boolean = true;          // Doubles: active relay athlete (Phase 2)
 
     // ── Pause / Resume (Phase 7) ───────────────────────────────────────────
@@ -61,8 +61,8 @@ class HyroxPacerApp extends Application.AppBase {
     // Updated by FSMController.attemptTransition() on each transition.
     // Only Number (ms) additions: zero dynamic allocations.
     var mWorkMs         as Number = 0;   // Total time in STATE_RUN (ms)
-    var mRestMs         as Number = 0;   // Total time in ROXZONE_IN + STATION + ROXZONE_OUT (ms)
-    var mRoxzoneTotalMs as Number = 0;   // Total time in ROXZONE_IN + ROXZONE_OUT only (ms)
+    var mRestMs         as Number = 0;   // Total time in TRANSITION_IN + STATION + TRANSITION_OUT (ms)
+    var mTransitionTotalMs as Number = 0;   // Total time in TRANSITION_IN + TRANSITION_OUT only (ms)
 
     // ── Target time and pacing engine output (Phase 4) ────────────────────
     var mTargetTimeMs         as Number = 5400000; // Overall goal (ms). Overwritten in initialize() from Storage (Phase 6)
@@ -93,7 +93,7 @@ class HyroxPacerApp extends Application.AppBase {
     // ── FIT session engine ────────────────────────────────────────────────
     // Owns the 7 FitContributor.Field handles; initializeFitFields() is called
     // from GpsSessionManager.startRecording() when the session is created.
-    var mFit as HyroxFitSession;
+    var mFit as HybridFitSession;
 
     // ── Predictive pacing engine (Phase 4) ────────────────────────────────
     // Computes computeDynamicPaceTarget and computePaceDeltaDeviation.
@@ -107,7 +107,7 @@ class HyroxPacerApp extends Application.AppBase {
         // is NOT activated here; that happens in onStart() when the runtime is ready.
         mGps    = new GpsSessionManager();
         mFsm    = new FSMController();
-        mFit    = new HyroxFitSession();
+        mFit    = new HybridFitSession();
         mPacing = new PacingEngine();
 
         // Load the persisted target time (minutes) with fallback + defensive clamp.
@@ -138,8 +138,8 @@ class HyroxPacerApp extends Application.AppBase {
     }
 
     // ── togglePause() (Phase 7) ────────────────────────────────────────────
-    // Toggles pause/resume ONLY in race states (RUN..ROXZONE_OUT).
-    // Called from HyroxPacerDelegate.onSelect() (START/STOP button).
+    // Toggles pause/resume ONLY in race states (RUN..TRANSITION_OUT).
+    // Called from HybridPacerDelegate.onSelect() (START/STOP button).
     // Timing: on resume, the time spent paused in this state is accumulated into
     // mPausedMs; FSMController and the view subtract it so the partial freezes and
     // continues where it left off (without inflating accumulators or the total).
@@ -202,16 +202,16 @@ class HyroxPacerApp extends Application.AppBase {
     }
 
     // Returns the app's initial view.
-    // HyroxPacerDelegate is the InputDelegate with full FSM since Phase 2.
-    // HyroxPacerView is the imperative three-band view (Phase 5).
+    // HybridPacerDelegate is the InputDelegate with full FSM since Phase 2.
+    // HybridPacerView is the imperative three-band view (Phase 5).
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new HyroxPacerView(), new HyroxPacerDelegate() ];
+        return [ new HybridPacerView(), new HybridPacerDelegate() ];
     }
 
 }
 
 // Global accessor for the app singleton — required so views and delegates
 // can access mFsmState, mGps, etc. without instantiating anything new.
-function getApp() as HyroxPacerApp {
-    return Application.getApp() as HyroxPacerApp;
+function getApp() as HybridPacerApp {
+    return Application.getApp() as HybridPacerApp;
 }

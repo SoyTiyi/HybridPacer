@@ -129,11 +129,11 @@ app.mWorkMs = app.mWorkMs + elapsed;
 
 ### 6. Single state owner
 
-All race state lives in `HyroxPacerApp`. Engine classes (`FSMController`, `PacingEngine`, `GpsSessionManager`, `HyroxFitSession`) are **stateless mutators** — they read and write through `getApp()`, never hold their own copies of race data.
+All race state lives in `HybridPacerApp`. Engine classes (`FSMController`, `PacingEngine`, `GpsSessionManager`, `HybridFitSession`) are **stateless mutators** — they read and write through `getApp()`, never hold their own copies of race data.
 
 ### 7. `FSMController` is the sole FSM mutator
 
-Do not mutate `mFsmState`, `mHyroxCycle`, `mLastTransitionMs`, `mWorkMs`, `mRestMs`, or `mRoxzoneTotalMs` from any file other than `FSMController.mc`.
+Do not mutate `mFsmState`, `mRaceCycle`, `mLastTransitionMs`, `mWorkMs`, `mRestMs`, or `mTransitionTotalMs` from any file other than `FSMController.mc`.
 
 ---
 
@@ -142,10 +142,10 @@ Do not mutate `mFsmState`, `mHyroxCycle`, `mLastTransitionMs`, `mWorkMs`, `mRest
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full component map and data-flow diagrams. A quick summary:
 
 ```
-HyroxPacerApp (singleton, owns all state)
+HybridPacerApp (singleton, owns all state)
 ├── FSMController    — state transitions, duration accounting
 ├── GpsSessionManager — GPS + FIT session lifecycle, EMA smoothing
-├── HyroxFitSession  — 7 FIT developer fields, 1 Hz writer
+├── HybridFitSession  — 7 FIT developer fields, 1 Hz writer
 └── PacingEngine     — dynamic pace target, pace delta, speed conversion
 ```
 
@@ -159,7 +159,7 @@ There is no automated test suite yet (Connect IQ SDK does not support unit testi
 2. **Simulate the full race** in the Garmin simulator (`monkeydo bin/HybridPacer.prg fr965`):
    - WARMUP screen shows target time and GPS status.
    - START transitions to RUN with pace display.
-   - BACK/LAP cycles through ROXZONE_IN → STATION → ROXZONE_OUT → RUN (×8 cycles).
+   - BACK/LAP cycles through TRANSITION_IN → STATION → TRANSITION_OUT → RUN (×8 cycles).
    - Pause/resume with START/STOP preserves all timers.
    - FINISH shows total time and W/R ratio.
    - Long-press UP in WARMUP opens the target-time menu; selection persists after restart.
@@ -185,10 +185,10 @@ There is no automated test suite yet (Connect IQ SDK does not support unit testi
 Use [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
-feat: add named station display for all 8 HYROX exercises
+feat: add named station display for all 8 race exercises
 fix: prevent pace display flicker when GPS fix is lost
 docs: expand pacing engine worked examples
-refactor: extract formatDuration helper from HyroxPacerView
+refactor: extract formatDuration helper from HybridPacerView
 ```
 
 ---

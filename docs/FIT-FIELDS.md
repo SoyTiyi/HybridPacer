@@ -16,15 +16,15 @@ HybridPacer writes **7 custom FIT developer fields** to every recorded activity 
 
 ## Overview
 
-FIT developer fields are written by `HyroxFitSession.tickFitMetrics()`, called from `GpsSessionManager.onPosition()` at ~1 Hz during an active recording session (from WARMUP→RUN until FINISH).
+FIT developer fields are written by `HybridFitSession.tickFitMetrics()`, called from `GpsSessionManager.onPosition()` at ~1 Hz during an active recording session (from WARMUP→RUN until FINISH).
 
-The field **IDs (0–6) are immutable** — they must stay in sync between `source/HyroxFitSession.mc` (`FIT_ID_*` constants) and `resources/fitcontributions.xml`. Changing an ID on a device that has a `.fit` file with the old ID will silently produce unreadable data.
+The field **IDs (0–6) are immutable** — they must stay in sync between `source/HybridFitSession.mc` (`FIT_ID_*` constants) and `resources/fitcontributions.xml`. Changing an ID on a device that has a `.fit` file with the old ID will silently produce unreadable data.
 
 ---
 
 ## Field Reference
 
-### Field 0 — `hyrox_cycle_id`
+### Field 0 — `race_cycle_id`
 
 | Attribute | Value |
 |---|---|
@@ -35,7 +35,7 @@ The field **IDs (0–6) are immutable** — they must stay in sync between `sour
 | **Chart** | Yes |
 | **Chart color** | `#FF6600` (orange) |
 
-**Description:** The current HYROX cycle number, 0-indexed (0 = first run, 7 = eighth run). Advances after each ROXZONE_OUT→RUN transition.
+**Description:** The current race cycle number, 0-indexed (0 = first run, 7 = eighth run). Advances after each TRANSITION_OUT→RUN transition.
 
 **Values:** 0, 1, 2, 3, 4, 5, 6, 7. Stays at 7 after the last run completes.
 
@@ -43,7 +43,7 @@ The field **IDs (0–6) are immutable** — they must stay in sync between `sour
 
 ---
 
-### Field 1 — `hyrox_fsm_state`
+### Field 1 — `race_fsm_state`
 
 | Attribute | Value |
 |---|---|
@@ -62,9 +62,9 @@ The field **IDs (0–6) are immutable** — they must stay in sync between `sour
 |---|---|---|
 | 0 | WARMUP | Pre-race warm-up (not recorded — FIT session starts at RUN) |
 | 1 | RUN | Actively running a 1 km segment |
-| 2 | ROXZONE_IN | Entering transition corridor toward the station |
+| 2 | TRANSITION_IN | Entering transition corridor toward the station |
 | 3 | STATION | Performing the functional workout at the station |
-| 4 | ROXZONE_OUT | Exiting transition corridor back toward the next run |
+| 4 | TRANSITION_OUT | Exiting transition corridor back toward the next run |
 | 5 | FINISH | Race complete |
 
 > Note: because the FIT session starts on WARMUP→RUN transition, the recording never contains state 0 (WARMUP). The first record always shows state 1.
@@ -73,23 +73,23 @@ The field **IDs (0–6) are immutable** — they must stay in sync between `sour
 
 ---
 
-### Field 2 — `roxzone_total_time`
+### Field 2 — `transition_total_time`
 
 | Attribute | Value |
 |---|---|
 | **ID** | 2 |
-| **Constant** | `FIT_ID_ROXZONE_TOTAL` |
+| **Constant** | `FIT_ID_TRANSITION_TOTAL` |
 | **Data type** | UINT32 |
 | **Unit** | seconds |
 | **Chart** | Yes |
 | **Chart color** | `#9900CC` (purple) |
 
-**Description:** Cumulative time spent in **ROXZONE_IN + ROXZONE_OUT** across all completed cycles, plus the live partial of the current RoxZone segment if currently in one.
+**Description:** Cumulative time spent in **TRANSITION_IN + TRANSITION_OUT** across all completed cycles, plus the live partial of the current Transition segment if currently in one.
 
 **Formula written to FIT:**
 ```
-value = mRoxzoneTotalMs / 1000
-// if currently in ROXZONE_IN or ROXZONE_OUT:
+value = mTransitionTotalMs / 1000
+// if currently in TRANSITION_IN or TRANSITION_OUT:
 value += (now − mLastTransitionMs) / 1000
 ```
 
@@ -196,9 +196,9 @@ else:
     value = 0.0
 ```
 
-**Interpretation:** A ratio of `2.5` means the athlete spent 2.5× more time running than resting. For a well-paced HYROX race with ~3 min stations and ~6 min per km, expect values in the range of 1.5–3.0.
+**Interpretation:** A ratio of `2.5` means the athlete spent 2.5× more time running than resting. For a well-paced hybrid race with ~3 min stations and ~6 min per km, expect values in the range of 1.5–3.0.
 
-**Usefulness:** A single number that captures the running-to-rest balance for the entire race up to that point. The chart shape shows how this ratio evolves — it typically rises during RUN and drops during STATION/ROXZONE.
+**Usefulness:** A single number that captures the running-to-rest balance for the entire race up to that point. The chart shape shows how this ratio evolves — it typically rises during RUN and drops during STATION/TRANSITION.
 
 ---
 
@@ -220,13 +220,13 @@ For more detailed analysis, export the `.fit` file from Garmin Connect and open 
 
 ### Field initialization
 
-All 7 fields are registered in `HyroxFitSession.initializeFitFields(session)`, called from `GpsSessionManager.startRecording()` immediately before `session.start()`. Each field is created with `session.createField(name, id, type, options)`.
+All 7 fields are registered in `HybridFitSession.initializeFitFields(session)`, called from `GpsSessionManager.startRecording()` immediately before `session.start()`. Each field is created with `session.createField(name, id, type, options)`.
 
 The field ID passed to `createField` **must exactly match** the `id` attribute in `fitcontributions.xml`. A mismatch causes the chart metadata (title, label, color) to be disassociated from the data.
 
 ### Write guard
 
-`HyroxFitSession.mIsInitialized` is `false` until `initializeFitFields()` completes. `tickFitMetrics()` returns immediately if `!mIsInitialized`, making it a no-op before recording starts or after it ends.
+`HybridFitSession.mIsInitialized` is `false` until `initializeFitFields()` completes. `tickFitMetrics()` returns immediately if `!mIsInitialized`, making it a no-op before recording starts or after it ends.
 
 ### Hot-path compliance
 
@@ -237,7 +237,7 @@ The field ID passed to `createField` **must exactly match** the `id` attribute i
 ## Adding or Modifying Fields
 
 1. Add the new field definition to `resources/fitcontributions.xml` with a new unique `id` (use the next sequential integer).
-2. Add a `FIT_ID_*` constant in `source/HyroxFitSession.mc` matching that `id`.
+2. Add a `FIT_ID_*` constant in `source/HybridFitSession.mc` matching that `id`.
 3. Declare a nullable field handle member (`var mFieldNewName as FitContributor.Field? = null`).
 4. In `initializeFitFields()`, create the field with `session.createField(...)`, call `f.setData(initial)`, and assign to the member.
 5. In `tickFitMetrics()`, add a null-guarded write: `var f = mFieldNewName; if (f != null) { f.setData(value); }`.

@@ -55,7 +55,7 @@ class GpsSessionManager {
     }
 
     // ── start() ───────────────────────────────────────────────────────────
-    // Called from HyroxPacerApp.onStart(). Enables continuous GPS only.
+    // Called from HybridPacerApp.onStart(). Enables continuous GPS only.
     // The FIT session is NOT created here; that happens in startRecording() when
     // the athlete confirms race start (WARMUP → RUN).
     function start() as Void {
@@ -65,11 +65,11 @@ class GpsSessionManager {
 
     // ── startRecording() ──────────────────────────────────────────────────
     // Called from FSMController.attemptTransition() on WARMUP→RUN.
-    // Creates the FIT session, registers the 7 HYROX fields, and starts recording.
+    // Creates the FIT session, registers the 7 race FIT fields, and starts recording.
     // typecheck=3 pattern: var s = mSession; if (s != null) to narrow the type.
     function startRecording() as Void {
         mSession = ActivityRecording.createSession({
-            :name     => "Hyrox",
+            :name     => "HybridPacer",
             :sport    => Activity.SPORT_RUNNING,
             :subSport => Activity.SUB_SPORT_GENERIC
         });
@@ -120,8 +120,8 @@ class GpsSessionManager {
     // ── addLap() ──────────────────────────────────────────────────────────
     // Inserts a native lap event (split) into the FIT file.
     // Called from FSMController.markLap() at the boundaries:
-    //   - RUN(1) → ROXZONE_IN(2): start of transition corridor
-    //   - ROXZONE_OUT(4) → RUN(1): return to running
+    //   - RUN(1) → TRANSITION_IN(2): start of transition corridor
+    //   - TRANSITION_OUT(4) → RUN(1): return to running
     function addLap() as Void {
         var s = mSession;
         if (s != null && s.isRecording()) {
@@ -169,7 +169,7 @@ class GpsSessionManager {
     }
 
     // ── stop() ────────────────────────────────────────────────────────────
-    // Called from HyroxPacerApp.onStop(). Safety net: saves the session if it is
+    // Called from HybridPacerApp.onStop(). Safety net: saves the session if it is
     // still alive (e.g. forced exit before FINISH) and releases GPS.
     function stop() as Void {
         var s = mSession;

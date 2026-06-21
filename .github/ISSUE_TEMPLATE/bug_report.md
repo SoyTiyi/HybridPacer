@@ -37,7 +37,7 @@ What actually happened.
 
 - [ ] Happened during WARMUP
 - [ ] Happened during RUN
-- [ ] Happened during ROXZONE
+- [ ] Happened during TRANSITION
 - [ ] Happened during STATION
 - [ ] Happened at FINISH
 - [ ] Happened while PAUSED
