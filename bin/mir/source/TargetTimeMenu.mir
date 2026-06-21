@@ -1,0 +1,237 @@
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Application,1,14,25]; @symbol_importdef<2> = [Storage,1,26,33]; ]
+import Toybox.Application.Storage;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 13; @symbol_functiondef = [buildTargetTimeMenu,13,9,28]; @symbol_param<0> = [currentMinutes,13,29,43]; @symbol_param<0>_type<0> = [Number,13,47,53]; @symbol_return<0> = [WatchUi,13,58,65]; @symbol_return<1> = [Menu2,13,66,71]; ]
+function buildTargetTimeMenu(currentMinutes as Number) as WatchUi.Menu2 {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_13_72_28_0_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 14 4 ]
+    [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_13_72_28_0_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_13_72_28_0_stop" ]
+    %menu.1 = local;
+    symbol [ menu %menu.1 14 8 12 ];
+    symbol [ WatchUi %tmp.3 14 19 26 ];
+    %tmp.3 = getm $.Toybox.WatchUi;
+    symbol [ Menu2 %tmp.4 14 27 32 ];
+    %tmp.4 = getv function ? %tmp.3 :Menu2;
+    %tmp.5 = newd 1;
+    %tmp.7 = const :title;
+    symbol [ title %tmp.7 14 36 41 const ];
+    symbol [ WatchUi %tmp.8 14 45 52 ];
+    %tmp.8 = getm $.Toybox.WatchUi;
+    symbol [ loadResource %tmp.9 14 53 65 ];
+    %tmp.9 = getv function %tmp.8 :loadResource;
+    symbol [ Rez %tmp.11 14 66 69 ];
+    %tmp.11 = getv ? :Rez;
+    symbol [ Strings %tmp.12 14 70 77 ];
+    %tmp.12 = getv %tmp.11 :Strings;
+    symbol [ target_time_title %tmp.13 14 78 95 ];
+    %tmp.13 = getv %tmp.12 :target_time_title;
+    %tmp.14 = invoke %tmp.8 %tmp.9(%tmp.13);
+    %tmp.15 = as %tmp.14 String;
+    symbol [ String %tmp.15 14 100 106 ];
+    %tmp.16 = dup %tmp.5;
+    %tmp.17 = aputv %tmp.16 %tmp.7 %tmp.15;
+    %tmp.1 = newc %tmp.4 (%tmp.17);
+    lputv %menu.1 %tmp.1;
+    symbol [ menu %menu.1 14 8 12 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 16 4 ]
+    for @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_test @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_incr @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_init:
+    [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_begin" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_end" ]
+    %m.2 = local;
+    symbol [ m %m.2 16 13 14 ];
+    symbol [ TARGET_MIN_MINUTES %tmp.19 16 17 35 ];
+    %tmp.19 = getv ? :TARGET_MIN_MINUTES;
+    lputv %m.2 %tmp.19;
+    symbol [ m %m.2 16 13 14 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_test:
+    %tmp.20 = lgetv %m.2;
+    symbol [ m %tmp.20 16 37 38 ];
+    symbol [ TARGET_MAX_MINUTES %tmp.22 16 42 60 ];
+    %tmp.22 = getv ? :TARGET_MAX_MINUTES;
+    %tmp.23 = lte %tmp.20 %tmp.22;
+    bf %tmp.23 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_begin:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_88_18_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 17 8 ]
+    %tmp.24 = lgetv %menu.1;
+    symbol [ menu %tmp.24 17 8 12 ];
+    symbol [ addItem %tmp.25 17 13 20 ];
+    %tmp.25 = getv function %tmp.24 :addItem;
+    symbol [ WatchUi %tmp.28 17 25 32 ];
+    %tmp.28 = getm $.Toybox.WatchUi;
+    symbol [ MenuItem %tmp.29 17 33 41 ];
+    %tmp.29 = getv function ? %tmp.28 :MenuItem;
+    %tmp.30 = lgetv %m.2;
+    symbol [ m %tmp.30 17 42 43 ];
+    symbol [ toString %tmp.31 17 44 52 ];
+    %tmp.31 = getv function %tmp.30 :toString;
+    %tmp.32 = invoke %tmp.30 %tmp.31();
+    %tmp.33 = " min";
+    %tmp.34 = add %tmp.32 %tmp.33;
+    %tmp.35 = null;
+    %tmp.36 = lgetv %m.2;
+    symbol [ m %tmp.36 17 71 72 ];
+    %tmp.37 = null;
+    %tmp.26 = newc %tmp.29 (%tmp.34, %tmp.35, %tmp.36, %tmp.37);
+    invoke %tmp.24 %tmp.25(%tmp.26);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_88_18_4_stop:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_incr:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 16 ]
+    %tmp.38 = lgetv %m.2;
+    symbol [ m %tmp.38 16 62 63 ];
+    symbol [ TARGET_STEP_MINUTES %tmp.40 16 67 86 ];
+    %tmp.40 = getv ? :TARGET_STEP_MINUTES;
+    %tmp.41 = add %tmp.38 %tmp.40;
+    lputv %m.2 %tmp.41;
+    symbol [ m %m.2 16 62 63 ];
+    goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_test;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_16_4_18_4_for_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 21 4 ]
+    [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_13_72_28_0_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_13_72_28_0_stop" ]
+    %focusIndex.3 = local;
+    symbol [ focusIndex %focusIndex.3 21 8 18 ];
+    %tmp.42 = lgetv %currentMinutes;
+    symbol [ currentMinutes %tmp.42 21 22 36 ];
+    symbol [ TARGET_MIN_MINUTES %tmp.44 21 39 57 ];
+    %tmp.44 = getv ? :TARGET_MIN_MINUTES;
+    %tmp.45 = sub %tmp.42 %tmp.44;
+    symbol [ TARGET_STEP_MINUTES %tmp.47 21 61 80 ];
+    %tmp.47 = getv ? :TARGET_STEP_MINUTES;
+    %tmp.48 = div %tmp.45 %tmp.47;
+    lputv %focusIndex.3 %tmp.48;
+    symbol [ focusIndex %focusIndex.3 21 8 18 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 22 4 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_22_4_24_4_if_stmt:
+    %tmp.49 = lgetv %focusIndex.3;
+    symbol [ focusIndex %tmp.49 22 8 18 ];
+    %tmp.50 = 0;
+    %tmp.51 = lt %tmp.49 %tmp.50;
+    bf %tmp.51 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_22_4_24_4_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_22_4_24_4_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_22_24_24_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 23 8 ]
+    %tmp.52 = 0;
+    lputv %focusIndex.3 %tmp.52;
+    symbol [ focusIndex %focusIndex.3 23 8 18 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_22_24_24_4_stop:
+    goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_22_4_24_4_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_22_4_24_4_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 25 4 ]
+    %tmp.53 = lgetv %menu.1;
+    symbol [ menu %tmp.53 25 4 8 ];
+    symbol [ setFocus %tmp.54 25 9 17 ];
+    %tmp.54 = getv function %tmp.53 :setFocus;
+    %tmp.55 = lgetv %focusIndex.3;
+    symbol [ focusIndex %tmp.55 25 18 28 ];
+    invoke %tmp.53 %tmp.54(%tmp.55);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 27 4 ]
+    %tmp.56 = lgetv %menu.1;
+    symbol [ menu %tmp.56 27 11 15 ];
+    ret %tmp.56;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_13_72_28_0_stop:
+}
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 31; @symbol_classdef = [TargetTimeMenuDelegate,31,6,28]; @symbol_extends<0> = [WatchUi,31,37,44]; @symbol_extends<1> = [Menu2InputDelegate,31,45,63]; ]
+class TargetTimeMenuDelegate extends WatchUi.Menu2InputDelegate {
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 31; ]
+    <init> {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 31; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 33; @symbol_functiondef = [initialize,33,13,23]; ]
+    function initialize() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_33_26_35_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 34 8 ]
+        symbol [ Menu2InputDelegate %tmp.2 34 8 26 ];
+        %tmp.2 = getv ? :Menu2InputDelegate;
+        symbol [ initialize %tmp.3 34 27 37 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_33_26_35_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 37; @symbol_functiondef = [onSelect,37,13,21]; @symbol_param<0> = [item,37,22,26]; @symbol_param<0>_type<0> = [WatchUi,37,30,37]; @symbol_param<0>_type<1> = [MenuItem,37,38,46]; ]
+    function onSelect(item as WatchUi.MenuItem) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_37_56_46_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 38 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_37_56_46_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_37_56_46_4_stop" ]
+        %minutes.1 = local;
+        symbol [ minutes %minutes.1 38 12 19 ];
+        %tmp.1 = lgetv %item;
+        symbol [ item %tmp.1 38 22 26 ];
+        symbol [ getId %tmp.2 38 27 32 ];
+        %tmp.2 = getv function %tmp.1 :getId;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %minutes.1 %tmp.3;
+        symbol [ minutes %minutes.1 38 12 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 39 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_39_8_43_8_if_stmt:
+        %tmp.4 = lgetv %minutes.1;
+        symbol [ minutes %tmp.4 39 12 19 ];
+        symbol [ Lang %tmp.5 39 31 35 ];
+        %tmp.5 = getm $.Toybox.Lang;
+        symbol [ Number %tmp.6 39 36 42 ];
+        %tmp.6 = getv %tmp.5 :Number;
+        %tmp.7 = isa %tmp.4 %tmp.6;
+        bf %tmp.7 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_39_8_43_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_39_8_43_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_39_44_43_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 40 12 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_39_44_43_8_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_39_44_43_8_stop" ]
+        %app.2 = local;
+        symbol [ app %app.2 40 16 19 ];
+        %tmp.8 = self;
+        symbol [ getApp %tmp.9 40 22 28 ];
+        %tmp.9 = getv function %tmp.8 :getApp;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        lputv %app.2 %tmp.10;
+        symbol [ app %app.2 40 16 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 41 12 ]
+        %tmp.11 = lgetv %app.2;
+        symbol [ app %tmp.11 41 12 15 ];
+        %tmp.12 = lgetv %minutes.1;
+        symbol [ minutes %tmp.12 41 32 39 ];
+        %tmp.13 = as %tmp.12 { (Lang.Number) };
+        %tmp.14 = 60000;
+        %tmp.15 = mul %tmp.13 %tmp.14;
+        symbol [ mTargetTimeMs ? 41 16 29 ];
+        putv %tmp.11 :mTargetTimeMs %tmp.15;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 42 12 ]
+        symbol [ Storage %tmp.16 42 12 19 ];
+        %tmp.16 = getm $.Toybox.Application.Storage;
+        symbol [ setValue %tmp.17 42 20 28 ];
+        %tmp.17 = getv function %tmp.16 :setValue;
+        symbol [ STORAGE_KEY_TARGET_MIN %tmp.19 42 29 51 ];
+        %tmp.19 = getv ? :STORAGE_KEY_TARGET_MIN;
+        %tmp.20 = lgetv %minutes.1;
+        symbol [ minutes %tmp.20 42 53 60 ];
+        %tmp.21 = as %tmp.20 { (Lang.Number) };
+        invoke %tmp.16 %tmp.17(%tmp.19, %tmp.21);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_39_44_43_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_39_8_43_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_39_8_43_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 44 8 ]
+        symbol [ WatchUi %tmp.22 44 8 15 ];
+        %tmp.22 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.23 44 16 23 ];
+        %tmp.23 = getv function %tmp.22 :popView;
+        symbol [ WatchUi %tmp.24 44 24 31 ];
+        %tmp.24 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.25 44 32 42 ];
+        %tmp.25 = getv %tmp.24 :SLIDE_DOWN;
+        invoke %tmp.22 %tmp.23(%tmp.25);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc" 45 8 ]
+        symbol [ WatchUi %tmp.26 45 8 15 ];
+        %tmp.26 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.27 45 16 29 ];
+        %tmp.27 = getv function %tmp.26 :requestUpdate;
+        invoke %tmp.26 %tmp.27();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_TargetTimeMenu_mc_37_56_46_4_stop:
+    }
+}
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/TargetTimeMenu.mc"; @line = 1; ]
+<init> {
+}

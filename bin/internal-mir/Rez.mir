@@ -1,0 +1,1630 @@
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [WatchUi,2,13,20]; ]
+using Toybox.WatchUi;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [WatchUi,3,13,20]; @symbol_usingAlias = [Ui,3,24,26]; ]
+using Toybox.WatchUi as :Ui;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; ]
+using Toybox.Graphics;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 5; @symbol_usingdef<0> = [Toybox,5,6,12]; @symbol_usingdef<1> = [Graphics,5,13,21]; @symbol_usingAlias = [Gfx,5,25,28]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 7; @symbol_moduledef = [Rez,7,7,10]; ]
+module Rez {
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 8; @symbol_moduledef = [Drawables,8,11,20]; ]
+    module Drawables {
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 8; ]
+        <init> {
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 9; @position = 27; initialized = true; @symbol_vardef = [LauncherIcon,9,27,39]; @symbol_type<0> = [ResourceId,9,43,53]; ]
+        var LauncherIcon as ResourceId;
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 12; @symbol_moduledef = [Strings,12,11,18]; ]
+    module Strings {
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 12; ]
+        <init> {
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 13; @position = 27; initialized = true; @symbol_vardef = [fitCycleTitle,13,27,40]; @symbol_type<0> = [ResourceId,13,44,54]; ]
+        var fitCycleTitle as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 14; @position = 27; initialized = true; @symbol_vardef = [fitPaceLabel,14,27,39]; @symbol_type<0> = [ResourceId,14,43,53]; ]
+        var fitPaceLabel as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 15; @position = 27; initialized = true; @symbol_vardef = [fitRoxzoneUnit,15,27,41]; @symbol_type<0> = [ResourceId,15,45,55]; ]
+        var fitRoxzoneUnit as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 16; @position = 27; initialized = true; @symbol_vardef = [fitStationLabel,16,27,42]; @symbol_type<0> = [ResourceId,16,46,56]; ]
+        var fitStationLabel as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 17; @position = 27; initialized = true; @symbol_vardef = [fitWorkRestUnit,17,27,42]; @symbol_type<0> = [ResourceId,17,46,56]; ]
+        var fitWorkRestUnit as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 18; @position = 27; initialized = true; @symbol_vardef = [fitWorkRestTitle,18,27,43]; @symbol_type<0> = [ResourceId,18,47,57]; ]
+        var fitWorkRestTitle as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 19; @position = 27; initialized = true; @symbol_vardef = [fitCycleUnit,19,27,39]; @symbol_type<0> = [ResourceId,19,43,53]; ]
+        var fitCycleUnit as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 20; @position = 27; initialized = true; @symbol_vardef = [target_time_title,20,27,44]; @symbol_type<0> = [ResourceId,20,48,58]; ]
+        var target_time_title as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 21; @position = 27; initialized = true; @symbol_vardef = [fitStationUnit,21,27,41]; @symbol_type<0> = [ResourceId,21,45,55]; ]
+        var fitStationUnit as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 22; @position = 27; initialized = true; @symbol_vardef = [fitPaceUnit,22,27,38]; @symbol_type<0> = [ResourceId,22,42,52]; ]
+        var fitPaceUnit as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 23; @position = 27; initialized = true; @symbol_vardef = [fitStateTitle,23,27,40]; @symbol_type<0> = [ResourceId,23,44,54]; ]
+        var fitStateTitle as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 24; @position = 27; initialized = true; @symbol_vardef = [fitStateLabel,24,27,40]; @symbol_type<0> = [ResourceId,24,44,54]; ]
+        var fitStateLabel as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 25; @position = 27; initialized = true; @symbol_vardef = [fitAthleteUnit,25,27,41]; @symbol_type<0> = [ResourceId,25,45,55]; ]
+        var fitAthleteUnit as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 26; @position = 27; initialized = true; @symbol_vardef = [fitAthleteTitle,26,27,42]; @symbol_type<0> = [ResourceId,26,46,56]; ]
+        var fitAthleteTitle as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 27; @position = 27; initialized = true; @symbol_vardef = [AppName,27,27,34]; @symbol_type<0> = [ResourceId,27,38,48]; ]
+        var AppName as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 28; @position = 27; initialized = true; @symbol_vardef = [fitWorkRestLabel,28,27,43]; @symbol_type<0> = [ResourceId,28,47,57]; ]
+        var fitWorkRestLabel as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 29; @position = 27; initialized = true; @symbol_vardef = [fitPaceTitle,29,27,39]; @symbol_type<0> = [ResourceId,29,43,53]; ]
+        var fitPaceTitle as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 30; @position = 27; initialized = true; @symbol_vardef = [fitCycleLabel,30,27,40]; @symbol_type<0> = [ResourceId,30,44,54]; ]
+        var fitCycleLabel as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 31; @position = 27; initialized = true; @symbol_vardef = [fitRoxzoneTitle,31,27,42]; @symbol_type<0> = [ResourceId,31,46,56]; ]
+        var fitRoxzoneTitle as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 32; @position = 27; initialized = true; @symbol_vardef = [fitAthleteLabel,32,27,42]; @symbol_type<0> = [ResourceId,32,46,56]; ]
+        var fitAthleteLabel as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 33; @position = 27; initialized = true; @symbol_vardef = [fitRoxzoneLabel,33,27,42]; @symbol_type<0> = [ResourceId,33,46,56]; ]
+        var fitRoxzoneLabel as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 34; @position = 27; initialized = true; @symbol_vardef = [fitStationTitle,34,27,42]; @symbol_type<0> = [ResourceId,34,46,56]; ]
+        var fitStationTitle as ResourceId;
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 35; @position = 27; initialized = true; @symbol_vardef = [fitStateUnit,35,27,39]; @symbol_type<0> = [ResourceId,35,43,53]; ]
+        var fitStateUnit as ResourceId;
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 38; @symbol_moduledef = [Styles,38,11,17]; ]
+    module Styles {
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 38; ]
+        <init> {
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 39; @symbol_moduledef = [prompt_font_enhanced_readability__body_with_title,39,15,64]; ]
+        module prompt_font_enhanced_readability__body_with_title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 39; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 40; @position = 18; @symbol_constdef = [exclude,40,18,25]; @symbol_type<0> = [Boolean,40,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 43; @symbol_moduledef = [system_size__menu_header,43,15,39]; ]
+        module system_size__menu_header {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 43; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 44; @position = 18; @symbol_constdef = [width,44,18,23]; @symbol_type<0> = [Number,44,27,33]; ]
+            const width as Number = 454;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 45; @position = 18; @symbol_constdef = [height,45,18,24]; @symbol_type<0> = [Number,45,28,34]; ]
+            const height as Number = 172;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 48; @symbol_moduledef = [system_loc__hint_button_left_bottom,48,15,50]; ]
+        module system_loc__hint_button_left_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 48; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 49; @position = 18; @symbol_constdef = [x,49,18,19]; @symbol_type<0> = [Number,49,23,29]; ]
+            const x as Number = 16;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 50; @position = 18; @symbol_constdef = [y,50,18,19]; @symbol_type<0> = [Number,50,23,29]; ]
+            const y as Number = 284;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 53; @symbol_moduledef = [prompt_font_enhanced_readability__body_no_title,53,15,62]; ]
+        module prompt_font_enhanced_readability__body_no_title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 53; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 54; @position = 18; @symbol_constdef = [exclude,54,18,25]; @symbol_type<0> = [Boolean,54,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 57; @symbol_moduledef = [prompt_loc__body_no_title,57,15,40]; ]
+        module prompt_loc__body_no_title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 57; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 58; @position = 18; @symbol_constdef = [x,58,18,19]; @symbol_type<0> = [Number,58,23,29]; ]
+            const x as Number = 76;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 59; @position = 18; @symbol_constdef = [y,59,18,19]; @symbol_type<0> = [Number,59,23,29]; ]
+            const y as Number = 70;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 62; @symbol_moduledef = [system_icon_dark__about,62,15,38]; ]
+        module system_icon_dark__about {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 62; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 63; @position = 18; @symbol_constdef = [filename,63,18,26]; @symbol_type<0> = [String,63,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__about.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 64; @position = 18; @symbol_constdef = [compress,64,18,26]; @symbol_type<0> = [String,64,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 65; @position = 18; @symbol_constdef = [dithering,65,18,27]; @symbol_type<0> = [String,65,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 66; @position = 18; @symbol_constdef = [automaticPalette,66,18,34]; @symbol_type<0> = [String,66,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 67; @position = 18; @symbol_constdef = [packingFormat,67,18,31]; @symbol_type<0> = [String,67,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 70; @symbol_moduledef = [system_icon_light__question,70,15,42]; ]
+        module system_icon_light__question {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 70; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 71; @position = 18; @symbol_constdef = [filename,71,18,26]; @symbol_type<0> = [String,71,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__question.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 72; @position = 18; @symbol_constdef = [compress,72,18,26]; @symbol_type<0> = [String,72,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 73; @position = 18; @symbol_constdef = [dithering,73,18,27]; @symbol_type<0> = [String,73,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 74; @position = 18; @symbol_constdef = [automaticPalette,74,18,34]; @symbol_type<0> = [String,74,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 75; @position = 18; @symbol_constdef = [packingFormat,75,18,31]; @symbol_type<0> = [String,75,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 78; @symbol_moduledef = [system_loc__hint_button_left_top,78,15,47]; ]
+        module system_loc__hint_button_left_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 78; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 79; @position = 18; @symbol_constdef = [exclude,79,18,25]; @symbol_type<0> = [Boolean,79,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 82; @symbol_moduledef = [prompt_font__title,82,15,33]; ]
+        module prompt_font__title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 82; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 83 18 ]
+                symbol [ Graphics %tmp.1 83 34 42 ];
+                %tmp.1 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.2 83 43 62 ];
+                %tmp.2 = getv %tmp.1 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.3 83 63 71 ];
+                %tmp.3 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.4 83 72 92 ];
+                %tmp.4 = getv %tmp.3 :TEXT_JUSTIFY_VCENTER;
+                %tmp.5 = bitor %tmp.2 %tmp.4;
+                putv self :justification %tmp.5;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 84 18 ]
+                symbol [ Graphics %tmp.6 84 25 33 ];
+                %tmp.6 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.7 84 34 43 ];
+                %tmp.7 = getv %tmp.6 :FONT_TINY;
+                putv self :font %tmp.7;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 83; @position = 18; @symbol_constdef = [justification,83,18,31]; ]
+            const justification;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 84; @position = 18; @symbol_constdef = [font,84,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 87; @symbol_moduledef = [system_icon_dark__discard,87,15,40]; ]
+        module system_icon_dark__discard {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 87; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 88; @position = 18; @symbol_constdef = [filename,88,18,26]; @symbol_type<0> = [String,88,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__discard.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 89; @position = 18; @symbol_constdef = [compress,89,18,26]; @symbol_type<0> = [String,89,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 90; @position = 18; @symbol_constdef = [dithering,90,18,27]; @symbol_type<0> = [String,90,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 91; @position = 18; @symbol_constdef = [automaticPalette,91,18,34]; @symbol_type<0> = [String,91,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 92; @position = 18; @symbol_constdef = [packingFormat,92,18,31]; @symbol_type<0> = [String,92,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 95; @symbol_moduledef = [system_size__menu_item,95,15,37]; ]
+        module system_size__menu_item {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 95; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 96; @position = 18; @symbol_constdef = [width,96,18,23]; @symbol_type<0> = [Number,96,27,33]; ]
+            const width as Number = 454;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 97; @position = 18; @symbol_constdef = [height,97,18,24]; @symbol_type<0> = [Number,97,28,34]; ]
+            const height as Number = 108;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 100; @symbol_moduledef = [system_color_dark__text,100,15,38]; ]
+        module system_color_dark__text {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 100; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 102 18 ]
+                symbol [ Graphics %tmp.8 102 31 39 ];
+                %tmp.8 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.9 102 40 57 ];
+                %tmp.9 = getv %tmp.8 :COLOR_TRANSPARENT;
+                putv self :background %tmp.9;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 101; @position = 18; @symbol_constdef = [color,101,18,23]; @symbol_type<0> = [Number,101,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 102; @position = 18; @symbol_constdef = [background,102,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 105; @symbol_moduledef = [system_icon_destructive__discard,105,15,47]; ]
+        module system_icon_destructive__discard {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 105; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 106; @position = 18; @symbol_constdef = [filename,106,18,26]; @symbol_type<0> = [String,106,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_destructive__discard.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 107; @position = 18; @symbol_constdef = [dithering,107,18,27]; @symbol_type<0> = [String,107,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 108; @position = 18; @symbol_constdef = [packingFormat,108,18,31]; @symbol_type<0> = [String,108,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 111; @symbol_moduledef = [system_icon_dark__hint_action_menu,111,15,49]; ]
+        module system_icon_dark__hint_action_menu {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 111; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 112; @position = 18; @symbol_constdef = [filename,112,18,26]; @symbol_type<0> = [String,112,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__hint_button_right_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 113; @position = 18; @symbol_constdef = [dithering,113,18,27]; @symbol_type<0> = [String,113,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 114; @position = 18; @symbol_constdef = [packingFormat,114,18,31]; @symbol_type<0> = [String,114,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 117; @symbol_moduledef = [prompt_size__title,117,15,33]; ]
+        module prompt_size__title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 117; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 118; @position = 18; @symbol_constdef = [width,118,18,23]; @symbol_type<0> = [Number,118,27,33]; ]
+            const width as Number = 287;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 119; @position = 18; @symbol_constdef = [height,119,18,24]; @symbol_type<0> = [Number,119,28,34]; ]
+            const height as Number = 97;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 122; @symbol_moduledef = [confirmation_font__body,122,15,38]; ]
+        module confirmation_font__body {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 122; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 123 18 ]
+                symbol [ Graphics %tmp.10 123 34 42 ];
+                %tmp.10 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.11 123 43 62 ];
+                %tmp.11 = getv %tmp.10 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.12 123 63 71 ];
+                %tmp.12 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.13 123 72 92 ];
+                %tmp.13 = getv %tmp.12 :TEXT_JUSTIFY_VCENTER;
+                %tmp.14 = bitor %tmp.11 %tmp.13;
+                putv self :justification %tmp.14;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 124 18 ]
+                symbol [ Graphics %tmp.15 124 25 33 ];
+                %tmp.15 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.16 124 34 43 ];
+                %tmp.16 = getv %tmp.15 :FONT_TINY;
+                putv self :font %tmp.16;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 123; @position = 18; @symbol_constdef = [justification,123,18,31]; ]
+            const justification;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 124; @position = 18; @symbol_constdef = [font,124,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 127; @symbol_moduledef = [system_color_dark__background,127,15,44]; ]
+        module system_color_dark__background {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 127; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 128; @position = 18; @symbol_constdef = [color,128,18,23]; @symbol_type<0> = [Number,128,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 129; @position = 18; @symbol_constdef = [background,129,18,28]; @symbol_type<0> = [Number,129,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 132; @symbol_moduledef = [system_icon_destructive__hint_button_left_top,132,15,60]; ]
+        module system_icon_destructive__hint_button_left_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 132; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 133; @position = 18; @symbol_constdef = [filename,133,18,26]; @symbol_type<0> = [String,133,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_destructive__hint_button_left_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 134; @position = 18; @symbol_constdef = [dithering,134,18,27]; @symbol_type<0> = [String,134,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 135; @position = 18; @symbol_constdef = [packingFormat,135,18,31]; @symbol_type<0> = [String,135,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 138; @symbol_moduledef = [system_size__launch_icon,138,15,39]; ]
+        module system_size__launch_icon {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 138; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 139; @position = 18; @symbol_constdef = [scaleX,139,18,24]; @symbol_type<0> = [Number,139,28,34]; ]
+            const scaleX as Number = 65;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 140; @position = 18; @symbol_constdef = [scaleY,140,18,24]; @symbol_type<0> = [Number,140,28,34]; ]
+            const scaleY as Number = 65;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 141; @position = 18; @symbol_constdef = [scaleRelativeTo,141,18,33]; @symbol_type<0> = [String,141,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 144; @symbol_moduledef = [confirmation_input__confirm,144,15,42]; ]
+        module confirmation_input__confirm {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 144; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 145 18 ]
+                symbol [ WatchUi %tmp.17 145 27 34 ];
+                %tmp.17 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.18 145 35 44 ];
+                %tmp.18 = getv %tmp.17 :KEY_ENTER;
+                putv self :button %tmp.18;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 145; @position = 18; @symbol_constdef = [button,145,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 148; @symbol_moduledef = [prompt_font__body_with_title,148,15,43]; ]
+        module prompt_font__body_with_title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 148; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 149 18 ]
+                symbol [ Graphics %tmp.19 149 34 42 ];
+                %tmp.19 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.20 149 43 62 ];
+                %tmp.20 = getv %tmp.19 :TEXT_JUSTIFY_CENTER;
+                putv self :justification %tmp.20;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 150 18 ]
+                symbol [ Graphics %tmp.21 150 25 33 ];
+                %tmp.21 = getm $.Toybox.Graphics;
+                symbol [ FONT_XTINY %tmp.22 150 34 44 ];
+                %tmp.22 = getv %tmp.21 :FONT_XTINY;
+                putv self :font %tmp.22;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 149; @position = 18; @symbol_constdef = [justification,149,18,31]; ]
+            const justification;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 150; @position = 18; @symbol_constdef = [font,150,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 153; @symbol_moduledef = [confirmation_loc__body,153,15,37]; ]
+        module confirmation_loc__body {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 153; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 154; @position = 18; @symbol_constdef = [x,154,18,19]; @symbol_type<0> = [Number,154,23,29]; ]
+            const x as Number = 70;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 155; @position = 18; @symbol_constdef = [y,155,18,19]; @symbol_type<0> = [Number,155,23,29]; ]
+            const y as Number = 104;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 158; @symbol_moduledef = [system_icon_destructive__hint_button_left_bottom,158,15,63]; ]
+        module system_icon_destructive__hint_button_left_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 158; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 159; @position = 18; @symbol_constdef = [filename,159,18,26]; @symbol_type<0> = [String,159,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_destructive__hint_button_left_bottom.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 160; @position = 18; @symbol_constdef = [dithering,160,18,27]; @symbol_type<0> = [String,160,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 161; @position = 18; @symbol_constdef = [packingFormat,161,18,31]; @symbol_type<0> = [String,161,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 164; @symbol_moduledef = [prompt_color_dark__background,164,15,44]; ]
+        module prompt_color_dark__background {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 164; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 165; @position = 18; @symbol_constdef = [color,165,18,23]; @symbol_type<0> = [Number,165,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 166; @position = 18; @symbol_constdef = [background,166,18,28]; @symbol_type<0> = [Number,166,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 169; @symbol_moduledef = [system_icon_destructive__hint_action_menu,169,15,56]; ]
+        module system_icon_destructive__hint_action_menu {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 169; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 170; @position = 18; @symbol_constdef = [filename,170,18,26]; @symbol_type<0> = [String,170,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_destructive__hint_button_right_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 171; @position = 18; @symbol_constdef = [dithering,171,18,27]; @symbol_type<0> = [String,171,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 172; @position = 18; @symbol_constdef = [packingFormat,172,18,31]; @symbol_type<0> = [String,172,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 175; @symbol_moduledef = [system_loc__hint_action_menu,175,15,43]; ]
+        module system_loc__hint_action_menu {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 175; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 176; @position = 18; @symbol_constdef = [x,176,18,19]; @symbol_type<0> = [Number,176,23,29]; ]
+            const x as Number = 379;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 177; @position = 18; @symbol_constdef = [y,177,18,19]; @symbol_type<0> = [Number,177,23,29]; ]
+            const y as Number = 89;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 180; @symbol_moduledef = [confirmation_icon__hint_confirm,180,15,46]; ]
+        module confirmation_icon__hint_confirm {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 180; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 181; @position = 18; @symbol_constdef = [filename,181,18,26]; @symbol_type<0> = [String,181,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 182; @position = 18; @symbol_constdef = [dithering,182,18,27]; @symbol_type<0> = [String,182,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 183; @position = 18; @symbol_constdef = [packingFormat,183,18,31]; @symbol_type<0> = [String,183,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 186; @symbol_moduledef = [system_loc__hint_button_left_middle,186,15,50]; ]
+        module system_loc__hint_button_left_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 186; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 187; @position = 18; @symbol_constdef = [x,187,18,19]; @symbol_type<0> = [Number,187,23,29]; ]
+            const x as Number = 3;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 188; @position = 18; @symbol_constdef = [y,188,18,19]; @symbol_type<0> = [Number,188,23,29]; ]
+            const y as Number = 184;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 191; @symbol_moduledef = [prompt_size__body_no_title,191,15,41]; ]
+        module prompt_size__body_no_title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 191; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 192; @position = 18; @symbol_constdef = [width,192,18,23]; @symbol_type<0> = [Number,192,27,33]; ]
+            const width as Number = 302;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 193; @position = 18; @symbol_constdef = [height,193,18,24]; @symbol_type<0> = [Number,193,28,34]; ]
+            const height as Number = 315;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 196; @symbol_moduledef = [system_icon_light__hint_button_left_top,196,15,54]; ]
+        module system_icon_light__hint_button_left_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 196; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 197; @position = 18; @symbol_constdef = [filename,197,18,26]; @symbol_type<0> = [String,197,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__hint_button_left_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 198; @position = 18; @symbol_constdef = [dithering,198,18,27]; @symbol_type<0> = [String,198,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 199; @position = 18; @symbol_constdef = [packingFormat,199,18,31]; @symbol_type<0> = [String,199,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 202; @symbol_moduledef = [prompt_color_light__background,202,15,45]; ]
+        module prompt_color_light__background {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 202; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 203; @position = 18; @symbol_constdef = [color,203,18,23]; @symbol_type<0> = [Number,203,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 204; @position = 18; @symbol_constdef = [background,204,18,28]; @symbol_type<0> = [Number,204,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 207; @symbol_moduledef = [confirmation_input__delete,207,15,41]; ]
+        module confirmation_input__delete {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 207; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 208 18 ]
+                symbol [ WatchUi %tmp.23 208 27 34 ];
+                %tmp.23 = getm $.Toybox.WatchUi;
+                symbol [ KEY_DOWN %tmp.24 208 35 43 ];
+                %tmp.24 = getv %tmp.23 :KEY_DOWN;
+                putv self :button %tmp.24;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 208; @position = 18; @symbol_constdef = [button,208,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 211; @symbol_moduledef = [system_icon_dark__hint_button_left_top,211,15,53]; ]
+        module system_icon_dark__hint_button_left_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 211; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 212; @position = 18; @symbol_constdef = [filename,212,18,26]; @symbol_type<0> = [String,212,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__hint_button_left_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 213; @position = 18; @symbol_constdef = [dithering,213,18,27]; @symbol_type<0> = [String,213,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 214; @position = 18; @symbol_constdef = [packingFormat,214,18,31]; @symbol_type<0> = [String,214,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 217; @symbol_moduledef = [system_input__action_menu,217,15,40]; ]
+        module system_input__action_menu {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 217; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 218 18 ]
+                symbol [ WatchUi %tmp.25 218 27 34 ];
+                %tmp.25 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.26 218 35 44 ];
+                %tmp.26 = getv %tmp.25 :KEY_ENTER;
+                putv self :button %tmp.26;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 218; @position = 18; @symbol_constdef = [button,218,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 221; @symbol_moduledef = [system_icon_light__save,221,15,38]; ]
+        module system_icon_light__save {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 221; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 222; @position = 18; @symbol_constdef = [filename,222,18,26]; @symbol_type<0> = [String,222,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__save.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 223; @position = 18; @symbol_constdef = [compress,223,18,26]; @symbol_type<0> = [String,223,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 224; @position = 18; @symbol_constdef = [dithering,224,18,27]; @symbol_type<0> = [String,224,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 225; @position = 18; @symbol_constdef = [automaticPalette,225,18,34]; @symbol_type<0> = [String,225,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 226; @position = 18; @symbol_constdef = [packingFormat,226,18,31]; @symbol_type<0> = [String,226,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 229; @symbol_moduledef = [prompt_color_light__body,229,15,39]; ]
+        module prompt_color_light__body {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 229; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 231 18 ]
+                symbol [ Graphics %tmp.27 231 31 39 ];
+                %tmp.27 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.28 231 40 57 ];
+                %tmp.28 = getv %tmp.27 :COLOR_TRANSPARENT;
+                putv self :background %tmp.28;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 230; @position = 18; @symbol_constdef = [color,230,18,23]; @symbol_type<0> = [Number,230,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 231; @position = 18; @symbol_constdef = [background,231,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 234; @symbol_moduledef = [system_loc__subwindow,234,15,36]; ]
+        module system_loc__subwindow {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 234; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 235; @position = 18; @symbol_constdef = [exclude,235,18,25]; @symbol_type<0> = [Boolean,235,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 238; @symbol_moduledef = [system_icon_light__warning,238,15,41]; ]
+        module system_icon_light__warning {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 238; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 239; @position = 18; @symbol_constdef = [filename,239,18,26]; @symbol_type<0> = [String,239,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__warning.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 240; @position = 18; @symbol_constdef = [compress,240,18,26]; @symbol_type<0> = [String,240,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 241; @position = 18; @symbol_constdef = [dithering,241,18,27]; @symbol_type<0> = [String,241,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 242; @position = 18; @symbol_constdef = [automaticPalette,242,18,34]; @symbol_type<0> = [String,242,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 243; @position = 18; @symbol_constdef = [packingFormat,243,18,31]; @symbol_type<0> = [String,243,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 246; @symbol_moduledef = [confirmation_color_light__body,246,15,45]; ]
+        module confirmation_color_light__body {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 246; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 248 18 ]
+                symbol [ Graphics %tmp.29 248 31 39 ];
+                %tmp.29 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.30 248 40 57 ];
+                %tmp.30 = getv %tmp.29 :COLOR_TRANSPARENT;
+                putv self :background %tmp.30;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 247; @position = 18; @symbol_constdef = [color,247,18,23]; @symbol_type<0> = [Number,247,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 248; @position = 18; @symbol_constdef = [background,248,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 251; @symbol_moduledef = [confirmation_icon_light__hint_keep,251,15,49]; ]
+        module confirmation_icon_light__hint_keep {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 251; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 252; @position = 18; @symbol_constdef = [filename,252,18,26]; @symbol_type<0> = [String,252,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_keep.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 253; @position = 18; @symbol_constdef = [dithering,253,18,27]; @symbol_type<0> = [String,253,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 254; @position = 18; @symbol_constdef = [packingFormat,254,18,31]; @symbol_type<0> = [String,254,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 257; @symbol_moduledef = [activity_color_light__background,257,15,47]; ]
+        module activity_color_light__background {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 257; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 258; @position = 18; @symbol_constdef = [color,258,18,23]; @symbol_type<0> = [Number,258,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 259; @position = 18; @symbol_constdef = [background,259,18,28]; @symbol_type<0> = [Number,259,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 262; @symbol_moduledef = [system_icon_positive__hint_button_right_top,262,15,58]; ]
+        module system_icon_positive__hint_button_right_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 262; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 263; @position = 18; @symbol_constdef = [filename,263,18,26]; @symbol_type<0> = [String,263,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_positive__hint_button_right_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 264; @position = 18; @symbol_constdef = [dithering,264,18,27]; @symbol_type<0> = [String,264,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 265; @position = 18; @symbol_constdef = [packingFormat,265,18,31]; @symbol_type<0> = [String,265,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 268; @symbol_moduledef = [system_size__screen,268,15,34]; ]
+        module system_size__screen {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 268; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 269; @position = 18; @symbol_constdef = [width,269,18,23]; @symbol_type<0> = [Number,269,27,33]; ]
+            const width as Number = 454;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 270; @position = 18; @symbol_constdef = [height,270,18,24]; @symbol_type<0> = [Number,270,28,34]; ]
+            const height as Number = 454;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 273; @symbol_moduledef = [system_icon_destructive__hint_button_right_bottom,273,15,64]; ]
+        module system_icon_destructive__hint_button_right_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 273; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 274; @position = 18; @symbol_constdef = [filename,274,18,26]; @symbol_type<0> = [String,274,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_destructive__hint_button_right_bottom.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 275; @position = 18; @symbol_constdef = [dithering,275,18,27]; @symbol_type<0> = [String,275,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 276; @position = 18; @symbol_constdef = [packingFormat,276,18,31]; @symbol_type<0> = [String,276,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 279; @symbol_moduledef = [system_color_light__background,279,15,45]; ]
+        module system_color_light__background {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 279; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 280; @position = 18; @symbol_constdef = [color,280,18,23]; @symbol_type<0> = [Number,280,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 281; @position = 18; @symbol_constdef = [background,281,18,28]; @symbol_type<0> = [Number,281,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 284; @symbol_moduledef = [system_icon_destructive__hint_button_right_top,284,15,61]; ]
+        module system_icon_destructive__hint_button_right_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 284; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 285; @position = 18; @symbol_constdef = [filename,285,18,26]; @symbol_type<0> = [String,285,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_destructive__hint_button_right_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 286; @position = 18; @symbol_constdef = [dithering,286,18,27]; @symbol_type<0> = [String,286,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 287; @position = 18; @symbol_constdef = [packingFormat,287,18,31]; @symbol_type<0> = [String,287,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 290; @symbol_moduledef = [confirmation_loc__hint_confirm,290,15,45]; ]
+        module confirmation_loc__hint_confirm {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 290; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 291; @position = 18; @symbol_constdef = [x,291,18,19]; @symbol_type<0> = [Number,291,23,29]; ]
+            const x as Number = 379;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 292; @position = 18; @symbol_constdef = [y,292,18,19]; @symbol_type<0> = [Number,292,23,29]; ]
+            const y as Number = 89;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 295; @symbol_moduledef = [activity_color_dark__text,295,15,40]; ]
+        module activity_color_dark__text {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 295; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 297 18 ]
+                symbol [ Graphics %tmp.31 297 31 39 ];
+                %tmp.31 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.32 297 40 57 ];
+                %tmp.32 = getv %tmp.31 :COLOR_TRANSPARENT;
+                putv self :background %tmp.32;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 296; @position = 18; @symbol_constdef = [color,296,18,23]; @symbol_type<0> = [Number,296,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 297; @position = 18; @symbol_constdef = [background,297,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 300; @symbol_moduledef = [confirmation_input__keep,300,15,39]; ]
+        module confirmation_input__keep {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 300; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 301 18 ]
+                symbol [ WatchUi %tmp.33 301 27 34 ];
+                %tmp.33 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ESC %tmp.34 301 35 42 ];
+                %tmp.34 = getv %tmp.33 :KEY_ESC;
+                putv self :button %tmp.34;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 301; @position = 18; @symbol_constdef = [button,301,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 304; @symbol_moduledef = [prompt_loc__body_with_title,304,15,42]; ]
+        module prompt_loc__body_with_title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 304; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 305; @position = 18; @symbol_constdef = [x,305,18,19]; @symbol_type<0> = [Number,305,23,29]; ]
+            const x as Number = 76;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 306; @position = 18; @symbol_constdef = [y,306,18,19]; @symbol_type<0> = [Number,306,23,29]; ]
+            const y as Number = 131;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 309; @symbol_moduledef = [system_icon_dark__search,309,15,39]; ]
+        module system_icon_dark__search {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 309; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 310; @position = 18; @symbol_constdef = [filename,310,18,26]; @symbol_type<0> = [String,310,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__search.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 311; @position = 18; @symbol_constdef = [compress,311,18,26]; @symbol_type<0> = [String,311,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 312; @position = 18; @symbol_constdef = [dithering,312,18,27]; @symbol_type<0> = [String,312,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 313; @position = 18; @symbol_constdef = [automaticPalette,313,18,34]; @symbol_type<0> = [String,313,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 314; @position = 18; @symbol_constdef = [packingFormat,314,18,31]; @symbol_type<0> = [String,314,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 317; @symbol_moduledef = [activity_color_light__text,317,15,41]; ]
+        module activity_color_light__text {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 317; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 319 18 ]
+                symbol [ Graphics %tmp.35 319 31 39 ];
+                %tmp.35 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.36 319 40 57 ];
+                %tmp.36 = getv %tmp.35 :COLOR_TRANSPARENT;
+                putv self :background %tmp.36;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 318; @position = 18; @symbol_constdef = [color,318,18,23]; @symbol_type<0> = [Number,318,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 319; @position = 18; @symbol_constdef = [background,319,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 322; @symbol_moduledef = [confirmation_icon__hint_keep,322,15,43]; ]
+        module confirmation_icon__hint_keep {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 322; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 323; @position = 18; @symbol_constdef = [filename,323,18,26]; @symbol_type<0> = [String,323,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_keep.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 324; @position = 18; @symbol_constdef = [dithering,324,18,27]; @symbol_type<0> = [String,324,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 325; @position = 18; @symbol_constdef = [packingFormat,325,18,31]; @symbol_type<0> = [String,325,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 328; @symbol_moduledef = [system_icon_dark__save,328,15,37]; ]
+        module system_icon_dark__save {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 328; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 329; @position = 18; @symbol_constdef = [filename,329,18,26]; @symbol_type<0> = [String,329,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__save.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 330; @position = 18; @symbol_constdef = [compress,330,18,26]; @symbol_type<0> = [String,330,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 331; @position = 18; @symbol_constdef = [dithering,331,18,27]; @symbol_type<0> = [String,331,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 332; @position = 18; @symbol_constdef = [automaticPalette,332,18,34]; @symbol_type<0> = [String,332,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 333; @position = 18; @symbol_constdef = [packingFormat,333,18,31]; @symbol_type<0> = [String,333,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 336; @symbol_moduledef = [system_icon_destructive__hint_button_left_middle,336,15,63]; ]
+        module system_icon_destructive__hint_button_left_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 336; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 337; @position = 18; @symbol_constdef = [filename,337,18,26]; @symbol_type<0> = [String,337,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_destructive__hint_button_left_middle.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 338; @position = 18; @symbol_constdef = [dithering,338,18,27]; @symbol_type<0> = [String,338,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 339; @position = 18; @symbol_constdef = [packingFormat,339,18,31]; @symbol_type<0> = [String,339,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 342; @symbol_moduledef = [system_icon_light__search,342,15,40]; ]
+        module system_icon_light__search {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 342; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 343; @position = 18; @symbol_constdef = [filename,343,18,26]; @symbol_type<0> = [String,343,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__search.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 344; @position = 18; @symbol_constdef = [compress,344,18,26]; @symbol_type<0> = [String,344,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 345; @position = 18; @symbol_constdef = [dithering,345,18,27]; @symbol_type<0> = [String,345,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 346; @position = 18; @symbol_constdef = [automaticPalette,346,18,34]; @symbol_type<0> = [String,346,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 347; @position = 18; @symbol_constdef = [packingFormat,347,18,31]; @symbol_type<0> = [String,347,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 350; @symbol_moduledef = [system_icon_dark__hint_button_left_bottom,350,15,56]; ]
+        module system_icon_dark__hint_button_left_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 350; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 351; @position = 18; @symbol_constdef = [filename,351,18,26]; @symbol_type<0> = [String,351,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__hint_button_left_bottom.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 352; @position = 18; @symbol_constdef = [dithering,352,18,27]; @symbol_type<0> = [String,352,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 353; @position = 18; @symbol_constdef = [packingFormat,353,18,31]; @symbol_type<0> = [String,353,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 356; @symbol_moduledef = [system_icon_positive__hint_button_left_top,356,15,57]; ]
+        module system_icon_positive__hint_button_left_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 356; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 357; @position = 18; @symbol_constdef = [filename,357,18,26]; @symbol_type<0> = [String,357,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_positive__hint_button_left_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 358; @position = 18; @symbol_constdef = [dithering,358,18,27]; @symbol_type<0> = [String,358,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 359; @position = 18; @symbol_constdef = [packingFormat,359,18,31]; @symbol_type<0> = [String,359,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 362; @symbol_moduledef = [system_loc__hint_button_right_bottom,362,15,51]; ]
+        module system_loc__hint_button_right_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 362; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 363; @position = 18; @symbol_constdef = [x,363,18,19]; @symbol_type<0> = [Number,363,23,29]; ]
+            const x as Number = 369;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 364; @position = 18; @symbol_constdef = [y,364,18,19]; @symbol_type<0> = [Number,364,23,29]; ]
+            const y as Number = 283;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 367; @symbol_moduledef = [confirmation_icon_dark__hint_reject,367,15,50]; ]
+        module confirmation_icon_dark__hint_reject {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 367; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 368; @position = 18; @symbol_constdef = [filename,368,18,26]; @symbol_type<0> = [String,368,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_reject.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 369; @position = 18; @symbol_constdef = [dithering,369,18,27]; @symbol_type<0> = [String,369,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 370; @position = 18; @symbol_constdef = [packingFormat,370,18,31]; @symbol_type<0> = [String,370,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 373; @symbol_moduledef = [confirmation_color_dark__body,373,15,44]; ]
+        module confirmation_color_dark__body {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 373; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 375 18 ]
+                symbol [ Graphics %tmp.37 375 31 39 ];
+                %tmp.37 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.38 375 40 57 ];
+                %tmp.38 = getv %tmp.37 :COLOR_TRANSPARENT;
+                putv self :background %tmp.38;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 374; @position = 18; @symbol_constdef = [color,374,18,23]; @symbol_type<0> = [Number,374,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 375; @position = 18; @symbol_constdef = [background,375,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 378; @symbol_moduledef = [confirmation_icon_light__hint_confirm,378,15,52]; ]
+        module confirmation_icon_light__hint_confirm {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 378; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 379; @position = 18; @symbol_constdef = [filename,379,18,26]; @symbol_type<0> = [String,379,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 380; @position = 18; @symbol_constdef = [dithering,380,18,27]; @symbol_type<0> = [String,380,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 381; @position = 18; @symbol_constdef = [packingFormat,381,18,31]; @symbol_type<0> = [String,381,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 384; @symbol_moduledef = [prompt_color_dark__title,384,15,39]; ]
+        module prompt_color_dark__title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 384; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 386 18 ]
+                symbol [ Graphics %tmp.39 386 31 39 ];
+                %tmp.39 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.40 386 40 57 ];
+                %tmp.40 = getv %tmp.39 :COLOR_TRANSPARENT;
+                putv self :background %tmp.40;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 385; @position = 18; @symbol_constdef = [color,385,18,23]; @symbol_type<0> = [Number,385,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 386; @position = 18; @symbol_constdef = [background,386,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 389; @symbol_moduledef = [system_icon_destructive__cancel,389,15,46]; ]
+        module system_icon_destructive__cancel {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 389; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 390; @position = 18; @symbol_constdef = [filename,390,18,26]; @symbol_type<0> = [String,390,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_destructive__cancel.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 391; @position = 18; @symbol_constdef = [dithering,391,18,27]; @symbol_type<0> = [String,391,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 392; @position = 18; @symbol_constdef = [packingFormat,392,18,31]; @symbol_type<0> = [String,392,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 395; @symbol_moduledef = [system_icon_light__hint_button_right_bottom,395,15,58]; ]
+        module system_icon_light__hint_button_right_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 395; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 396; @position = 18; @symbol_constdef = [filename,396,18,26]; @symbol_type<0> = [String,396,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__hint_button_right_bottom.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 397; @position = 18; @symbol_constdef = [dithering,397,18,27]; @symbol_type<0> = [String,397,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 398; @position = 18; @symbol_constdef = [packingFormat,398,18,31]; @symbol_type<0> = [String,398,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 401; @symbol_moduledef = [prompt_loc__title,401,15,32]; ]
+        module prompt_loc__title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 401; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 402; @position = 18; @symbol_constdef = [x,402,18,19]; @symbol_type<0> = [Number,402,23,29]; ]
+            const x as Number = 83;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 403; @position = 18; @symbol_constdef = [y,403,18,19]; @symbol_type<0> = [Number,403,23,29]; ]
+            const y as Number = 34;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 406; @symbol_moduledef = [confirmation_font_enhanced_readability__body,406,15,59]; ]
+        module confirmation_font_enhanced_readability__body {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 406; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 407; @position = 18; @symbol_constdef = [exclude,407,18,25]; @symbol_type<0> = [Boolean,407,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 410; @symbol_moduledef = [prompt_color_light__title,410,15,40]; ]
+        module prompt_color_light__title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 410; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 412 18 ]
+                symbol [ Graphics %tmp.41 412 31 39 ];
+                %tmp.41 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.42 412 40 57 ];
+                %tmp.42 = getv %tmp.41 :COLOR_TRANSPARENT;
+                putv self :background %tmp.42;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 411; @position = 18; @symbol_constdef = [color,411,18,23]; @symbol_type<0> = [Number,411,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 412; @position = 18; @symbol_constdef = [background,412,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 415; @symbol_moduledef = [system_icon_dark__hint_button_right_top,415,15,54]; ]
+        module system_icon_dark__hint_button_right_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 415; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 416; @position = 18; @symbol_constdef = [filename,416,18,26]; @symbol_type<0> = [String,416,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__hint_button_right_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 417; @position = 18; @symbol_constdef = [dithering,417,18,27]; @symbol_type<0> = [String,417,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 418; @position = 18; @symbol_constdef = [packingFormat,418,18,31]; @symbol_type<0> = [String,418,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 421; @symbol_moduledef = [system_icon_dark__hint_button_left_middle,421,15,56]; ]
+        module system_icon_dark__hint_button_left_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 421; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 422; @position = 18; @symbol_constdef = [filename,422,18,26]; @symbol_type<0> = [String,422,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__hint_button_left_middle.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 423; @position = 18; @symbol_constdef = [dithering,423,18,27]; @symbol_type<0> = [String,423,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 424; @position = 18; @symbol_constdef = [packingFormat,424,18,31]; @symbol_type<0> = [String,424,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 427; @symbol_moduledef = [confirmation_icon_dark__hint_keep,427,15,48]; ]
+        module confirmation_icon_dark__hint_keep {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 427; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 428; @position = 18; @symbol_constdef = [filename,428,18,26]; @symbol_type<0> = [String,428,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_keep.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 429; @position = 18; @symbol_constdef = [dithering,429,18,27]; @symbol_type<0> = [String,429,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 430; @position = 18; @symbol_constdef = [packingFormat,430,18,31]; @symbol_type<0> = [String,430,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 433; @symbol_moduledef = [system_icon_light__cancel,433,15,40]; ]
+        module system_icon_light__cancel {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 433; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 434; @position = 18; @symbol_constdef = [filename,434,18,26]; @symbol_type<0> = [String,434,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__cancel.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 435; @position = 18; @symbol_constdef = [compress,435,18,26]; @symbol_type<0> = [String,435,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 436; @position = 18; @symbol_constdef = [dithering,436,18,27]; @symbol_type<0> = [String,436,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 437; @position = 18; @symbol_constdef = [automaticPalette,437,18,34]; @symbol_type<0> = [String,437,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 438; @position = 18; @symbol_constdef = [packingFormat,438,18,31]; @symbol_type<0> = [String,438,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 441; @symbol_moduledef = [confirmation_icon_light__hint_reject,441,15,51]; ]
+        module confirmation_icon_light__hint_reject {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 441; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 442; @position = 18; @symbol_constdef = [filename,442,18,26]; @symbol_type<0> = [String,442,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_reject.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 443; @position = 18; @symbol_constdef = [dithering,443,18,27]; @symbol_type<0> = [String,443,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 444; @position = 18; @symbol_constdef = [packingFormat,444,18,31]; @symbol_type<0> = [String,444,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 447; @symbol_moduledef = [system_icon_light__about,447,15,39]; ]
+        module system_icon_light__about {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 447; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 448; @position = 18; @symbol_constdef = [filename,448,18,26]; @symbol_type<0> = [String,448,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__about.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 449; @position = 18; @symbol_constdef = [compress,449,18,26]; @symbol_type<0> = [String,449,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 450; @position = 18; @symbol_constdef = [dithering,450,18,27]; @symbol_type<0> = [String,450,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 451; @position = 18; @symbol_constdef = [automaticPalette,451,18,34]; @symbol_type<0> = [String,451,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 452; @position = 18; @symbol_constdef = [packingFormat,452,18,31]; @symbol_type<0> = [String,452,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 455; @symbol_moduledef = [system_size__toast_icon,455,15,38]; ]
+        module system_size__toast_icon {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 455; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 456; @position = 18; @symbol_constdef = [scaleX,456,18,24]; @symbol_type<0> = [Number,456,28,34]; ]
+            const scaleX as Number = 45;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 457; @position = 18; @symbol_constdef = [scaleY,457,18,24]; @symbol_type<0> = [Number,457,28,34]; ]
+            const scaleY as Number = 45;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 458; @position = 18; @symbol_constdef = [scaleRelativeTo,458,18,33]; @symbol_type<0> = [String,458,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 461; @symbol_moduledef = [system_icon_dark__hint_button_right_middle,461,15,57]; ]
+        module system_icon_dark__hint_button_right_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 461; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 462; @position = 18; @symbol_constdef = [exclude,462,18,25]; @symbol_type<0> = [Boolean,462,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 465; @symbol_moduledef = [confirmation_icon__hint_reject,465,15,45]; ]
+        module confirmation_icon__hint_reject {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 465; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 466; @position = 18; @symbol_constdef = [filename,466,18,26]; @symbol_type<0> = [String,466,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_reject.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 467; @position = 18; @symbol_constdef = [dithering,467,18,27]; @symbol_type<0> = [String,467,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 468; @position = 18; @symbol_constdef = [packingFormat,468,18,31]; @symbol_type<0> = [String,468,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 471; @symbol_moduledef = [system_icon_light__hint_action_menu,471,15,50]; ]
+        module system_icon_light__hint_action_menu {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 471; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 472; @position = 18; @symbol_constdef = [filename,472,18,26]; @symbol_type<0> = [String,472,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__hint_button_right_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 473; @position = 18; @symbol_constdef = [dithering,473,18,27]; @symbol_type<0> = [String,473,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 474; @position = 18; @symbol_constdef = [packingFormat,474,18,31]; @symbol_type<0> = [String,474,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 477; @symbol_moduledef = [system_icon_light__hint_button_right_middle,477,15,58]; ]
+        module system_icon_light__hint_button_right_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 477; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 478; @position = 18; @symbol_constdef = [exclude,478,18,25]; @symbol_type<0> = [Boolean,478,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 481; @symbol_moduledef = [system_icon_destructive__hint_button_right_middle,481,15,64]; ]
+        module system_icon_destructive__hint_button_right_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 481; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 482; @position = 18; @symbol_constdef = [exclude,482,18,25]; @symbol_type<0> = [Boolean,482,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 485; @symbol_moduledef = [confirmation_loc__hint_reject,485,15,44]; ]
+        module confirmation_loc__hint_reject {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 485; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 486; @position = 18; @symbol_constdef = [x,486,18,19]; @symbol_type<0> = [Number,486,23,29]; ]
+            const x as Number = 16;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 487; @position = 18; @symbol_constdef = [y,487,18,19]; @symbol_type<0> = [Number,487,23,29]; ]
+            const y as Number = 284;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 490; @symbol_moduledef = [confirmation_icon_dark__hint_delete,490,15,50]; ]
+        module confirmation_icon_dark__hint_delete {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 490; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 491; @position = 18; @symbol_constdef = [filename,491,18,26]; @symbol_type<0> = [String,491,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_delete.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 492; @position = 18; @symbol_constdef = [dithering,492,18,27]; @symbol_type<0> = [String,492,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 493; @position = 18; @symbol_constdef = [packingFormat,493,18,31]; @symbol_type<0> = [String,493,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 496; @symbol_moduledef = [activity_color_dark__background,496,15,46]; ]
+        module activity_color_dark__background {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 496; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 497; @position = 18; @symbol_constdef = [color,497,18,23]; @symbol_type<0> = [Number,497,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 498; @position = 18; @symbol_constdef = [background,498,18,28]; @symbol_type<0> = [Number,498,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 501; @symbol_moduledef = [system_icon_light__hint_button_left_bottom,501,15,57]; ]
+        module system_icon_light__hint_button_left_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 501; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 502; @position = 18; @symbol_constdef = [filename,502,18,26]; @symbol_type<0> = [String,502,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__hint_button_left_bottom.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 503; @position = 18; @symbol_constdef = [dithering,503,18,27]; @symbol_type<0> = [String,503,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 504; @position = 18; @symbol_constdef = [packingFormat,504,18,31]; @symbol_type<0> = [String,504,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 507; @symbol_moduledef = [system_icon_positive__hint_button_left_middle,507,15,60]; ]
+        module system_icon_positive__hint_button_left_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 507; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 508; @position = 18; @symbol_constdef = [filename,508,18,26]; @symbol_type<0> = [String,508,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_positive__hint_button_left_middle.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 509; @position = 18; @symbol_constdef = [dithering,509,18,27]; @symbol_type<0> = [String,509,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 510; @position = 18; @symbol_constdef = [packingFormat,510,18,31]; @symbol_type<0> = [String,510,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 513; @symbol_moduledef = [system_size__menu_icon,513,15,37]; ]
+        module system_size__menu_icon {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 513; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 514; @position = 18; @symbol_constdef = [scaleX,514,18,24]; @symbol_type<0> = [Number,514,28,34]; ]
+            const scaleX as Number = 55;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 515; @position = 18; @symbol_constdef = [scaleY,515,18,24]; @symbol_type<0> = [Number,515,28,34]; ]
+            const scaleY as Number = 55;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 516; @position = 18; @symbol_constdef = [scaleRelativeTo,516,18,33]; @symbol_type<0> = [String,516,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 519; @symbol_moduledef = [system_icon_destructive__warning,519,15,47]; ]
+        module system_icon_destructive__warning {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 519; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 520; @position = 18; @symbol_constdef = [filename,520,18,26]; @symbol_type<0> = [String,520,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_destructive__warning.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 521; @position = 18; @symbol_constdef = [dithering,521,18,27]; @symbol_type<0> = [String,521,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 522; @position = 18; @symbol_constdef = [packingFormat,522,18,31]; @symbol_type<0> = [String,522,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 525; @symbol_moduledef = [system_loc__hint_button_right_middle,525,15,51]; ]
+        module system_loc__hint_button_right_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 525; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 526; @position = 18; @symbol_constdef = [exclude,526,18,25]; @symbol_type<0> = [Boolean,526,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 529; @symbol_moduledef = [system_icon_dark__cancel,529,15,39]; ]
+        module system_icon_dark__cancel {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 529; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 530; @position = 18; @symbol_constdef = [filename,530,18,26]; @symbol_type<0> = [String,530,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__cancel.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 531; @position = 18; @symbol_constdef = [compress,531,18,26]; @symbol_type<0> = [String,531,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 532; @position = 18; @symbol_constdef = [dithering,532,18,27]; @symbol_type<0> = [String,532,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 533; @position = 18; @symbol_constdef = [automaticPalette,533,18,34]; @symbol_type<0> = [String,533,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 534; @position = 18; @symbol_constdef = [packingFormat,534,18,31]; @symbol_type<0> = [String,534,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 537; @symbol_moduledef = [prompt_size__body_with_title,537,15,43]; ]
+        module prompt_size__body_with_title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 537; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 538; @position = 18; @symbol_constdef = [width,538,18,23]; @symbol_type<0> = [Number,538,27,33]; ]
+            const width as Number = 302;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 539; @position = 18; @symbol_constdef = [height,539,18,24]; @symbol_type<0> = [Number,539,28,34]; ]
+            const height as Number = 254;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 542; @symbol_moduledef = [system_loc__hint_button_right_top,542,15,48]; ]
+        module system_loc__hint_button_right_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 542; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 543; @position = 18; @symbol_constdef = [x,543,18,19]; @symbol_type<0> = [Number,543,23,29]; ]
+            const x as Number = 379;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 544; @position = 18; @symbol_constdef = [y,544,18,19]; @symbol_type<0> = [Number,544,23,29]; ]
+            const y as Number = 89;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 547; @symbol_moduledef = [system_color_light__text,547,15,39]; ]
+        module system_color_light__text {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 547; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 549 18 ]
+                symbol [ Graphics %tmp.43 549 31 39 ];
+                %tmp.43 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.44 549 40 57 ];
+                %tmp.44 = getv %tmp.43 :COLOR_TRANSPARENT;
+                putv self :background %tmp.44;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 548; @position = 18; @symbol_constdef = [color,548,18,23]; @symbol_type<0> = [Number,548,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 549; @position = 18; @symbol_constdef = [background,549,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 552; @symbol_moduledef = [system_icon_light__check,552,15,39]; ]
+        module system_icon_light__check {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 552; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 553; @position = 18; @symbol_constdef = [filename,553,18,26]; @symbol_type<0> = [String,553,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__check.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 554; @position = 18; @symbol_constdef = [compress,554,18,26]; @symbol_type<0> = [String,554,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 555; @position = 18; @symbol_constdef = [dithering,555,18,27]; @symbol_type<0> = [String,555,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 556; @position = 18; @symbol_constdef = [automaticPalette,556,18,34]; @symbol_type<0> = [String,556,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 557; @position = 18; @symbol_constdef = [packingFormat,557,18,31]; @symbol_type<0> = [String,557,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 560; @symbol_moduledef = [confirmation_input__reject,560,15,41]; ]
+        module confirmation_input__reject {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 560; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 561 18 ]
+                symbol [ WatchUi %tmp.45 561 27 34 ];
+                %tmp.45 = getm $.Toybox.WatchUi;
+                symbol [ KEY_DOWN %tmp.46 561 35 43 ];
+                %tmp.46 = getv %tmp.45 :KEY_DOWN;
+                putv self :button %tmp.46;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 561; @position = 18; @symbol_constdef = [button,561,18,24]; ]
+            const button;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 564; @symbol_moduledef = [system_icon_light__revert,564,15,40]; ]
+        module system_icon_light__revert {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 564; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 565; @position = 18; @symbol_constdef = [filename,565,18,26]; @symbol_type<0> = [String,565,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__revert.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 566; @position = 18; @symbol_constdef = [compress,566,18,26]; @symbol_type<0> = [String,566,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 567; @position = 18; @symbol_constdef = [dithering,567,18,27]; @symbol_type<0> = [String,567,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 568; @position = 18; @symbol_constdef = [automaticPalette,568,18,34]; @symbol_type<0> = [String,568,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 569; @position = 18; @symbol_constdef = [packingFormat,569,18,31]; @symbol_type<0> = [String,569,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 572; @symbol_moduledef = [system_size__subwindow,572,15,37]; ]
+        module system_size__subwindow {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 572; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 573; @position = 18; @symbol_constdef = [exclude,573,18,25]; @symbol_type<0> = [Boolean,573,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 576; @symbol_moduledef = [system_icon_positive__hint_button_left_bottom,576,15,60]; ]
+        module system_icon_positive__hint_button_left_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 576; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 577; @position = 18; @symbol_constdef = [filename,577,18,26]; @symbol_type<0> = [String,577,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_positive__hint_button_left_bottom.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 578; @position = 18; @symbol_constdef = [dithering,578,18,27]; @symbol_type<0> = [String,578,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 579; @position = 18; @symbol_constdef = [packingFormat,579,18,31]; @symbol_type<0> = [String,579,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 582; @symbol_moduledef = [system_icon_dark__check,582,15,38]; ]
+        module system_icon_dark__check {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 582; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 583; @position = 18; @symbol_constdef = [filename,583,18,26]; @symbol_type<0> = [String,583,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__check.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 584; @position = 18; @symbol_constdef = [compress,584,18,26]; @symbol_type<0> = [String,584,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 585; @position = 18; @symbol_constdef = [dithering,585,18,27]; @symbol_type<0> = [String,585,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 586; @position = 18; @symbol_constdef = [automaticPalette,586,18,34]; @symbol_type<0> = [String,586,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 587; @position = 18; @symbol_constdef = [packingFormat,587,18,31]; @symbol_type<0> = [String,587,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 590; @symbol_moduledef = [confirmation_loc__hint_keep,590,15,42]; ]
+        module confirmation_loc__hint_keep {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 590; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 591; @position = 18; @symbol_constdef = [x,591,18,19]; @symbol_type<0> = [Number,591,23,29]; ]
+            const x as Number = 372;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 592; @position = 18; @symbol_constdef = [y,592,18,19]; @symbol_type<0> = [Number,592,23,29]; ]
+            const y as Number = 286;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 595; @symbol_moduledef = [confirmation_loc__hint_delete,595,15,44]; ]
+        module confirmation_loc__hint_delete {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 595; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 596; @position = 18; @symbol_constdef = [x,596,18,19]; @symbol_type<0> = [Number,596,23,29]; ]
+            const x as Number = 16;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 597; @position = 18; @symbol_constdef = [y,597,18,19]; @symbol_type<0> = [Number,597,23,29]; ]
+            const y as Number = 284;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 600; @symbol_moduledef = [system_icon_positive__hint_action_menu,600,15,53]; ]
+        module system_icon_positive__hint_action_menu {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 600; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 601; @position = 18; @symbol_constdef = [filename,601,18,26]; @symbol_type<0> = [String,601,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_positive__hint_button_right_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 602; @position = 18; @symbol_constdef = [dithering,602,18,27]; @symbol_type<0> = [String,602,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 603; @position = 18; @symbol_constdef = [packingFormat,603,18,31]; @symbol_type<0> = [String,603,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 606; @symbol_moduledef = [system_icon_positive__hint_button_right_middle,606,15,61]; ]
+        module system_icon_positive__hint_button_right_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 606; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 607; @position = 18; @symbol_constdef = [exclude,607,18,25]; @symbol_type<0> = [Boolean,607,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 610; @symbol_moduledef = [system_icon_light__hint_button_left_middle,610,15,57]; ]
+        module system_icon_light__hint_button_left_middle {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 610; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 611; @position = 18; @symbol_constdef = [filename,611,18,26]; @symbol_type<0> = [String,611,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__hint_button_left_middle.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 612; @position = 18; @symbol_constdef = [dithering,612,18,27]; @symbol_type<0> = [String,612,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 613; @position = 18; @symbol_constdef = [packingFormat,613,18,31]; @symbol_type<0> = [String,613,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 616; @symbol_moduledef = [system_icon_dark__hint_button_right_bottom,616,15,57]; ]
+        module system_icon_dark__hint_button_right_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 616; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 617; @position = 18; @symbol_constdef = [filename,617,18,26]; @symbol_type<0> = [String,617,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__hint_button_right_bottom.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 618; @position = 18; @symbol_constdef = [dithering,618,18,27]; @symbol_type<0> = [String,618,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 619; @position = 18; @symbol_constdef = [packingFormat,619,18,31]; @symbol_type<0> = [String,619,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 622; @symbol_moduledef = [system_icon_positive__hint_button_right_bottom,622,15,61]; ]
+        module system_icon_positive__hint_button_right_bottom {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 622; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 623; @position = 18; @symbol_constdef = [filename,623,18,26]; @symbol_type<0> = [String,623,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_positive__hint_button_right_bottom.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 624; @position = 18; @symbol_constdef = [dithering,624,18,27]; @symbol_type<0> = [String,624,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 625; @position = 18; @symbol_constdef = [packingFormat,625,18,31]; @symbol_type<0> = [String,625,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 628; @symbol_moduledef = [system_icon_dark__revert,628,15,39]; ]
+        module system_icon_dark__revert {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 628; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 629; @position = 18; @symbol_constdef = [filename,629,18,26]; @symbol_type<0> = [String,629,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__revert.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 630; @position = 18; @symbol_constdef = [compress,630,18,26]; @symbol_type<0> = [String,630,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 631; @position = 18; @symbol_constdef = [dithering,631,18,27]; @symbol_type<0> = [String,631,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 632; @position = 18; @symbol_constdef = [automaticPalette,632,18,34]; @symbol_type<0> = [String,632,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 633; @position = 18; @symbol_constdef = [packingFormat,633,18,31]; @symbol_type<0> = [String,633,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 636; @symbol_moduledef = [confirmation_icon_light__hint_delete,636,15,51]; ]
+        module confirmation_icon_light__hint_delete {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 636; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 637; @position = 18; @symbol_constdef = [filename,637,18,26]; @symbol_type<0> = [String,637,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_delete.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 638; @position = 18; @symbol_constdef = [dithering,638,18,27]; @symbol_type<0> = [String,638,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 639; @position = 18; @symbol_constdef = [packingFormat,639,18,31]; @symbol_type<0> = [String,639,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 642; @symbol_moduledef = [system_icon_dark__question,642,15,41]; ]
+        module system_icon_dark__question {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 642; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 643; @position = 18; @symbol_constdef = [filename,643,18,26]; @symbol_type<0> = [String,643,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__question.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 644; @position = 18; @symbol_constdef = [compress,644,18,26]; @symbol_type<0> = [String,644,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 645; @position = 18; @symbol_constdef = [dithering,645,18,27]; @symbol_type<0> = [String,645,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 646; @position = 18; @symbol_constdef = [automaticPalette,646,18,34]; @symbol_type<0> = [String,646,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 647; @position = 18; @symbol_constdef = [packingFormat,647,18,31]; @symbol_type<0> = [String,647,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 650; @symbol_moduledef = [system_icon_light__discard,650,15,41]; ]
+        module system_icon_light__discard {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 650; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 651; @position = 18; @symbol_constdef = [filename,651,18,26]; @symbol_type<0> = [String,651,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__discard.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 652; @position = 18; @symbol_constdef = [compress,652,18,26]; @symbol_type<0> = [String,652,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 653; @position = 18; @symbol_constdef = [dithering,653,18,27]; @symbol_type<0> = [String,653,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 654; @position = 18; @symbol_constdef = [automaticPalette,654,18,34]; @symbol_type<0> = [String,654,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 655; @position = 18; @symbol_constdef = [packingFormat,655,18,31]; @symbol_type<0> = [String,655,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 658; @symbol_moduledef = [device_info,658,15,26]; ]
+        module device_info {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 658; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 660 18 ]
+                symbol [ Toybox %tmp.48 660 32 38 ];
+                %tmp.48 = getv ? :Toybox;
+                symbol [ System %tmp.49 660 39 45 ];
+                %tmp.49 = getv %tmp.48 :System;
+                symbol [ SCREEN_SHAPE_ROUND %tmp.50 660 46 64 ];
+                %tmp.50 = getv %tmp.49 :SCREEN_SHAPE_ROUND;
+                putv self :screenShape %tmp.50;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 659; @position = 18; @symbol_constdef = [screenWidth,659,18,29]; @symbol_type<0> = [Number,659,33,39]; ]
+            const screenWidth as Number = 454;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 660; @position = 18; @symbol_constdef = [screenShape,660,18,29]; ]
+            const screenShape;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 661; @position = 18; @symbol_constdef = [hasNightMode,661,18,30]; @symbol_type<0> = [Boolean,661,34,41]; ]
+            const hasNightMode as Boolean = false;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 662; @position = 18; @symbol_constdef = [hasGpu,662,18,24]; @symbol_type<0> = [Boolean,662,28,35]; ]
+            const hasGpu as Boolean = true;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 663; @position = 18; @symbol_constdef = [screenHeight,663,18,30]; @symbol_type<0> = [Number,663,34,40]; ]
+            const screenHeight as Number = 454;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 664; @position = 18; @symbol_constdef = [hasTouchScreen,664,18,32]; @symbol_type<0> = [Boolean,664,36,43]; ]
+            const hasTouchScreen as Boolean = true;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 665; @position = 18; @symbol_constdef = [hasEnhancedReadabilityMode,665,18,44]; @symbol_type<0> = [Boolean,665,48,55]; ]
+            const hasEnhancedReadabilityMode as Boolean = false;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 668; @symbol_moduledef = [confirmation_icon_dark__hint_confirm,668,15,51]; ]
+        module confirmation_icon_dark__hint_confirm {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 668; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 669; @position = 18; @symbol_constdef = [filename,669,18,26]; @symbol_type<0> = [String,669,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_completion.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 670; @position = 18; @symbol_constdef = [dithering,670,18,27]; @symbol_type<0> = [String,670,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 671; @position = 18; @symbol_constdef = [packingFormat,671,18,31]; @symbol_type<0> = [String,671,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 674; @symbol_moduledef = [prompt_font__body_no_title,674,15,41]; ]
+        module prompt_font__body_no_title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 674; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 675 18 ]
+                symbol [ Graphics %tmp.51 675 34 42 ];
+                %tmp.51 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.52 675 43 62 ];
+                %tmp.52 = getv %tmp.51 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.53 675 63 71 ];
+                %tmp.53 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.54 675 72 92 ];
+                %tmp.54 = getv %tmp.53 :TEXT_JUSTIFY_VCENTER;
+                %tmp.55 = bitor %tmp.52 %tmp.54;
+                putv self :justification %tmp.55;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 676 18 ]
+                symbol [ Graphics %tmp.56 676 25 33 ];
+                %tmp.56 = getm $.Toybox.Graphics;
+                symbol [ FONT_XTINY %tmp.57 676 34 44 ];
+                %tmp.57 = getv %tmp.56 :FONT_XTINY;
+                putv self :font %tmp.57;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 675; @position = 18; @symbol_constdef = [justification,675,18,31]; ]
+            const justification;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 676; @position = 18; @symbol_constdef = [font,676,18,22]; ]
+            const font;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 679; @symbol_moduledef = [prompt_size__title_icon,679,15,38]; ]
+        module prompt_size__title_icon {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 679; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 680; @position = 18; @symbol_constdef = [scaleX,680,18,24]; @symbol_type<0> = [Float,680,28,33]; ]
+            const scaleX as Float = 0.13;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 681; @position = 18; @symbol_constdef = [scaleRelativeTo,681,18,33]; @symbol_type<0> = [String,681,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 684; @symbol_moduledef = [system_icon_dark__warning,684,15,40]; ]
+        module system_icon_dark__warning {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 684; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 685; @position = 18; @symbol_constdef = [filename,685,18,26]; @symbol_type<0> = [String,685,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_dark__warning.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 686; @position = 18; @symbol_constdef = [compress,686,18,26]; @symbol_type<0> = [String,686,30,36]; ]
+            const compress as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 687; @position = 18; @symbol_constdef = [dithering,687,18,27]; @symbol_type<0> = [String,687,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 688; @position = 18; @symbol_constdef = [automaticPalette,688,18,34]; @symbol_type<0> = [String,688,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 689; @position = 18; @symbol_constdef = [packingFormat,689,18,31]; @symbol_type<0> = [String,689,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 692; @symbol_moduledef = [prompt_loc__title_icon,692,15,37]; ]
+        module prompt_loc__title_icon {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 692; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 693; @position = 18; @symbol_constdef = [x,693,18,19]; @symbol_type<0> = [Number,693,23,29]; ]
+            const x as Number = 227;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 694; @position = 18; @symbol_constdef = [y,694,18,19]; @symbol_type<0> = [Number,694,23,29]; ]
+            const y as Number = 46;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 695; @position = 18; @symbol_constdef = [horizontalJustification,695,18,41]; @symbol_type<0> = [String,695,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 696; @position = 18; @symbol_constdef = [verticalJustification,696,18,39]; @symbol_type<0> = [String,696,43,49]; ]
+            const verticalJustification as String = "center";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 699; @symbol_moduledef = [prompt_font_enhanced_readability__title,699,15,54]; ]
+        module prompt_font_enhanced_readability__title {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 699; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 700; @position = 18; @symbol_constdef = [exclude,700,18,25]; @symbol_type<0> = [Boolean,700,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 703; @symbol_moduledef = [prompt_color_dark__body,703,15,38]; ]
+        module prompt_color_dark__body {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 703; ]
+            <init> {
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen" 705 18 ]
+                symbol [ Graphics %tmp.58 705 31 39 ];
+                %tmp.58 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.59 705 40 57 ];
+                %tmp.59 = getv %tmp.58 :COLOR_TRANSPARENT;
+                putv self :background %tmp.59;
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 704; @position = 18; @symbol_constdef = [color,704,18,23]; @symbol_type<0> = [Number,704,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 705; @position = 18; @symbol_constdef = [background,705,18,28]; ]
+            const background;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 708; @symbol_moduledef = [confirmation_icon__hint_delete,708,15,45]; ]
+        module confirmation_icon__hint_delete {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 708; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 709; @position = 18; @symbol_constdef = [filename,709,18,26]; @symbol_type<0> = [String,709,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/confirmation_icon__hint_delete.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 710; @position = 18; @symbol_constdef = [dithering,710,18,27]; @symbol_type<0> = [String,710,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 711; @position = 18; @symbol_constdef = [packingFormat,711,18,31]; @symbol_type<0> = [String,711,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 714; @symbol_moduledef = [system_icon_light__hint_button_right_top,714,15,55]; ]
+        module system_icon_light__hint_button_right_top {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 714; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 715; @position = 18; @symbol_constdef = [filename,715,18,26]; @symbol_type<0> = [String,715,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_light__hint_button_right_top.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 716; @position = 18; @symbol_constdef = [dithering,716,18,27]; @symbol_type<0> = [String,716,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 717; @position = 18; @symbol_constdef = [packingFormat,717,18,31]; @symbol_type<0> = [String,717,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 720; @symbol_moduledef = [confirmation_size__body,720,15,38]; ]
+        module confirmation_size__body {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 720; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 721; @position = 18; @symbol_constdef = [width,721,18,23]; @symbol_type<0> = [Number,721,27,33]; ]
+            const width as Number = 316;
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 722; @position = 18; @symbol_constdef = [height,722,18,24]; @symbol_type<0> = [Number,722,28,34]; ]
+            const height as Number = 246;
+        }
+        [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 725; @symbol_moduledef = [system_icon_positive__check,725,15,42]; ]
+        module system_icon_positive__check {
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 725; ]
+            <init> {
+            }
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 726; @position = 18; @symbol_constdef = [filename,726,18,26]; @symbol_type<0> = [String,726,30,36]; ]
+            const filename as String = "/Users/soytiyi/Library/Application Support/Garmin/ConnectIQ/Devices/fr965/system_icon_positive__check.svg";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 727; @position = 18; @symbol_constdef = [dithering,727,18,27]; @symbol_type<0> = [String,727,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 728; @position = 18; @symbol_constdef = [packingFormat,728,18,31]; @symbol_type<0> = [String,728,35,41]; ]
+            const packingFormat as String = "png";
+        }
+    }
+}
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/bin/gen/006-B4315-00/source/Rez.mcgen"; @line = 1; ]
+<init> {
+}

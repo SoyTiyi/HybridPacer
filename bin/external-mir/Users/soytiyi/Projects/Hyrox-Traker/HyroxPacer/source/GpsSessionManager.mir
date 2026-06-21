@@ -1,0 +1,502 @@
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Position,1,14,22]; ]
+import Toybox.Position;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [ActivityRecording,2,14,31]; ]
+import Toybox.ActivityRecording;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Activity,3,14,22]; ]
+import Toybox.Activity;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Lang,4,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 28; @symbol_classdef = [GpsSessionManager,28,6,23]; ]
+class GpsSessionManager {
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 28; ]
+    <init> {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 28; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 32; @position = 8; @symbol_vardef = [mLat,32,8,12]; @symbol_type<0> = [Double,32,21,27]; ]
+    var mLat as Double = 0.0d;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 33; @position = 8; @symbol_vardef = [mLon,33,8,12]; @symbol_type<0> = [Double,33,21,27]; ]
+    var mLon as Double = 0.0d;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 34; @position = 8; @symbol_vardef = [mSpeed,34,8,14]; @symbol_type<0> = [Float,34,21,26]; ]
+    var mSpeed as Float = 0.0f;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 35; @position = 8; @symbol_vardef = [mAccuracy,35,8,17]; @symbol_type<0> = [Number,35,21,27]; ]
+    var mAccuracy as Number = 0;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 36; @position = 8; @symbol_vardef = [mHasFix,36,8,15]; @symbol_type<0> = [Boolean,36,21,28]; ]
+    var mHasFix as Boolean = false;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 40; @position = 8; @symbol_vardef = [mSession,40,8,16]; @symbol_type<0> = [ActivityRecording,40,20,37]; @symbol_type<1> = [Session,40,38,45]; ]
+    var mSession as ActivityRecording.Session or Null = null;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 42; @symbol_functiondef = [initialize,42,13,23]; ]
+    function initialize() as Void {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 52; @symbol_functiondef = [start,52,13,18]; ]
+    function start() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_52_29_55_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 54 8 ]
+        symbol [ Position %tmp.1 54 8 16 ];
+        %tmp.1 = getm $.Toybox.Position;
+        symbol [ enableLocationEvents %tmp.2 54 17 37 ];
+        %tmp.2 = getv function %tmp.1 :enableLocationEvents;
+        symbol [ Position %tmp.3 54 38 46 ];
+        %tmp.3 = getm $.Toybox.Position;
+        symbol [ LOCATION_CONTINUOUS %tmp.4 54 47 66 ];
+        %tmp.4 = getv %tmp.3 :LOCATION_CONTINUOUS;
+        %tmp.5 = self;
+        symbol [ method %tmp.6 54 68 74 ];
+        %tmp.6 = getv function %tmp.5 :method;
+        %tmp.8 = const :onPosition;
+        symbol [ onPosition %tmp.8 54 76 86 const ];
+        %tmp.9 = invoke %tmp.5 %tmp.6(%tmp.8);
+        invoke %tmp.1 %tmp.2(%tmp.4, %tmp.9);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_52_29_55_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 61; @symbol_functiondef = [startRecording,61,13,27]; ]
+    function startRecording() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_61_38_75_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 62 8 ]
+        symbol [ ActivityRecording %tmp.1 62 19 36 ];
+        %tmp.1 = getm $.Toybox.ActivityRecording;
+        symbol [ createSession %tmp.2 62 37 50 ];
+        %tmp.2 = getv function %tmp.1 :createSession;
+        %tmp.3 = newd 3;
+        %tmp.5 = const :name;
+        symbol [ name %tmp.5 63 13 17 const ];
+        %tmp.6 = "Hyrox";
+        %tmp.7 = dup %tmp.3;
+        %tmp.8 = aputv %tmp.7 %tmp.5 %tmp.6;
+        %tmp.10 = const :sport;
+        symbol [ sport %tmp.10 64 13 18 const ];
+        symbol [ Activity %tmp.11 64 25 33 ];
+        %tmp.11 = getm $.Toybox.Activity;
+        symbol [ SPORT_RUNNING %tmp.12 64 34 47 ];
+        %tmp.12 = getv %tmp.11 :SPORT_RUNNING;
+        %tmp.13 = dup %tmp.8;
+        %tmp.14 = aputv %tmp.13 %tmp.10 %tmp.12;
+        %tmp.16 = const :subSport;
+        symbol [ subSport %tmp.16 65 13 21 const ];
+        symbol [ Activity %tmp.17 65 25 33 ];
+        %tmp.17 = getm $.Toybox.Activity;
+        symbol [ SUB_SPORT_GENERIC %tmp.18 65 34 51 ];
+        %tmp.18 = getv %tmp.17 :SUB_SPORT_GENERIC;
+        %tmp.19 = dup %tmp.14;
+        %tmp.20 = aputv %tmp.19 %tmp.16 %tmp.18;
+        %tmp.21 = invoke %tmp.1 %tmp.2(%tmp.20);
+        symbol [ mSession ? 62 8 16 ];
+        putv self :mSession %tmp.21;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 68 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_61_38_75_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_61_38_75_4_stop" ]
+        %s.1 = local;
+        symbol [ s %s.1 68 12 13 ];
+        symbol [ mSession %tmp.23 68 16 24 ];
+        %tmp.23 = getv ? :mSession;
+        lputv %s.1 %tmp.23;
+        symbol [ s %s.1 68 12 13 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 69 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_69_8_74_8_if_stmt:
+        %tmp.24 = lgetv %s.1;
+        symbol [ s %tmp.24 69 12 13 ];
+        %tmp.25 = null;
+        %tmp.26 = ne %tmp.24 %tmp.25;
+        bf %tmp.26 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_69_8_74_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_69_8_74_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_69_23_74_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 71 12 ]
+        %tmp.27 = self;
+        symbol [ getApp %tmp.28 71 12 18 ];
+        %tmp.28 = getv function %tmp.27 :getApp;
+        %tmp.29 = invoke %tmp.27 %tmp.28();
+        symbol [ mFit %tmp.30 71 21 25 ];
+        %tmp.30 = getv %tmp.29 :mFit;
+        symbol [ initializeFitFields %tmp.31 71 26 45 ];
+        %tmp.31 = getv function %tmp.30 :initializeFitFields;
+        %tmp.32 = lgetv %s.1;
+        symbol [ s %tmp.32 71 46 47 ];
+        %tmp.33 = as %tmp.32 { (!Null) };
+        invoke %tmp.30 %tmp.31(%tmp.33);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 73 12 ]
+        %tmp.34 = lgetv %s.1;
+        symbol [ s %tmp.34 73 12 13 ];
+        %tmp.35 = as %tmp.34 { (!Null) };
+        symbol [ start %tmp.36 73 14 19 ];
+        %tmp.36 = getv function %tmp.35 :start;
+        invoke %tmp.35 %tmp.36();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_69_23_74_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_69_8_74_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_69_8_74_8_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_61_38_75_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 80; @symbol_functiondef = [stopRecording,80,13,26]; ]
+    function stopRecording() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_80_37_89_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 81 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_80_37_89_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_80_37_89_4_stop" ]
+        %s.1 = local;
+        symbol [ s %s.1 81 12 13 ];
+        symbol [ mSession %tmp.2 81 16 24 ];
+        %tmp.2 = getv ? :mSession;
+        lputv %s.1 %tmp.2;
+        symbol [ s %s.1 81 12 13 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 82 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_8_85_8_if_stmt:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_12_82_39_begin:
+        %tmp.3 = lgetv %s.1;
+        symbol [ s %tmp.3 82 12 13 ];
+        %tmp.4 = null;
+        %tmp.5 = ne %tmp.3 %tmp.4;
+        bf %tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_8_85_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_25_82_39_true:
+        %tmp.6 = lgetv %s.1;
+        symbol [ s %tmp.6 82 25 26 ];
+        %tmp.7 = as %tmp.6 { (!Null) };
+        symbol [ isRecording %tmp.8 82 27 38 ];
+        %tmp.8 = getv function %tmp.7 :isRecording;
+        %tmp.9 = invoke %tmp.7 %tmp.8();
+        push %tmp.9;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_25_82_39_end:
+        %tmp.10 = phi [%tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_12_82_39_begin] [%tmp.9 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_25_82_39_true] [%tmp.10 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_25_82_39_end];
+        bf %tmp.10 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_8_85_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_8_85_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_42_85_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 83 12 ]
+        %tmp.11 = lgetv %s.1;
+        symbol [ s %tmp.11 83 12 13 ];
+        %tmp.12 = as %tmp.11 { (!Null) };
+        symbol [ stop %tmp.13 83 14 18 ];
+        %tmp.13 = getv function %tmp.12 :stop;
+        invoke %tmp.12 %tmp.13();
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 84 12 ]
+        %tmp.14 = lgetv %s.1;
+        symbol [ s %tmp.14 84 12 13 ];
+        %tmp.15 = as %tmp.14 { (!Null) };
+        symbol [ save %tmp.16 84 14 18 ];
+        %tmp.16 = getv function %tmp.15 :save;
+        invoke %tmp.15 %tmp.16();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_42_85_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_8_85_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_82_8_85_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 86 8 ]
+        %tmp.17 = null;
+        symbol [ mSession ? 86 8 16 ];
+        putv self :mSession %tmp.17;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 88 8 ]
+        %tmp.18 = self;
+        symbol [ getApp %tmp.19 88 8 14 ];
+        %tmp.19 = getv function %tmp.18 :getApp;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        symbol [ mFit %tmp.21 88 17 21 ];
+        %tmp.21 = getv %tmp.20 :mFit;
+        symbol [ clearFitFields %tmp.22 88 22 36 ];
+        %tmp.22 = getv function %tmp.21 :clearFitFields;
+        invoke %tmp.21 %tmp.22();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_80_37_89_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 96; @symbol_functiondef = [addLap,96,13,19]; ]
+    function addLap() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_96_30_101_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 97 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_96_30_101_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_96_30_101_4_stop" ]
+        %s.1 = local;
+        symbol [ s %s.1 97 12 13 ];
+        symbol [ mSession %tmp.2 97 16 24 ];
+        %tmp.2 = getv ? :mSession;
+        lputv %s.1 %tmp.2;
+        symbol [ s %s.1 97 12 13 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 98 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_8_100_8_if_stmt:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_12_98_39_begin:
+        %tmp.3 = lgetv %s.1;
+        symbol [ s %tmp.3 98 12 13 ];
+        %tmp.4 = null;
+        %tmp.5 = ne %tmp.3 %tmp.4;
+        bf %tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_8_100_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_25_98_39_true:
+        %tmp.6 = lgetv %s.1;
+        symbol [ s %tmp.6 98 25 26 ];
+        %tmp.7 = as %tmp.6 { (!Null) };
+        symbol [ isRecording %tmp.8 98 27 38 ];
+        %tmp.8 = getv function %tmp.7 :isRecording;
+        %tmp.9 = invoke %tmp.7 %tmp.8();
+        push %tmp.9;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_25_98_39_end:
+        %tmp.10 = phi [%tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_12_98_39_begin] [%tmp.9 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_25_98_39_true] [%tmp.10 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_25_98_39_end];
+        bf %tmp.10 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_8_100_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_8_100_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_42_100_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 99 12 ]
+        %tmp.11 = lgetv %s.1;
+        symbol [ s %tmp.11 99 12 13 ];
+        %tmp.12 = as %tmp.11 { (!Null) };
+        symbol [ addLap %tmp.13 99 14 20 ];
+        %tmp.13 = getv function %tmp.12 :addLap;
+        invoke %tmp.12 %tmp.13();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_42_100_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_8_100_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_98_8_100_8_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_96_30_101_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 107; @symbol_functiondef = [onPosition,107,13,23]; @symbol_param<0> = [info,107,24,28]; @symbol_param<0>_type<0> = [Position,107,32,40]; @symbol_param<0>_type<1> = [Info,107,41,45]; ]
+    function onPosition(info as Position.Info) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_107_55_134_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 109 8 ]
+        %tmp.1 = lgetv %info;
+        symbol [ info %tmp.1 109 20 24 ];
+        symbol [ accuracy %tmp.2 109 25 33 ];
+        %tmp.2 = getv %tmp.1 :accuracy;
+        symbol [ mAccuracy ? 109 8 17 ];
+        putv self :mAccuracy %tmp.2;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 111 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_8_129_8_if_stmt:
+        symbol [ mAccuracy %tmp.4 111 12 21 ];
+        %tmp.4 = getv ? :mAccuracy;
+        symbol [ Position %tmp.5 111 24 32 ];
+        %tmp.5 = getm $.Toybox.Position;
+        symbol [ QUALITY_NOT_AVAILABLE %tmp.6 111 33 54 ];
+        %tmp.6 = getv %tmp.5 :QUALITY_NOT_AVAILABLE;
+        %tmp.7 = gt %tmp.4 %tmp.6;
+        bf %tmp.7 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_8_129_8_if_else_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_8_129_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_56_127_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 112 12 ]
+        %tmp.8 = true;
+        symbol [ mHasFix ? 112 12 19 ];
+        putv self :mHasFix %tmp.8;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 116 12 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_56_127_8_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_56_127_8_stop" ]
+        %pos.1 = local;
+        symbol [ pos %pos.1 116 16 19 ];
+        %tmp.9 = lgetv %info;
+        symbol [ info %tmp.9 116 22 26 ];
+        symbol [ position %tmp.10 116 27 35 ];
+        %tmp.10 = getv %tmp.9 :position;
+        lputv %pos.1 %tmp.10;
+        symbol [ pos %pos.1 116 16 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 117 12 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_117_12_121_12_if_stmt:
+        %tmp.11 = lgetv %pos.1;
+        symbol [ pos %tmp.11 117 16 19 ];
+        %tmp.12 = null;
+        %tmp.13 = ne %tmp.11 %tmp.12;
+        bf %tmp.13 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_117_12_121_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_117_12_121_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_117_29_121_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 118 16 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_117_29_121_12_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_117_29_121_12_stop" ]
+        %deg.2 = local;
+        symbol [ deg %deg.2 118 20 23 ];
+        %tmp.14 = lgetv %pos.1;
+        symbol [ pos %tmp.14 118 26 29 ];
+        %tmp.15 = as %tmp.14 { (!Null) };
+        symbol [ toDegrees %tmp.16 118 30 39 ];
+        %tmp.16 = getv function %tmp.15 :toDegrees;
+        %tmp.17 = invoke %tmp.15 %tmp.16();
+        %tmp.18 = as %tmp.17 Array<Double>;
+        symbol [ Array %tmp.18 118 45 50 ];
+        symbol [ Double %tmp.18 118 51 57 ];
+        lputv %deg.2 %tmp.18;
+        symbol [ deg %deg.2 118 20 23 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 119 16 ]
+        %tmp.19 = lgetv %deg.2;
+        symbol [ deg %tmp.19 119 23 26 ];
+        %tmp.20 = 0;
+        %tmp.21 = agetv %tmp.19 %tmp.20;
+        symbol [ mLat ? 119 16 20 ];
+        putv self :mLat %tmp.21;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 120 16 ]
+        %tmp.22 = lgetv %deg.2;
+        symbol [ deg %tmp.22 120 23 26 ];
+        %tmp.23 = 1;
+        %tmp.24 = agetv %tmp.22 %tmp.23;
+        symbol [ mLon ? 120 16 20 ];
+        putv self :mLon %tmp.24;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_117_29_121_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_117_12_121_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_117_12_121_12_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 124 12 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_12_126_12_if_stmt:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_16_124_49_begin:
+        %tmp.25 = lgetv %info;
+        symbol [ info %tmp.25 124 16 20 ];
+        %tmp.27 = const :speed;
+        symbol [ speed %tmp.27 124 26 31 const ];
+        %tmp.28 = canhazplz %tmp.25 %tmp.27;
+        bf %tmp.28 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_12_126_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_35_124_49_true:
+        %tmp.29 = lgetv %info;
+        symbol [ info %tmp.29 124 35 39 ];
+        %tmp.30 = as %tmp.29 { (interface { var speed; }) };
+        symbol [ speed %tmp.31 124 40 45 ];
+        %tmp.31 = getv %tmp.30 :speed;
+        %tmp.32 = null;
+        %tmp.33 = ne %tmp.31 %tmp.32;
+        push %tmp.33;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_35_124_49_end:
+        %tmp.34 = phi [%tmp.28 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_16_124_49_begin] [%tmp.33 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_35_124_49_true] [%tmp.34 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_35_124_49_end];
+        bf %tmp.34 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_12_126_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_12_126_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_55_126_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 125 16 ]
+        %tmp.35 = lgetv %info;
+        symbol [ info %tmp.35 125 25 29 ];
+        %tmp.36 = as %tmp.35 { (interface { var speed; }) };
+        symbol [ speed %tmp.37 125 30 35 ];
+        %tmp.37 = getv %tmp.36 :speed;
+        %tmp.38 = as %tmp.37 Float;
+        symbol [ Float %tmp.38 125 39 44 ];
+        symbol [ mSpeed ? 125 16 22 ];
+        putv self :mSpeed %tmp.38;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_55_126_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_12_126_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_124_12_126_12_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_56_127_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_8_129_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_8_129_8_if_else_false:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_127_15_129_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 128 12 ]
+        %tmp.39 = false;
+        symbol [ mHasFix ? 128 12 19 ];
+        putv self :mHasFix %tmp.39;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_127_15_129_8_stop:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_111_8_129_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 133 8 ]
+        %tmp.40 = self;
+        symbol [ getApp %tmp.41 133 8 14 ];
+        %tmp.41 = getv function %tmp.40 :getApp;
+        %tmp.42 = invoke %tmp.40 %tmp.41();
+        symbol [ mFit %tmp.43 133 17 21 ];
+        %tmp.43 = getv %tmp.42 :mFit;
+        symbol [ tickFitMetrics %tmp.44 133 22 36 ];
+        %tmp.44 = getv function %tmp.43 :tickFitMetrics;
+        invoke %tmp.43 %tmp.44();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_107_55_134_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 139; @symbol_functiondef = [stop,139,13,17]; ]
+    function stop() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_139_28_150_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 140 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_139_28_150_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_139_28_150_4_stop" ]
+        %s.1 = local;
+        symbol [ s %s.1 140 12 13 ];
+        symbol [ mSession %tmp.2 140 16 24 ];
+        %tmp.2 = getv ? :mSession;
+        lputv %s.1 %tmp.2;
+        symbol [ s %s.1 140 12 13 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 141 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_8_144_8_if_stmt:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_12_141_39_begin:
+        %tmp.3 = lgetv %s.1;
+        symbol [ s %tmp.3 141 12 13 ];
+        %tmp.4 = null;
+        %tmp.5 = ne %tmp.3 %tmp.4;
+        bf %tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_8_144_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_25_141_39_true:
+        %tmp.6 = lgetv %s.1;
+        symbol [ s %tmp.6 141 25 26 ];
+        %tmp.7 = as %tmp.6 { (!Null) };
+        symbol [ isRecording %tmp.8 141 27 38 ];
+        %tmp.8 = getv function %tmp.7 :isRecording;
+        %tmp.9 = invoke %tmp.7 %tmp.8();
+        push %tmp.9;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_25_141_39_end:
+        %tmp.10 = phi [%tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_12_141_39_begin] [%tmp.9 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_25_141_39_true] [%tmp.10 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_25_141_39_end];
+        bf %tmp.10 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_8_144_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_8_144_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_42_144_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 142 12 ]
+        %tmp.11 = lgetv %s.1;
+        symbol [ s %tmp.11 142 12 13 ];
+        %tmp.12 = as %tmp.11 { (!Null) };
+        symbol [ stop %tmp.13 142 14 18 ];
+        %tmp.13 = getv function %tmp.12 :stop;
+        invoke %tmp.12 %tmp.13();
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 143 12 ]
+        %tmp.14 = lgetv %s.1;
+        symbol [ s %tmp.14 143 12 13 ];
+        %tmp.15 = as %tmp.14 { (!Null) };
+        symbol [ save %tmp.16 143 14 18 ];
+        %tmp.16 = getv function %tmp.15 :save;
+        invoke %tmp.15 %tmp.16();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_42_144_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_8_144_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_141_8_144_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 145 8 ]
+        %tmp.17 = null;
+        symbol [ mSession ? 145 8 16 ];
+        putv self :mSession %tmp.17;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 147 8 ]
+        %tmp.18 = self;
+        symbol [ getApp %tmp.19 147 8 14 ];
+        %tmp.19 = getv function %tmp.18 :getApp;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        symbol [ mFit %tmp.21 147 17 21 ];
+        %tmp.21 = getv %tmp.20 :mFit;
+        symbol [ clearFitFields %tmp.22 147 22 36 ];
+        %tmp.22 = getv function %tmp.21 :clearFitFields;
+        invoke %tmp.21 %tmp.22();
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 149 8 ]
+        symbol [ Position %tmp.23 149 8 16 ];
+        %tmp.23 = getm $.Toybox.Position;
+        symbol [ enableLocationEvents %tmp.24 149 17 37 ];
+        %tmp.24 = getv function %tmp.23 :enableLocationEvents;
+        symbol [ Position %tmp.25 149 38 46 ];
+        %tmp.25 = getm $.Toybox.Position;
+        symbol [ LOCATION_DISABLE %tmp.26 149 47 63 ];
+        %tmp.26 = getv %tmp.25 :LOCATION_DISABLE;
+        %tmp.27 = self;
+        symbol [ method %tmp.28 149 65 71 ];
+        %tmp.28 = getv function %tmp.27 :method;
+        %tmp.30 = const :onPosition;
+        symbol [ onPosition %tmp.30 149 73 83 const ];
+        %tmp.31 = invoke %tmp.27 %tmp.28(%tmp.30);
+        invoke %tmp.23 %tmp.24(%tmp.26, %tmp.31);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_139_28_150_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 154; @symbol_functiondef = [hasFix,154,13,19]; @symbol_return<0> = [Boolean,154,25,32]; ]
+    function hasFix() as Boolean {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_154_33_156_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 155 8 ]
+        symbol [ mHasFix %tmp.2 155 15 22 ];
+        %tmp.2 = getv ? :mHasFix;
+        ret %tmp.2;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_154_33_156_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 158; @symbol_functiondef = [getLatitude,158,13,24]; @symbol_return<0> = [Double,158,30,36]; ]
+    function getLatitude() as Double {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_158_37_160_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 159 8 ]
+        symbol [ mLat %tmp.2 159 15 19 ];
+        %tmp.2 = getv ? :mLat;
+        ret %tmp.2;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_158_37_160_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 162; @symbol_functiondef = [getLongitude,162,13,25]; @symbol_return<0> = [Double,162,31,37]; ]
+    function getLongitude() as Double {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_162_38_164_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 163 8 ]
+        symbol [ mLon %tmp.2 163 15 19 ];
+        %tmp.2 = getv ? :mLon;
+        ret %tmp.2;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_162_38_164_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 166; @symbol_functiondef = [getSpeedMs,166,13,23]; @symbol_return<0> = [Float,166,29,34]; ]
+    function getSpeedMs() as Float {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_166_35_168_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 167 8 ]
+        symbol [ mSpeed %tmp.2 167 15 21 ];
+        %tmp.2 = getv ? :mSpeed;
+        ret %tmp.2;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_166_35_168_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 170; @symbol_functiondef = [getAccuracy,170,13,24]; @symbol_return<0> = [Number,170,30,36]; ]
+    function getAccuracy() as Number {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_170_37_172_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc" 171 8 ]
+        symbol [ mAccuracy %tmp.2 171 15 24 ];
+        %tmp.2 = getv ? :mAccuracy;
+        ret %tmp.2;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_GpsSessionManager_mc_170_37_172_4_stop:
+    }
+}
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/GpsSessionManager.mc"; @line = 1; ]
+<init> {
+}

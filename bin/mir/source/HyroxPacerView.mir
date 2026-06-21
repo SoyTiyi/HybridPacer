@@ -1,0 +1,1993 @@
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+import Toybox.System;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Timer,4,14,19]; ]
+import Toybox.Timer;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [WatchUi,5,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 23; @symbol_classdef = [HyroxPacerView,23,6,20]; @symbol_extends<0> = [WatchUi,23,29,36]; @symbol_extends<1> = [View,23,37,41]; ]
+class HyroxPacerView extends WatchUi.View {
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 23; ]
+    <init> {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 23; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 26; @position = 8; @symbol_vardef = [mWidth,26,8,14]; @symbol_type<0> = [Number,26,25,31]; ]
+    var mWidth as Number = 0;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 27; @position = 8; @symbol_vardef = [mHeight,27,8,15]; @symbol_type<0> = [Number,27,25,31]; ]
+    var mHeight as Number = 0;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 28; @position = 8; @symbol_vardef = [mCenterX,28,8,16]; @symbol_type<0> = [Number,28,25,31]; ]
+    var mCenterX as Number = 0;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 29; @position = 8; @symbol_vardef = [mCenterY,29,8,16]; @symbol_type<0> = [Number,29,25,31]; ]
+    var mCenterY as Number = 0;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 30; @position = 8; @symbol_vardef = [mBandTopY,30,8,17]; @symbol_type<0> = [Number,30,25,31]; ]
+    var mBandTopY as Number = 0;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 31; @position = 8; @symbol_vardef = [mBandBottomY,31,8,20]; @symbol_type<0> = [Number,31,25,31]; ]
+    var mBandBottomY as Number = 0;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 32; @position = 8; @symbol_vardef = [mLineH,32,8,14]; @symbol_type<0> = [Number,32,25,31]; ]
+    var mLineH as Number = 0;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 35; @position = 8; @symbol_vardef = [mTimer,35,8,14]; @symbol_type<0> = [Timer,35,18,23]; @symbol_type<1> = [Timer,35,24,29]; ]
+    var mTimer as Timer.Timer or Null = null;
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 37; @symbol_functiondef = [initialize,37,13,23]; ]
+    function initialize() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_37_26_39_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 38 8 ]
+        symbol [ View %tmp.2 38 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 38 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_37_26_39_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 43; @symbol_functiondef = [onLayout,43,13,21]; @symbol_param<0> = [dc,43,22,24]; @symbol_param<0>_type<0> = [Dc,43,28,30]; ]
+    function onLayout(dc as Dc) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_43_40_51_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 44 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 44 23 25 ];
+        symbol [ getWidth %tmp.2 44 26 34 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ mWidth ? 44 8 14 ];
+        putv self :mWidth %tmp.3;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 45 8 ]
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 45 23 25 ];
+        symbol [ getHeight %tmp.5 45 26 35 ];
+        %tmp.5 = getv function %tmp.4 :getHeight;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        symbol [ mHeight ? 45 8 15 ];
+        putv self :mHeight %tmp.6;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 46 8 ]
+        symbol [ mWidth %tmp.8 46 23 29 ];
+        %tmp.8 = getv ? :mWidth;
+        %tmp.9 = 2;
+        %tmp.10 = div %tmp.8 %tmp.9;
+        symbol [ mCenterX ? 46 8 16 ];
+        putv self :mCenterX %tmp.10;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 47 8 ]
+        symbol [ mHeight %tmp.12 47 23 30 ];
+        %tmp.12 = getv ? :mHeight;
+        %tmp.13 = 2;
+        %tmp.14 = div %tmp.12 %tmp.13;
+        symbol [ mCenterY ? 47 8 16 ];
+        putv self :mCenterY %tmp.14;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 48 8 ]
+        symbol [ mHeight %tmp.16 48 23 30 ];
+        %tmp.16 = getv ? :mHeight;
+        %tmp.17 = 8;
+        %tmp.18 = div %tmp.16 %tmp.17;
+        symbol [ mBandTopY ? 48 8 17 ];
+        putv self :mBandTopY %tmp.18;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 49 8 ]
+        symbol [ mHeight %tmp.20 49 23 30 ];
+        %tmp.20 = getv ? :mHeight;
+        %tmp.21 = 7;
+        %tmp.22 = mul %tmp.20 %tmp.21;
+        %tmp.23 = 8;
+        %tmp.24 = div %tmp.22 %tmp.23;
+        symbol [ mBandBottomY ? 49 8 20 ];
+        putv self :mBandBottomY %tmp.24;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 50 8 ]
+        symbol [ mHeight %tmp.26 50 23 30 ];
+        %tmp.26 = getv ? :mHeight;
+        %tmp.27 = 10;
+        %tmp.28 = div %tmp.26 %tmp.27;
+        symbol [ mLineH ? 50 8 14 ];
+        putv self :mLineH %tmp.28;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_43_40_51_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 54; @symbol_functiondef = [onShow,54,13,19]; ]
+    function onShow() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_54_30_58_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 55 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_54_30_58_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_54_30_58_4_stop" ]
+        %t.1 = local;
+        symbol [ t %t.1 55 12 13 ];
+        symbol [ Timer %tmp.3 55 20 25 ];
+        %tmp.3 = getm $.Toybox.Timer;
+        symbol [ Timer %tmp.4 55 26 31 ];
+        %tmp.4 = getv function ? %tmp.3 :Timer;
+        %tmp.1 = newc %tmp.4 ();
+        lputv %t.1 %tmp.1;
+        symbol [ t %t.1 55 12 13 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 56 8 ]
+        %tmp.5 = lgetv %t.1;
+        symbol [ t %tmp.5 56 8 9 ];
+        symbol [ start %tmp.6 56 10 15 ];
+        %tmp.6 = getv function %tmp.5 :start;
+        %tmp.7 = self;
+        symbol [ method %tmp.8 56 16 22 ];
+        %tmp.8 = getv function %tmp.7 :method;
+        %tmp.10 = const :onTimerTick;
+        symbol [ onTimerTick %tmp.10 56 24 35 const ];
+        %tmp.11 = invoke %tmp.7 %tmp.8(%tmp.10);
+        %tmp.12 = 1000;
+        %tmp.13 = true;
+        invoke %tmp.5 %tmp.6(%tmp.11, %tmp.12, %tmp.13);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 57 8 ]
+        %tmp.14 = lgetv %t.1;
+        symbol [ t %tmp.14 57 17 18 ];
+        symbol [ mTimer ? 57 8 14 ];
+        putv self :mTimer %tmp.14;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_54_30_58_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 61; @symbol_functiondef = [onHide,61,13,19]; ]
+    function onHide() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_61_30_66_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 62 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_61_30_66_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_61_30_66_4_stop" ]
+        %t.1 = local;
+        symbol [ t %t.1 62 12 13 ];
+        symbol [ mTimer %tmp.2 62 16 22 ];
+        %tmp.2 = getv ? :mTimer;
+        lputv %t.1 %tmp.2;
+        symbol [ t %t.1 62 12 13 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 63 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_63_8_65_8_if_stmt:
+        %tmp.3 = lgetv %t.1;
+        symbol [ t %tmp.3 63 12 13 ];
+        %tmp.4 = null;
+        %tmp.5 = ne %tmp.3 %tmp.4;
+        bf %tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_63_8_65_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_63_8_65_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_63_23_65_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 64 12 ]
+        %tmp.6 = lgetv %t.1;
+        symbol [ t %tmp.6 64 12 13 ];
+        %tmp.7 = as %tmp.6 { (!Null) };
+        symbol [ stop %tmp.8 64 14 18 ];
+        %tmp.8 = getv function %tmp.7 :stop;
+        invoke %tmp.7 %tmp.8();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_63_23_65_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_63_8_65_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_63_8_65_8_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_61_30_66_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 69; @symbol_functiondef = [onTimerTick,69,13,24]; ]
+    function onTimerTick() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_69_35_71_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 70 8 ]
+        symbol [ WatchUi %tmp.1 70 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.2 70 16 29 ];
+        %tmp.2 = getv function %tmp.1 :requestUpdate;
+        invoke %tmp.1 %tmp.2();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_69_35_71_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 74; @symbol_functiondef = [onUpdate,74,13,21]; @symbol_param<0> = [dc,74,22,24]; @symbol_param<0>_type<0> = [Dc,74,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 75 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 75 12 15 ];
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 75 20 26 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %app.1 %tmp.3;
+        symbol [ app %app.1 75 12 15 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 76 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_stop" ]
+        %state.2 = local;
+        symbol [ state %state.2 76 12 17 ];
+        %tmp.4 = lgetv %app.1;
+        symbol [ app %tmp.4 76 20 23 ];
+        symbol [ mFsmState %tmp.5 76 24 33 ];
+        %tmp.5 = getv %tmp.4 :mFsmState;
+        lputv %state.2 %tmp.5;
+        symbol [ state %state.2 76 12 17 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 81 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_81_8_84_8_if_stmt:
+        %tmp.6 = lgetv %app.1;
+        symbol [ app %tmp.6 81 12 15 ];
+        symbol [ mIsPaused %tmp.7 81 16 25 ];
+        %tmp.7 = getv %tmp.6 :mIsPaused;
+        bf %tmp.7 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_81_8_84_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_81_8_84_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_81_27_84_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 82 12 ]
+        %tmp.8 = self;
+        symbol [ drawPaused %tmp.9 82 12 22 ];
+        %tmp.9 = getv function %tmp.8 :drawPaused;
+        %tmp.10 = lgetv %dc;
+        symbol [ dc %tmp.10 82 23 25 ];
+        %tmp.11 = lgetv %app.1;
+        symbol [ app %tmp.11 82 27 30 ];
+        invoke %tmp.8 %tmp.9(%tmp.10, %tmp.11);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 83 12 ]
+        ret ?;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_81_27_84_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_81_8_84_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_81_8_84_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 88 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_stop" ]
+        %bg.3 = local;
+        symbol [ bg %bg.3 88 12 14 ];
+        symbol [ Graphics %tmp.12 88 17 25 ];
+        %tmp.12 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.13 88 26 37 ];
+        %tmp.13 = getv %tmp.12 :COLOR_BLACK;
+        lputv %bg.3 %tmp.13;
+        symbol [ bg %bg.3 88 12 14 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 89 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_stop" ]
+        %fg.4 = local;
+        symbol [ fg %fg.4 89 12 14 ];
+        symbol [ Graphics %tmp.14 89 17 25 ];
+        %tmp.14 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.15 89 26 37 ];
+        %tmp.15 = getv %tmp.14 :COLOR_WHITE;
+        lputv %fg.4 %tmp.15;
+        symbol [ fg %fg.4 89 12 14 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 90 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_90_8_93_8_if_stmt:
+        %tmp.16 = lgetv %state.2;
+        symbol [ state %tmp.16 90 12 17 ];
+        symbol [ STATE_RUN %tmp.18 90 21 30 ];
+        %tmp.18 = getv ? :STATE_RUN;
+        %tmp.19 = eq %tmp.16 %tmp.18;
+        bf %tmp.19 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_90_8_93_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_90_8_93_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_90_32_93_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 91 12 ]
+        symbol [ Graphics %tmp.20 91 17 25 ];
+        %tmp.20 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.21 91 26 37 ];
+        %tmp.21 = getv %tmp.20 :COLOR_WHITE;
+        lputv %bg.3 %tmp.21;
+        symbol [ bg %bg.3 91 12 14 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 92 12 ]
+        symbol [ Graphics %tmp.22 92 17 25 ];
+        %tmp.22 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.23 92 26 37 ];
+        %tmp.23 = getv %tmp.22 :COLOR_BLACK;
+        lputv %fg.4 %tmp.23;
+        symbol [ fg %fg.4 92 12 14 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_90_32_93_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_90_8_93_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_90_8_93_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 94 8 ]
+        %tmp.24 = lgetv %dc;
+        symbol [ dc %tmp.24 94 8 10 ];
+        symbol [ setColor %tmp.25 94 11 19 ];
+        %tmp.25 = getv function %tmp.24 :setColor;
+        symbol [ Graphics %tmp.26 94 20 28 ];
+        %tmp.26 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.27 94 29 46 ];
+        %tmp.27 = getv %tmp.26 :COLOR_TRANSPARENT;
+        %tmp.28 = lgetv %bg.3;
+        symbol [ bg %tmp.28 94 48 50 ];
+        invoke %tmp.24 %tmp.25(%tmp.27, %tmp.28);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 95 8 ]
+        %tmp.29 = lgetv %dc;
+        symbol [ dc %tmp.29 95 8 10 ];
+        symbol [ clear %tmp.30 95 11 16 ];
+        %tmp.30 = getv function %tmp.29 :clear;
+        invoke %tmp.29 %tmp.30();
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 97 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_97_8_107_8_if_stmt:
+        %tmp.31 = lgetv %state.2;
+        symbol [ state %tmp.31 97 12 17 ];
+        symbol [ STATE_WARMUP %tmp.33 97 21 33 ];
+        %tmp.33 = getv ? :STATE_WARMUP;
+        %tmp.34 = eq %tmp.31 %tmp.33;
+        bf %tmp.34 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_97_8_107_8_if_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_97_8_107_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_97_35_99_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 98 12 ]
+        %tmp.35 = self;
+        symbol [ drawWarmup %tmp.36 98 12 22 ];
+        %tmp.36 = getv function %tmp.35 :drawWarmup;
+        %tmp.37 = lgetv %dc;
+        symbol [ dc %tmp.37 98 23 25 ];
+        %tmp.38 = lgetv %app.1;
+        symbol [ app %tmp.38 98 27 30 ];
+        %tmp.39 = lgetv %fg.4;
+        symbol [ fg %tmp.39 98 32 34 ];
+        invoke %tmp.35 %tmp.36(%tmp.37, %tmp.38, %tmp.39);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_97_35_99_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_97_8_107_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_97_8_107_8_if_false:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 99 15 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_99_15_107_8_if_stmt:
+        %tmp.40 = lgetv %state.2;
+        symbol [ state %tmp.40 99 19 24 ];
+        symbol [ STATE_RUN %tmp.42 99 28 37 ];
+        %tmp.42 = getv ? :STATE_RUN;
+        %tmp.43 = eq %tmp.40 %tmp.42;
+        bf %tmp.43 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_99_15_107_8_if_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_99_15_107_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_99_39_101_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 100 12 ]
+        %tmp.44 = self;
+        symbol [ drawRun %tmp.45 100 12 19 ];
+        %tmp.45 = getv function %tmp.44 :drawRun;
+        %tmp.46 = lgetv %dc;
+        symbol [ dc %tmp.46 100 20 22 ];
+        %tmp.47 = lgetv %app.1;
+        symbol [ app %tmp.47 100 24 27 ];
+        %tmp.48 = lgetv %fg.4;
+        symbol [ fg %tmp.48 100 29 31 ];
+        invoke %tmp.44 %tmp.45(%tmp.46, %tmp.47, %tmp.48);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_99_39_101_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_99_15_107_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_99_15_107_8_if_false:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 101 15 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_15_107_8_if_stmt:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_19_101_57_begin:
+        %tmp.49 = lgetv %state.2;
+        symbol [ state %tmp.49 101 19 24 ];
+        symbol [ STATE_ROXZONE_IN %tmp.51 101 28 44 ];
+        %tmp.51 = getv ? :STATE_ROXZONE_IN;
+        %tmp.52 = eq %tmp.49 %tmp.51;
+        bt %tmp.52 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_15_107_8_if_true;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_48_101_57_false:
+        %tmp.53 = lgetv %state.2;
+        symbol [ state %tmp.53 101 48 53 ];
+        symbol [ STATE_ROXZONE_OUT %tmp.55 101 57 74 ];
+        %tmp.55 = getv ? :STATE_ROXZONE_OUT;
+        %tmp.56 = eq %tmp.53 %tmp.55;
+        push %tmp.56;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_48_101_57_end:
+        %tmp.57 = phi [%tmp.52 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_19_101_57_begin] [%tmp.56 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_48_101_57_false] [%tmp.57 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_48_101_57_end];
+        bf %tmp.57 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_15_107_8_if_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_15_107_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_76_103_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 102 12 ]
+        %tmp.58 = self;
+        symbol [ drawRoxzone %tmp.59 102 12 23 ];
+        %tmp.59 = getv function %tmp.58 :drawRoxzone;
+        %tmp.60 = lgetv %dc;
+        symbol [ dc %tmp.60 102 24 26 ];
+        %tmp.61 = lgetv %app.1;
+        symbol [ app %tmp.61 102 28 31 ];
+        %tmp.62 = lgetv %fg.4;
+        symbol [ fg %tmp.62 102 33 35 ];
+        invoke %tmp.58 %tmp.59(%tmp.60, %tmp.61, %tmp.62);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_76_103_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_15_107_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_15_107_8_if_false:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 103 15 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_103_15_107_8_if_stmt:
+        %tmp.63 = lgetv %state.2;
+        symbol [ state %tmp.63 103 19 24 ];
+        symbol [ STATE_STATION %tmp.65 103 28 41 ];
+        %tmp.65 = getv ? :STATE_STATION;
+        %tmp.66 = eq %tmp.63 %tmp.65;
+        bf %tmp.66 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_103_15_107_8_if_else_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_103_15_107_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_103_43_105_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 104 12 ]
+        %tmp.67 = self;
+        symbol [ drawStation %tmp.68 104 12 23 ];
+        %tmp.68 = getv function %tmp.67 :drawStation;
+        %tmp.69 = lgetv %dc;
+        symbol [ dc %tmp.69 104 24 26 ];
+        %tmp.70 = lgetv %app.1;
+        symbol [ app %tmp.70 104 28 31 ];
+        %tmp.71 = lgetv %fg.4;
+        symbol [ fg %tmp.71 104 33 35 ];
+        invoke %tmp.67 %tmp.68(%tmp.69, %tmp.70, %tmp.71);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_103_43_105_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_103_15_107_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_103_15_107_8_if_else_false:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_105_15_107_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 106 12 ]
+        %tmp.72 = self;
+        symbol [ drawFinish %tmp.73 106 12 22 ];
+        %tmp.73 = getv function %tmp.72 :drawFinish;
+        %tmp.74 = lgetv %dc;
+        symbol [ dc %tmp.74 106 23 25 ];
+        %tmp.75 = lgetv %app.1;
+        symbol [ app %tmp.75 106 27 30 ];
+        %tmp.76 = lgetv %fg.4;
+        symbol [ fg %tmp.76 106 32 34 ];
+        invoke %tmp.72 %tmp.73(%tmp.74, %tmp.75, %tmp.76);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_105_15_107_8_stop:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_103_15_107_8_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_101_15_107_8_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_99_15_107_8_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_97_8_107_8_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_74_40_108_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 115; @symbol_functiondef = [drawPaused,115,21,31]; @symbol_param<0> = [dc,115,32,34]; @symbol_param<0>_type<0> = [Dc,115,38,40]; @symbol_param<1> = [app,115,42,45]; @symbol_param<1>_type<0> = [HyroxPacerApp,115,49,62]; ]
+    private
+    function drawPaused(dc as Dc, app as HyroxPacerApp) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_115_72_145_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 116 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 116 8 10 ];
+        symbol [ setColor %tmp.2 116 11 19 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        symbol [ Graphics %tmp.3 116 20 28 ];
+        %tmp.3 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.4 116 29 46 ];
+        %tmp.4 = getv %tmp.3 :COLOR_TRANSPARENT;
+        symbol [ Graphics %tmp.5 116 48 56 ];
+        %tmp.5 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.6 116 57 70 ];
+        %tmp.6 = getv %tmp.5 :COLOR_DK_GRAY;
+        invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 117 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 117 8 10 ];
+        symbol [ clear %tmp.8 117 11 16 ];
+        %tmp.8 = getv function %tmp.7 :clear;
+        invoke %tmp.7 %tmp.8();
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 120 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_115_72_145_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_115_72_145_4_stop" ]
+        %label.1 = local;
+        symbol [ label %label.1 120 12 17 ];
+        %tmp.9 = "ESTACION";
+        lputv %label.1 %tmp.9;
+        symbol [ label %label.1 120 12 17 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 121 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_115_72_145_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_115_72_145_4_stop" ]
+        %state.2 = local;
+        symbol [ state %state.2 121 12 17 ];
+        %tmp.10 = lgetv %app;
+        symbol [ app %tmp.10 121 20 23 ];
+        symbol [ mFsmState %tmp.11 121 24 33 ];
+        %tmp.11 = getv %tmp.10 :mFsmState;
+        lputv %state.2 %tmp.11;
+        symbol [ state %state.2 121 12 17 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 122 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_122_8_126_8_if_stmt:
+        %tmp.12 = lgetv %state.2;
+        symbol [ state %tmp.12 122 12 17 ];
+        symbol [ STATE_RUN %tmp.14 122 21 30 ];
+        %tmp.14 = getv ? :STATE_RUN;
+        %tmp.15 = eq %tmp.12 %tmp.14;
+        bf %tmp.15 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_122_8_126_8_if_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_122_8_126_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_122_32_124_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 123 12 ]
+        %tmp.16 = "RUN  km ";
+        %tmp.17 = lgetv %app;
+        symbol [ app %tmp.17 123 34 37 ];
+        symbol [ mHyroxCycle %tmp.18 123 38 49 ];
+        %tmp.18 = getv %tmp.17 :mHyroxCycle;
+        %tmp.19 = 1;
+        %tmp.20 = add %tmp.18 %tmp.19;
+        symbol [ toString %tmp.21 123 55 63 ];
+        %tmp.21 = getv function %tmp.20 :toString;
+        %tmp.22 = invoke %tmp.20 %tmp.21();
+        %tmp.23 = add %tmp.16 %tmp.22;
+        %tmp.24 = "/8";
+        %tmp.25 = add %tmp.23 %tmp.24;
+        lputv %label.1 %tmp.25;
+        symbol [ label %label.1 123 12 17 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_122_32_124_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_122_8_126_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_122_8_126_8_if_false:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 124 15 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_15_126_8_if_stmt:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_19_124_57_begin:
+        %tmp.26 = lgetv %state.2;
+        symbol [ state %tmp.26 124 19 24 ];
+        symbol [ STATE_ROXZONE_IN %tmp.28 124 28 44 ];
+        %tmp.28 = getv ? :STATE_ROXZONE_IN;
+        %tmp.29 = eq %tmp.26 %tmp.28;
+        bt %tmp.29 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_15_126_8_if_true;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_48_124_57_false:
+        %tmp.30 = lgetv %state.2;
+        symbol [ state %tmp.30 124 48 53 ];
+        symbol [ STATE_ROXZONE_OUT %tmp.32 124 57 74 ];
+        %tmp.32 = getv ? :STATE_ROXZONE_OUT;
+        %tmp.33 = eq %tmp.30 %tmp.32;
+        push %tmp.33;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_48_124_57_end:
+        %tmp.34 = phi [%tmp.29 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_19_124_57_begin] [%tmp.33 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_48_124_57_false] [%tmp.34 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_48_124_57_end];
+        bf %tmp.34 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_15_126_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_15_126_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_76_126_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 125 12 ]
+        %tmp.35 = "ROXZONE";
+        lputv %label.1 %tmp.35;
+        symbol [ label %label.1 125 12 17 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_76_126_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_15_126_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_124_15_126_8_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_122_8_126_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 127 8 ]
+        %tmp.36 = lgetv %dc;
+        symbol [ dc %tmp.36 127 8 10 ];
+        symbol [ setColor %tmp.37 127 11 19 ];
+        %tmp.37 = getv function %tmp.36 :setColor;
+        symbol [ Graphics %tmp.38 127 20 28 ];
+        %tmp.38 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.39 127 29 40 ];
+        %tmp.39 = getv %tmp.38 :COLOR_WHITE;
+        symbol [ Graphics %tmp.40 127 42 50 ];
+        %tmp.40 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.41 127 51 68 ];
+        %tmp.41 = getv %tmp.40 :COLOR_TRANSPARENT;
+        invoke %tmp.36 %tmp.37(%tmp.39, %tmp.41);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 128 8 ]
+        %tmp.42 = lgetv %dc;
+        symbol [ dc %tmp.42 128 8 10 ];
+        symbol [ drawText %tmp.43 128 11 19 ];
+        %tmp.43 = getv function %tmp.42 :drawText;
+        symbol [ mCenterX %tmp.45 128 20 28 ];
+        %tmp.45 = getv ? :mCenterX;
+        symbol [ mBandTopY %tmp.47 128 30 39 ];
+        %tmp.47 = getv ? :mBandTopY;
+        symbol [ Graphics %tmp.48 128 41 49 ];
+        %tmp.48 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.49 128 50 59 ];
+        %tmp.49 = getv %tmp.48 :FONT_TINY;
+        %tmp.50 = lgetv %label.1;
+        symbol [ label %tmp.50 128 61 66 ];
+        symbol [ Graphics %tmp.51 129 20 28 ];
+        %tmp.51 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.52 129 29 48 ];
+        %tmp.52 = getv %tmp.51 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.53 129 51 59 ];
+        %tmp.53 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.54 129 60 80 ];
+        %tmp.54 = getv %tmp.53 :TEXT_JUSTIFY_VCENTER;
+        %tmp.55 = bitor %tmp.52 %tmp.54;
+        invoke %tmp.42 %tmp.43(%tmp.45, %tmp.47, %tmp.49, %tmp.50, %tmp.55);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 132 8 ]
+        %tmp.56 = lgetv %dc;
+        symbol [ dc %tmp.56 132 8 10 ];
+        symbol [ setColor %tmp.57 132 11 19 ];
+        %tmp.57 = getv function %tmp.56 :setColor;
+        symbol [ Graphics %tmp.58 132 20 28 ];
+        %tmp.58 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.59 132 29 38 ];
+        %tmp.59 = getv %tmp.58 :COLOR_RED;
+        symbol [ Graphics %tmp.60 132 40 48 ];
+        %tmp.60 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.61 132 49 66 ];
+        %tmp.61 = getv %tmp.60 :COLOR_TRANSPARENT;
+        invoke %tmp.56 %tmp.57(%tmp.59, %tmp.61);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 133 8 ]
+        %tmp.62 = lgetv %dc;
+        symbol [ dc %tmp.62 133 8 10 ];
+        symbol [ drawText %tmp.63 133 11 19 ];
+        %tmp.63 = getv function %tmp.62 :drawText;
+        symbol [ mCenterX %tmp.65 133 20 28 ];
+        %tmp.65 = getv ? :mCenterX;
+        symbol [ mCenterY %tmp.67 133 30 38 ];
+        %tmp.67 = getv ? :mCenterY;
+        symbol [ Graphics %tmp.68 133 40 48 ];
+        %tmp.68 = getm $.Toybox.Graphics;
+        symbol [ FONT_LARGE %tmp.69 133 49 59 ];
+        %tmp.69 = getv %tmp.68 :FONT_LARGE;
+        %tmp.70 = "PAUSA";
+        symbol [ Graphics %tmp.71 134 20 28 ];
+        %tmp.71 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.72 134 29 48 ];
+        %tmp.72 = getv %tmp.71 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.73 134 51 59 ];
+        %tmp.73 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.74 134 60 80 ];
+        %tmp.74 = getv %tmp.73 :TEXT_JUSTIFY_VCENTER;
+        %tmp.75 = bitor %tmp.72 %tmp.74;
+        invoke %tmp.62 %tmp.63(%tmp.65, %tmp.67, %tmp.69, %tmp.70, %tmp.75);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 137 8 ]
+        %tmp.76 = lgetv %dc;
+        symbol [ dc %tmp.76 137 8 10 ];
+        symbol [ setColor %tmp.77 137 11 19 ];
+        %tmp.77 = getv function %tmp.76 :setColor;
+        symbol [ Graphics %tmp.78 137 20 28 ];
+        %tmp.78 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.79 137 29 40 ];
+        %tmp.79 = getv %tmp.78 :COLOR_WHITE;
+        symbol [ Graphics %tmp.80 137 42 50 ];
+        %tmp.80 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.81 137 51 68 ];
+        %tmp.81 = getv %tmp.80 :COLOR_TRANSPARENT;
+        invoke %tmp.76 %tmp.77(%tmp.79, %tmp.81);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 138 8 ]
+        %tmp.82 = lgetv %dc;
+        symbol [ dc %tmp.82 138 8 10 ];
+        symbol [ drawText %tmp.83 138 11 19 ];
+        %tmp.83 = getv function %tmp.82 :drawText;
+        symbol [ mCenterX %tmp.85 138 20 28 ];
+        %tmp.85 = getv ? :mCenterX;
+        symbol [ mCenterY %tmp.87 138 30 38 ];
+        %tmp.87 = getv ? :mCenterY;
+        symbol [ mLineH %tmp.89 138 41 47 ];
+        %tmp.89 = getv ? :mLineH;
+        %tmp.90 = 2;
+        %tmp.91 = mul %tmp.89 %tmp.90;
+        %tmp.92 = add %tmp.87 %tmp.91;
+        symbol [ Graphics %tmp.93 138 53 61 ];
+        %tmp.93 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.94 138 62 71 ];
+        %tmp.94 = getv %tmp.93 :FONT_TINY;
+        %tmp.95 = self;
+        symbol [ formatClock %tmp.96 139 20 31 ];
+        %tmp.96 = getv function %tmp.95 :formatClock;
+        %tmp.97 = self;
+        symbol [ stateElapsedMs %tmp.98 139 32 46 ];
+        %tmp.98 = getv function %tmp.97 :stateElapsedMs;
+        %tmp.99 = lgetv %app;
+        symbol [ app %tmp.99 139 47 50 ];
+        %tmp.100 = invoke %tmp.97 %tmp.98(%tmp.99);
+        %tmp.101 = invoke %tmp.95 %tmp.96(%tmp.100);
+        symbol [ Graphics %tmp.102 140 20 28 ];
+        %tmp.102 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.103 140 29 48 ];
+        %tmp.103 = getv %tmp.102 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.104 140 51 59 ];
+        %tmp.104 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.105 140 60 80 ];
+        %tmp.105 = getv %tmp.104 :TEXT_JUSTIFY_VCENTER;
+        %tmp.106 = bitor %tmp.103 %tmp.105;
+        invoke %tmp.82 %tmp.83(%tmp.85, %tmp.92, %tmp.94, %tmp.101, %tmp.106);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 143 8 ]
+        %tmp.107 = lgetv %dc;
+        symbol [ dc %tmp.107 143 8 10 ];
+        symbol [ drawText %tmp.108 143 11 19 ];
+        %tmp.108 = getv function %tmp.107 :drawText;
+        symbol [ mCenterX %tmp.110 143 20 28 ];
+        %tmp.110 = getv ? :mCenterX;
+        symbol [ mBandBottomY %tmp.112 143 30 42 ];
+        %tmp.112 = getv ? :mBandBottomY;
+        symbol [ Graphics %tmp.113 143 44 52 ];
+        %tmp.113 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.114 143 53 62 ];
+        %tmp.114 = getv %tmp.113 :FONT_TINY;
+        %tmp.115 = "START > reanudar";
+        symbol [ Graphics %tmp.116 144 20 28 ];
+        %tmp.116 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.117 144 29 48 ];
+        %tmp.117 = getv %tmp.116 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.118 144 51 59 ];
+        %tmp.118 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.119 144 60 80 ];
+        %tmp.119 = getv %tmp.118 :TEXT_JUSTIFY_VCENTER;
+        %tmp.120 = bitor %tmp.117 %tmp.119;
+        invoke %tmp.107 %tmp.108(%tmp.110, %tmp.112, %tmp.114, %tmp.115, %tmp.120);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_115_72_145_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 151; @symbol_functiondef = [drawWarmup,151,21,31]; @symbol_param<0> = [dc,151,32,34]; @symbol_param<0>_type<0> = [Dc,151,38,40]; @symbol_param<1> = [app,151,42,45]; @symbol_param<1>_type<0> = [HyroxPacerApp,151,49,62]; @symbol_param<2> = [fg,151,64,66]; @symbol_param<2>_type<0> = [Graphics,151,70,78]; @symbol_param<2>_type<1> = [ColorType,151,79,88]; ]
+    private
+    function drawWarmup(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_151_98_178_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 152 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 152 8 10 ];
+        symbol [ setColor %tmp.2 152 11 19 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        %tmp.3 = lgetv %fg;
+        symbol [ fg %tmp.3 152 20 22 ];
+        symbol [ Graphics %tmp.4 152 24 32 ];
+        %tmp.4 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.5 152 33 50 ];
+        %tmp.5 = getv %tmp.4 :COLOR_TRANSPARENT;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.5);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 153 8 ]
+        %tmp.6 = lgetv %dc;
+        symbol [ dc %tmp.6 153 8 10 ];
+        symbol [ drawText %tmp.7 153 11 19 ];
+        %tmp.7 = getv function %tmp.6 :drawText;
+        symbol [ mCenterX %tmp.9 153 20 28 ];
+        %tmp.9 = getv ? :mCenterX;
+        symbol [ mBandTopY %tmp.11 153 30 39 ];
+        %tmp.11 = getv ? :mBandTopY;
+        symbol [ Graphics %tmp.12 153 41 49 ];
+        %tmp.12 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.13 153 50 59 ];
+        %tmp.13 = getv %tmp.12 :FONT_TINY;
+        %tmp.14 = "HYROX";
+        symbol [ Graphics %tmp.15 154 20 28 ];
+        %tmp.15 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.16 154 29 48 ];
+        %tmp.16 = getv %tmp.15 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.17 154 51 59 ];
+        %tmp.17 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.18 154 60 80 ];
+        %tmp.18 = getv %tmp.17 :TEXT_JUSTIFY_VCENTER;
+        %tmp.19 = bitor %tmp.16 %tmp.18;
+        invoke %tmp.6 %tmp.7(%tmp.9, %tmp.11, %tmp.13, %tmp.14, %tmp.19);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 157 8 ]
+        %tmp.20 = lgetv %dc;
+        symbol [ dc %tmp.20 157 8 10 ];
+        symbol [ drawText %tmp.21 157 11 19 ];
+        %tmp.21 = getv function %tmp.20 :drawText;
+        symbol [ mCenterX %tmp.23 157 20 28 ];
+        %tmp.23 = getv ? :mCenterX;
+        symbol [ mCenterY %tmp.25 157 30 38 ];
+        %tmp.25 = getv ? :mCenterY;
+        symbol [ mLineH %tmp.27 157 41 47 ];
+        %tmp.27 = getv ? :mLineH;
+        %tmp.28 = sub %tmp.25 %tmp.27;
+        symbol [ Graphics %tmp.29 157 49 57 ];
+        %tmp.29 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.30 157 58 76 ];
+        %tmp.30 = getv %tmp.29 :FONT_NUMBER_MEDIUM;
+        %tmp.31 = self;
+        symbol [ formatClock %tmp.32 158 20 31 ];
+        %tmp.32 = getv function %tmp.31 :formatClock;
+        %tmp.33 = lgetv %app;
+        symbol [ app %tmp.33 158 32 35 ];
+        symbol [ mTargetTimeMs %tmp.34 158 36 49 ];
+        %tmp.34 = getv %tmp.33 :mTargetTimeMs;
+        %tmp.35 = invoke %tmp.31 %tmp.32(%tmp.34);
+        symbol [ Graphics %tmp.36 159 20 28 ];
+        %tmp.36 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.37 159 29 48 ];
+        %tmp.37 = getv %tmp.36 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.38 159 51 59 ];
+        %tmp.38 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.39 159 60 80 ];
+        %tmp.39 = getv %tmp.38 :TEXT_JUSTIFY_VCENTER;
+        %tmp.40 = bitor %tmp.37 %tmp.39;
+        invoke %tmp.20 %tmp.21(%tmp.23, %tmp.28, %tmp.30, %tmp.35, %tmp.40);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 160 8 ]
+        %tmp.41 = lgetv %dc;
+        symbol [ dc %tmp.41 160 8 10 ];
+        symbol [ drawText %tmp.42 160 11 19 ];
+        %tmp.42 = getv function %tmp.41 :drawText;
+        symbol [ mCenterX %tmp.44 160 20 28 ];
+        %tmp.44 = getv ? :mCenterX;
+        symbol [ mCenterY %tmp.46 160 30 38 ];
+        %tmp.46 = getv ? :mCenterY;
+        symbol [ mLineH %tmp.48 160 41 47 ];
+        %tmp.48 = getv ? :mLineH;
+        %tmp.49 = add %tmp.46 %tmp.48;
+        symbol [ Graphics %tmp.50 160 49 57 ];
+        %tmp.50 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.51 160 58 67 ];
+        %tmp.51 = getv %tmp.50 :FONT_TINY;
+        %tmp.52 = "objetivo - 8 km";
+        symbol [ Graphics %tmp.53 161 20 28 ];
+        %tmp.53 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.54 161 29 48 ];
+        %tmp.54 = getv %tmp.53 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.55 161 51 59 ];
+        %tmp.55 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.56 161 60 80 ];
+        %tmp.56 = getv %tmp.55 :TEXT_JUSTIFY_VCENTER;
+        %tmp.57 = bitor %tmp.54 %tmp.56;
+        invoke %tmp.41 %tmp.42(%tmp.44, %tmp.49, %tmp.51, %tmp.52, %tmp.57);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 164 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_151_98_178_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_151_98_178_4_stop" ]
+        %gpsColor.1 = local;
+        symbol [ gpsColor %gpsColor.1 164 12 20 ];
+        symbol [ Graphics %tmp.58 164 23 31 ];
+        %tmp.58 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.59 164 32 41 ];
+        %tmp.59 = getv %tmp.58 :COLOR_RED;
+        lputv %gpsColor.1 %tmp.59;
+        symbol [ gpsColor %gpsColor.1 164 12 20 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 165 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_151_98_178_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_151_98_178_4_stop" ]
+        %gpsStr.2 = local;
+        symbol [ gpsStr %gpsStr.2 165 12 18 ];
+        %tmp.60 = "Buscando GPS";
+        lputv %gpsStr.2 %tmp.60;
+        symbol [ gpsStr %gpsStr.2 165 12 18 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 166 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_166_8_169_8_if_stmt:
+        %tmp.61 = lgetv %app;
+        symbol [ app %tmp.61 166 12 15 ];
+        symbol [ mGps %tmp.62 166 16 20 ];
+        %tmp.62 = getv %tmp.61 :mGps;
+        symbol [ hasFix %tmp.63 166 21 27 ];
+        %tmp.63 = getv function %tmp.62 :hasFix;
+        %tmp.64 = invoke %tmp.62 %tmp.63();
+        bf %tmp.64 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_166_8_169_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_166_8_169_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_166_31_169_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 167 12 ]
+        symbol [ Graphics %tmp.65 167 23 31 ];
+        %tmp.65 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.66 167 32 43 ];
+        %tmp.66 = getv %tmp.65 :COLOR_GREEN;
+        lputv %gpsColor.1 %tmp.66;
+        symbol [ gpsColor %gpsColor.1 167 12 20 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 168 12 ]
+        %tmp.67 = "GPS OK";
+        lputv %gpsStr.2 %tmp.67;
+        symbol [ gpsStr %gpsStr.2 168 12 18 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_166_31_169_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_166_8_169_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_166_8_169_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 170 8 ]
+        %tmp.68 = lgetv %dc;
+        symbol [ dc %tmp.68 170 8 10 ];
+        symbol [ setColor %tmp.69 170 11 19 ];
+        %tmp.69 = getv function %tmp.68 :setColor;
+        %tmp.70 = lgetv %gpsColor.1;
+        symbol [ gpsColor %tmp.70 170 20 28 ];
+        symbol [ Graphics %tmp.71 170 30 38 ];
+        %tmp.71 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.72 170 39 56 ];
+        %tmp.72 = getv %tmp.71 :COLOR_TRANSPARENT;
+        invoke %tmp.68 %tmp.69(%tmp.70, %tmp.72);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 171 8 ]
+        %tmp.73 = lgetv %dc;
+        symbol [ dc %tmp.73 171 8 10 ];
+        symbol [ drawText %tmp.74 171 11 19 ];
+        %tmp.74 = getv function %tmp.73 :drawText;
+        symbol [ mCenterX %tmp.76 171 20 28 ];
+        %tmp.76 = getv ? :mCenterX;
+        symbol [ mBandBottomY %tmp.78 171 30 42 ];
+        %tmp.78 = getv ? :mBandBottomY;
+        symbol [ mLineH %tmp.80 171 45 51 ];
+        %tmp.80 = getv ? :mLineH;
+        %tmp.81 = sub %tmp.78 %tmp.80;
+        symbol [ Graphics %tmp.82 171 53 61 ];
+        %tmp.82 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.83 171 62 71 ];
+        %tmp.83 = getv %tmp.82 :FONT_TINY;
+        %tmp.84 = lgetv %gpsStr.2;
+        symbol [ gpsStr %tmp.84 171 73 79 ];
+        symbol [ Graphics %tmp.85 172 20 28 ];
+        %tmp.85 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.86 172 29 48 ];
+        %tmp.86 = getv %tmp.85 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.87 172 51 59 ];
+        %tmp.87 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.88 172 60 80 ];
+        %tmp.88 = getv %tmp.87 :TEXT_JUSTIFY_VCENTER;
+        %tmp.89 = bitor %tmp.86 %tmp.88;
+        invoke %tmp.73 %tmp.74(%tmp.76, %tmp.81, %tmp.83, %tmp.84, %tmp.89);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 175 8 ]
+        %tmp.90 = lgetv %dc;
+        symbol [ dc %tmp.90 175 8 10 ];
+        symbol [ setColor %tmp.91 175 11 19 ];
+        %tmp.91 = getv function %tmp.90 :setColor;
+        %tmp.92 = lgetv %fg;
+        symbol [ fg %tmp.92 175 20 22 ];
+        symbol [ Graphics %tmp.93 175 24 32 ];
+        %tmp.93 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.94 175 33 50 ];
+        %tmp.94 = getv %tmp.93 :COLOR_TRANSPARENT;
+        invoke %tmp.90 %tmp.91(%tmp.92, %tmp.94);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 176 8 ]
+        %tmp.95 = lgetv %dc;
+        symbol [ dc %tmp.95 176 8 10 ];
+        symbol [ drawText %tmp.96 176 11 19 ];
+        %tmp.96 = getv function %tmp.95 :drawText;
+        symbol [ mCenterX %tmp.98 176 20 28 ];
+        %tmp.98 = getv ? :mCenterX;
+        symbol [ mBandBottomY %tmp.100 176 30 42 ];
+        %tmp.100 = getv ? :mBandBottomY;
+        symbol [ Graphics %tmp.101 176 44 52 ];
+        %tmp.101 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.102 176 53 62 ];
+        %tmp.102 = getv %tmp.101 :FONT_TINY;
+        %tmp.103 = "START > comenzar";
+        symbol [ Graphics %tmp.104 177 20 28 ];
+        %tmp.104 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.105 177 29 48 ];
+        %tmp.105 = getv %tmp.104 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.106 177 51 59 ];
+        %tmp.106 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.107 177 60 80 ];
+        %tmp.107 = getv %tmp.106 :TEXT_JUSTIFY_VCENTER;
+        %tmp.108 = bitor %tmp.105 %tmp.107;
+        invoke %tmp.95 %tmp.96(%tmp.98, %tmp.100, %tmp.102, %tmp.103, %tmp.108);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_151_98_178_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 182; @symbol_functiondef = [drawRun,182,21,28]; @symbol_param<0> = [dc,182,29,31]; @symbol_param<0>_type<0> = [Dc,182,35,37]; @symbol_param<1> = [app,182,39,42]; @symbol_param<1>_type<0> = [HyroxPacerApp,182,46,59]; @symbol_param<2> = [fg,182,61,63]; @symbol_param<2>_type<0> = [Graphics,182,67,75]; @symbol_param<2>_type<1> = [ColorType,182,76,85]; ]
+    private
+    function drawRun(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 183 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_stop" ]
+        %cycle.1 = local;
+        symbol [ cycle %cycle.1 183 12 17 ];
+        %tmp.1 = lgetv %app;
+        symbol [ app %tmp.1 183 20 23 ];
+        symbol [ mHyroxCycle %tmp.2 183 24 35 ];
+        %tmp.2 = getv %tmp.1 :mHyroxCycle;
+        %tmp.3 = 1;
+        %tmp.4 = add %tmp.2 %tmp.3;
+        lputv %cycle.1 %tmp.4;
+        symbol [ cycle %cycle.1 183 12 17 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 184 8 ]
+        %tmp.5 = lgetv %dc;
+        symbol [ dc %tmp.5 184 8 10 ];
+        symbol [ setColor %tmp.6 184 11 19 ];
+        %tmp.6 = getv function %tmp.5 :setColor;
+        %tmp.7 = lgetv %fg;
+        symbol [ fg %tmp.7 184 20 22 ];
+        symbol [ Graphics %tmp.8 184 24 32 ];
+        %tmp.8 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.9 184 33 50 ];
+        %tmp.9 = getv %tmp.8 :COLOR_TRANSPARENT;
+        invoke %tmp.5 %tmp.6(%tmp.7, %tmp.9);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 185 8 ]
+        %tmp.10 = lgetv %dc;
+        symbol [ dc %tmp.10 185 8 10 ];
+        symbol [ drawText %tmp.11 185 11 19 ];
+        %tmp.11 = getv function %tmp.10 :drawText;
+        symbol [ mCenterX %tmp.13 185 20 28 ];
+        %tmp.13 = getv ? :mCenterX;
+        symbol [ mBandTopY %tmp.15 185 30 39 ];
+        %tmp.15 = getv ? :mBandTopY;
+        symbol [ Graphics %tmp.16 185 41 49 ];
+        %tmp.16 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.17 185 50 59 ];
+        %tmp.17 = getv %tmp.16 :FONT_TINY;
+        %tmp.18 = "RUN  km ";
+        %tmp.19 = lgetv %cycle.1;
+        symbol [ cycle %tmp.19 186 33 38 ];
+        symbol [ toString %tmp.20 186 39 47 ];
+        %tmp.20 = getv function %tmp.19 :toString;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        %tmp.22 = add %tmp.18 %tmp.21;
+        %tmp.23 = "/8";
+        %tmp.24 = add %tmp.22 %tmp.23;
+        symbol [ Graphics %tmp.25 187 20 28 ];
+        %tmp.25 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.26 187 29 48 ];
+        %tmp.26 = getv %tmp.25 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.27 187 51 59 ];
+        %tmp.27 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.28 187 60 80 ];
+        %tmp.28 = getv %tmp.27 :TEXT_JUSTIFY_VCENTER;
+        %tmp.29 = bitor %tmp.26 %tmp.28;
+        invoke %tmp.10 %tmp.11(%tmp.13, %tmp.15, %tmp.17, %tmp.24, %tmp.29);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 190 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_stop" ]
+        %paceTarget.2 = local;
+        symbol [ paceTarget %paceTarget.2 190 12 22 ];
+        %tmp.30 = lgetv %app;
+        symbol [ app %tmp.30 190 25 28 ];
+        symbol [ mDynamicPaceTargetSec %tmp.31 190 29 50 ];
+        %tmp.31 = getv %tmp.30 :mDynamicPaceTargetSec;
+        lputv %paceTarget.2 %tmp.31;
+        symbol [ paceTarget %paceTarget.2 190 12 22 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 191 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_stop" ]
+        %avgSpeed.3 = local;
+        symbol [ avgSpeed %avgSpeed.3 191 12 20 ];
+        %tmp.32 = lgetv %app;
+        symbol [ app %tmp.32 191 25 28 ];
+        symbol [ mGps %tmp.33 191 29 33 ];
+        %tmp.33 = getv %tmp.32 :mGps;
+        symbol [ getAvgSpeedMs %tmp.34 191 34 47 ];
+        %tmp.34 = getv function %tmp.33 :getAvgSpeedMs;
+        %tmp.35 = invoke %tmp.33 %tmp.34();
+        lputv %avgSpeed.3 %tmp.35;
+        symbol [ avgSpeed %avgSpeed.3 191 12 20 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 192 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_stop" ]
+        %realPace.4 = local;
+        symbol [ realPace %realPace.4 192 12 20 ];
+        %tmp.36 = lgetv %app;
+        symbol [ app %tmp.36 192 25 28 ];
+        symbol [ mPacing %tmp.37 192 29 36 ];
+        %tmp.37 = getv %tmp.36 :mPacing;
+        symbol [ computeCurrentPaceSec %tmp.38 192 37 58 ];
+        %tmp.38 = getv function %tmp.37 :computeCurrentPaceSec;
+        %tmp.39 = lgetv %avgSpeed.3;
+        symbol [ avgSpeed %tmp.39 192 59 67 ];
+        %tmp.40 = invoke %tmp.37 %tmp.38(%tmp.39);
+        lputv %realPace.4 %tmp.40;
+        symbol [ realPace %realPace.4 192 12 20 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 193 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_stop" ]
+        %delta.5 = local;
+        symbol [ delta %delta.5 193 12 17 ];
+        %tmp.41 = lgetv %app;
+        symbol [ app %tmp.41 193 25 28 ];
+        symbol [ mPacing %tmp.42 193 29 36 ];
+        %tmp.42 = getv %tmp.41 :mPacing;
+        symbol [ computePaceDeltaDeviation %tmp.43 193 37 62 ];
+        %tmp.43 = getv function %tmp.42 :computePaceDeltaDeviation;
+        %tmp.44 = lgetv %avgSpeed.3;
+        symbol [ avgSpeed %tmp.44 193 63 71 ];
+        %tmp.45 = lgetv %paceTarget.2;
+        symbol [ paceTarget %tmp.45 193 73 83 ];
+        %tmp.46 = invoke %tmp.42 %tmp.43(%tmp.44, %tmp.45);
+        lputv %delta.5 %tmp.46;
+        symbol [ delta %delta.5 193 12 17 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 197 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_stop" ]
+        %eqColor.6 = local;
+        symbol [ eqColor %eqColor.6 197 12 19 ];
+        %tmp.47 = lgetv %fg;
+        symbol [ fg %tmp.47 197 22 24 ];
+        lputv %eqColor.6 %tmp.47;
+        symbol [ eqColor %eqColor.6 197 12 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 198 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_8_203_8_if_stmt:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_12_198_44_begin:
+        %tmp.48 = lgetv %realPace.4;
+        symbol [ realPace %tmp.48 198 12 20 ];
+        %tmp.49 = 0.0f;
+        %tmp.50 = gt %tmp.48 %tmp.49;
+        bf %tmp.50 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_8_203_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_31_198_44_true:
+        %tmp.51 = lgetv %paceTarget.2;
+        symbol [ paceTarget %tmp.51 198 31 41 ];
+        %tmp.52 = 0.0f;
+        %tmp.53 = gt %tmp.51 %tmp.52;
+        push %tmp.53;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_31_198_44_end:
+        %tmp.54 = phi [%tmp.50 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_12_198_44_begin] [%tmp.53 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_31_198_44_true] [%tmp.54 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_31_198_44_end];
+        bf %tmp.54 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_8_203_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_8_203_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_50_203_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 199 12 ]
+        symbol [ Graphics %tmp.55 199 22 30 ];
+        %tmp.55 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.56 199 31 42 ];
+        %tmp.56 = getv %tmp.55 :COLOR_GREEN;
+        lputv %eqColor.6 %tmp.56;
+        symbol [ eqColor %eqColor.6 199 12 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 200 12 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_200_12_202_12_if_stmt:
+        %tmp.57 = lgetv %delta.5;
+        symbol [ delta %tmp.57 200 16 21 ];
+        %tmp.58 = 0.0f;
+        %tmp.59 = gt %tmp.57 %tmp.58;
+        bf %tmp.59 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_200_12_202_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_200_12_202_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_200_30_202_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 201 16 ]
+        symbol [ Graphics %tmp.60 201 26 34 ];
+        %tmp.60 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.61 201 35 44 ];
+        %tmp.61 = getv %tmp.60 :COLOR_RED;
+        lputv %eqColor.6 %tmp.61;
+        symbol [ eqColor %eqColor.6 201 16 23 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_200_30_202_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_200_12_202_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_200_12_202_12_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_50_203_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_8_203_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_198_8_203_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 204 8 ]
+        %tmp.62 = lgetv %dc;
+        symbol [ dc %tmp.62 204 8 10 ];
+        symbol [ setColor %tmp.63 204 11 19 ];
+        %tmp.63 = getv function %tmp.62 :setColor;
+        %tmp.64 = lgetv %eqColor.6;
+        symbol [ eqColor %tmp.64 204 20 27 ];
+        symbol [ Graphics %tmp.65 204 29 37 ];
+        %tmp.65 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.66 204 38 55 ];
+        %tmp.66 = getv %tmp.65 :COLOR_TRANSPARENT;
+        invoke %tmp.62 %tmp.63(%tmp.64, %tmp.66);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 205 8 ]
+        %tmp.67 = lgetv %dc;
+        symbol [ dc %tmp.67 205 8 10 ];
+        symbol [ drawText %tmp.68 205 11 19 ];
+        %tmp.68 = getv function %tmp.67 :drawText;
+        symbol [ mCenterX %tmp.70 205 20 28 ];
+        %tmp.70 = getv ? :mCenterX;
+        symbol [ mCenterY %tmp.72 205 30 38 ];
+        %tmp.72 = getv ? :mCenterY;
+        symbol [ Graphics %tmp.73 205 40 48 ];
+        %tmp.73 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_HOT %tmp.74 205 49 64 ];
+        %tmp.74 = getv %tmp.73 :FONT_NUMBER_HOT;
+        %tmp.75 = self;
+        symbol [ formatPace %tmp.76 205 66 76 ];
+        %tmp.76 = getv function %tmp.75 :formatPace;
+        %tmp.77 = lgetv %realPace.4;
+        symbol [ realPace %tmp.77 205 77 85 ];
+        %tmp.78 = invoke %tmp.75 %tmp.76(%tmp.77);
+        symbol [ Graphics %tmp.79 206 20 28 ];
+        %tmp.79 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.80 206 29 48 ];
+        %tmp.80 = getv %tmp.79 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.81 206 51 59 ];
+        %tmp.81 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.82 206 60 80 ];
+        %tmp.82 = getv %tmp.81 :TEXT_JUSTIFY_VCENTER;
+        %tmp.83 = bitor %tmp.80 %tmp.82;
+        invoke %tmp.67 %tmp.68(%tmp.70, %tmp.72, %tmp.74, %tmp.78, %tmp.83);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 209 8 ]
+        %tmp.84 = lgetv %dc;
+        symbol [ dc %tmp.84 209 8 10 ];
+        symbol [ setColor %tmp.85 209 11 19 ];
+        %tmp.85 = getv function %tmp.84 :setColor;
+        %tmp.86 = lgetv %fg;
+        symbol [ fg %tmp.86 209 20 22 ];
+        symbol [ Graphics %tmp.87 209 24 32 ];
+        %tmp.87 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.88 209 33 50 ];
+        %tmp.88 = getv %tmp.87 :COLOR_TRANSPARENT;
+        invoke %tmp.84 %tmp.85(%tmp.86, %tmp.88);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 210 8 ]
+        %tmp.89 = lgetv %dc;
+        symbol [ dc %tmp.89 210 8 10 ];
+        symbol [ drawText %tmp.90 210 11 19 ];
+        %tmp.90 = getv function %tmp.89 :drawText;
+        symbol [ mCenterX %tmp.92 210 20 28 ];
+        %tmp.92 = getv ? :mCenterX;
+        symbol [ mCenterY %tmp.94 210 30 38 ];
+        %tmp.94 = getv ? :mCenterY;
+        symbol [ mLineH %tmp.96 210 41 47 ];
+        %tmp.96 = getv ? :mLineH;
+        %tmp.97 = 2;
+        %tmp.98 = mul %tmp.96 %tmp.97;
+        %tmp.99 = add %tmp.94 %tmp.98;
+        symbol [ Graphics %tmp.100 210 53 61 ];
+        %tmp.100 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.101 210 62 71 ];
+        %tmp.101 = getv %tmp.100 :FONT_TINY;
+        %tmp.102 = "obj ";
+        %tmp.103 = self;
+        symbol [ formatPace %tmp.104 211 29 39 ];
+        %tmp.104 = getv function %tmp.103 :formatPace;
+        %tmp.105 = lgetv %paceTarget.2;
+        symbol [ paceTarget %tmp.105 211 40 50 ];
+        %tmp.106 = invoke %tmp.103 %tmp.104(%tmp.105);
+        %tmp.107 = add %tmp.102 %tmp.106;
+        symbol [ Graphics %tmp.108 212 20 28 ];
+        %tmp.108 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.109 212 29 48 ];
+        %tmp.109 = getv %tmp.108 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.110 212 51 59 ];
+        %tmp.110 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.111 212 60 80 ];
+        %tmp.111 = getv %tmp.110 :TEXT_JUSTIFY_VCENTER;
+        %tmp.112 = bitor %tmp.109 %tmp.111;
+        invoke %tmp.89 %tmp.90(%tmp.92, %tmp.99, %tmp.101, %tmp.107, %tmp.112);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 215 8 ]
+        %tmp.113 = lgetv %dc;
+        symbol [ dc %tmp.113 215 8 10 ];
+        symbol [ drawText %tmp.114 215 11 19 ];
+        %tmp.114 = getv function %tmp.113 :drawText;
+        symbol [ mCenterX %tmp.116 215 20 28 ];
+        %tmp.116 = getv ? :mCenterX;
+        symbol [ mBandBottomY %tmp.118 215 30 42 ];
+        %tmp.118 = getv ? :mBandBottomY;
+        symbol [ Graphics %tmp.119 215 44 52 ];
+        %tmp.119 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.120 215 53 62 ];
+        %tmp.120 = getv %tmp.119 :FONT_TINY;
+        %tmp.121 = self;
+        symbol [ formatClock %tmp.122 216 20 31 ];
+        %tmp.122 = getv function %tmp.121 :formatClock;
+        %tmp.123 = self;
+        symbol [ stateElapsedMs %tmp.124 216 32 46 ];
+        %tmp.124 = getv function %tmp.123 :stateElapsedMs;
+        %tmp.125 = lgetv %app;
+        symbol [ app %tmp.125 216 47 50 ];
+        %tmp.126 = invoke %tmp.123 %tmp.124(%tmp.125);
+        %tmp.127 = invoke %tmp.121 %tmp.122(%tmp.126);
+        symbol [ Graphics %tmp.128 217 20 28 ];
+        %tmp.128 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.129 217 29 48 ];
+        %tmp.129 = getv %tmp.128 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.130 217 51 59 ];
+        %tmp.130 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.131 217 60 80 ];
+        %tmp.131 = getv %tmp.130 :TEXT_JUSTIFY_VCENTER;
+        %tmp.132 = bitor %tmp.129 %tmp.131;
+        invoke %tmp.113 %tmp.114(%tmp.116, %tmp.118, %tmp.120, %tmp.127, %tmp.132);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_182_95_218_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 221; @symbol_functiondef = [drawRoxzone,221,21,32]; @symbol_param<0> = [dc,221,33,35]; @symbol_param<0>_type<0> = [Dc,221,39,41]; @symbol_param<1> = [app,221,43,46]; @symbol_param<1>_type<0> = [HyroxPacerApp,221,50,63]; @symbol_param<2> = [fg,221,65,67]; @symbol_param<2>_type<0> = [Graphics,221,71,79]; @symbol_param<2>_type<1> = [ColorType,221,80,89]; ]
+    private
+    function drawRoxzone(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_221_99_236_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 222 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_221_99_236_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_221_99_236_4_stop" ]
+        %cycle.1 = local;
+        symbol [ cycle %cycle.1 222 12 17 ];
+        %tmp.1 = lgetv %app;
+        symbol [ app %tmp.1 222 20 23 ];
+        symbol [ mHyroxCycle %tmp.2 222 24 35 ];
+        %tmp.2 = getv %tmp.1 :mHyroxCycle;
+        %tmp.3 = 1;
+        %tmp.4 = add %tmp.2 %tmp.3;
+        lputv %cycle.1 %tmp.4;
+        symbol [ cycle %cycle.1 222 12 17 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 223 8 ]
+        %tmp.5 = lgetv %dc;
+        symbol [ dc %tmp.5 223 8 10 ];
+        symbol [ setColor %tmp.6 223 11 19 ];
+        %tmp.6 = getv function %tmp.5 :setColor;
+        %tmp.7 = lgetv %fg;
+        symbol [ fg %tmp.7 223 20 22 ];
+        symbol [ Graphics %tmp.8 223 24 32 ];
+        %tmp.8 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.9 223 33 50 ];
+        %tmp.9 = getv %tmp.8 :COLOR_TRANSPARENT;
+        invoke %tmp.5 %tmp.6(%tmp.7, %tmp.9);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 224 8 ]
+        %tmp.10 = lgetv %dc;
+        symbol [ dc %tmp.10 224 8 10 ];
+        symbol [ drawText %tmp.11 224 11 19 ];
+        %tmp.11 = getv function %tmp.10 :drawText;
+        symbol [ mCenterX %tmp.13 224 20 28 ];
+        %tmp.13 = getv ? :mCenterX;
+        symbol [ mBandTopY %tmp.15 224 30 39 ];
+        %tmp.15 = getv ? :mBandTopY;
+        symbol [ Graphics %tmp.16 224 41 49 ];
+        %tmp.16 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.17 224 50 59 ];
+        %tmp.17 = getv %tmp.16 :FONT_TINY;
+        %tmp.18 = "ROXZONE ";
+        %tmp.19 = lgetv %cycle.1;
+        symbol [ cycle %tmp.19 225 33 38 ];
+        symbol [ toString %tmp.20 225 39 47 ];
+        %tmp.20 = getv function %tmp.19 :toString;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        %tmp.22 = add %tmp.18 %tmp.21;
+        %tmp.23 = "/8";
+        %tmp.24 = add %tmp.22 %tmp.23;
+        symbol [ Graphics %tmp.25 226 20 28 ];
+        %tmp.25 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.26 226 29 48 ];
+        %tmp.26 = getv %tmp.25 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.27 226 51 59 ];
+        %tmp.27 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.28 226 60 80 ];
+        %tmp.28 = getv %tmp.27 :TEXT_JUSTIFY_VCENTER;
+        %tmp.29 = bitor %tmp.26 %tmp.28;
+        invoke %tmp.10 %tmp.11(%tmp.13, %tmp.15, %tmp.17, %tmp.24, %tmp.29);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 228 8 ]
+        %tmp.30 = lgetv %dc;
+        symbol [ dc %tmp.30 228 8 10 ];
+        symbol [ setColor %tmp.31 228 11 19 ];
+        %tmp.31 = getv function %tmp.30 :setColor;
+        symbol [ Graphics %tmp.32 228 20 28 ];
+        %tmp.32 = getm $.Toybox.Graphics;
+        symbol [ COLOR_YELLOW %tmp.33 228 29 41 ];
+        %tmp.33 = getv %tmp.32 :COLOR_YELLOW;
+        symbol [ Graphics %tmp.34 228 43 51 ];
+        %tmp.34 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.35 228 52 69 ];
+        %tmp.35 = getv %tmp.34 :COLOR_TRANSPARENT;
+        invoke %tmp.30 %tmp.31(%tmp.33, %tmp.35);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 229 8 ]
+        %tmp.36 = lgetv %dc;
+        symbol [ dc %tmp.36 229 8 10 ];
+        symbol [ drawText %tmp.37 229 11 19 ];
+        %tmp.37 = getv function %tmp.36 :drawText;
+        symbol [ mCenterX %tmp.39 229 20 28 ];
+        %tmp.39 = getv ? :mCenterX;
+        symbol [ mCenterY %tmp.41 229 30 38 ];
+        %tmp.41 = getv ? :mCenterY;
+        symbol [ Graphics %tmp.42 229 40 48 ];
+        %tmp.42 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_HOT %tmp.43 229 49 64 ];
+        %tmp.43 = getv %tmp.42 :FONT_NUMBER_HOT;
+        %tmp.44 = self;
+        symbol [ formatClock %tmp.45 230 20 31 ];
+        %tmp.45 = getv function %tmp.44 :formatClock;
+        %tmp.46 = self;
+        symbol [ stateElapsedMs %tmp.47 230 32 46 ];
+        %tmp.47 = getv function %tmp.46 :stateElapsedMs;
+        %tmp.48 = lgetv %app;
+        symbol [ app %tmp.48 230 47 50 ];
+        %tmp.49 = invoke %tmp.46 %tmp.47(%tmp.48);
+        %tmp.50 = invoke %tmp.44 %tmp.45(%tmp.49);
+        symbol [ Graphics %tmp.51 231 20 28 ];
+        %tmp.51 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.52 231 29 48 ];
+        %tmp.52 = getv %tmp.51 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.53 231 51 59 ];
+        %tmp.53 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.54 231 60 80 ];
+        %tmp.54 = getv %tmp.53 :TEXT_JUSTIFY_VCENTER;
+        %tmp.55 = bitor %tmp.52 %tmp.54;
+        invoke %tmp.36 %tmp.37(%tmp.39, %tmp.41, %tmp.43, %tmp.50, %tmp.55);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 233 8 ]
+        %tmp.56 = lgetv %dc;
+        symbol [ dc %tmp.56 233 8 10 ];
+        symbol [ setColor %tmp.57 233 11 19 ];
+        %tmp.57 = getv function %tmp.56 :setColor;
+        %tmp.58 = lgetv %fg;
+        symbol [ fg %tmp.58 233 20 22 ];
+        symbol [ Graphics %tmp.59 233 24 32 ];
+        %tmp.59 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.60 233 33 50 ];
+        %tmp.60 = getv %tmp.59 :COLOR_TRANSPARENT;
+        invoke %tmp.56 %tmp.57(%tmp.58, %tmp.60);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 234 8 ]
+        %tmp.61 = lgetv %dc;
+        symbol [ dc %tmp.61 234 8 10 ];
+        symbol [ drawText %tmp.62 234 11 19 ];
+        %tmp.62 = getv function %tmp.61 :drawText;
+        symbol [ mCenterX %tmp.64 234 20 28 ];
+        %tmp.64 = getv ? :mCenterX;
+        symbol [ mBandBottomY %tmp.66 234 30 42 ];
+        %tmp.66 = getv ? :mBandBottomY;
+        symbol [ Graphics %tmp.67 234 44 52 ];
+        %tmp.67 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.68 234 53 62 ];
+        %tmp.68 = getv %tmp.67 :FONT_TINY;
+        %tmp.69 = "BACK > seguir";
+        symbol [ Graphics %tmp.70 235 20 28 ];
+        %tmp.70 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.71 235 29 48 ];
+        %tmp.71 = getv %tmp.70 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.72 235 51 59 ];
+        %tmp.72 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.73 235 60 80 ];
+        %tmp.73 = getv %tmp.72 :TEXT_JUSTIFY_VCENTER;
+        %tmp.74 = bitor %tmp.71 %tmp.73;
+        invoke %tmp.61 %tmp.62(%tmp.64, %tmp.66, %tmp.68, %tmp.69, %tmp.74);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_221_99_236_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 239; @symbol_functiondef = [drawStation,239,21,32]; @symbol_param<0> = [dc,239,33,35]; @symbol_param<0>_type<0> = [Dc,239,39,41]; @symbol_param<1> = [app,239,43,46]; @symbol_param<1>_type<0> = [HyroxPacerApp,239,50,63]; @symbol_param<2> = [fg,239,65,67]; @symbol_param<2>_type<0> = [Graphics,239,71,79]; @symbol_param<2>_type<1> = [ColorType,239,80,89]; ]
+    private
+    function drawStation(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_239_99_260_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 240 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_239_99_260_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_239_99_260_4_stop" ]
+        %cycle.1 = local;
+        symbol [ cycle %cycle.1 240 12 17 ];
+        %tmp.1 = lgetv %app;
+        symbol [ app %tmp.1 240 20 23 ];
+        symbol [ mHyroxCycle %tmp.2 240 24 35 ];
+        %tmp.2 = getv %tmp.1 :mHyroxCycle;
+        %tmp.3 = 1;
+        %tmp.4 = add %tmp.2 %tmp.3;
+        lputv %cycle.1 %tmp.4;
+        symbol [ cycle %cycle.1 240 12 17 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 241 8 ]
+        %tmp.5 = lgetv %dc;
+        symbol [ dc %tmp.5 241 8 10 ];
+        symbol [ setColor %tmp.6 241 11 19 ];
+        %tmp.6 = getv function %tmp.5 :setColor;
+        %tmp.7 = lgetv %fg;
+        symbol [ fg %tmp.7 241 20 22 ];
+        symbol [ Graphics %tmp.8 241 24 32 ];
+        %tmp.8 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.9 241 33 50 ];
+        %tmp.9 = getv %tmp.8 :COLOR_TRANSPARENT;
+        invoke %tmp.5 %tmp.6(%tmp.7, %tmp.9);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 242 8 ]
+        %tmp.10 = lgetv %dc;
+        symbol [ dc %tmp.10 242 8 10 ];
+        symbol [ drawText %tmp.11 242 11 19 ];
+        %tmp.11 = getv function %tmp.10 :drawText;
+        symbol [ mCenterX %tmp.13 242 20 28 ];
+        %tmp.13 = getv ? :mCenterX;
+        symbol [ mBandTopY %tmp.15 242 30 39 ];
+        %tmp.15 = getv ? :mBandTopY;
+        symbol [ Graphics %tmp.16 242 41 49 ];
+        %tmp.16 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.17 242 50 59 ];
+        %tmp.17 = getv %tmp.16 :FONT_TINY;
+        %tmp.18 = "STATION ";
+        %tmp.19 = lgetv %cycle.1;
+        symbol [ cycle %tmp.19 243 33 38 ];
+        symbol [ toString %tmp.20 243 39 47 ];
+        %tmp.20 = getv function %tmp.19 :toString;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        %tmp.22 = add %tmp.18 %tmp.21;
+        %tmp.23 = "/8";
+        %tmp.24 = add %tmp.22 %tmp.23;
+        symbol [ Graphics %tmp.25 244 20 28 ];
+        %tmp.25 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.26 244 29 48 ];
+        %tmp.26 = getv %tmp.25 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.27 244 51 59 ];
+        %tmp.27 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.28 244 60 80 ];
+        %tmp.28 = getv %tmp.27 :TEXT_JUSTIFY_VCENTER;
+        %tmp.29 = bitor %tmp.26 %tmp.28;
+        invoke %tmp.10 %tmp.11(%tmp.13, %tmp.15, %tmp.17, %tmp.24, %tmp.29);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 246 8 ]
+        %tmp.30 = lgetv %dc;
+        symbol [ dc %tmp.30 246 8 10 ];
+        symbol [ drawText %tmp.31 246 11 19 ];
+        %tmp.31 = getv function %tmp.30 :drawText;
+        symbol [ mCenterX %tmp.33 246 20 28 ];
+        %tmp.33 = getv ? :mCenterX;
+        symbol [ mCenterY %tmp.35 246 30 38 ];
+        %tmp.35 = getv ? :mCenterY;
+        symbol [ Graphics %tmp.36 246 40 48 ];
+        %tmp.36 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_HOT %tmp.37 246 49 64 ];
+        %tmp.37 = getv %tmp.36 :FONT_NUMBER_HOT;
+        %tmp.38 = self;
+        symbol [ formatClock %tmp.39 247 20 31 ];
+        %tmp.39 = getv function %tmp.38 :formatClock;
+        %tmp.40 = self;
+        symbol [ stateElapsedMs %tmp.41 247 32 46 ];
+        %tmp.41 = getv function %tmp.40 :stateElapsedMs;
+        %tmp.42 = lgetv %app;
+        symbol [ app %tmp.42 247 47 50 ];
+        %tmp.43 = invoke %tmp.40 %tmp.41(%tmp.42);
+        %tmp.44 = invoke %tmp.38 %tmp.39(%tmp.43);
+        symbol [ Graphics %tmp.45 248 20 28 ];
+        %tmp.45 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.46 248 29 48 ];
+        %tmp.46 = getv %tmp.45 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.47 248 51 59 ];
+        %tmp.47 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.48 248 60 80 ];
+        %tmp.48 = getv %tmp.47 :TEXT_JUSTIFY_VCENTER;
+        %tmp.49 = bitor %tmp.46 %tmp.48;
+        invoke %tmp.30 %tmp.31(%tmp.33, %tmp.35, %tmp.37, %tmp.44, %tmp.49);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 251 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_239_99_260_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_239_99_260_4_stop" ]
+        %athleteColor.2 = local;
+        symbol [ athleteColor %athleteColor.2 251 12 24 ];
+        symbol [ Graphics %tmp.50 251 27 35 ];
+        %tmp.50 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLUE %tmp.51 251 36 46 ];
+        %tmp.51 = getv %tmp.50 :COLOR_BLUE;
+        lputv %athleteColor.2 %tmp.51;
+        symbol [ athleteColor %athleteColor.2 251 12 24 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 252 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_239_99_260_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_239_99_260_4_stop" ]
+        %athleteStr.3 = local;
+        symbol [ athleteStr %athleteStr.3 252 12 22 ];
+        %tmp.52 = "Atleta A";
+        lputv %athleteStr.3 %tmp.52;
+        symbol [ athleteStr %athleteStr.3 252 12 22 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 253 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_253_8_256_8_if_stmt:
+        %tmp.53 = lgetv %app;
+        symbol [ app %tmp.53 253 13 16 ];
+        symbol [ mActiveAthlete %tmp.54 253 17 31 ];
+        %tmp.54 = getv %tmp.53 :mActiveAthlete;
+        %tmp.55 = not %tmp.54;
+        bf %tmp.55 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_253_8_256_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_253_8_256_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_253_33_256_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 254 12 ]
+        symbol [ Graphics %tmp.56 254 27 35 ];
+        %tmp.56 = getm $.Toybox.Graphics;
+        symbol [ COLOR_ORANGE %tmp.57 254 36 48 ];
+        %tmp.57 = getv %tmp.56 :COLOR_ORANGE;
+        lputv %athleteColor.2 %tmp.57;
+        symbol [ athleteColor %athleteColor.2 254 12 24 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 255 12 ]
+        %tmp.58 = "Atleta B";
+        lputv %athleteStr.3 %tmp.58;
+        symbol [ athleteStr %athleteStr.3 255 12 22 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_253_33_256_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_253_8_256_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_253_8_256_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 257 8 ]
+        %tmp.59 = lgetv %dc;
+        symbol [ dc %tmp.59 257 8 10 ];
+        symbol [ setColor %tmp.60 257 11 19 ];
+        %tmp.60 = getv function %tmp.59 :setColor;
+        %tmp.61 = lgetv %athleteColor.2;
+        symbol [ athleteColor %tmp.61 257 20 32 ];
+        symbol [ Graphics %tmp.62 257 34 42 ];
+        %tmp.62 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.63 257 43 60 ];
+        %tmp.63 = getv %tmp.62 :COLOR_TRANSPARENT;
+        invoke %tmp.59 %tmp.60(%tmp.61, %tmp.63);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 258 8 ]
+        %tmp.64 = lgetv %dc;
+        symbol [ dc %tmp.64 258 8 10 ];
+        symbol [ drawText %tmp.65 258 11 19 ];
+        %tmp.65 = getv function %tmp.64 :drawText;
+        symbol [ mCenterX %tmp.67 258 20 28 ];
+        %tmp.67 = getv ? :mCenterX;
+        symbol [ mBandBottomY %tmp.69 258 30 42 ];
+        %tmp.69 = getv ? :mBandBottomY;
+        symbol [ Graphics %tmp.70 258 44 52 ];
+        %tmp.70 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.71 258 53 62 ];
+        %tmp.71 = getv %tmp.70 :FONT_TINY;
+        %tmp.72 = lgetv %athleteStr.3;
+        symbol [ athleteStr %tmp.72 258 64 74 ];
+        symbol [ Graphics %tmp.73 259 20 28 ];
+        %tmp.73 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.74 259 29 48 ];
+        %tmp.74 = getv %tmp.73 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.75 259 51 59 ];
+        %tmp.75 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.76 259 60 80 ];
+        %tmp.76 = getv %tmp.75 :TEXT_JUSTIFY_VCENTER;
+        %tmp.77 = bitor %tmp.74 %tmp.76;
+        invoke %tmp.64 %tmp.65(%tmp.67, %tmp.69, %tmp.71, %tmp.72, %tmp.77);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_239_99_260_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 263; @symbol_functiondef = [drawFinish,263,21,31]; @symbol_param<0> = [dc,263,32,34]; @symbol_param<0>_type<0> = [Dc,263,38,40]; @symbol_param<1> = [app,263,42,45]; @symbol_param<1>_type<0> = [HyroxPacerApp,263,49,62]; @symbol_param<2> = [fg,263,64,66]; @symbol_param<2>_type<0> = [Graphics,263,70,78]; @symbol_param<2>_type<1> = [ColorType,263,79,88]; ]
+    private
+    function drawFinish(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_263_98_277_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 264 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 264 8 10 ];
+        symbol [ setColor %tmp.2 264 11 19 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        %tmp.3 = lgetv %fg;
+        symbol [ fg %tmp.3 264 20 22 ];
+        symbol [ Graphics %tmp.4 264 24 32 ];
+        %tmp.4 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.5 264 33 50 ];
+        %tmp.5 = getv %tmp.4 :COLOR_TRANSPARENT;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.5);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 265 8 ]
+        %tmp.6 = lgetv %dc;
+        symbol [ dc %tmp.6 265 8 10 ];
+        symbol [ drawText %tmp.7 265 11 19 ];
+        %tmp.7 = getv function %tmp.6 :drawText;
+        symbol [ mCenterX %tmp.9 265 20 28 ];
+        %tmp.9 = getv ? :mCenterX;
+        symbol [ mBandTopY %tmp.11 265 30 39 ];
+        %tmp.11 = getv ? :mBandTopY;
+        symbol [ Graphics %tmp.12 265 41 49 ];
+        %tmp.12 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.13 265 50 59 ];
+        %tmp.13 = getv %tmp.12 :FONT_TINY;
+        %tmp.14 = "FINISH";
+        symbol [ Graphics %tmp.15 266 20 28 ];
+        %tmp.15 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.16 266 29 48 ];
+        %tmp.16 = getv %tmp.15 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.17 266 51 59 ];
+        %tmp.17 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.18 266 60 80 ];
+        %tmp.18 = getv %tmp.17 :TEXT_JUSTIFY_VCENTER;
+        %tmp.19 = bitor %tmp.16 %tmp.18;
+        invoke %tmp.6 %tmp.7(%tmp.9, %tmp.11, %tmp.13, %tmp.14, %tmp.19);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 268 8 ]
+        %tmp.20 = lgetv %dc;
+        symbol [ dc %tmp.20 268 8 10 ];
+        symbol [ drawText %tmp.21 268 11 19 ];
+        %tmp.21 = getv function %tmp.20 :drawText;
+        symbol [ mCenterX %tmp.23 268 20 28 ];
+        %tmp.23 = getv ? :mCenterX;
+        symbol [ mCenterY %tmp.25 268 30 38 ];
+        %tmp.25 = getv ? :mCenterY;
+        symbol [ Graphics %tmp.26 268 40 48 ];
+        %tmp.26 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.27 268 49 67 ];
+        %tmp.27 = getv %tmp.26 :FONT_NUMBER_MEDIUM;
+        %tmp.28 = self;
+        symbol [ formatClock %tmp.29 269 20 31 ];
+        %tmp.29 = getv function %tmp.28 :formatClock;
+        %tmp.30 = lgetv %app;
+        symbol [ app %tmp.30 269 32 35 ];
+        symbol [ mWorkMs %tmp.31 269 36 43 ];
+        %tmp.31 = getv %tmp.30 :mWorkMs;
+        %tmp.32 = lgetv %app;
+        symbol [ app %tmp.32 269 46 49 ];
+        symbol [ mRestMs %tmp.33 269 50 57 ];
+        %tmp.33 = getv %tmp.32 :mRestMs;
+        %tmp.34 = add %tmp.31 %tmp.33;
+        %tmp.35 = invoke %tmp.28 %tmp.29(%tmp.34);
+        symbol [ Graphics %tmp.36 270 20 28 ];
+        %tmp.36 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.37 270 29 48 ];
+        %tmp.37 = getv %tmp.36 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.38 270 51 59 ];
+        %tmp.38 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.39 270 60 80 ];
+        %tmp.39 = getv %tmp.38 :TEXT_JUSTIFY_VCENTER;
+        %tmp.40 = bitor %tmp.37 %tmp.39;
+        invoke %tmp.20 %tmp.21(%tmp.23, %tmp.25, %tmp.27, %tmp.35, %tmp.40);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 272 8 ]
+        %tmp.41 = lgetv %dc;
+        symbol [ dc %tmp.41 272 8 10 ];
+        symbol [ drawText %tmp.42 272 11 19 ];
+        %tmp.42 = getv function %tmp.41 :drawText;
+        symbol [ mCenterX %tmp.44 272 20 28 ];
+        %tmp.44 = getv ? :mCenterX;
+        symbol [ mBandBottomY %tmp.46 272 30 42 ];
+        %tmp.46 = getv ? :mBandBottomY;
+        symbol [ mLineH %tmp.48 272 45 51 ];
+        %tmp.48 = getv ? :mLineH;
+        %tmp.49 = sub %tmp.46 %tmp.48;
+        symbol [ Graphics %tmp.50 272 53 61 ];
+        %tmp.50 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.51 272 62 71 ];
+        %tmp.51 = getv %tmp.50 :FONT_TINY;
+        %tmp.52 = "W/R ";
+        %tmp.53 = self;
+        symbol [ formatRatio %tmp.54 273 29 40 ];
+        %tmp.54 = getv function %tmp.53 :formatRatio;
+        %tmp.55 = lgetv %app;
+        symbol [ app %tmp.55 273 41 44 ];
+        symbol [ mWorkMs %tmp.56 273 45 52 ];
+        %tmp.56 = getv %tmp.55 :mWorkMs;
+        %tmp.57 = lgetv %app;
+        symbol [ app %tmp.57 273 54 57 ];
+        symbol [ mRestMs %tmp.58 273 58 65 ];
+        %tmp.58 = getv %tmp.57 :mRestMs;
+        %tmp.59 = invoke %tmp.53 %tmp.54(%tmp.56, %tmp.58);
+        %tmp.60 = add %tmp.52 %tmp.59;
+        symbol [ Graphics %tmp.61 274 20 28 ];
+        %tmp.61 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.62 274 29 48 ];
+        %tmp.62 = getv %tmp.61 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.63 274 51 59 ];
+        %tmp.63 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.64 274 60 80 ];
+        %tmp.64 = getv %tmp.63 :TEXT_JUSTIFY_VCENTER;
+        %tmp.65 = bitor %tmp.62 %tmp.64;
+        invoke %tmp.41 %tmp.42(%tmp.44, %tmp.49, %tmp.51, %tmp.60, %tmp.65);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 275 8 ]
+        %tmp.66 = lgetv %dc;
+        symbol [ dc %tmp.66 275 8 10 ];
+        symbol [ drawText %tmp.67 275 11 19 ];
+        %tmp.67 = getv function %tmp.66 :drawText;
+        symbol [ mCenterX %tmp.69 275 20 28 ];
+        %tmp.69 = getv ? :mCenterX;
+        symbol [ mBandBottomY %tmp.71 275 30 42 ];
+        %tmp.71 = getv ? :mBandBottomY;
+        symbol [ Graphics %tmp.72 275 44 52 ];
+        %tmp.72 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.73 275 53 62 ];
+        %tmp.73 = getv %tmp.72 :FONT_TINY;
+        %tmp.74 = "BACK > salir";
+        symbol [ Graphics %tmp.75 276 20 28 ];
+        %tmp.75 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.76 276 29 48 ];
+        %tmp.76 = getv %tmp.75 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.77 276 51 59 ];
+        %tmp.77 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.78 276 60 80 ];
+        %tmp.78 = getv %tmp.77 :TEXT_JUSTIFY_VCENTER;
+        %tmp.79 = bitor %tmp.76 %tmp.78;
+        invoke %tmp.66 %tmp.67(%tmp.69, %tmp.71, %tmp.73, %tmp.74, %tmp.79);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_263_98_277_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 285; @symbol_functiondef = [stateElapsedMs,285,21,35]; @symbol_param<0> = [app,285,36,39]; @symbol_param<0>_type<0> = [HyroxPacerApp,285,43,56]; @symbol_return<0> = [Number,285,61,67]; ]
+    private
+    function stateElapsedMs(app as HyroxPacerApp) as Number {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_285_68_295_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 286 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_285_68_295_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_285_68_295_4_stop" ]
+        %ref.1 = local;
+        symbol [ ref %ref.1 286 12 15 ];
+        symbol [ System %tmp.1 286 18 24 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.2 286 25 33 ];
+        %tmp.2 = getv function %tmp.1 :getTimer;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %ref.1 %tmp.3;
+        symbol [ ref %ref.1 286 12 15 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 287 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_287_8_289_8_if_stmt:
+        %tmp.4 = lgetv %app;
+        symbol [ app %tmp.4 287 12 15 ];
+        symbol [ mIsPaused %tmp.5 287 16 25 ];
+        %tmp.5 = getv %tmp.4 :mIsPaused;
+        bf %tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_287_8_289_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_287_8_289_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_287_27_289_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 288 12 ]
+        %tmp.6 = lgetv %app;
+        symbol [ app %tmp.6 288 18 21 ];
+        symbol [ mPauseStartMs %tmp.7 288 22 35 ];
+        %tmp.7 = getv %tmp.6 :mPauseStartMs;
+        lputv %ref.1 %tmp.7;
+        symbol [ ref %ref.1 288 12 15 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_287_27_289_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_287_8_289_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_287_8_289_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 290 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_285_68_295_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_285_68_295_4_stop" ]
+        %elapsed.2 = local;
+        symbol [ elapsed %elapsed.2 290 12 19 ];
+        %tmp.8 = lgetv %ref.1;
+        symbol [ ref %tmp.8 290 22 25 ];
+        %tmp.9 = lgetv %app;
+        symbol [ app %tmp.9 290 28 31 ];
+        symbol [ mLastTransitionMs %tmp.10 290 32 49 ];
+        %tmp.10 = getv %tmp.9 :mLastTransitionMs;
+        %tmp.11 = sub %tmp.8 %tmp.10;
+        %tmp.12 = lgetv %app;
+        symbol [ app %tmp.12 290 52 55 ];
+        symbol [ mPausedMs %tmp.13 290 56 65 ];
+        %tmp.13 = getv %tmp.12 :mPausedMs;
+        %tmp.14 = sub %tmp.11 %tmp.13;
+        lputv %elapsed.2 %tmp.14;
+        symbol [ elapsed %elapsed.2 290 12 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 291 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_291_8_293_8_if_stmt:
+        %tmp.15 = lgetv %elapsed.2;
+        symbol [ elapsed %tmp.15 291 12 19 ];
+        %tmp.16 = 0;
+        %tmp.17 = lt %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_291_8_293_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_291_8_293_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_291_25_293_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 292 12 ]
+        %tmp.18 = 0;
+        lputv %elapsed.2 %tmp.18;
+        symbol [ elapsed %elapsed.2 292 12 19 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_291_25_293_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_291_8_293_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_291_8_293_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 294 8 ]
+        %tmp.19 = lgetv %elapsed.2;
+        symbol [ elapsed %tmp.19 294 15 22 ];
+        ret %tmp.19;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_285_68_295_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 299; @symbol_functiondef = [formatPace,299,21,31]; @symbol_param<0> = [sec,299,32,35]; @symbol_param<0>_type<0> = [Float,299,39,44]; @symbol_return<0> = [String,299,49,55]; ]
+    private
+    function formatPace(sec as Float) as String {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 300 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_300_8_302_8_if_stmt:
+        %tmp.1 = lgetv %sec;
+        symbol [ sec %tmp.1 300 12 15 ];
+        %tmp.2 = 0.0f;
+        %tmp.3 = lte %tmp.1 %tmp.2;
+        bf %tmp.3 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_300_8_302_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_300_8_302_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_300_25_302_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 301 12 ]
+        %tmp.4 = "--:--";
+        ret %tmp.4;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_300_25_302_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_300_8_302_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_300_8_302_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 303 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_stop" ]
+        %totalSec.1 = local;
+        symbol [ totalSec %totalSec.1 303 12 20 ];
+        %tmp.5 = lgetv %sec;
+        symbol [ sec %tmp.5 303 23 26 ];
+        symbol [ toNumber %tmp.6 303 27 35 ];
+        %tmp.6 = getv function %tmp.5 :toNumber;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %totalSec.1 %tmp.7;
+        symbol [ totalSec %totalSec.1 303 12 20 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 304 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_stop" ]
+        %mins.2 = local;
+        symbol [ mins %mins.2 304 12 16 ];
+        %tmp.8 = lgetv %totalSec.1;
+        symbol [ totalSec %tmp.8 304 23 31 ];
+        %tmp.9 = 60;
+        %tmp.10 = div %tmp.8 %tmp.9;
+        lputv %mins.2 %tmp.10;
+        symbol [ mins %mins.2 304 12 16 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 305 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_stop" ]
+        %secs.3 = local;
+        symbol [ secs %secs.3 305 12 16 ];
+        %tmp.11 = lgetv %totalSec.1;
+        symbol [ totalSec %tmp.11 305 23 31 ];
+        %tmp.12 = 60;
+        %tmp.13 = mod %tmp.11 %tmp.12;
+        lputv %secs.3 %tmp.13;
+        symbol [ secs %secs.3 305 12 16 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 306 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_stop" ]
+        %secsStr.4 = local;
+        symbol [ secsStr %secsStr.4 306 12 19 ];
+        %tmp.14 = lgetv %secs.3;
+        symbol [ secs %tmp.14 306 23 27 ];
+        symbol [ toString %tmp.15 306 28 36 ];
+        %tmp.15 = getv function %tmp.14 :toString;
+        %tmp.16 = invoke %tmp.14 %tmp.15();
+        lputv %secsStr.4 %tmp.16;
+        symbol [ secsStr %secsStr.4 306 12 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 307 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_307_8_309_8_if_stmt:
+        %tmp.17 = lgetv %secs.3;
+        symbol [ secs %tmp.17 307 12 16 ];
+        %tmp.18 = 10;
+        %tmp.19 = lt %tmp.17 %tmp.18;
+        bf %tmp.19 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_307_8_309_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_307_8_309_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_307_23_309_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 308 12 ]
+        %tmp.20 = "0";
+        %tmp.21 = lgetv %secsStr.4;
+        symbol [ secsStr %tmp.21 308 28 35 ];
+        %tmp.22 = add %tmp.20 %tmp.21;
+        lputv %secsStr.4 %tmp.22;
+        symbol [ secsStr %secsStr.4 308 12 19 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_307_23_309_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_307_8_309_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_307_8_309_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 310 8 ]
+        %tmp.23 = lgetv %mins.2;
+        symbol [ mins %tmp.23 310 15 19 ];
+        symbol [ toString %tmp.24 310 20 28 ];
+        %tmp.24 = getv function %tmp.23 :toString;
+        %tmp.25 = invoke %tmp.23 %tmp.24();
+        %tmp.26 = ":";
+        %tmp.27 = add %tmp.25 %tmp.26;
+        %tmp.28 = lgetv %secsStr.4;
+        symbol [ secsStr %tmp.28 310 39 46 ];
+        %tmp.29 = add %tmp.27 %tmp.28;
+        ret %tmp.29;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_299_56_311_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 314; @symbol_functiondef = [formatClock,314,21,32]; @symbol_param<0> = [ms,314,33,35]; @symbol_param<0>_type<0> = [Number,314,39,45]; @symbol_return<0> = [String,314,50,56]; ]
+    private
+    function formatClock(ms as Number) as String {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 315 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_stop" ]
+        %totalMs.1 = local;
+        symbol [ totalMs %totalMs.1 315 12 19 ];
+        %tmp.1 = lgetv %ms;
+        symbol [ ms %tmp.1 315 22 24 ];
+        lputv %totalMs.1 %tmp.1;
+        symbol [ totalMs %totalMs.1 315 12 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 316 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_316_8_318_8_if_stmt:
+        %tmp.2 = lgetv %totalMs.1;
+        symbol [ totalMs %tmp.2 316 12 19 ];
+        %tmp.3 = 0;
+        %tmp.4 = lt %tmp.2 %tmp.3;
+        bf %tmp.4 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_316_8_318_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_316_8_318_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_316_25_318_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 317 12 ]
+        %tmp.5 = 0;
+        lputv %totalMs.1 %tmp.5;
+        symbol [ totalMs %totalMs.1 317 12 19 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_316_25_318_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_316_8_318_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_316_8_318_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 319 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_stop" ]
+        %totalSec.2 = local;
+        symbol [ totalSec %totalSec.2 319 12 20 ];
+        %tmp.6 = lgetv %totalMs.1;
+        symbol [ totalMs %tmp.6 319 23 30 ];
+        %tmp.7 = 1000;
+        %tmp.8 = div %tmp.6 %tmp.7;
+        lputv %totalSec.2 %tmp.8;
+        symbol [ totalSec %totalSec.2 319 12 20 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 320 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_stop" ]
+        %mins.3 = local;
+        symbol [ mins %mins.3 320 12 16 ];
+        %tmp.9 = lgetv %totalSec.2;
+        symbol [ totalSec %tmp.9 320 23 31 ];
+        %tmp.10 = 60;
+        %tmp.11 = div %tmp.9 %tmp.10;
+        lputv %mins.3 %tmp.11;
+        symbol [ mins %mins.3 320 12 16 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 321 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_stop" ]
+        %secs.4 = local;
+        symbol [ secs %secs.4 321 12 16 ];
+        %tmp.12 = lgetv %totalSec.2;
+        symbol [ totalSec %tmp.12 321 23 31 ];
+        %tmp.13 = 60;
+        %tmp.14 = mod %tmp.12 %tmp.13;
+        lputv %secs.4 %tmp.14;
+        symbol [ secs %secs.4 321 12 16 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 322 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_stop" ]
+        %secsStr.5 = local;
+        symbol [ secsStr %secsStr.5 322 12 19 ];
+        %tmp.15 = lgetv %secs.4;
+        symbol [ secs %tmp.15 322 23 27 ];
+        symbol [ toString %tmp.16 322 28 36 ];
+        %tmp.16 = getv function %tmp.15 :toString;
+        %tmp.17 = invoke %tmp.15 %tmp.16();
+        lputv %secsStr.5 %tmp.17;
+        symbol [ secsStr %secsStr.5 322 12 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 323 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_323_8_325_8_if_stmt:
+        %tmp.18 = lgetv %secs.4;
+        symbol [ secs %tmp.18 323 12 16 ];
+        %tmp.19 = 10;
+        %tmp.20 = lt %tmp.18 %tmp.19;
+        bf %tmp.20 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_323_8_325_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_323_8_325_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_323_23_325_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 324 12 ]
+        %tmp.21 = "0";
+        %tmp.22 = lgetv %secsStr.5;
+        symbol [ secsStr %tmp.22 324 28 35 ];
+        %tmp.23 = add %tmp.21 %tmp.22;
+        lputv %secsStr.5 %tmp.23;
+        symbol [ secsStr %secsStr.5 324 12 19 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_323_23_325_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_323_8_325_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_323_8_325_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 326 8 ]
+        %tmp.24 = lgetv %mins.3;
+        symbol [ mins %tmp.24 326 15 19 ];
+        symbol [ toString %tmp.25 326 20 28 ];
+        %tmp.25 = getv function %tmp.24 :toString;
+        %tmp.26 = invoke %tmp.24 %tmp.25();
+        %tmp.27 = ":";
+        %tmp.28 = add %tmp.26 %tmp.27;
+        %tmp.29 = lgetv %secsStr.5;
+        symbol [ secsStr %tmp.29 326 39 46 ];
+        %tmp.30 = add %tmp.28 %tmp.29;
+        ret %tmp.30;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_314_57_327_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 331; @symbol_functiondef = [formatRatio,331,21,32]; @symbol_param<0> = [workMs,331,33,39]; @symbol_param<0>_type<0> = [Number,331,43,49]; @symbol_param<1> = [restMs,331,51,57]; @symbol_param<1>_type<0> = [Number,331,61,67]; @symbol_return<0> = [String,331,72,78]; ]
+    private
+    function formatRatio(workMs as Number, restMs as Number) as String {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_331_79_339_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 332 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_332_8_334_8_if_stmt:
+        %tmp.1 = lgetv %restMs;
+        symbol [ restMs %tmp.1 332 12 18 ];
+        %tmp.2 = 0;
+        %tmp.3 = lte %tmp.1 %tmp.2;
+        bf %tmp.3 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_332_8_334_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_332_8_334_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_332_25_334_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 333 12 ]
+        %tmp.4 = "--";
+        ret %tmp.4;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_332_25_334_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_332_8_334_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_332_8_334_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 335 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_331_79_339_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_331_79_339_4_stop" ]
+        %ratio10.1 = local;
+        symbol [ ratio10 %ratio10.1 335 12 19 ];
+        %tmp.5 = lgetv %workMs;
+        symbol [ workMs %tmp.5 335 23 29 ];
+        %tmp.6 = 10;
+        %tmp.7 = mul %tmp.5 %tmp.6;
+        %tmp.8 = lgetv %restMs;
+        symbol [ restMs %tmp.8 335 38 44 ];
+        %tmp.9 = div %tmp.7 %tmp.8;
+        lputv %ratio10.1 %tmp.9;
+        symbol [ ratio10 %ratio10.1 335 12 19 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 336 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_331_79_339_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_331_79_339_4_stop" ]
+        %whole.2 = local;
+        symbol [ whole %whole.2 336 12 17 ];
+        %tmp.10 = lgetv %ratio10.1;
+        symbol [ ratio10 %tmp.10 336 22 29 ];
+        %tmp.11 = 10;
+        %tmp.12 = div %tmp.10 %tmp.11;
+        lputv %whole.2 %tmp.12;
+        symbol [ whole %whole.2 336 12 17 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 337 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_331_79_339_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_331_79_339_4_stop" ]
+        %frac.3 = local;
+        symbol [ frac %frac.3 337 12 16 ];
+        %tmp.13 = lgetv %ratio10.1;
+        symbol [ ratio10 %tmp.13 337 22 29 ];
+        %tmp.14 = 10;
+        %tmp.15 = mod %tmp.13 %tmp.14;
+        lputv %frac.3 %tmp.15;
+        symbol [ frac %frac.3 337 12 16 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc" 338 8 ]
+        %tmp.16 = lgetv %whole.2;
+        symbol [ whole %tmp.16 338 15 20 ];
+        symbol [ toString %tmp.17 338 21 29 ];
+        %tmp.17 = getv function %tmp.16 :toString;
+        %tmp.18 = invoke %tmp.16 %tmp.17();
+        %tmp.19 = ".";
+        %tmp.20 = add %tmp.18 %tmp.19;
+        %tmp.21 = lgetv %frac.3;
+        symbol [ frac %tmp.21 338 40 44 ];
+        symbol [ toString %tmp.22 338 45 53 ];
+        %tmp.22 = getv function %tmp.21 :toString;
+        %tmp.23 = invoke %tmp.21 %tmp.22();
+        %tmp.24 = add %tmp.20 %tmp.23;
+        ret %tmp.24;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerView_mc_331_79_339_4_stop:
+    }
+}
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerView.mc"; @line = 1; ]
+<init> {
+}

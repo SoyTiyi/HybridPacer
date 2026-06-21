@@ -1,0 +1,54 @@
+<fitContributions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <!-- id DEBE coincidir con FIT_ID_* en HyroxFitSession.mc -->
+
+    <!-- 0: hyrox_cycle_id — Ciclo actual de la carrera (0-7) -->
+    <fitField id="0" displayInChart="true" sortOrder="0" precision="0"
+        chartTitle="@Strings.fitCycleTitle"
+        dataLabel="@Strings.fitCycleLabel"
+        unitLabel="@Strings.fitCycleUnit"
+        fillColor="#FF6600" />
+
+    <!-- 1: hyrox_fsm_state — Estado de la máquina de estados (0=WARMUP…5=FINISH) -->
+    <fitField id="1" displayInChart="true" sortOrder="1" precision="0"
+        chartTitle="@Strings.fitStateTitle"
+        dataLabel="@Strings.fitStateLabel"
+        unitLabel="@Strings.fitStateUnit"
+        fillColor="#0066FF" />
+
+    <!-- 2: roxzone_total_time — Tiempo acumulado en RoxZone (s) -->
+    <fitField id="2" displayInChart="true" sortOrder="2" precision="0"
+        chartTitle="@Strings.fitRoxzoneTitle"
+        dataLabel="@Strings.fitRoxzoneLabel"
+        unitLabel="@Strings.fitRoxzoneUnit"
+        fillColor="#9900CC" />
+
+    <!-- 3: station_elapsed — Tiempo transcurrido en estación de trabajo actual (s) -->
+    <fitField id="3" displayInChart="true" sortOrder="3" precision="0"
+        chartTitle="@Strings.fitStationTitle"
+        dataLabel="@Strings.fitStationLabel"
+        unitLabel="@Strings.fitStationUnit"
+        fillColor="#CC0000" />
+
+    <!-- 4: active_athlete — Atleta activo en modalidad dobles (1=activo, 0=espera) -->
+    <fitField id="4" displayInChart="false" sortOrder="4" precision="0"
+        chartTitle="@Strings.fitAthleteTitle"
+        dataLabel="@Strings.fitAthleteLabel"
+        unitLabel="@Strings.fitAthleteUnit"
+        fillColor="#00CC00" />
+
+    <!-- 5: pace_delta_deviation — Desviación de pace vs objetivo 5:00/km (s/km) -->
+    <fitField id="5" displayInChart="true" sortOrder="5" precision="1"
+        chartTitle="@Strings.fitPaceTitle"
+        dataLabel="@Strings.fitPaceLabel"
+        unitLabel="@Strings.fitPaceUnit"
+        fillColor="#CCCC00" />
+
+    <!-- 6: work_rest_ratio — Ratio tiempo de carrera / tiempo de pausa -->
+    <fitField id="6" displayInChart="true" sortOrder="6" precision="2"
+        chartTitle="@Strings.fitWorkRestTitle"
+        dataLabel="@Strings.fitWorkRestLabel"
+        unitLabel="@Strings.fitWorkRestUnit"
+        fillColor="#00CCCC" />
+
+</fitContributions>

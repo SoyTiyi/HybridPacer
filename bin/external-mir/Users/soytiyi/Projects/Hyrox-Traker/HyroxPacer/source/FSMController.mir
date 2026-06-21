@@ -1,0 +1,485 @@
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
+import Toybox.System;
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 17; @symbol_classdef = [FSMController,17,6,19]; ]
+class FSMController {
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 17; ]
+    <init> {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 17; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 19; @symbol_functiondef = [initialize,19,13,23]; ]
+    function initialize() as Void {
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 29; @symbol_functiondef = [attemptTransition,29,13,30]; ]
+    function attemptTransition() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_29_41_110_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 30 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_29_41_110_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_29_41_110_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 30 12 15 ];
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 30 20 26 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %app.1 %tmp.3;
+        symbol [ app %app.1 30 12 15 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 31 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_29_41_110_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_29_41_110_4_stop" ]
+        %state.2 = local;
+        symbol [ state %state.2 31 12 17 ];
+        %tmp.4 = lgetv %app.1;
+        symbol [ app %tmp.4 31 20 23 ];
+        symbol [ mFsmState %tmp.5 31 24 33 ];
+        %tmp.5 = getv %tmp.4 :mFsmState;
+        lputv %state.2 %tmp.5;
+        symbol [ state %state.2 31 12 17 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 34 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_34_8_36_8_if_stmt:
+        %tmp.6 = lgetv %state.2;
+        symbol [ state %tmp.6 34 12 17 ];
+        symbol [ STATE_FINISH %tmp.8 34 21 33 ];
+        %tmp.8 = getv ? :STATE_FINISH;
+        %tmp.9 = gte %tmp.6 %tmp.8;
+        bf %tmp.9 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_34_8_36_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_34_8_36_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_34_35_36_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 35 12 ]
+        ret ?;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_34_35_36_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_34_8_36_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_34_8_36_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 40 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_29_41_110_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_29_41_110_4_stop" ]
+        %now.3 = local;
+        symbol [ now %now.3 40 12 15 ];
+        symbol [ System %tmp.10 40 18 24 ];
+        %tmp.10 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.11 40 25 33 ];
+        %tmp.11 = getv function %tmp.10 :getTimer;
+        %tmp.12 = invoke %tmp.10 %tmp.11();
+        lputv %now.3 %tmp.12;
+        symbol [ now %now.3 40 12 15 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 41 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_41_8_43_8_if_stmt:
+        %tmp.13 = lgetv %now.3;
+        symbol [ now %tmp.13 41 12 15 ];
+        %tmp.14 = lgetv %app.1;
+        symbol [ app %tmp.14 41 18 21 ];
+        symbol [ mLastTransitionMs %tmp.15 41 22 39 ];
+        %tmp.15 = getv %tmp.14 :mLastTransitionMs;
+        %tmp.16 = sub %tmp.13 %tmp.15;
+        symbol [ FSM_DEBOUNCE_MS %tmp.18 41 42 57 ];
+        %tmp.18 = getv ? :FSM_DEBOUNCE_MS;
+        %tmp.19 = lt %tmp.16 %tmp.18;
+        bf %tmp.19 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_41_8_43_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_41_8_43_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_41_59_43_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 42 12 ]
+        ret ?;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_41_59_43_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_41_8_43_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_41_8_43_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 48 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_48_8_63_8_if_stmt:
+        %tmp.20 = lgetv %state.2;
+        symbol [ state %tmp.20 48 12 17 ];
+        symbol [ STATE_WARMUP %tmp.22 48 21 33 ];
+        %tmp.22 = getv ? :STATE_WARMUP;
+        %tmp.23 = ne %tmp.20 %tmp.22;
+        bf %tmp.23 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_48_8_63_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_48_8_63_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_48_35_63_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 49 12 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_48_35_63_8_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_48_35_63_8_stop" ]
+        %elapsed.4 = local;
+        symbol [ elapsed %elapsed.4 49 16 23 ];
+        %tmp.24 = lgetv %now.3;
+        symbol [ now %tmp.24 49 26 29 ];
+        %tmp.25 = lgetv %app.1;
+        symbol [ app %tmp.25 49 32 35 ];
+        symbol [ mLastTransitionMs %tmp.26 49 36 53 ];
+        %tmp.26 = getv %tmp.25 :mLastTransitionMs;
+        %tmp.27 = sub %tmp.24 %tmp.26;
+        lputv %elapsed.4 %tmp.27;
+        symbol [ elapsed %elapsed.4 49 16 23 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 50 12 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_50_12_60_12_if_stmt:
+        %tmp.28 = lgetv %state.2;
+        symbol [ state %tmp.28 50 16 21 ];
+        symbol [ STATE_RUN %tmp.30 50 25 34 ];
+        %tmp.30 = getv ? :STATE_RUN;
+        %tmp.31 = eq %tmp.28 %tmp.30;
+        bf %tmp.31 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_50_12_60_12_if_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_50_12_60_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_50_36_53_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 52 16 ]
+        %tmp.32 = lgetv %app.1;
+        symbol [ app %tmp.32 52 16 19 ];
+        %tmp.33 = lgetv %app.1;
+        symbol [ app %tmp.33 52 30 33 ];
+        symbol [ mWorkMs %tmp.34 52 34 41 ];
+        %tmp.34 = getv %tmp.33 :mWorkMs;
+        %tmp.35 = lgetv %elapsed.4;
+        symbol [ elapsed %tmp.35 52 44 51 ];
+        %tmp.36 = add %tmp.34 %tmp.35;
+        symbol [ mWorkMs ? 52 20 27 ];
+        putv %tmp.32 :mWorkMs %tmp.36;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_50_36_53_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_50_12_60_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_50_12_60_12_if_false:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 53 19 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_19_60_12_if_stmt:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_23_53_61_begin:
+        %tmp.37 = lgetv %state.2;
+        symbol [ state %tmp.37 53 23 28 ];
+        symbol [ STATE_ROXZONE_IN %tmp.39 53 32 48 ];
+        %tmp.39 = getv ? :STATE_ROXZONE_IN;
+        %tmp.40 = eq %tmp.37 %tmp.39;
+        bt %tmp.40 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_19_60_12_if_true;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_52_53_61_false:
+        %tmp.41 = lgetv %state.2;
+        symbol [ state %tmp.41 53 52 57 ];
+        symbol [ STATE_ROXZONE_OUT %tmp.43 53 61 78 ];
+        %tmp.43 = getv ? :STATE_ROXZONE_OUT;
+        %tmp.44 = eq %tmp.41 %tmp.43;
+        push %tmp.44;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_52_53_61_end:
+        %tmp.45 = phi [%tmp.40 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_23_53_61_begin] [%tmp.44 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_52_53_61_false] [%tmp.45 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_52_53_61_end];
+        bf %tmp.45 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_19_60_12_if_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_19_60_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_80_57_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 55 16 ]
+        %tmp.46 = lgetv %app.1;
+        symbol [ app %tmp.46 55 16 19 ];
+        %tmp.47 = lgetv %app.1;
+        symbol [ app %tmp.47 55 30 33 ];
+        symbol [ mRestMs %tmp.48 55 34 41 ];
+        %tmp.48 = getv %tmp.47 :mRestMs;
+        %tmp.49 = lgetv %elapsed.4;
+        symbol [ elapsed %tmp.49 55 44 51 ];
+        %tmp.50 = add %tmp.48 %tmp.49;
+        symbol [ mRestMs ? 55 20 27 ];
+        putv %tmp.46 :mRestMs %tmp.50;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 56 16 ]
+        %tmp.51 = lgetv %app.1;
+        symbol [ app %tmp.51 56 16 19 ];
+        %tmp.52 = lgetv %app.1;
+        symbol [ app %tmp.52 56 38 41 ];
+        symbol [ mRoxzoneTotalMs %tmp.53 56 42 57 ];
+        %tmp.53 = getv %tmp.52 :mRoxzoneTotalMs;
+        %tmp.54 = lgetv %elapsed.4;
+        symbol [ elapsed %tmp.54 56 60 67 ];
+        %tmp.55 = add %tmp.53 %tmp.54;
+        symbol [ mRoxzoneTotalMs ? 56 20 35 ];
+        putv %tmp.51 :mRoxzoneTotalMs %tmp.55;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_80_57_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_19_60_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_19_60_12_if_false:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 57 19 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_57_19_60_12_if_stmt:
+        %tmp.56 = lgetv %state.2;
+        symbol [ state %tmp.56 57 23 28 ];
+        symbol [ STATE_STATION %tmp.58 57 32 45 ];
+        %tmp.58 = getv ? :STATE_STATION;
+        %tmp.59 = eq %tmp.56 %tmp.58;
+        bf %tmp.59 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_57_19_60_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_57_19_60_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_57_47_60_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 59 16 ]
+        %tmp.60 = lgetv %app.1;
+        symbol [ app %tmp.60 59 16 19 ];
+        %tmp.61 = lgetv %app.1;
+        symbol [ app %tmp.61 59 30 33 ];
+        symbol [ mRestMs %tmp.62 59 34 41 ];
+        %tmp.62 = getv %tmp.61 :mRestMs;
+        %tmp.63 = lgetv %elapsed.4;
+        symbol [ elapsed %tmp.63 59 44 51 ];
+        %tmp.64 = add %tmp.62 %tmp.63;
+        symbol [ mRestMs ? 59 20 27 ];
+        putv %tmp.60 :mRestMs %tmp.64;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_57_47_60_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_57_19_60_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_57_19_60_12_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_53_19_60_12_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_50_12_60_12_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 62 12 ]
+        %tmp.65 = self;
+        symbol [ accrueAthleteTime %tmp.66 62 12 29 ];
+        %tmp.66 = getv function %tmp.65 :accrueAthleteTime;
+        %tmp.67 = lgetv %app.1;
+        symbol [ app %tmp.67 62 30 33 ];
+        %tmp.68 = lgetv %elapsed.4;
+        symbol [ elapsed %tmp.68 62 35 42 ];
+        invoke %tmp.65 %tmp.66(%tmp.67, %tmp.68);
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_48_35_63_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_48_8_63_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_48_8_63_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 66 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_66_8_106_8_if_stmt:
+        %tmp.69 = lgetv %state.2;
+        symbol [ state %tmp.69 66 12 17 ];
+        symbol [ STATE_ROXZONE_OUT %tmp.71 66 21 38 ];
+        %tmp.71 = getv ? :STATE_ROXZONE_OUT;
+        %tmp.72 = eq %tmp.69 %tmp.71;
+        bf %tmp.72 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_66_8_106_8_if_else_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_66_8_106_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_66_40_86_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 68 12 ]
+        %tmp.73 = lgetv %app.1;
+        symbol [ app %tmp.73 68 12 15 ];
+        %tmp.74 = lgetv %app.1;
+        symbol [ app %tmp.74 68 30 33 ];
+        symbol [ mHyroxCycle %tmp.75 68 34 45 ];
+        %tmp.75 = getv %tmp.74 :mHyroxCycle;
+        %tmp.76 = 1;
+        %tmp.77 = add %tmp.75 %tmp.76;
+        symbol [ mHyroxCycle ? 68 16 27 ];
+        putv %tmp.73 :mHyroxCycle %tmp.77;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 70 12 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_70_12_85_12_if_stmt:
+        %tmp.78 = lgetv %app.1;
+        symbol [ app %tmp.78 70 16 19 ];
+        symbol [ mHyroxCycle %tmp.79 70 20 31 ];
+        %tmp.79 = getv %tmp.78 :mHyroxCycle;
+        symbol [ HYROX_TOTAL_CYCLES %tmp.81 70 35 53 ];
+        %tmp.81 = getv ? :HYROX_TOTAL_CYCLES;
+        %tmp.82 = gte %tmp.79 %tmp.81;
+        bf %tmp.82 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_70_12_85_12_if_else_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_70_12_85_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_70_55_74_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 72 16 ]
+        %tmp.83 = lgetv %app.1;
+        symbol [ app %tmp.83 72 16 19 ];
+        symbol [ mGps %tmp.84 72 20 24 ];
+        %tmp.84 = getv %tmp.83 :mGps;
+        symbol [ stopRecording %tmp.85 72 25 38 ];
+        %tmp.85 = getv function %tmp.84 :stopRecording;
+        invoke %tmp.84 %tmp.85();
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 73 16 ]
+        %tmp.86 = lgetv %app.1;
+        symbol [ app %tmp.86 73 16 19 ];
+        symbol [ STATE_FINISH %tmp.88 73 32 44 ];
+        %tmp.88 = getv ? :STATE_FINISH;
+        symbol [ mFsmState ? 73 20 29 ];
+        putv %tmp.86 :mFsmState %tmp.88;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_70_55_74_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_70_12_85_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_70_12_85_12_if_else_false:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_74_19_85_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 76 16 ]
+        %tmp.89 = self;
+        symbol [ markLap %tmp.90 76 16 23 ];
+        %tmp.90 = getv function %tmp.89 :markLap;
+        invoke %tmp.89 %tmp.90();
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 77 16 ]
+        %tmp.91 = lgetv %app.1;
+        symbol [ app %tmp.91 77 16 19 ];
+        symbol [ STATE_RUN %tmp.93 77 32 41 ];
+        %tmp.93 = getv ? :STATE_RUN;
+        symbol [ mFsmState ? 77 20 29 ];
+        putv %tmp.91 :mFsmState %tmp.93;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 81 16 ]
+        %tmp.94 = lgetv %app.1;
+        symbol [ app %tmp.94 81 16 19 ];
+        %tmp.95 = lgetv %app.1;
+        symbol [ app %tmp.95 81 44 47 ];
+        symbol [ mPacing %tmp.96 81 48 55 ];
+        %tmp.96 = getv %tmp.95 :mPacing;
+        symbol [ computeDynamicPaceTarget %tmp.97 81 56 80 ];
+        %tmp.97 = getv function %tmp.96 :computeDynamicPaceTarget;
+        %tmp.98 = lgetv %app.1;
+        symbol [ app %tmp.98 82 20 23 ];
+        symbol [ mTargetTimeMs %tmp.99 82 24 37 ];
+        %tmp.99 = getv %tmp.98 :mTargetTimeMs;
+        %tmp.100 = lgetv %app.1;
+        symbol [ app %tmp.100 83 20 23 ];
+        symbol [ mWorkMs %tmp.101 83 24 31 ];
+        %tmp.101 = getv %tmp.100 :mWorkMs;
+        %tmp.102 = lgetv %app.1;
+        symbol [ app %tmp.102 83 34 37 ];
+        symbol [ mRestMs %tmp.103 83 38 45 ];
+        %tmp.103 = getv %tmp.102 :mRestMs;
+        %tmp.104 = add %tmp.101 %tmp.103;
+        %tmp.105 = lgetv %app.1;
+        symbol [ app %tmp.105 84 20 23 ];
+        symbol [ mHyroxCycle %tmp.106 84 24 35 ];
+        %tmp.106 = getv %tmp.105 :mHyroxCycle;
+        %tmp.107 = invoke %tmp.96 %tmp.97(%tmp.99, %tmp.104, %tmp.106);
+        symbol [ mDynamicPaceTargetSec ? 81 20 41 ];
+        putv %tmp.94 :mDynamicPaceTargetSec %tmp.107;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_74_19_85_12_stop:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_70_12_85_12_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_66_40_86_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_66_8_106_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_66_8_106_8_if_else_false:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_86_15_106_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 88 12 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_88_12_91_12_if_stmt:
+        %tmp.108 = lgetv %state.2;
+        symbol [ state %tmp.108 88 16 21 ];
+        symbol [ STATE_WARMUP %tmp.110 88 25 37 ];
+        %tmp.110 = getv ? :STATE_WARMUP;
+        %tmp.111 = eq %tmp.108 %tmp.110;
+        bf %tmp.111 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_88_12_91_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_88_12_91_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_88_39_91_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 90 16 ]
+        %tmp.112 = lgetv %app.1;
+        symbol [ app %tmp.112 90 16 19 ];
+        symbol [ mGps %tmp.113 90 20 24 ];
+        %tmp.113 = getv %tmp.112 :mGps;
+        symbol [ startRecording %tmp.114 90 25 39 ];
+        %tmp.114 = getv function %tmp.113 :startRecording;
+        invoke %tmp.113 %tmp.114();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_88_39_91_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_88_12_91_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_88_12_91_12_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 92 12 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_92_12_95_12_if_stmt:
+        %tmp.115 = lgetv %state.2;
+        symbol [ state %tmp.115 92 16 21 ];
+        symbol [ STATE_RUN %tmp.117 92 25 34 ];
+        %tmp.117 = getv ? :STATE_RUN;
+        %tmp.118 = eq %tmp.115 %tmp.117;
+        bf %tmp.118 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_92_12_95_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_92_12_95_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_92_36_95_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 94 16 ]
+        %tmp.119 = self;
+        symbol [ markLap %tmp.120 94 16 23 ];
+        %tmp.120 = getv function %tmp.119 :markLap;
+        invoke %tmp.119 %tmp.120();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_92_36_95_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_92_12_95_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_92_12_95_12_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 96 12 ]
+        %tmp.121 = lgetv %app.1;
+        symbol [ app %tmp.121 96 12 15 ];
+        %tmp.122 = lgetv %state.2;
+        symbol [ state %tmp.122 96 28 33 ];
+        %tmp.123 = 1;
+        %tmp.124 = add %tmp.122 %tmp.123;
+        symbol [ mFsmState ? 96 16 25 ];
+        putv %tmp.121 :mFsmState %tmp.124;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 100 12 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_100_12_105_12_if_stmt:
+        %tmp.125 = lgetv %state.2;
+        symbol [ state %tmp.125 100 16 21 ];
+        symbol [ STATE_WARMUP %tmp.127 100 25 37 ];
+        %tmp.127 = getv ? :STATE_WARMUP;
+        %tmp.128 = eq %tmp.125 %tmp.127;
+        bf %tmp.128 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_100_12_105_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_100_12_105_12_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_100_39_105_12_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 101 16 ]
+        %tmp.129 = lgetv %app.1;
+        symbol [ app %tmp.129 101 16 19 ];
+        %tmp.130 = lgetv %app.1;
+        symbol [ app %tmp.130 101 44 47 ];
+        symbol [ mPacing %tmp.131 101 48 55 ];
+        %tmp.131 = getv %tmp.130 :mPacing;
+        symbol [ computeDynamicPaceTarget %tmp.132 101 56 80 ];
+        %tmp.132 = getv function %tmp.131 :computeDynamicPaceTarget;
+        %tmp.133 = lgetv %app.1;
+        symbol [ app %tmp.133 102 20 23 ];
+        symbol [ mTargetTimeMs %tmp.134 102 24 37 ];
+        %tmp.134 = getv %tmp.133 :mTargetTimeMs;
+        %tmp.135 = lgetv %app.1;
+        symbol [ app %tmp.135 103 20 23 ];
+        symbol [ mWorkMs %tmp.136 103 24 31 ];
+        %tmp.136 = getv %tmp.135 :mWorkMs;
+        %tmp.137 = lgetv %app.1;
+        symbol [ app %tmp.137 103 34 37 ];
+        symbol [ mRestMs %tmp.138 103 38 45 ];
+        %tmp.138 = getv %tmp.137 :mRestMs;
+        %tmp.139 = add %tmp.136 %tmp.138;
+        %tmp.140 = lgetv %app.1;
+        symbol [ app %tmp.140 104 20 23 ];
+        symbol [ mHyroxCycle %tmp.141 104 24 35 ];
+        %tmp.141 = getv %tmp.140 :mHyroxCycle;
+        %tmp.142 = invoke %tmp.131 %tmp.132(%tmp.134, %tmp.139, %tmp.141);
+        symbol [ mDynamicPaceTargetSec ? 101 20 41 ];
+        putv %tmp.129 :mDynamicPaceTargetSec %tmp.142;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_100_39_105_12_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_100_12_105_12_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_100_12_105_12_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_86_15_106_8_stop:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_66_8_106_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 109 8 ]
+        %tmp.143 = lgetv %app.1;
+        symbol [ app %tmp.143 109 8 11 ];
+        %tmp.144 = lgetv %now.3;
+        symbol [ now %tmp.144 109 32 35 ];
+        symbol [ mLastTransitionMs ? 109 12 29 ];
+        putv %tmp.143 :mLastTransitionMs %tmp.144;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_29_41_110_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 117; @symbol_functiondef = [markLap,117,21,28]; ]
+    private
+    function markLap() as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_117_39_119_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 118 8 ]
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 118 8 14 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ mGps %tmp.4 118 17 21 ];
+        %tmp.4 = getv %tmp.3 :mGps;
+        symbol [ addLap %tmp.5 118 22 28 ];
+        %tmp.5 = getv function %tmp.4 :addLap;
+        invoke %tmp.4 %tmp.5();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_117_39_119_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 126; @symbol_functiondef = [accrueAthleteTime,126,21,38]; @symbol_param<0> = [app,126,39,42]; @symbol_param<0>_type<0> = [HyroxPacerApp,126,46,59]; @symbol_param<1> = [elapsed,126,61,68]; @symbol_param<1>_type<0> = [Number,126,72,78]; ]
+    private
+    function accrueAthleteTime(app as HyroxPacerApp, elapsed as Number) as Void {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_126_88_132_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 127 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_127_8_131_8_if_stmt:
+        %tmp.1 = lgetv %app;
+        symbol [ app %tmp.1 127 12 15 ];
+        symbol [ mActiveAthlete %tmp.2 127 16 30 ];
+        %tmp.2 = getv %tmp.1 :mActiveAthlete;
+        bf %tmp.2 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_127_8_131_8_if_else_false;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_127_8_131_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_127_32_129_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 128 12 ]
+        %tmp.3 = lgetv %app;
+        symbol [ app %tmp.3 128 12 15 ];
+        %tmp.4 = lgetv %app;
+        symbol [ app %tmp.4 128 32 35 ];
+        symbol [ mTimeAthleteA %tmp.5 128 36 49 ];
+        %tmp.5 = getv %tmp.4 :mTimeAthleteA;
+        %tmp.6 = lgetv %elapsed;
+        symbol [ elapsed %tmp.6 128 52 59 ];
+        %tmp.7 = add %tmp.5 %tmp.6;
+        symbol [ mTimeAthleteA ? 128 16 29 ];
+        putv %tmp.3 :mTimeAthleteA %tmp.7;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_127_32_129_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_127_8_131_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_127_8_131_8_if_else_false:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_129_15_131_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc" 130 12 ]
+        %tmp.8 = lgetv %app;
+        symbol [ app %tmp.8 130 12 15 ];
+        %tmp.9 = lgetv %app;
+        symbol [ app %tmp.9 130 32 35 ];
+        symbol [ mTimeAthleteB %tmp.10 130 36 49 ];
+        %tmp.10 = getv %tmp.9 :mTimeAthleteB;
+        %tmp.11 = lgetv %elapsed;
+        symbol [ elapsed %tmp.11 130 52 59 ];
+        %tmp.12 = add %tmp.10 %tmp.11;
+        symbol [ mTimeAthleteB ? 130 16 29 ];
+        putv %tmp.8 :mTimeAthleteB %tmp.12;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_129_15_131_8_stop:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_127_8_131_8_if_end:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_FSMController_mc_126_88_132_4_stop:
+    }
+}
+[ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/FSMController.mc"; @line = 1; ]
+<init> {
+}

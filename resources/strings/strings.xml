@@ -1,0 +1,42 @@
+<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <string id="AppName">HyroxPacer</string>
+
+    <!-- ── Menú de configuración (Fase 6) ─────────────────────────────── -->
+    <string id="target_time_title">Tiempo objetivo</string>
+
+    <!-- ── FIT Contributor field labels (Fase 3) ──────────────────────── -->
+    <!-- hyrox_cycle_id (FIT id=0) -->
+    <string id="fitCycleTitle">Hyrox Cycle</string>
+    <string id="fitCycleLabel">Cycle #</string>
+    <string id="fitCycleUnit">cycle</string>
+
+    <!-- hyrox_fsm_state (FIT id=1) -->
+    <string id="fitStateTitle">FSM State</string>
+    <string id="fitStateLabel">State</string>
+    <string id="fitStateUnit">state</string>
+
+    <!-- roxzone_total_time (FIT id=2) -->
+    <string id="fitRoxzoneTitle">RoxZone Total</string>
+    <string id="fitRoxzoneLabel">RoxZone</string>
+    <string id="fitRoxzoneUnit">s</string>
+
+    <!-- station_elapsed (FIT id=3) -->
+    <string id="fitStationTitle">Station Time</string>
+    <string id="fitStationLabel">Station</string>
+    <string id="fitStationUnit">s</string>
+
+    <!-- active_athlete (FIT id=4) -->
+    <string id="fitAthleteTitle">Active Athlete</string>
+    <string id="fitAthleteLabel">Athlete</string>
+    <string id="fitAthleteUnit">bool</string>
+
+    <!-- pace_delta_deviation (FIT id=5) -->
+    <string id="fitPaceTitle">Pace Delta</string>
+    <string id="fitPaceLabel">Pace Dev</string>
+    <string id="fitPaceUnit">s/km</string>
+
+    <!-- work_rest_ratio (FIT id=6) -->
+    <string id="fitWorkRestTitle">Work/Rest</string>
+    <string id="fitWorkRestLabel">W/R</string>
+    <string id="fitWorkRestUnit">ratio</string>
+</strings>
