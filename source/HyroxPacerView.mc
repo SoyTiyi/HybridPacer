@@ -146,20 +146,16 @@ class HyroxPacerView extends WatchUi.View {
 
     // ── Per-state screens ────────────────────────────────────────────────────────
 
-    // WARMUP: start screen. Goal time + distance, GPS status, and the button prompt.
+    // WARMUP: start screen. The goal time is editable in place (UP +5 / DOWN -5),
+    // so it is rendered in cyan with bracket framing to read as adjustable. A
+    // transient yellow badge shows the last step (e.g. "+15") right after a press.
+    // Header carries HYROX + GPS status; the footer carries the UP/DOWN + START hints.
     private function drawWarmup(dc as Dc, app as HyroxPacerApp, fg as Graphics.ColorType) as Void {
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mBandTopY, Graphics.FONT_TINY, "HYROX",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Goal time (large) + fixed distance (small, below).
-        dc.drawText(mCenterX, mCenterY - mLineH, Graphics.FONT_NUMBER_MEDIUM,
-                    formatClock(app.mTargetTimeMs),
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(mCenterX, mCenterY + mLineH, Graphics.FONT_TINY, "target · 8 km",
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-
-        // GPS status: green if fix acquired, red if still searching.
+        // GPS status moved up to the header band: green if fix acquired, red if searching.
         var gpsColor = Graphics.COLOR_RED;
         var gpsStr   = "Searching GPS";
         if (app.mGps.hasFix()) {
@@ -167,10 +163,44 @@ class HyroxPacerView extends WatchUi.View {
             gpsStr   = "GPS OK";
         }
         dc.setColor(gpsColor, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(mCenterX, mBandBottomY - mLineH, Graphics.FONT_TINY, gpsStr,
+        dc.drawText(mCenterX, mBandTopY + mLineH, Graphics.FONT_TINY, gpsStr,
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // Start prompt.
+        // Editable goal time (large, cyan) flanked by brackets. The brackets are a
+        // separate text font because FONT_NUMBER_* only contains digits and the colon.
+        var clock = formatClock(app.mTargetTimeMs);
+        var numW  = dc.getTextWidthInPixels(clock, Graphics.FONT_NUMBER_MEDIUM);
+        var bx    = numW / 2 + mLineH / 3;
+        dc.setColor(0x00FFFF, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(mCenterX, mCenterY - mLineH, Graphics.FONT_NUMBER_MEDIUM, clock,
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(mCenterX - bx, mCenterY - mLineH, Graphics.FONT_SMALL, "[",
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(mCenterX + bx, mCenterY - mLineH, Graphics.FONT_SMALL, "]",
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+
+        // Below the number: transient step badge right after a press, else the label.
+        var sinceAdjust = System.getTimer() - app.mTargetAdjustAtMs;
+        if (sinceAdjust >= 0 && sinceAdjust < TARGET_BADGE_MS) {
+            var delta = app.mTargetLastDeltaMin;
+            var sign  = "+";
+            if (delta < 0) {
+                sign = "-";
+            }
+            dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(mCenterX, mCenterY + mLineH, Graphics.FONT_TINY,
+                        sign + delta.abs().toString() + " min",
+                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        } else {
+            dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(mCenterX, mCenterY + mLineH, Graphics.FONT_TINY, "target · 8 km",
+                        Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        }
+
+        // Footer: UP/DOWN edit hint (cyan, ties to the editable number) + START prompt.
+        dc.setColor(0x00FFFF, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(mCenterX, mBandBottomY - mLineH, Graphics.FONT_TINY, "UP +5     DOWN -5",
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.setColor(fg, Graphics.COLOR_TRANSPARENT);
         dc.drawText(mCenterX, mBandBottomY, Graphics.FONT_TINY, "START > begin",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);

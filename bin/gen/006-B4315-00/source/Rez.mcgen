@@ -17,7 +17,6 @@ module Rez {
         (:initialized) var fitWorkRestUnit as ResourceId;
         (:initialized) var fitWorkRestTitle as ResourceId;
         (:initialized) var fitCycleUnit as ResourceId;
-        (:initialized) var target_time_title as ResourceId;
         (:initialized) var fitStationUnit as ResourceId;
         (:initialized) var fitPaceUnit as ResourceId;
         (:initialized) var fitStateTitle as ResourceId;

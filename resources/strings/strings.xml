@@ -1,9 +1,6 @@
 <strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
     <string id="AppName">HyroxPacer</string>
 
-    <!-- ── Goal time configuration menu (Phase 6) ────────────────────────── -->
-    <string id="target_time_title">Target time</string>
-
     <!-- ── FIT Contributor field labels (Phase 3) ────────────────────────── -->
     <!-- hyrox_cycle_id (FIT id=0) -->
     <string id="fitCycleTitle">Hyrox Cycle</string>

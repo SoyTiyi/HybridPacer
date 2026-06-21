@@ -30,6 +30,14 @@ const TARGET_STEP_MINUTES    as Number = 5;            // Step size between pres
 const TARGET_DEFAULT_MINUTES as Number = 90;           // Fallback if no saved value exists
 const STORAGE_KEY_TARGET_MIN as String = "target_min"; // Storage key (minutes)
 
+// ─── In-place target editing (WARMUP) ───────────────────────────────────────
+// UP/DOWN adjust the target directly in WARMUP. Taps within ACCEL_WINDOW grow the
+// step (rapid-press acceleration) because BehaviorDelegate exposes no button-hold.
+const TARGET_ACCEL_WINDOW_MS as Number = 600;  // Two taps closer than this accelerate
+const TARGET_ACCEL_MAX_STEP  as Number = 30;   // Step cap (minutes) while accelerating
+const TARGET_QUICK_JUMP_MIN  as Number = 15;   // Long-press UP coarse jump (minutes)
+const TARGET_BADGE_MS        as Number = 900;   // How long the step badge stays visible (ms)
+
 class HyroxPacerApp extends Application.AppBase {
 
     // ── FSM members ───────────────────────────────────────────────────────
@@ -61,6 +69,12 @@ class HyroxPacerApp extends Application.AppBase {
     var mTimeAthleteA         as Number = 0;       // Doubles: total ms accumulated by Athlete A
     var mTimeAthleteB         as Number = 0;       // Doubles: total ms accumulated by Athlete B
     var mDynamicPaceTargetSec as Float  = 0.0f;   // Dynamic target pace (s/km) — read by the UI in Phase 5
+
+    // ── In-place target editing UI state (WARMUP) ─────────────────────────
+    // Not FSM state: written by the button handler, read by the WARMUP renderer
+    // for rapid-press acceleration and the transient "+15" step badge.
+    var mTargetAdjustAtMs   as Number = 0;   // System.getTimer() of the last UP/DOWN adjust
+    var mTargetLastDeltaMin as Number = 0;   // Signed minutes of the last adjust (badge text)
 
     // ── GPS + recording manager ────────────────────────────────────────────
     // Single instance; created here and never destroyed while the app is alive.
@@ -139,6 +153,45 @@ class HyroxPacerApp extends Application.AppBase {
             mIsPaused = true;
             mGps.pauseRecording();
         }
+        WatchUi.requestUpdate();
+    }
+
+    // ── In-place target editing (WARMUP) ──────────────────────────────────
+    // Called from the UP/DOWN handlers. dir = +1 (UP) / -1 (DOWN). Rapid taps
+    // (gap < TARGET_ACCEL_WINDOW_MS) grow the step up to TARGET_ACCEL_MAX_STEP,
+    // because BehaviorDelegate offers no button-hold callback. Not a hot path:
+    // reading System.getTimer() here is allowed. No new, if/else (no switch).
+    function nudgeTarget(dir as Number) as Void {
+        var now  = System.getTimer();
+        var step = TARGET_STEP_MINUTES;
+        if (now - mTargetAdjustAtMs < TARGET_ACCEL_WINDOW_MS) {
+            step = mTargetLastDeltaMin.abs() + TARGET_STEP_MINUTES;
+            if (step > TARGET_ACCEL_MAX_STEP) {
+                step = TARGET_ACCEL_MAX_STEP;
+            }
+        }
+        applyTargetDelta(dir * step, now);
+    }
+
+    // Long-press UP coarse jump (replaces the removed presets Menu2).
+    function quickJumpTarget() as Void {
+        applyTargetDelta(TARGET_QUICK_JUMP_MIN, System.getTimer());
+    }
+
+    // Clamps to [TARGET_MIN_MINUTES, TARGET_MAX_MINUTES], updates the goal,
+    // records badge state, and persists MINUTES to Storage. Persistence lives
+    // in this handler-invoked path, never in the renderer.
+    private function applyTargetDelta(deltaMin as Number, now as Number) as Void {
+        var minutes = (mTargetTimeMs / 60000) + deltaMin;
+        if (minutes < TARGET_MIN_MINUTES) {
+            minutes = TARGET_MIN_MINUTES;
+        } else if (minutes > TARGET_MAX_MINUTES) {
+            minutes = TARGET_MAX_MINUTES;
+        }
+        mTargetTimeMs       = minutes * 60000;
+        mTargetLastDeltaMin = deltaMin;
+        mTargetAdjustAtMs   = now;
+        Storage.setValue(STORAGE_KEY_TARGET_MIN, minutes);
         WatchUi.requestUpdate();
     }
 

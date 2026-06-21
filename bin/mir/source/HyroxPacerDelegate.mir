@@ -228,34 +228,57 @@ _Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_73_
         ret %tmp.29;
 _Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_69_33_83_4_stop:
     }
-    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc"; @line = 87; @symbol_functiondef = [onPreviousPage,87,13,27]; @symbol_return<0> = [Boolean,87,33,40]; ]
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc"; @line = 88; @symbol_functiondef = [onPreviousPage,88,13,27]; @symbol_return<0> = [Boolean,88,33,40]; ]
     function onPreviousPage() as Boolean {
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_87_41_89_4_start:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 88 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_88_41_95_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 89 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_88_41_95_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_88_41_95_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 89 12 15 ];
         %tmp.1 = self;
-        symbol [ toggleAthlete %tmp.2 88 15 28 ];
-        %tmp.2 = getv function %tmp.1 :toggleAthlete;
+        symbol [ getApp %tmp.2 89 18 24 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
         %tmp.3 = invoke %tmp.1 %tmp.2();
-        ret %tmp.3;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_87_41_89_4_stop:
+        lputv %app.1 %tmp.3;
+        symbol [ app %app.1 89 12 15 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 90 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_90_8_93_8_if_stmt:
+        %tmp.4 = lgetv %app.1;
+        symbol [ app %tmp.4 90 12 15 ];
+        symbol [ mFsmState %tmp.5 90 16 25 ];
+        %tmp.5 = getv %tmp.4 :mFsmState;
+        symbol [ STATE_WARMUP %tmp.7 90 29 41 ];
+        %tmp.7 = getv ? :STATE_WARMUP;
+        %tmp.8 = eq %tmp.5 %tmp.7;
+        bf %tmp.8 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_90_8_93_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_90_8_93_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_90_43_93_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 91 12 ]
+        %tmp.9 = lgetv %app.1;
+        symbol [ app %tmp.9 91 12 15 ];
+        symbol [ nudgeTarget %tmp.10 91 16 27 ];
+        %tmp.10 = getv function %tmp.9 :nudgeTarget;
+        %tmp.11 = 1;
+        invoke %tmp.9 %tmp.10(%tmp.11);
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 92 12 ]
+        %tmp.12 = true;
+        ret %tmp.12;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_90_43_93_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_90_8_93_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_90_8_93_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 94 8 ]
+        %tmp.13 = self;
+        symbol [ toggleAthlete %tmp.14 94 15 28 ];
+        %tmp.14 = getv function %tmp.13 :toggleAthlete;
+        %tmp.15 = invoke %tmp.13 %tmp.14();
+        ret %tmp.15;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_88_41_95_4_stop:
     }
-    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc"; @line = 91; @symbol_functiondef = [onNextPage,91,13,23]; @symbol_return<0> = [Boolean,91,29,36]; ]
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc"; @line = 97; @symbol_functiondef = [onNextPage,97,13,23]; @symbol_return<0> = [Boolean,97,29,36]; ]
     function onNextPage() as Boolean {
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_91_37_93_4_start:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 92 8 ]
-        %tmp.1 = self;
-        symbol [ toggleAthlete %tmp.2 92 15 28 ];
-        %tmp.2 = getv function %tmp.1 :toggleAthlete;
-        %tmp.3 = invoke %tmp.1 %tmp.2();
-        ret %tmp.3;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_91_37_93_4_stop:
-    }
-    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc"; @line = 97; @symbol_functiondef = [toggleAthlete,97,21,34]; @symbol_return<0> = [Boolean,97,40,47]; ]
-    private
-    function toggleAthlete() as Boolean {
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_97_48_109_4_start:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_97_37_104_4_start:
 [ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 98 8 ]
-        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_97_48_109_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_97_48_109_4_stop" ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_97_37_104_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_97_37_104_4_stop" ]
         %app.1 = local;
         symbol [ app %app.1 98 12 15 ];
         %tmp.1 = self;
@@ -264,115 +287,145 @@ _Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_97_
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %app.1 %tmp.3;
         symbol [ app %app.1 98 12 15 ];
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 100 8 ]
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_100_8_102_8_if_stmt:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 99 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_99_8_102_8_if_stmt:
         %tmp.4 = lgetv %app.1;
-        symbol [ app %tmp.4 100 12 15 ];
-        symbol [ mIsPaused %tmp.5 100 16 25 ];
-        %tmp.5 = getv %tmp.4 :mIsPaused;
-        bf %tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_100_8_102_8_if_end;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_100_8_102_8_if_true:
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_100_27_102_8_start:
+        symbol [ app %tmp.4 99 12 15 ];
+        symbol [ mFsmState %tmp.5 99 16 25 ];
+        %tmp.5 = getv %tmp.4 :mFsmState;
+        symbol [ STATE_WARMUP %tmp.7 99 29 41 ];
+        %tmp.7 = getv ? :STATE_WARMUP;
+        %tmp.8 = eq %tmp.5 %tmp.7;
+        bf %tmp.8 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_99_8_102_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_99_8_102_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_99_43_102_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 100 12 ]
+        %tmp.9 = lgetv %app.1;
+        symbol [ app %tmp.9 100 12 15 ];
+        symbol [ nudgeTarget %tmp.10 100 16 27 ];
+        %tmp.10 = getv function %tmp.9 :nudgeTarget;
+        %tmp.11 = -1;
+        invoke %tmp.9 %tmp.10(%tmp.11);
 [ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 101 12 ]
-        %tmp.6 = true;
-        ret %tmp.6;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_100_27_102_8_stop:
-        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_100_8_102_8_if_end;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_100_8_102_8_if_end:
+        %tmp.12 = true;
+        ret %tmp.12;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_99_43_102_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_99_8_102_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_99_8_102_8_if_end:
 [ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 103 8 ]
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_103_8_107_8_if_stmt:
-        %tmp.7 = lgetv %app.1;
-        symbol [ app %tmp.7 103 12 15 ];
-        symbol [ mFsmState %tmp.8 103 16 25 ];
-        %tmp.8 = getv %tmp.7 :mFsmState;
-        symbol [ STATE_STATION %tmp.10 103 29 42 ];
-        %tmp.10 = getv ? :STATE_STATION;
-        %tmp.11 = eq %tmp.8 %tmp.10;
-        bf %tmp.11 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_103_8_107_8_if_end;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_103_8_107_8_if_true:
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_103_44_107_8_start:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 104 12 ]
-        %tmp.12 = lgetv %app.1;
-        symbol [ app %tmp.12 104 12 15 ];
-        %tmp.13 = lgetv %app.1;
-        symbol [ app %tmp.13 104 34 37 ];
-        symbol [ mActiveAthlete %tmp.14 104 38 52 ];
-        %tmp.14 = getv %tmp.13 :mActiveAthlete;
-        %tmp.15 = not %tmp.14;
-        symbol [ mActiveAthlete ? 104 16 30 ];
-        putv %tmp.12 :mActiveAthlete %tmp.15;
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 105 12 ]
-        symbol [ WatchUi %tmp.16 105 12 19 ];
-        %tmp.16 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.17 105 20 33 ];
-        %tmp.17 = getv function %tmp.16 :requestUpdate;
-        invoke %tmp.16 %tmp.17();
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 106 12 ]
-        %tmp.18 = true;
-        ret %tmp.18;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_103_44_107_8_stop:
-        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_103_8_107_8_if_end;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_103_8_107_8_if_end:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 108 8 ]
-        %tmp.19 = false;
-        ret %tmp.19;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_97_48_109_4_stop:
+        %tmp.13 = self;
+        symbol [ toggleAthlete %tmp.14 103 15 28 ];
+        %tmp.14 = getv function %tmp.13 :toggleAthlete;
+        %tmp.15 = invoke %tmp.13 %tmp.14();
+        ret %tmp.15;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_97_37_104_4_stop:
     }
-    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc"; @line = 115; @symbol_functiondef = [onMenu,115,13,19]; @symbol_return<0> = [Boolean,115,25,32]; ]
-    function onMenu() as Boolean {
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_115_33_124_4_start:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 116 8 ]
-        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_115_33_124_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_115_33_124_4_stop" ]
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc"; @line = 108; @symbol_functiondef = [toggleAthlete,108,21,34]; @symbol_return<0> = [Boolean,108,40,47]; ]
+    private
+    function toggleAthlete() as Boolean {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_108_48_120_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 109 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_108_48_120_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_108_48_120_4_stop" ]
         %app.1 = local;
-        symbol [ app %app.1 116 12 15 ];
+        symbol [ app %app.1 109 12 15 ];
         %tmp.1 = self;
-        symbol [ getApp %tmp.2 116 18 24 ];
+        symbol [ getApp %tmp.2 109 18 24 ];
         %tmp.2 = getv function %tmp.1 :getApp;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %app.1 %tmp.3;
-        symbol [ app %app.1 116 12 15 ];
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 117 8 ]
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_117_8_122_8_if_stmt:
+        symbol [ app %app.1 109 12 15 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 111 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_111_8_113_8_if_stmt:
         %tmp.4 = lgetv %app.1;
-        symbol [ app %tmp.4 117 12 15 ];
-        symbol [ mFsmState %tmp.5 117 16 25 ];
+        symbol [ app %tmp.4 111 12 15 ];
+        symbol [ mIsPaused %tmp.5 111 16 25 ];
+        %tmp.5 = getv %tmp.4 :mIsPaused;
+        bf %tmp.5 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_111_8_113_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_111_8_113_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_111_27_113_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 112 12 ]
+        %tmp.6 = true;
+        ret %tmp.6;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_111_27_113_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_111_8_113_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_111_8_113_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 114 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_114_8_118_8_if_stmt:
+        %tmp.7 = lgetv %app.1;
+        symbol [ app %tmp.7 114 12 15 ];
+        symbol [ mFsmState %tmp.8 114 16 25 ];
+        %tmp.8 = getv %tmp.7 :mFsmState;
+        symbol [ STATE_STATION %tmp.10 114 29 42 ];
+        %tmp.10 = getv ? :STATE_STATION;
+        %tmp.11 = eq %tmp.8 %tmp.10;
+        bf %tmp.11 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_114_8_118_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_114_8_118_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_114_44_118_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 115 12 ]
+        %tmp.12 = lgetv %app.1;
+        symbol [ app %tmp.12 115 12 15 ];
+        %tmp.13 = lgetv %app.1;
+        symbol [ app %tmp.13 115 34 37 ];
+        symbol [ mActiveAthlete %tmp.14 115 38 52 ];
+        %tmp.14 = getv %tmp.13 :mActiveAthlete;
+        %tmp.15 = not %tmp.14;
+        symbol [ mActiveAthlete ? 115 16 30 ];
+        putv %tmp.12 :mActiveAthlete %tmp.15;
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 116 12 ]
+        symbol [ WatchUi %tmp.16 116 12 19 ];
+        %tmp.16 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.17 116 20 33 ];
+        %tmp.17 = getv function %tmp.16 :requestUpdate;
+        invoke %tmp.16 %tmp.17();
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 117 12 ]
+        %tmp.18 = true;
+        ret %tmp.18;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_114_44_118_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_114_8_118_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_114_8_118_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 119 8 ]
+        %tmp.19 = false;
+        ret %tmp.19;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_108_48_120_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc"; @line = 127; @symbol_functiondef = [onMenu,127,13,19]; @symbol_return<0> = [Boolean,127,25,32]; ]
+    function onMenu() as Boolean {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_127_33_133_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 128 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_127_33_133_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_127_33_133_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 128 12 15 ];
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 128 18 24 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %app.1 %tmp.3;
+        symbol [ app %app.1 128 12 15 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 129 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_129_8_131_8_if_stmt:
+        %tmp.4 = lgetv %app.1;
+        symbol [ app %tmp.4 129 12 15 ];
+        symbol [ mFsmState %tmp.5 129 16 25 ];
         %tmp.5 = getv %tmp.4 :mFsmState;
-        symbol [ STATE_WARMUP %tmp.7 117 29 41 ];
+        symbol [ STATE_WARMUP %tmp.7 129 29 41 ];
         %tmp.7 = getv ? :STATE_WARMUP;
         %tmp.8 = eq %tmp.5 %tmp.7;
-        bf %tmp.8 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_117_8_122_8_if_end;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_117_8_122_8_if_true:
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_117_43_122_8_start:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 118 12 ]
-        symbol [ WatchUi %tmp.9 118 12 19 ];
-        %tmp.9 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.10 118 20 28 ];
-        %tmp.10 = getv function %tmp.9 :pushView;
-        %tmp.11 = self;
-        symbol [ buildTargetTimeMenu %tmp.12 119 16 35 ];
-        %tmp.12 = getv function %tmp.11 :buildTargetTimeMenu;
-        %tmp.13 = lgetv %app.1;
-        symbol [ app %tmp.13 119 36 39 ];
-        symbol [ mTargetTimeMs %tmp.14 119 40 53 ];
-        %tmp.14 = getv %tmp.13 :mTargetTimeMs;
-        %tmp.15 = 60000;
-        %tmp.16 = div %tmp.14 %tmp.15;
-        %tmp.17 = invoke %tmp.11 %tmp.12(%tmp.16);
-        symbol [ TargetTimeMenuDelegate %tmp.21 120 20 42 ];
-        %tmp.21 = getv ? :TargetTimeMenuDelegate;
-        %tmp.18 = newc %tmp.21 ();
-        symbol [ WatchUi %tmp.22 121 16 23 ];
-        %tmp.22 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_UP %tmp.23 121 24 32 ];
-        %tmp.23 = getv %tmp.22 :SLIDE_UP;
-        invoke %tmp.9 %tmp.10(%tmp.17, %tmp.18, %tmp.23);
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_117_43_122_8_stop:
-        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_117_8_122_8_if_end;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_117_8_122_8_if_end:
-[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 123 8 ]
-        %tmp.24 = true;
-        ret %tmp.24;
-_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_115_33_124_4_stop:
+        bf %tmp.8 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_129_8_131_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_129_8_131_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_129_43_131_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 130 12 ]
+        %tmp.9 = lgetv %app.1;
+        symbol [ app %tmp.9 130 12 15 ];
+        symbol [ quickJumpTarget %tmp.10 130 16 31 ];
+        %tmp.10 = getv function %tmp.9 :quickJumpTarget;
+        invoke %tmp.9 %tmp.10();
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_129_43_131_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_129_8_131_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_129_8_131_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc" 132 8 ]
+        %tmp.11 = true;
+        ret %tmp.11;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_HyroxPacerDelegate_mc_127_33_133_4_stop:
     }
 }
 [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/HyroxPacerDelegate.mc"; @line = 1; ]

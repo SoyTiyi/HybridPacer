@@ -83,12 +83,23 @@ class HyroxPacerDelegate extends WatchUi.BehaviorDelegate {
     }
 
     // ── UP / DOWN BUTTONS (onPreviousPage / onNextPage) ────────────────────────
-    // Toggle the active relay athlete (doubles mode) when in STATION.
+    // WARMUP: adjust the target time in place (UP +5 / DOWN -5, rapid-press
+    // acceleration). Other states: toggle the active relay athlete (STATION).
     function onPreviousPage() as Boolean {
+        var app = getApp();
+        if (app.mFsmState == STATE_WARMUP) {
+            app.nudgeTarget(1);
+            return true;
+        }
         return toggleAthlete();
     }
 
     function onNextPage() as Boolean {
+        var app = getApp();
+        if (app.mFsmState == STATE_WARMUP) {
+            app.nudgeTarget(-1);
+            return true;
+        }
         return toggleAthlete();
     }
 
@@ -108,17 +119,15 @@ class HyroxPacerDelegate extends WatchUi.BehaviorDelegate {
         return false;
     }
 
-    // ── MENU — GOAL TIME CONFIGURATION (Phase 6) ───────────────────────────────
-    // On the fr965, triggered by a long press of UP. Only accessible in WARMUP:
-    // changing the target mid-race would corrupt the pacing projection. During the
-    // race this is a no-op (consumes the event). The menu persists the value to Storage.
+    // ── MENU — GOAL TIME QUICK JUMP ────────────────────────────────────────────
+    // On the fr965, triggered by a long press of UP. Only acts in WARMUP: it does
+    // a coarse +15 min jump (the presets Menu2 was removed in favour of in-place
+    // editing). Changing the target mid-race would corrupt the pacing projection,
+    // so during the race this is a no-op (consumes the event).
     function onMenu() as Boolean {
         var app = getApp();
         if (app.mFsmState == STATE_WARMUP) {
-            WatchUi.pushView(
-                buildTargetTimeMenu(app.mTargetTimeMs / 60000),
-                new TargetTimeMenuDelegate(),
-                WatchUi.SLIDE_UP);
+            app.quickJumpTarget();
         }
         return true;
     }
