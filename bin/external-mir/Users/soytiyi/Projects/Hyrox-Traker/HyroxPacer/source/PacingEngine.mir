@@ -195,6 +195,179 @@ _Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_86_8_89_8
         ret %tmp.11;
 _Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_85_103_91_4_stop:
     }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc"; @line = 106; @symbol_functiondef = [computeProjectedFinishMs,106,13,37]; @symbol_param<0> = [elapsedTotalMs,106,38,52]; @symbol_param<0>_type<0> = [Number,106,56,62]; @symbol_param<1> = [distanceCompletedKm,106,64,83]; @symbol_param<1>_type<0> = [Number,106,87,93]; @symbol_param<2> = [currentPaceSecPerKm,106,95,114]; @symbol_param<2>_type<0> = [Float,106,118,123]; @symbol_return<0> = [Number,106,128,134]; ]
+    function computeProjectedFinishMs(elapsedTotalMs as Number, distanceCompletedKm as Number, currentPaceSecPerKm as Float) as Number {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 107 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_107_8_109_8_if_stmt:
+        %tmp.1 = lgetv %currentPaceSecPerKm;
+        symbol [ currentPaceSecPerKm %tmp.1 107 12 31 ];
+        %tmp.2 = 0.0f;
+        %tmp.3 = lte %tmp.1 %tmp.2;
+        bf %tmp.3 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_107_8_109_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_107_8_109_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_107_41_109_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 108 12 ]
+        %tmp.4 = -1;
+        ret %tmp.4;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_107_41_109_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_107_8_109_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_107_8_109_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 111 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_stop" ]
+        %distanceRemainingKm.1 = local;
+        symbol [ distanceRemainingKm %distanceRemainingKm.1 111 12 31 ];
+        symbol [ HYROX_TOTAL_KM %tmp.6 111 34 48 ];
+        %tmp.6 = getv ? :HYROX_TOTAL_KM;
+        %tmp.7 = lgetv %distanceCompletedKm;
+        symbol [ distanceCompletedKm %tmp.7 111 51 70 ];
+        symbol [ toFloat %tmp.8 111 71 78 ];
+        %tmp.8 = getv function %tmp.7 :toFloat;
+        %tmp.9 = invoke %tmp.7 %tmp.8();
+        %tmp.10 = sub %tmp.6 %tmp.9;
+        lputv %distanceRemainingKm.1 %tmp.10;
+        symbol [ distanceRemainingKm %distanceRemainingKm.1 111 12 31 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 112 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_112_8_114_8_if_stmt:
+        %tmp.11 = lgetv %distanceRemainingKm.1;
+        symbol [ distanceRemainingKm %tmp.11 112 12 31 ];
+        %tmp.12 = 0.0f;
+        %tmp.13 = lte %tmp.11 %tmp.12;
+        bf %tmp.13 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_112_8_114_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_112_8_114_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_112_41_114_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 113 12 ]
+        %tmp.14 = -1;
+        ret %tmp.14;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_112_41_114_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_112_8_114_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_112_8_114_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 117 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_stop" ]
+        %app.2 = local;
+        symbol [ app %app.2 117 12 15 ];
+        %tmp.15 = self;
+        symbol [ getApp %tmp.16 117 25 31 ];
+        %tmp.16 = getv function %tmp.15 :getApp;
+        %tmp.17 = invoke %tmp.15 %tmp.16();
+        lputv %app.2 %tmp.17;
+        symbol [ app %app.2 117 12 15 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 118 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_stop" ]
+        %cyclesDone.3 = local;
+        symbol [ cyclesDone %cyclesDone.3 118 12 22 ];
+        %tmp.18 = lgetv %app.2;
+        symbol [ app %tmp.18 118 25 28 ];
+        symbol [ mHyroxCycle %tmp.19 118 29 40 ];
+        %tmp.19 = getv %tmp.18 :mHyroxCycle;
+        lputv %cyclesDone.3 %tmp.19;
+        symbol [ cyclesDone %cyclesDone.3 118 12 22 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 119 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_stop" ]
+        %avgRestMs.4 = local;
+        symbol [ avgRestMs %avgRestMs.4 119 12 21 ];
+        %tmp.20 = 0;
+        lputv %avgRestMs.4 %tmp.20;
+        symbol [ avgRestMs %avgRestMs.4 119 12 21 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 120 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_120_8_122_8_if_stmt:
+        %tmp.21 = lgetv %cyclesDone.3;
+        symbol [ cyclesDone %tmp.21 120 12 22 ];
+        %tmp.22 = 0;
+        %tmp.23 = gt %tmp.21 %tmp.22;
+        bf %tmp.23 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_120_8_122_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_120_8_122_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_120_28_122_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 121 12 ]
+        %tmp.24 = lgetv %app.2;
+        symbol [ app %tmp.24 121 24 27 ];
+        symbol [ mRestMs %tmp.25 121 28 35 ];
+        %tmp.25 = getv %tmp.24 :mRestMs;
+        %tmp.26 = lgetv %cyclesDone.3;
+        symbol [ cyclesDone %tmp.26 121 38 48 ];
+        %tmp.27 = div %tmp.25 %tmp.26;
+        lputv %avgRestMs.4 %tmp.27;
+        symbol [ avgRestMs %avgRestMs.4 121 12 21 ];
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_120_28_122_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_120_8_122_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_120_8_122_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 123 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_stop" ]
+        %cyclesRemaining.5 = local;
+        symbol [ cyclesRemaining %cyclesRemaining.5 123 12 27 ];
+        symbol [ HYROX_TOTAL_CYCLES %tmp.29 123 30 48 ];
+        %tmp.29 = getv ? :HYROX_TOTAL_CYCLES;
+        %tmp.30 = lgetv %cyclesDone.3;
+        symbol [ cyclesDone %tmp.30 123 51 61 ];
+        %tmp.31 = sub %tmp.29 %tmp.30;
+        lputv %cyclesRemaining.5 %tmp.31;
+        symbol [ cyclesRemaining %cyclesRemaining.5 123 12 27 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 124 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_stop" ]
+        %projectedRestMs.6 = local;
+        symbol [ projectedRestMs %projectedRestMs.6 124 12 27 ];
+        %tmp.32 = lgetv %avgRestMs.4;
+        symbol [ avgRestMs %tmp.32 124 30 39 ];
+        %tmp.33 = lgetv %cyclesRemaining.5;
+        symbol [ cyclesRemaining %tmp.33 124 42 57 ];
+        %tmp.34 = mul %tmp.32 %tmp.33;
+        lputv %projectedRestMs.6 %tmp.34;
+        symbol [ projectedRestMs %projectedRestMs.6 124 12 27 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 127 8 ]
+        [ "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_start" "_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_stop" ]
+        %runTimeRemainingMs.7 = local;
+        symbol [ runTimeRemainingMs %runTimeRemainingMs.7 127 12 30 ];
+        %tmp.35 = lgetv %distanceRemainingKm.1;
+        symbol [ distanceRemainingKm %tmp.35 127 34 53 ];
+        %tmp.36 = lgetv %currentPaceSecPerKm;
+        symbol [ currentPaceSecPerKm %tmp.36 127 56 75 ];
+        %tmp.37 = mul %tmp.35 %tmp.36;
+        %tmp.38 = 1000.0f;
+        %tmp.39 = mul %tmp.37 %tmp.38;
+        symbol [ toNumber %tmp.40 127 87 95 ];
+        %tmp.40 = getv function %tmp.39 :toNumber;
+        %tmp.41 = invoke %tmp.39 %tmp.40();
+        lputv %runTimeRemainingMs.7 %tmp.41;
+        symbol [ runTimeRemainingMs %runTimeRemainingMs.7 127 12 30 ];
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 129 8 ]
+        %tmp.42 = lgetv %elapsedTotalMs;
+        symbol [ elapsedTotalMs %tmp.42 129 15 29 ];
+        %tmp.43 = lgetv %runTimeRemainingMs.7;
+        symbol [ runTimeRemainingMs %tmp.43 129 32 50 ];
+        %tmp.44 = add %tmp.42 %tmp.43;
+        %tmp.45 = lgetv %projectedRestMs.6;
+        symbol [ projectedRestMs %tmp.45 129 53 68 ];
+        %tmp.46 = add %tmp.44 %tmp.45;
+        ret %tmp.46;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_106_135_130_4_stop:
+    }
+    [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc"; @line = 136; @symbol_functiondef = [computeCurrentPaceSec,136,13,34]; @symbol_param<0> = [currentSpeedMps,136,35,50]; @symbol_param<0>_type<0> = [Float,136,54,59]; @symbol_return<0> = [Float,136,64,69]; ]
+    function computeCurrentPaceSec(currentSpeedMps as Float) as Float {
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_136_70_141_4_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 137 8 ]
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_137_8_139_8_if_stmt:
+        %tmp.1 = lgetv %currentSpeedMps;
+        symbol [ currentSpeedMps %tmp.1 137 12 27 ];
+        symbol [ PACE_MIN_SPEED %tmp.3 137 30 44 ];
+        %tmp.3 = getv ? :PACE_MIN_SPEED;
+        %tmp.4 = gt %tmp.1 %tmp.3;
+        bf %tmp.4 @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_137_8_139_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_137_8_139_8_if_true:
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_137_46_139_8_start:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 138 12 ]
+        %tmp.5 = 1000.0f;
+        %tmp.6 = lgetv %currentSpeedMps;
+        symbol [ currentSpeedMps %tmp.6 138 29 44 ];
+        %tmp.7 = div %tmp.5 %tmp.6;
+        ret %tmp.7;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_137_46_139_8_stop:
+        goto @_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_137_8_139_8_if_end;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_137_8_139_8_if_end:
+[ "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc" 140 8 ]
+        %tmp.8 = 0.0f;
+        ret %tmp.8;
+_Users_soytiyi_Projects_Hyrox_Traker_HyroxPacer_source_PacingEngine_mc_136_70_141_4_stop:
+    }
 }
 [ @file = "/Users/soytiyi/Projects/Hyrox-Traker/HyroxPacer/source/PacingEngine.mc"; @line = 1; ]
 <init> {

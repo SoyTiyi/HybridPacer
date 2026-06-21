@@ -90,6 +90,45 @@ class PacingEngine {
         return 0.0f;
     }
 
+    // ── computeProjectedFinishMs ──────────────────────────────────────────────
+    // Projects the total finishing time (ms) from the current real pace. It is the
+    // inverse of computeDynamicPaceTarget: that solves for the pace needed to hit
+    // the goal; this solves for the finish time if the athlete holds the current
+    // pace, using the SAME real inputs (committed time, cycle count, average rest).
+    // The RUN screen subtracts mTargetTimeMs from this to show ahead/behind goal.
+    //
+    // Parameters:
+    //   elapsedTotalMs      — committed time so far = mWorkMs + mRestMs (ms).
+    //   distanceCompletedKm — kilometers already run = mHyroxCycle.
+    //   currentPaceSecPerKm — current real (smoothed) pace (s/km).
+    //
+    // Returns -1 when not yet computable (no valid pace, or race finished).
+    function computeProjectedFinishMs(elapsedTotalMs as Number, distanceCompletedKm as Number, currentPaceSecPerKm as Float) as Number {
+        if (currentPaceSecPerKm <= 0.0f) {
+            return -1;  // No valid real pace yet → no projection
+        }
+
+        var distanceRemainingKm = HYROX_TOTAL_KM - distanceCompletedKm.toFloat();
+        if (distanceRemainingKm <= 0.0f) {
+            return -1;  // Race finished
+        }
+
+        // Project future rest penalty exactly as computeDynamicPaceTarget does.
+        var app        = getApp();
+        var cyclesDone = app.mHyroxCycle;
+        var avgRestMs  = 0;
+        if (cyclesDone > 0) {
+            avgRestMs = app.mRestMs / cyclesDone;
+        }
+        var cyclesRemaining = HYROX_TOTAL_CYCLES - cyclesDone;
+        var projectedRestMs = avgRestMs * cyclesRemaining;
+
+        // Remaining run time if the current pace holds for the remaining distance.
+        var runTimeRemainingMs = (distanceRemainingKm * currentPaceSecPerKm * 1000.0f).toNumber();
+
+        return elapsedTotalMs + runTimeRemainingMs + projectedRestMs;
+    }
+
     // ── computeCurrentPaceSec ─────────────────────────────────────────────────
     // Converts a speed (m/s) to a real pace (s/km) for display.
     // Pass the smoothed speed (getAvgSpeedMs) to avoid nervous display jumps.

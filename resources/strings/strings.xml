@@ -36,4 +36,29 @@
     <string id="fitWorkRestTitle">Work/Rest</string>
     <string id="fitWorkRestLabel">W/R</string>
     <string id="fitWorkRestUnit">ratio</string>
+
+    <!-- ── STATION screen (Phase 10) ─────────────────────────────────────── -->
+    <!-- Generic labels -->
+    <string id="labelStation">STATION</string>
+    <string id="labelTotal">TOTAL</string>
+
+    <!-- Station names, indexed by mHyroxCycle 0..7 (official HYROX order) -->
+    <string id="stationSkiErg">SkiErg</string>
+    <string id="stationSledPush">Sled Push</string>
+    <string id="stationSledPull">Sled Pull</string>
+    <string id="stationBurpee">Burpee Broad Jump</string>
+    <string id="stationRow">Rowing</string>
+    <string id="stationFarmers">Farmers Carry</string>
+    <string id="stationLunges">Sandbag Lunges</string>
+    <string id="stationWallBalls">Wall Balls</string>
+
+    <!-- Universal official standards (same across Open/Pro and Men/Women) -->
+    <string id="stationStdSkiErg">1000 m</string>
+    <string id="stationStdSledPush">50 m</string>
+    <string id="stationStdSledPull">50 m</string>
+    <string id="stationStdBurpee">80 m</string>
+    <string id="stationStdRow">1000 m</string>
+    <string id="stationStdFarmers">200 m</string>
+    <string id="stationStdLunges">100 m</string>
+    <string id="stationStdWallBalls">100 reps</string>
 </strings>

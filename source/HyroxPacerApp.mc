@@ -70,6 +70,12 @@ class HyroxPacerApp extends Application.AppBase {
     var mTimeAthleteB         as Number = 0;       // Doubles: total ms accumulated by Athlete B
     var mDynamicPaceTargetSec as Float  = 0.0f;   // Dynamic target pace (s/km) — read by the UI in Phase 5
 
+    // Cumulative Activity.elapsedDistance (m) captured at each RUN entry. The RUN
+    // screen derives meters-into / meters-left of the current km as
+    // elapsedDistance - mRunBaselineDistanceM. Display-only; written by FSMController
+    // on every RUN entry (not a hot path), read by the view.
+    var mRunBaselineDistanceM as Float  = 0.0f;
+
     // ── In-place target editing UI state (WARMUP) ─────────────────────────
     // Not FSM state: written by the button handler, read by the WARMUP renderer
     // for rapid-press acceleration and the transient "+15" step badge.

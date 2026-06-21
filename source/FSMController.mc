@@ -1,3 +1,4 @@
+import Toybox.Activity;
 import Toybox.Lang;
 import Toybox.System;
 import Toybox.WatchUi;
@@ -85,6 +86,8 @@ class FSMController {
                     app.mTargetTimeMs,
                     app.mWorkMs + app.mRestMs,
                     app.mHyroxCycle);
+                // Anchor the per-km distance baseline for the new running segment.
+                captureRunBaseline(app);
             }
         } else {
             // Linear increment: 0→1, 1→2, 2→3, 3→4.
@@ -105,6 +108,8 @@ class FSMController {
                     app.mTargetTimeMs,
                     app.mWorkMs + app.mRestMs,
                     app.mHyroxCycle);
+                // Anchor the per-km distance baseline for the first running segment.
+                captureRunBaseline(app);
             }
         }
 
@@ -123,6 +128,22 @@ class FSMController {
     //   - ROXZONE_OUT(4) → RUN(1): athlete completes the station and returns to running.
     private function markLap() as Void {
         getApp().mGps.addLap();
+    }
+
+    // ── captureRunBaseline() ──────────────────────────────────────────────────
+    // Records the cumulative recorded distance (m) at the start of a running
+    // segment so the RUN screen can show meters covered / remaining in the
+    // current km. Called only on RUN entry (a transition, not a hot path).
+    // Activity.Info.elapsedDistance is null until the FIT session reports valid
+    // distance; the guard leaves the previous baseline untouched in that case.
+    private function captureRunBaseline(app as HyroxPacerApp) as Void {
+        var info = Activity.getActivityInfo();
+        if (info != null && info has :elapsedDistance) {
+            var dist = info.elapsedDistance;
+            if (dist != null) {
+                app.mRunBaselineDistanceM = dist;
+            }
+        }
     }
 
     // ── accrueAthleteTime() ───────────────────────────────────────────────────

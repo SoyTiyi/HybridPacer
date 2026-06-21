@@ -10,28 +10,46 @@ module Rez {
     } // Drawables
 
     module Strings {
-        (:initialized) var fitCycleTitle as ResourceId;
         (:initialized) var fitPaceLabel as ResourceId;
         (:initialized) var fitRoxzoneUnit as ResourceId;
         (:initialized) var fitStationLabel as ResourceId;
         (:initialized) var fitWorkRestUnit as ResourceId;
-        (:initialized) var fitWorkRestTitle as ResourceId;
         (:initialized) var fitCycleUnit as ResourceId;
         (:initialized) var fitStationUnit as ResourceId;
-        (:initialized) var fitPaceUnit as ResourceId;
-        (:initialized) var fitStateTitle as ResourceId;
         (:initialized) var fitStateLabel as ResourceId;
-        (:initialized) var fitAthleteUnit as ResourceId;
         (:initialized) var fitAthleteTitle as ResourceId;
         (:initialized) var AppName as ResourceId;
+        (:initialized) var stationStdWallBalls as ResourceId;
+        (:initialized) var fitRoxzoneTitle as ResourceId;
+        (:initialized) var stationSledPull as ResourceId;
+        (:initialized) var stationStdRow as ResourceId;
+        (:initialized) var stationStdSledPull as ResourceId;
+        (:initialized) var fitStateUnit as ResourceId;
+        (:initialized) var fitCycleTitle as ResourceId;
+        (:initialized) var labelTotal as ResourceId;
+        (:initialized) var stationSledPush as ResourceId;
+        (:initialized) var fitWorkRestTitle as ResourceId;
+        (:initialized) var stationRow as ResourceId;
+        (:initialized) var stationWallBalls as ResourceId;
+        (:initialized) var fitPaceUnit as ResourceId;
+        (:initialized) var fitStateTitle as ResourceId;
+        (:initialized) var fitAthleteUnit as ResourceId;
+        (:initialized) var stationFarmers as ResourceId;
         (:initialized) var fitWorkRestLabel as ResourceId;
+        (:initialized) var stationStdFarmers as ResourceId;
         (:initialized) var fitPaceTitle as ResourceId;
         (:initialized) var fitCycleLabel as ResourceId;
-        (:initialized) var fitRoxzoneTitle as ResourceId;
+        (:initialized) var stationStdLunges as ResourceId;
+        (:initialized) var stationBurpee as ResourceId;
         (:initialized) var fitAthleteLabel as ResourceId;
+        (:initialized) var stationStdSkiErg as ResourceId;
+        (:initialized) var labelStation as ResourceId;
+        (:initialized) var stationLunges as ResourceId;
+        (:initialized) var stationStdSledPush as ResourceId;
         (:initialized) var fitRoxzoneLabel as ResourceId;
         (:initialized) var fitStationTitle as ResourceId;
-        (:initialized) var fitStateUnit as ResourceId;
+        (:initialized) var stationStdBurpee as ResourceId;
+        (:initialized) var stationSkiErg as ResourceId;
     } // Strings
 
     module Styles {
